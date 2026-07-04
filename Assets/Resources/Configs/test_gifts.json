@@ -1,0 +1,32 @@
+[
+  {
+    "id": "mentor_ssr_01",
+    "name": "陨落仙帝残魂",
+    "type": "MentorSpirit",
+    "rarity": "SSR",
+    "description": "一枚古戒中沉睡着被天道镇压的仙帝残魂",
+    "abilities": ["修炼指点", "仙法传承", "危机预警"],
+    "storyOrigin": "上古仙帝被天道镇压，残魂寄于古戒",
+    "storyMystery": "天道为什么要镇压他？"
+  },
+  {
+    "id": "system_n_01",
+    "name": "签到系统",
+    "type": "SystemPanel",
+    "rarity": "N",
+    "description": "每天签到领取奖励的基础辅助系统",
+    "abilities": ["每日签到", "奖励领取"],
+    "storyOrigin": "来历不明的低等系统，但日志里似乎有被删除的前任记录",
+    "storyMystery": "它是谁留下的？"
+  },
+  {
+    "id": "bloodline_sr_01",
+    "name": "混沌圣体",
+    "type": "Bloodline",
+    "rarity": "SR",
+    "description": "千年一现的传说体质，全属性亲和",
+    "abilities": ["全属性加成", "圣体觉醒", "天道感应"],
+    "storyOrigin": "上一任混沌圣体拥有者引发了一场灭世之战",
+    "storyMystery": "为什么混沌圣体总伴随着大灾难？"
+  }
+]
