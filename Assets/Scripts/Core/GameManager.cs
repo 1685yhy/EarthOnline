@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using EarthOnline.Framework;
 using EarthOnline.Gifts;
@@ -33,11 +35,15 @@ namespace EarthOnline
             EnsureComponent<PlayerStats>();
             EnsureComponent<QuestManager>();
             EnsureComponent<EarthOnline.Combat.CombatSystem>();
+            EnsureComponent<CraftingManager>();
+            EnsureComponent<EnemyRespawner>();
 
             RegisterAllGifts();
             AutoActivateStarterGift();
 
             EventBus.Subscribe("OnItemAdded", OnItemPickedUp);
+            EventBus.Subscribe("OnPlayerDeath", OnPlayerDied);
+            EventBus.Subscribe("OnDayPassed", OnDayPassed_Save);
 
             _state = GameState.Playing;
             Debug.Log("========== [GameManager] EarthOnline V0.3 Ready ==========");
@@ -215,10 +221,96 @@ namespace EarthOnline
                                 $"  [{i.rarity}] {i.name} x{i.quantity} — {i.description}")));
                 }
             }
+
+            // 按C键制作
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                var cm = CraftingManager.Instance;
+                if (cm != null)
+                {
+                    var available = cm.GetAvailableRecipes();
+                    var all = cm.GetAllRecipes();
+                    Debug.Log($"[Craft] === 制作台 === 可用:{available.Count}/{all.Count}");
+                    foreach (var r in all)
+                    {
+                        bool canCraft = available.Contains(r);
+                        var ings = string.Join(", ", System.Linq.Enumerable.Select(
+                            r.ingredients, kvp => $"{kvp.Key}:{kvp.Value}"));
+                        Debug.Log($"  {(canCraft ? "✅" : "❌")} {r.resultItemName}[{r.resultRarity}] ← {ings}");
+                    }
+                    Debug.Log("[Craft] 按K键尝试制作第一个可用配方");
+                }
+            }
+
+            // 按K键执行第一个可用制作
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                var cm = CraftingManager.Instance;
+                var recipes = cm?.GetAvailableRecipes();
+                if (recipes != null && recipes.Count > 0)
+                {
+                    cm.Craft(recipes[0].id);
+                }
+                else
+                {
+                    Debug.Log("[Craft] 没有可制作的配方。需要材料！");
+                }
+            }
+        }
+
+        void OnPlayerDied(Dictionary<string, object> data)
+        {
+            Debug.Log("[GameManager] 💀 玩家死亡。3秒后在地图中央重生...");
+            StartCoroutine(RespawnPlayer());
+        }
+
+        System.Collections.IEnumerator RespawnPlayer()
+        {
+            yield return new WaitForSeconds(3f);
+            var player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                player.transform.position = new Vector3(0, 1.5f, 0);
+                var cc = player.GetComponent<CharacterController>();
+                if (cc != null) cc.enabled = false;
+                player.transform.position = new Vector3(0, 1.5f, 0);
+                if (cc != null) cc.enabled = true;
+            }
+            var stats = PlayerStats.Instance;
+            if (stats != null) stats.Heal(stats.maxHP);
+            Debug.Log("[GameManager] 🏥 已重生！HP全恢复。");
+        }
+
+        void OnDayPassed_Save(Dictionary<string, object> data)
+        {
+            // 每天自动存档
+            var sm = SaveManager.Instance;
+            if (sm != null)
+            {
+                var player = GameObject.FindGameObjectWithTag("Player");
+                var stats = PlayerStats.Instance;
+                var time = TimeManager.Instance;
+                var saveData = new EarthOnline.Framework.SaveData
+                {
+                    playerName = playerName,
+                    playerPosX = player != null ? player.transform.position.x : 0,
+                    playerPosY = player != null ? player.transform.position.y : 0,
+                    playerPosZ = player != null ? player.transform.position.z : 0,
+                    playerLevel = stats != null ? stats.playerLevel : 1,
+                    playerCurrency = stats != null ? stats.currency : 0,
+                    gameDay = time != null ? time.GameDay : 1,
+                    currentSceneName = "EarthOnline_Main"
+                };
+                sm.Save(saveData);
+                Debug.Log($"[GameManager] 💾 自动存档 — 第{data["day"]}天");
+            }
         }
 
         void OnDestroy()
         {
+            EventBus.Unsubscribe("OnItemAdded", OnItemPickedUp);
+            EventBus.Unsubscribe("OnPlayerDeath", OnPlayerDied);
+            EventBus.Unsubscribe("OnDayPassed", OnDayPassed_Save);
             EventBus.Clear();
         }
     }
