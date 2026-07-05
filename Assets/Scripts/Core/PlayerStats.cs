@@ -114,7 +114,18 @@ namespace EarthOnline
             var timeStr = TimeManager.Instance.TimeString;
             var dayStr = $"第{TimeManager.Instance.GameDay}天";
             var weather = WeatherSystem.Instance?.GetWeatherEmoji() ?? "";
-            var status = $"🏷️ Lv.{playerLevel} | ❤️ {currentHP}/{maxHP} | 💰 {spiritStones} | ⭐ {cultivation} | {weather} {timeStr} {dayStr}";
+
+            // 世界感知：显示当前世界的货币和境界
+            string currencyDisplay = "灵石"; // 默认修真世界
+            string realmDisplay = "";
+            // TODO: 从WorldConfig读取，目前硬编码灵气大陆
+            if (cultivation >= 1500) realmDisplay = "化神期";
+            else if (cultivation >= 1000) realmDisplay = "元婴期";
+            else if (cultivation >= 600) realmDisplay = "金丹期";
+            else if (cultivation >= 300) realmDisplay = "筑基期";
+            else if (cultivation >= 100) realmDisplay = "练气期";
+
+            var status = $"🏷️ Lv.{playerLevel} {realmDisplay} | ❤️ {currentHP}/{maxHP} | {spiritStones}{currencyDisplay} | ⭐ {cultivation} | {weather} {timeStr} {dayStr}";
             EventBus.Publish("OnStatusUpdate", new Dictionary<string, object> { {"status", status} });
         }
 
