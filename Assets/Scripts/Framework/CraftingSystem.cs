@@ -57,6 +57,28 @@ namespace EarthOnline.Framework
                     {"item_spirit_stone", 5}, {"item_pill_001", 2}
                 }
             });
+
+            // 武器制作
+            _recipes.Add(new Recipe
+            {
+                id = "craft_steel_sword", resultItemId = "item_steel_sword",
+                resultItemName = "精钢剑", resultType = "Weapon", resultRarity = "SR",
+                resultQuantity = 1, resultValue = 250,
+                ingredients = new Dictionary<string, int> {
+                    {"item_iron_sword", 1}, {"item_spirit_core_001", 1}
+                }
+            });
+
+            // 饰品制作
+            _recipes.Add(new Recipe
+            {
+                id = "craft_ring", resultItemId = "item_guard_ring",
+                resultItemName = "守护之戒", resultType = "Accessory", resultRarity = "SR",
+                resultQuantity = 1, resultValue = 300,
+                ingredients = new Dictionary<string, int> {
+                    {"item_spirit_core_001", 2}, {"item_chaos_fragment", 1}
+                }
+            });
         }
 
         public List<Recipe> GetAvailableRecipes()

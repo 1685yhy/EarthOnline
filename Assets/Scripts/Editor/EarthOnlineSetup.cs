@@ -25,7 +25,7 @@ namespace EarthOnline.Editor
                 if (cleanNames.Contains(n) || n.StartsWith("Tree_") || n.StartsWith("Rock_")
                     || n.StartsWith("Pickup_") || n.StartsWith("House_") || n.StartsWith("Fence_")
                     || n.StartsWith("Enemy_") || n.StartsWith("Chest_") || n == "NPC_Chen"
-                    || n.StartsWith("Dungeon") || n.StartsWith("Flower_"))
+                    || n.StartsWith("Dungeon") || n.StartsWith("Flower_") || n.StartsWith("Travel_"))
                     Object.DestroyImmediate(go);
             }
 
@@ -203,6 +203,14 @@ namespace EarthOnline.Editor
                 if (fr != null) { var fm = new Material(Shader.Find("Standard")); fm.color = Random.value > 0.5f ? new Color(1,0.2f,0.2f) : new Color(1,1,0.2f); fr.material = fm; }
                 flower.GetComponent<Collider>().isTrigger = true;
             }
+
+            // Fast travel points
+            var tp1 = new GameObject("Travel_Village"); tp1.transform.position = new Vector3(0, 0.5f, 0);
+            var ft1 = tp1.AddComponent<EarthOnline.FastTravel>(); ft1.pointName = "村庄中心"; ft1.pointId = "village_center";
+            var tp2 = new GameObject("Travel_Dungeon"); tp2.transform.position = new Vector3(0, 0.5f, -18);
+            var ft2 = tp2.AddComponent<EarthOnline.FastTravel>(); ft2.pointName = "虚空裂缝入口"; ft2.pointId = "dungeon_entrance";
+            var tp3 = new GameObject("Travel_Forest"); tp3.transform.position = new Vector3(15, 0.5f, 0);
+            var ft3 = tp3.AddComponent<EarthOnline.FastTravel>(); ft3.pointName = "东边森林"; ft3.pointId = "east_forest";
 
             var dungeon = new GameObject("DungeonEntrance");
             dungeon.transform.position = new Vector3(0, 0, -15);
