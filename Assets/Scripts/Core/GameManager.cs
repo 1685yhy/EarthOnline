@@ -213,7 +213,16 @@ namespace EarthOnline
             });
             gm.RegisterTemplate(formation);
 
-            Debug.Log("[GameManager] All gift templates registered (9).");
+            // 时光回溯
+            var timeRegression = new TimeRegression();
+            timeRegression.Initialize(new Dictionary<string, object> {
+                {"id", "gift_time_001"}, {"name", "时光回溯"}, {"type", "Mystery"}, {"rarity", "SSR"},
+                {"storyOrigin", "这不是金手指。这是一个被困在同一天3000年的灵魂和他的交易。每一次使用，你离他更近一步。"},
+                {"storyMystery", "那个灵魂说他是3000年前的你。上一个轮回的失败品。为什么你会轮回？你失败了多少次？这一次有什么不同？"}
+            });
+            gm.RegisterTemplate(timeRegression);
+
+            Debug.Log("[GameManager] All gift templates registered (10).");
         }
 
         void AutoActivateStarterGift()
