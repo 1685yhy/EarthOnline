@@ -316,30 +316,10 @@ namespace EarthOnline
                 if (cs != null) cs.CycleTarget();
             }
 
-            // B键打开商店 (需靠近商人NPC)
+            // B键打开商店 (需靠近商人NPC) — 也可通过NPC对话选择
             if (Input.GetKeyDown(KeyCode.B))
             {
-                var shop = ShopManager.Instance;
-                if (shop != null)
-                {
-                    // Find nearest NPC
-                    var player = GameObject.FindGameObjectWithTag("Player");
-                    if (player != null)
-                    {
-                        var npcs = Object.FindObjectsOfType<EarthOnline.NPC.NPCBase>();
-                        EarthOnline.NPC.NPCBase closest = null;
-                        float bestDist = 6f;
-                        foreach (var n in npcs)
-                        {
-                            float d = Vector3.Distance(player.transform.position, n.transform.position);
-                            if (d < bestDist) { bestDist = d; closest = n; }
-                        }
-                        if (closest != null)
-                            shop.ShowShop(closest.npcId);
-                        else
-                            Debug.Log("[Shop] 附近没有商人。去村子里找陈半仙吧！");
-                    }
-                }
+                TryOpenShop();
             }
 
             // (N键改为Shift+N防误触，见上方)
@@ -444,6 +424,23 @@ namespace EarthOnline
                 yield return null;
             }
             Debug.Log("[Shop] 超时，取消出售。");
+        }
+
+        void TryOpenShop()
+        {
+            var shop = ShopManager.Instance; var player = GameObject.FindGameObjectWithTag("Player");
+            if (shop == null || player == null) return;
+            var npcs = Object.FindObjectsOfType<EarthOnline.NPC.NPCBase>();
+            EarthOnline.NPC.NPCBase closest = null; float bestDist = 6f;
+            foreach (var n in npcs)
+            {
+                float d = Vector3.Distance(player.transform.position, n.transform.position);
+                if (d < bestDist) { bestDist = d; closest = n; }
+            }
+            if (closest != null)
+                shop.ShowShop(closest.npcId);
+            else
+                Debug.Log("[Shop] 附近没有商人。村子里找陈半仙(金色NPC)或李灵儿(绿色NPC)按B购物。");
         }
 
         void UseGiftAbility(string abilityName)
