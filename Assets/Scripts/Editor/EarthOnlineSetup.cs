@@ -214,6 +214,7 @@ namespace EarthOnline.Editor
 
             var dungeon = new GameObject("DungeonEntrance");
             dungeon.transform.position = new Vector3(0, 0, -15);
+            dungeon.AddComponent<EarthOnline.DungeonEntrance>();
             var dc = GameObject.CreatePrimitive(PrimitiveType.Cylinder); dc.name = "DungeonVisual";
             dc.transform.SetParent(dungeon.transform);
             dc.transform.localPosition = Vector3.zero;

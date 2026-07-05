@@ -51,6 +51,12 @@ namespace EarthOnline.Combat
 
         void Start()
         {
+            // 夜间敌人强化
+            if (TimeManager.Instance != null && TimeManager.Instance.IsNight)
+            {
+                maxHP = Mathf.RoundToInt(maxHP * 1.3f);
+                attackPower = Mathf.RoundToInt(attackPower * 1.3f);
+            }
             currentHP = maxHP;
             _homePosition = transform.position;
             _player = GameObject.FindGameObjectWithTag("Player")?.transform;
