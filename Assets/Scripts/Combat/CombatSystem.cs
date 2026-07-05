@@ -18,6 +18,10 @@ namespace EarthOnline.Combat
 
         private float _lastAttackTime;
         private Camera _cam;
+        private int _targetIndex = -1;
+        private EnemyAI _currentTarget;
+
+        public EnemyAI CurrentTarget => _currentTarget;
 
         void Awake()
         {
@@ -86,6 +90,29 @@ namespace EarthOnline.Combat
             {
                 Debug.Log("[Combat] 挥空了...附近没有敌人。");
             }
+        }
+
+        public void CycleTarget()
+        {
+            var player = GameObject.FindGameObjectWithTag("Player");
+            if (player == null) return;
+
+            var hits = Physics.OverlapSphere(player.transform.position, attackRange * 3f, enemyLayer);
+            var enemies = new System.Collections.Generic.List<EnemyAI>();
+            foreach (var h in hits)
+            {
+                var e = h.GetComponent<EnemyAI>();
+                if (e != null && !e.IsDead) enemies.Add(e);
+            }
+            enemies.Sort((a, b) =>
+                Vector3.Distance(player.transform.position, a.transform.position)
+                .CompareTo(Vector3.Distance(player.transform.position, b.transform.position)));
+
+            if (enemies.Count == 0) { Debug.Log("[Combat] 附近没有敌人。"); return; }
+
+            _targetIndex = (_targetIndex + 1) % enemies.Count;
+            _currentTarget = enemies[_targetIndex];
+            Debug.Log($"[Combat] 🎯 目标切换: {_currentTarget.enemyName} ({_currentTarget.currentHP}/{_currentTarget.maxHP}HP)");
         }
 
         void OnDrawGizmosSelected()

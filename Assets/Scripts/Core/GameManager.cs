@@ -44,6 +44,7 @@ namespace EarthOnline
             EnsureComponent<WeatherSystem>();
             EnsureComponent<AchievementManager>();
             EnsureComponent<RandomEvents>();
+            EnsureComponent<OpeningSequence>();
 
             RegisterAllGifts();
             AutoActivateStarterGift();
@@ -302,6 +303,19 @@ namespace EarthOnline
             if (Input.GetKeyDown(KeyCode.Alpha3)) UseGiftAbility("heal");
             if (Input.GetKeyDown(KeyCode.Alpha4)) UseGiftAbility("cultivate");
 
+            // F5快速存档
+            if (Input.GetKeyDown(KeyCode.F5)) QuickSave();
+
+            // Shift+N出售(防误触)
+            if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.N)) ConfirmSellItem();
+
+            // Tab切换攻击目标
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                var cs = EarthOnline.Combat.CombatSystem.Instance;
+                if (cs != null) cs.CycleTarget();
+            }
+
             // B键打开商店 (需靠近商人NPC)
             if (Input.GetKeyDown(KeyCode.B))
             {
@@ -328,20 +342,7 @@ namespace EarthOnline
                 }
             }
 
-            // N键出售背包中第一个物品
-            if (Input.GetKeyDown(KeyCode.N))
-            {
-                var shop = ShopManager.Instance;
-                var inv = InventoryManager.Instance;
-                if (shop != null && inv != null)
-                {
-                    var items = inv.GetAllItems();
-                    if (items.Count > 0)
-                        shop.Sell(items[0].id);
-                    else
-                        Debug.Log("[Shop] 背包空空，没什么可卖的。");
-                }
-            }
+            // (N键改为Shift+N防误触，见上方)
         }
 
         void OnPlayerDied(Dictionary<string, object> data)
@@ -390,6 +391,59 @@ namespace EarthOnline
                 sm.Save(saveData);
                 Debug.Log($"[GameManager] 💾 自动存档 — 第{data["day"]}天");
             }
+        }
+
+        void QuickSave()
+        {
+            var sm = SaveManager.Instance; var stats = PlayerStats.Instance;
+            var time = TimeManager.Instance; var player = GameObject.FindGameObjectWithTag("Player");
+            if (sm != null)
+            {
+                sm.Save(new EarthOnline.Framework.SaveData
+                {
+                    playerName = playerName,
+                    playerPosX = player != null ? player.transform.position.x : 0,
+                    playerPosY = player != null ? player.transform.position.y : 0,
+                    playerPosZ = player != null ? player.transform.position.z : 0,
+                    playerLevel = stats != null ? stats.playerLevel : 1,
+                    playerCurrency = stats != null ? stats.currency : 0,
+                    gameDay = time != null ? time.GameDay : 1,
+                    currentSceneName = "EarthOnline_Main"
+                });
+                Debug.Log("[GameManager] 💾 快速存档完成！(F5)");
+            }
+        }
+
+        void ConfirmSellItem()
+        {
+            var shop = ShopManager.Instance;
+            var inv = InventoryManager.Instance;
+            if (shop == null || inv == null) return;
+            var items = inv.GetAllItems();
+            if (items.Count == 0) { Debug.Log("[Shop] 背包空空。"); return; }
+            var item = items[0];
+            Debug.Log($"[Shop] 按Y确认出售 [{item.rarity}]{item.name}(+{item.value/2}💰)，其他键取消。");
+            StartCoroutine(WaitForSellConfirm(item.id));
+        }
+
+        System.Collections.IEnumerator WaitForSellConfirm(string itemId)
+        {
+            float timeout = Time.time + 3f;
+            while (Time.time < timeout)
+            {
+                if (Input.GetKeyDown(KeyCode.Y))
+                {
+                    ShopManager.Instance?.Sell(itemId);
+                    yield break;
+                }
+                if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Y))
+                {
+                    Debug.Log("[Shop] 取消出售。");
+                    yield break;
+                }
+                yield return null;
+            }
+            Debug.Log("[Shop] 超时，取消出售。");
         }
 
         void UseGiftAbility(string abilityName)
