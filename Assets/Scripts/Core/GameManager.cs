@@ -204,7 +204,16 @@ namespace EarthOnline
             });
             gm.RegisterTemplate(swordHeart);
 
-            Debug.Log("[GameManager] All gift templates registered (8).");
+            // 阵法大师
+            var formation = new FormationMaster();
+            formation.Initialize(new Dictionary<string, object> {
+                {"id", "gift_formation_001"}, {"name", "阵法大师"}, {"type", "Knowledge"}, {"rarity", "SR"},
+                {"storyOrigin", "阵法是灵气大陆最古老的技艺。比宗门更古老。比文字更古老。第一个学会布阵的人——没有人知道他的名字。但每一个学阵法的人都会在梦中看到同一张脸。"},
+                {"storyMystery", "那个黑衣人——他尝了你的灵力，说'可以教你'。他不是修士。他没有灵力。那他怎么知道阵法？他活了多久了？"}
+            });
+            gm.RegisterTemplate(formation);
+
+            Debug.Log("[GameManager] All gift templates registered (9).");
         }
 
         void AutoActivateStarterGift()
