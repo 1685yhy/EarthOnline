@@ -30,6 +30,8 @@ namespace EarthOnline.UI
             dialogueBubble?.SetActive(false);
             EventBus.Subscribe("OnNPCInteract", OnNPCInteracted);
             EventBus.Subscribe("OnStatusUpdate", OnStatusUpdate);
+            EventBus.Subscribe("OnQuestAccepted", OnQuestUpdate);
+            EventBus.Subscribe("OnQuestCompleted", OnQuestUpdate);
         }
 
         void Update()
@@ -80,10 +82,20 @@ namespace EarthOnline.UI
             UpdateStatus(status);
         }
 
+        void OnQuestUpdate(Dictionary<string, object> data)
+        {
+            string title = data.ContainsKey("title") ? data["title"].ToString() : "";
+            string status = data.ContainsKey("questId") != data.ContainsKey("rewardGold")
+                ? $"📋 {title} — 进行中" : $"✅ {title} — 完成！";
+            UpdateStatus(status);
+        }
+
         void OnDestroy()
         {
             EventBus.Unsubscribe("OnNPCInteract", OnNPCInteracted);
             EventBus.Unsubscribe("OnStatusUpdate", OnStatusUpdate);
+            EventBus.Unsubscribe("OnQuestAccepted", OnQuestUpdate);
+            EventBus.Unsubscribe("OnQuestCompleted", OnQuestUpdate);
         }
     }
 }

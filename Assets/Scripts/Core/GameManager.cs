@@ -37,6 +37,7 @@ namespace EarthOnline
             EnsureComponent<EarthOnline.Combat.CombatSystem>();
             EnsureComponent<CraftingManager>();
             EnsureComponent<EnemyRespawner>();
+            EnsureComponent<TutorialManager>();
 
             RegisterAllGifts();
             AutoActivateStarterGift();
