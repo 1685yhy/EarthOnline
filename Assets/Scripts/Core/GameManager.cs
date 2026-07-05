@@ -195,7 +195,16 @@ namespace EarthOnline
             });
             gm.RegisterTemplate(devour);
 
-            Debug.Log("[GameManager] All gift templates registered (7).");
+            // 剑心通明
+            var swordHeart = new SwordHeart();
+            swordHeart.Initialize(new Dictionary<string, object> {
+                {"id", "gift_sword_001"}, {"name", "剑心通明"}, {"type", "Talent"}, {"rarity", "SR"},
+                {"storyOrigin", "天生剑道奇才。不是学了剑法——是剑选择了你。上一个被选中的人成了剑仙。他失去了一切。"},
+                {"storyMystery", "天道中刻着一把剑。那是'剑道'的本体。为什么它会出现在你的剑意中？它在等你做什么？"}
+            });
+            gm.RegisterTemplate(swordHeart);
+
+            Debug.Log("[GameManager] All gift templates registered (8).");
         }
 
         void AutoActivateStarterGift()
