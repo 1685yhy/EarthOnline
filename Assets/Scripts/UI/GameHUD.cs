@@ -29,6 +29,7 @@ namespace EarthOnline.UI
             interactionHint?.SetActive(false);
             dialogueBubble?.SetActive(false);
             EventBus.Subscribe("OnNPCInteract", OnNPCInteracted);
+            EventBus.Subscribe("OnStatusUpdate", OnStatusUpdate);
         }
 
         void Update()
@@ -73,9 +74,16 @@ namespace EarthOnline.UI
                 statusText.text = text;
         }
 
+        void OnStatusUpdate(Dictionary<string, object> data)
+        {
+            string status = data.ContainsKey("status") ? data["status"].ToString() : "";
+            UpdateStatus(status);
+        }
+
         void OnDestroy()
         {
             EventBus.Unsubscribe("OnNPCInteract", OnNPCInteracted);
+            EventBus.Unsubscribe("OnStatusUpdate", OnStatusUpdate);
         }
     }
 }

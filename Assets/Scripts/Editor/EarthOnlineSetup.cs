@@ -120,6 +120,8 @@ namespace EarthOnline.Editor
                 "item_pill_001", "聚气丹", "Consumable", "R", 2, 30);
             CreatePickup("Pickup_Ring", new Vector3(-3, 0.5f, -6),
                 "item_ring_dark", "黑铁戒指", "Quest", "SR", 1, 200);
+            CreatePickup("Pickup_Chaos", new Vector3(-9, 0.5f, -8),
+                "item_chaos_fragment", "混沌碎片", "Quest", "SSR", 1, 500);
 
             // ====== TREES & ROCKS ======
             var envPositions = new Vector3[] {
@@ -183,6 +185,7 @@ namespace EarthOnline.Editor
                 npcType.GetField("interactionRange")?.SetValue(comp, 6f);
             }
             go.AddComponent<EarthOnline.NPC.NPCWander>();
+            go.AddComponent<EarthOnline.NPC.NPCRelationship>();
 
             var r = go.GetComponent<Renderer>();
             if (r != null) { var m = new Material(Shader.Find("Standard")); m.color = color; r.material = m; }

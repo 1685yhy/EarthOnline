@@ -29,15 +29,17 @@ namespace EarthOnline
             EnsureComponent<GiftManager>();
             EnsureComponent<SaveManager>();
             EnsureComponent<InventoryManager>();
+            EnsureComponent<TimeManager>();
+            EnsureComponent<PlayerStats>();
+            EnsureComponent<QuestManager>();
 
             RegisterAllGifts();
             AutoActivateStarterGift();
 
-            // 监听黑铁戒指拾取 → 激活老爷爷
             EventBus.Subscribe("OnItemAdded", OnItemPickedUp);
 
             _state = GameState.Playing;
-            Debug.Log("========== [GameManager] EarthOnline V0.2 Ready ==========");
+            Debug.Log("========== [GameManager] EarthOnline V0.3 Ready ==========");
         }
 
         void OnItemPickedUp(Dictionary<string, object> data)
@@ -48,9 +50,22 @@ namespace EarthOnline
                 var giftMgr = GiftManager.Instance;
                 if (giftMgr != null)
                 {
-                    var oldMaster = giftMgr.ActivateGift("gift_old_master_001");
-                    if (oldMaster != null)
-                        Debug.Log($"[GameManager] 『{oldMaster.GiftName}』已觉醒！一股古老的气息从黑铁戒指中涌出...");
+                    var om = giftMgr.ActivateGift("gift_old_master_001");
+                    if (om != null)
+                        Debug.Log($"[GameManager] 『{om.GiftName}』已觉醒！一股古老的气息从黑铁戒指中涌出...");
+                }
+            }
+            else if (itemId == "item_chaos_fragment")
+            {
+                var giftMgr = GiftManager.Instance;
+                if (giftMgr != null)
+                {
+                    var db = giftMgr.ActivateGift("gift_divine_body_001");
+                    if (db != null)
+                    {
+                        Debug.Log($"[GameManager] 混沌碎片融入体内...『{db.GiftName}』觉醒！");
+                        Debug.Log($"[GameManager] ⚠️ 你感觉到虚空中有什么东西注意到了你...");
+                    }
                 }
             }
         }
@@ -92,7 +107,20 @@ namespace EarthOnline
             });
             gm.RegisterTemplate(oldMaster);
 
-            Debug.Log("[GameManager] All gift templates registered (2).");
+            // 注册混沌圣体
+            var divineBody = new DivineBody();
+            divineBody.Initialize(new Dictionary<string, object>
+            {
+                {"id", "gift_divine_body_001"},
+                {"name", "混沌圣体"},
+                {"type", "Body"},
+                {"rarity", "SSR"},
+                {"storyOrigin", "穿越时灵魂撕裂空间裂缝，混沌之力灌入体内。这是最罕见的天赋——但也是最危险的天赋。"},
+                {"storyMystery", "混沌之力的源头是什么？为什么那个'影子'和你的面容一模一样？当威胁度达到10，会发生什么？"}
+            });
+            gm.RegisterTemplate(divineBody);
+
+            Debug.Log("[GameManager] All gift templates registered (3).");
         }
 
         void AutoActivateStarterGift()

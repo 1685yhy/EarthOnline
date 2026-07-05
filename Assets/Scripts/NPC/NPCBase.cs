@@ -83,11 +83,25 @@ namespace EarthOnline.NPC
 
         public virtual void Interact()
         {
-            Debug.Log($"[NPC:{npcName}] {greetingText}");
+            IsInteracting = true;
+
+            // 使用好感度系统的个性化问候
+            string text = greetingText;
+            var rel = GetComponent<NPCRelationship>();
+            if (rel != null) text = rel.GetPersonalizedGreeting();
+
+            Debug.Log($"[NPC:{npcName}] {text}");
             EarthOnline.Framework.EventBus.Publish("OnNPCInteract", new Dictionary<string, object>
             {
-                {"npcId", npcId}, {"npcName", npcName}, {"dialogue", greetingText}
+                {"npcId", npcId}, {"npcName", npcName}, {"dialogue", text}
             });
+
+            Invoke(nameof(EndInteraction), 1.5f);
+        }
+
+        void EndInteraction()
+        {
+            IsInteracting = false;
         }
 
         void OnDrawGizmosSelected()
