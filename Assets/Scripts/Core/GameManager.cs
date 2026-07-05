@@ -39,6 +39,7 @@ namespace EarthOnline
             EnsureComponent<EnemyRespawner>();
             EnsureComponent<TutorialManager>();
             EnsureComponent<EquipmentManager>();
+            EnsureComponent<EarthOnline.UI.PauseMenu>();
 
             RegisterAllGifts();
             AutoActivateStarterGift();
@@ -163,14 +164,6 @@ namespace EarthOnline
         void Update()
         {
             if (_state != GameState.Playing) return;
-
-            // ESC 释放鼠标
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                Cursor.lockState = Cursor.lockState == CursorLockMode.Locked
-                    ? CursorLockMode.None : CursorLockMode.Locked;
-                Cursor.visible = !Cursor.visible;
-            }
 
             // 测试：按T键触发签到
             if (Input.GetKeyDown(KeyCode.T))
