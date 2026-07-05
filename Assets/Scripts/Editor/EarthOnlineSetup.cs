@@ -138,6 +138,10 @@ namespace EarthOnline.Editor
                 "item_iron_sword", "铁剑", "Weapon", "R", 1, 80);
             CreatePickup("Pickup_Armor", new Vector3(-6, 0.5f, 2),
                 "item_leather_armor", "皮甲", "Armor", "R", 1, 60);
+            CreatePickup("Pickup_Elixir", new Vector3(-12, 0.5f, 8),
+                "item_cultivation_elixir", "修炼灵液", "Consumable", "SR", 1, 100);
+            CreatePickup("Pickup_Scroll", new Vector3(10, 0.5f, -12),
+                "item_skill_scroll", "残缺功法", "Skill", "SR", 1, 150);
 
             // ====== TREES & ROCKS ======
             var envPositions = new Vector3[] {
@@ -190,6 +194,17 @@ namespace EarthOnline.Editor
                 maxHP: 100, attack: 15, speed: 2f, detect: 6f, patrol: 4f,
                 dropId: "item_pill_001", dropName: "聚气丹", dropQty: 3,
                 color: new Color(0.5f, 0.25f, 0.1f));
+
+            // New V2.0 enemies
+            CreateEnemy("Enemy_Serpent", new Vector3(14, 1, 5), "serpent_001", "灵蛇",
+                maxHP: 30, attack: 8, speed: 4f, detect: 8f, patrol: 10f,
+                dropId: "item_herb_001", dropName: "止血草", dropQty: 3,
+                color: new Color(0.1f, 0.6f, 0.3f));
+
+            CreateEnemy("Enemy_Ghost", new Vector3(-14, 1.5f, -10), "ghost_001", "怨灵",
+                maxHP: 25, attack: 12, speed: 3f, detect: 12f, patrol: 5f,
+                dropId: "item_spirit_stone", dropName: "灵石碎片", dropQty: 2,
+                color: new Color(0.4f, 0.4f, 0.7f));
 
             // Boss enemy
             CreateEnemy("Enemy_Boss", new Vector3(0, 2f, -15), "boss_001", "虚空行者",
