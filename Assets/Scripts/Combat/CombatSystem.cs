@@ -1,27 +1,36 @@
+using System.Collections.Generic;
 using UnityEngine;
 using EarthOnline.Framework;
-using System.Collections.Generic;
+using EarthOnline.NPC;
 
 namespace EarthOnline.Combat
 {
     /// <summary>
-    /// 战斗系统 —— 玩家左键攻击，伤害计算，击杀事件。
+    /// V2.0 修真战斗 —— 掐诀→释放法诀→灵力消耗→境界压制。
+    /// 不再左键平A。每击都是修真者的法诀。
     /// </summary>
     public class CombatSystem : MonoBehaviour
     {
         public static CombatSystem Instance { get; private set; }
 
-        public float attackRange = 2.5f;
-        public float attackCooldown = 0.6f;
-        public int baseAttackPower = 15;
-        public LayerMask enemyLayer = -1;
+        [Header("基础攻击")]
+        public float baseSpiritAttack = 15f;    // 基础灵击伤害
+        public float spiritCostPerAttack = 5f;   // 每次灵击灵力消耗
+        public float castTime = 0.4f;            // 掐诀前摇(秒)
+        public float maxSpiritEnergy = 100f;     // 最大灵力值
+        public float spiritRegenRate = 3f;       // 每秒灵力回复
 
-        private float _lastAttackTime;
+        [Header("境界压制")]
+        public float realmSuppressionRatio = 0.5f; // 高1境界→50%免伤
+
+        private float _currentSpiritEnergy;
+        private float _lastCastTime;
+        private EnemyAI _lockedTarget;
         private Camera _cam;
-        private int _targetIndex = -1;
-        private EnemyAI _currentTarget;
 
-        public EnemyAI CurrentTarget => _currentTarget;
+        public float SpiritEnergy => _currentSpiritEnergy;
+        public float SpiritPercent => _currentSpiritEnergy / maxSpiritEnergy;
+        public EnemyAI LockedTarget => _lockedTarget;
 
         void Awake()
         {
@@ -31,99 +40,174 @@ namespace EarthOnline.Combat
 
         void Start()
         {
+            _currentSpiritEnergy = maxSpiritEnergy;
             _cam = Camera.main;
-            if (enemyLayer == -1) enemyLayer = LayerMask.GetMask("Default");
         }
 
         void Update()
         {
-            if (Input.GetMouseButtonDown(0) && Time.time - _lastAttackTime >= attackCooldown)
+            // 灵力自然回复
+            if (_currentSpiritEnergy < maxSpiritEnergy)
+                _currentSpiritEnergy = Mathf.Min(maxSpiritEnergy, _currentSpiritEnergy + spiritRegenRate * Time.deltaTime);
+
+            // 左键点击选择目标
+            if (Input.GetMouseButtonDown(0))
             {
-                Attack();
+                TrySelectTarget();
+            }
+
+            // 右键释放灵击（攻击当前锁定目标）
+            if (Input.GetMouseButtonDown(1) && _lockedTarget != null && !_lockedTarget.IsDead)
+            {
+                CastSpiritAttack();
+            }
+
+            // Q键：主修功法技能
+            if (Input.GetKeyDown(KeyCode.Q) && _lockedTarget != null)
+            {
+                CastTechnique();
+            }
+
+            // 高亮锁定目标
+            if (_lockedTarget != null && _lockedTarget.IsDead)
+                _lockedTarget = null;
+        }
+
+        /// <summary>
+        /// 鼠标点击选择目标（不再是自动选最近）
+        /// </summary>
+        void TrySelectTarget()
+        {
+            if (_cam == null) return;
+            var ray = _cam.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out var hit, 50f))
+            {
+                var enemy = hit.collider.GetComponent<EnemyAI>();
+                if (enemy != null && !enemy.IsDead)
+                {
+                    _lockedTarget = enemy;
+                    Debug.Log($"[Combat] 🎯 锁定目标: {enemy.enemyName} ({enemy.currentHP}/{enemy.maxHP}HP)");
+                    return;
+                }
+            }
+            // 点空了→取消锁定
+            if (_lockedTarget != null)
+            {
+                Debug.Log("[Combat] 取消锁定");
+                _lockedTarget = null;
             }
         }
 
-        void Attack()
+        /// <summary>
+        /// 右键释放基础灵击
+        /// </summary>
+        void CastSpiritAttack()
         {
-            _lastAttackTime = Time.time;
-
-            var player = GameObject.FindGameObjectWithTag("Player");
-            if (player == null) return;
-
-            // 前方范围内的敌人检测
-            var hits = Physics.OverlapSphere(player.transform.position, attackRange, enemyLayer);
-            EnemyAI closestEnemy = null;
-            float closestDist = float.MaxValue;
-
-            foreach (var hit in hits)
+            if (Time.time - _lastCastTime < castTime) return; // 还在掐诀
+            if (_currentSpiritEnergy < spiritCostPerAttack)
             {
-                var enemy = hit.GetComponent<EnemyAI>();
-                if (enemy != null && !enemy.IsDead)
-                {
-                    float dist = Vector3.Distance(player.transform.position, hit.transform.position);
-                    if (dist < closestDist)
-                    {
-                        closestDist = dist;
-                        closestEnemy = enemy;
-                    }
-                }
+                Debug.Log("[Combat] 灵力不足！等待回复...");
+                return;
             }
 
-            if (closestEnemy != null)
-            {
-                // 计算伤害（含装备加成+暴击）
-                int eqBonus = EquipmentManager.Instance?.AttackBonus ?? 0;
-                float weatherMult = WeatherSystem.Instance?.WeatherAttackModifier ?? 1f;
-                bool crit = Random.value < 0.15f;
-                int totalAtk = Mathf.RoundToInt((baseAttackPower + eqBonus) * weatherMult);
-                int damage = crit ? Mathf.FloorToInt(totalAtk * 1.8f) : totalAtk;
-                closestEnemy.TakeDamage(damage, crit);
+            _lastCastTime = Time.time;
+            _currentSpiritEnergy -= spiritCostPerAttack;
 
-                Debug.Log($"[Combat] 攻击{(crit ? "暴击！" : "")} {damage}伤害 → {closestEnemy.enemyName}");
-                FloatingDamage.Spawn(closestEnemy.transform.position,
-                    crit ? $"-{damage} 暴击!" : $"-{damage}",
-                    crit ? new Color(1f, 0.8f, 0f) : Color.white);
-                EventBus.Publish("OnPlayerAttack", new Dictionary<string, object> {
-                    {"target", closestEnemy.enemyName}, {"damage", damage}, {"crit", crit}
-                });
-            }
-            else
+            // 境界压制计算
+            int playerRealm = GetPlayerRealm();
+            float suppressionMult = 1f;
+            if (playerRealm > 0) // 简单：玩家境界越高，伤害越高
+                suppressionMult = 1f + playerRealm * 0.3f;
+
+            // 装备加成
+            int eqBonus = EquipmentManager.Instance?.AttackBonus ?? 0;
+
+            // 伤害计算
+            float totalAtk = (baseSpiritAttack + eqBonus) * suppressionMult;
+            float weatherMult = WeatherSystem.Instance?.WeatherAttackModifier ?? 1f;
+            totalAtk *= weatherMult;
+
+            bool crit = Random.value < 0.12f;
+            int damage = crit ? Mathf.RoundToInt(totalAtk * 1.8f) : Mathf.RoundToInt(totalAtk);
+
+            _lockedTarget.TakeDamage(damage, crit);
+
+            string critText = crit ? " 暴击！" : "";
+            Debug.Log($"[Combat] 灵击！{damage}伤害 → {_lockedTarget.enemyName}{critText} (灵力:{_currentSpiritEnergy:F0}/{maxSpiritEnergy})");
+
+            FloatingDamage.Spawn(_lockedTarget.transform.position,
+                crit ? $"-{damage} 暴击!" : $"-{damage}",
+                crit ? new Color(1f, 0.85f, 0f) : new Color(0.6f, 0.8f, 1f));
+
+            float dist = Vector3.Distance(
+                GameObject.FindGameObjectWithTag("Player")?.transform.position ?? Vector3.zero,
+                _lockedTarget.transform.position);
+            Debug.Log($"[Combat] 距离:{dist:F1}m | 灵力:{_currentSpiritEnergy:F0} | 伤害加成:x{suppressionMult:F1}");
+        }
+
+        /// <summary>
+        /// Q键释放功法技能（需修炼对应功法）
+        /// </summary>
+        void CastTechnique()
+        {
+            if (_currentSpiritEnergy < 15f)
             {
-                Debug.Log("[Combat] 挥空了...附近没有敌人。");
+                Debug.Log("[Combat] 灵力不足！功法技能需要15灵力。");
+                return;
             }
+            _currentSpiritEnergy -= 15f;
+
+            // 示例：剑气斩（剑修技能）
+            int dmg = Mathf.RoundToInt(baseSpiritAttack * 2.5f);
+            _lockedTarget.TakeDamage(dmg, false);
+            FloatingDamage.Spawn(_lockedTarget.transform.position, $"-{dmg} 剑气!", new Color(0.3f, 0.7f, 1f));
+            Debug.Log($"[Combat] ⚔️ 剑气斩！{dmg}伤害 → {_lockedTarget.enemyName}");
+        }
+
+        int GetPlayerRealm()
+        {
+            var stats = PlayerStats.Instance;
+            if (stats == null) return 0;
+            int c = stats.cultivation;
+            if (c >= 1500) return 5;
+            if (c >= 1000) return 4;
+            if (c >= 600) return 3;
+            if (c >= 300) return 2;
+            if (c >= 100) return 1;
+            return 0;
         }
 
         public void CycleTarget()
         {
             var player = GameObject.FindGameObjectWithTag("Player");
             if (player == null) return;
-
-            var hits = Physics.OverlapSphere(player.transform.position, attackRange * 3f, enemyLayer);
-            var enemies = new System.Collections.Generic.List<EnemyAI>();
-            foreach (var h in hits)
-            {
-                var e = h.GetComponent<EnemyAI>();
-                if (e != null && !e.IsDead) enemies.Add(e);
-            }
+            var all = Object.FindObjectsOfType<EnemyAI>();
+            var enemies = new List<EnemyAI>();
+            foreach (var e in all) if (!e.IsDead) enemies.Add(e);
             enemies.Sort((a, b) =>
                 Vector3.Distance(player.transform.position, a.transform.position)
                 .CompareTo(Vector3.Distance(player.transform.position, b.transform.position)));
 
             if (enemies.Count == 0) { Debug.Log("[Combat] 附近没有敌人。"); return; }
 
-            _targetIndex = (_targetIndex + 1) % enemies.Count;
-            _currentTarget = enemies[_targetIndex];
-            Debug.Log($"[Combat] 🎯 目标切换: {_currentTarget.enemyName} ({_currentTarget.currentHP}/{_currentTarget.maxHP}HP)");
+            int idx = _lockedTarget != null ? enemies.IndexOf(_lockedTarget) : -1;
+            idx = (idx + 1) % enemies.Count;
+            _lockedTarget = enemies[idx];
+            Debug.Log($"[Combat] 🎯 目标切换: {_lockedTarget.enemyName} ({_lockedTarget.currentHP}/{_lockedTarget.maxHP}HP)");
         }
 
-        void OnDrawGizmosSelected()
+        void OnGUI()
         {
-            var player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
+            // 简易灵力条（屏幕左上）
+            if (_currentSpiritEnergy < maxSpiritEnergy * 0.3f)
             {
-                Gizmos.color = new Color(1, 0, 0, 0.3f);
-                Gizmos.DrawWireSphere(player.transform.position, attackRange);
+                GUI.color = Color.red;
             }
+            else
+            {
+                GUI.color = new Color(0.3f, 0.6f, 1f);
+            }
+            GUI.Box(new Rect(10, 60, 150, 20), $"灵力: {_currentSpiritEnergy:F0}/{maxSpiritEnergy}");
         }
     }
 }

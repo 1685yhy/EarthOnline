@@ -38,7 +38,7 @@ namespace EarthOnline
             ShowTip("welcome", "🌍 欢迎来到地球Online！你是一名穿越者，在这个世界书写属于自己的传说。");
 
             yield return new WaitForSeconds(5f);
-            ShowTip("controls", "🎮 WASD移动 | 鼠标视角 | 滚轮缩放 | Shift加速 | 空格跳跃");
+            ShowTip("controls", "🎮 WASD移动 | 鼠标视角 | 滚轮缩放 | Shift加速 | 空格跳跃\n⚔️ 左键=选择目标 | 右键=灵击 | Q=功法技能 | Tab=切换目标");
 
             yield return new WaitForSeconds(5f);
             ShowTip("interact", "💬 接近NPC按E键对话。村子里有三位居民，和他们聊聊吧！");
@@ -47,7 +47,7 @@ namespace EarthOnline
             ShowTip("pickup", "✨ 地上发光的光球是可以拾取的物品，走过去就能自动捡起。");
 
             yield return new WaitForSeconds(6f);
-            ShowTip("combat", "⚔️ 小心野外的敌人！左键点击攻击，H键使用回复物品。");
+            ShowTip("combat", "⚔️ 左键点击敌人=锁定目标 | 右键=释放灵击 | Q=功法技能。灵力不足时需等待回复。H键使用回复物品。");
 
             yield return new WaitForSeconds(6f);
             ShowTip("gifts", "💎 捡到特殊物品可以觉醒金手指能力。村子附近藏着黑铁戒指(SR)和混沌碎片(SSR)——找到它们！");
