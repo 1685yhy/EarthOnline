@@ -73,6 +73,9 @@ namespace EarthOnline.Combat
                 closestEnemy.TakeDamage(damage, crit);
 
                 Debug.Log($"[Combat] 攻击{(crit ? "暴击！" : "")} {damage}伤害 → {closestEnemy.enemyName}");
+                FloatingDamage.Spawn(closestEnemy.transform.position,
+                    crit ? $"-{damage} 暴击!" : $"-{damage}",
+                    crit ? new Color(1f, 0.8f, 0f) : Color.white);
                 EventBus.Publish("OnPlayerAttack", new Dictionary<string, object> {
                     {"target", closestEnemy.enemyName}, {"damage", damage}, {"crit", crit}
                 });

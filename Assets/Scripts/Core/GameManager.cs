@@ -248,14 +248,43 @@ namespace EarthOnline
                 var cm = CraftingManager.Instance;
                 var recipes = cm?.GetAvailableRecipes();
                 if (recipes != null && recipes.Count > 0)
-                {
                     cm.Craft(recipes[0].id);
-                }
                 else
-                {
                     Debug.Log("[Craft] 没有可制作的配方。需要材料！");
+            }
+
+            // 按H使用回血物品
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                var inv = InventoryManager.Instance;
+                var stats = PlayerStats.Instance;
+                if (inv != null && stats != null)
+                {
+                    if (inv.HasItem("item_heal_pill_001"))
+                    {
+                        inv.RemoveItem("item_heal_pill_001", 1);
+                        stats.Heal(30);
+                        Debug.Log("[Item] 使用回血丹！+30HP");
+                        EarthOnline.Combat.FloatingDamage.Spawn(
+                            GameObject.FindGameObjectWithTag("Player").transform.position,
+                            "+30", Color.green, 1.2f);
+                    }
+                    else if (inv.HasItem("item_herb_001"))
+                    {
+                        inv.RemoveItem("item_herb_001", 1);
+                        stats.Heal(10);
+                        Debug.Log("[Item] 使用止血草！+10HP");
+                    }
+                    else
+                        Debug.Log("[Item] 没有回复物品。找草药或制作回血丹。");
                 }
             }
+
+            // 数字键 1-4：快捷技能
+            if (Input.GetKeyDown(KeyCode.Alpha1)) UseGiftAbility("sign_in");
+            if (Input.GetKeyDown(KeyCode.Alpha2)) UseGiftAbility("ask_advice");
+            if (Input.GetKeyDown(KeyCode.Alpha3)) UseGiftAbility("heal");
+            if (Input.GetKeyDown(KeyCode.Alpha4)) UseGiftAbility("cultivate");
         }
 
         void OnPlayerDied(Dictionary<string, object> data)
@@ -304,6 +333,14 @@ namespace EarthOnline
                 sm.Save(saveData);
                 Debug.Log($"[GameManager] 💾 自动存档 — 第{data["day"]}天");
             }
+        }
+
+        void UseGiftAbility(string abilityName)
+        {
+            var gm = GiftManager.Instance;
+            if (gm == null) return;
+            foreach (var g in gm.GetActiveGifts())
+                g.UseAbility(abilityName);
         }
 
         void OnDestroy()

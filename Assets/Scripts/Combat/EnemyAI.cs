@@ -143,6 +143,8 @@ namespace EarthOnline.Combat
                         {
                             stats.TakeDamage(attackPower);
                             Debug.Log($"[{enemyName}] 攻击玩家！-{attackPower}HP");
+                        FloatingDamage.Spawn(stats.transform.position,
+                            $"-{attackPower}", new Color(1f, 0.3f, 0.2f));
                         }
                     }
                     FaceTarget(_player.position);
