@@ -35,8 +35,14 @@ namespace EarthOnline
             Debug.Log("│  你穿越了。                      │");
             Debug.Log("│                                 │");
             yield return new WaitForSeconds(2f);
-            Debug.Log("│  这个世界不是为你准备的。         │");
-            Debug.Log("│  但它的规则，从今天开始为你改写。   │");
+            Debug.Log("│  如果这是你——                    │");
+            Debug.Log("│  你会怎么做？                      │");
+            Debug.Log("│  你会加入宗门？还是独行天下？       │");
+            Debug.Log("│  你会救人？还是杀人？              │");
+            Debug.Log("│  你会成为英雄——还是枭雄？         │");
+            Debug.Log("│                                   │");
+            Debug.Log("│  这个世界没有剧本。                │");
+            Debug.Log("│  你的选择——就是唯一的故事。        │");
             Debug.Log("│                                 │");
             yield return new WaitForSeconds(2f);
             Debug.Log("└─────────────────────────────────┘");

@@ -113,13 +113,10 @@ namespace EarthOnline.NPC
             var sec = GetComponent<NPCSecret>();
             string hint = sec?.GetHint();
 
-            Debug.Log($"╔══════════════════════════════╗");
-            Debug.Log($"║  {npcName}{(string.IsNullOrEmpty(npcTitle) ? "" : $" · {npcTitle}")}");
-            Debug.Log($"╠══════════════════════════════╣");
-            Debug.Log($"║  \"{text}\"");
+            Debug.Log($"── {npcName}{(string.IsNullOrEmpty(npcTitle) ? "" : $" · {npcTitle}")} ──");
+            Debug.Log($"\"{text}\"");
             if (!string.IsNullOrEmpty(hint))
-                Debug.Log($"║  ({hint})");
-            Debug.Log($"╚══════════════════════════════╝");
+                Debug.Log($"({hint})");
 
             EarthOnline.Framework.EventBus.Publish("OnNPCInteract", new Dictionary<string, object>
             {

@@ -18,7 +18,7 @@ namespace EarthOnline.Combat
         public float spiritCostPerAttack = 5f;   // 每次灵击灵力消耗
         public float castTime = 0.4f;            // 掐诀前摇(秒)
         public float maxSpiritEnergy = 100f;     // 最大灵力值
-        public float spiritRegenRate = 3f;       // 每秒灵力回复
+        public float spiritRegenRate = 8f;       // 每秒灵力回复(加快，避免罚站)
 
         [Header("境界压制")]
         public float realmSuppressionRatio = 0.5f; // 高1境界→50%免伤
@@ -74,7 +74,7 @@ namespace EarthOnline.Combat
         }
 
         /// <summary>
-        /// 鼠标点击选择目标（不再是自动选最近）
+        /// 左键点击：选中+攻击一步完成（降低操作门槛）
         /// </summary>
         void TrySelectTarget()
         {
@@ -86,16 +86,27 @@ namespace EarthOnline.Combat
                 if (enemy != null && !enemy.IsDead)
                 {
                     _lockedTarget = enemy;
-                    Debug.Log($"[Combat] 🎯 锁定目标: {enemy.enemyName} ({enemy.currentHP}/{enemy.maxHP}HP)");
+                    // 如果有灵力→自动释放灵击；否则→免费基础攻击
+                    if (_currentSpiritEnergy >= spiritCostPerAttack)
+                        CastSpiritAttack();
+                    else
+                        CastBasicAttack();
                     return;
                 }
             }
             // 点空了→取消锁定
-            if (_lockedTarget != null)
-            {
-                Debug.Log("[Combat] 取消锁定");
-                _lockedTarget = null;
-            }
+            if (_lockedTarget != null) { _lockedTarget = null; }
+        }
+
+        /// <summary>
+        /// 免费基础攻击（灵力不足时可用，伤害减半）
+        /// </summary>
+        void CastBasicAttack()
+        {
+            if (_lockedTarget == null || _lockedTarget.IsDead) return;
+            int dmg = Mathf.RoundToInt(baseSpiritAttack * 0.4f);
+            _lockedTarget.TakeDamage(dmg, false);
+            FloatingDamage.Spawn(_lockedTarget.transform.position, $"-{dmg}", new Color(0.5f, 0.5f, 0.5f));
         }
 
         /// <summary>
