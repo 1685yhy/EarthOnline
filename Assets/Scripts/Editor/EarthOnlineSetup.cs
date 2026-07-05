@@ -263,6 +263,7 @@ namespace EarthOnline.Editor
             }
             go.AddComponent<EarthOnline.NPC.NPCWander>();
             go.AddComponent<EarthOnline.NPC.NPCRelationship>();
+            AddNPCSecrets(go, displayName);
 
             // Add schedule based on NPC role
             var schedule = go.AddComponent<EarthOnline.NPC.NPCSchedule>();
@@ -340,6 +341,40 @@ namespace EarthOnline.Editor
 
             var r = go.GetComponent<Renderer>();
             if (r != null) { var m = new Material(Shader.Find("Standard")); m.color = color; r.material = m; }
+        }
+
+        static void AddNPCSecrets(GameObject go, string name)
+        {
+            var sec = go.GetComponent<EarthOnline.NPC.NPCSecret>();
+            if (sec == null) return;
+
+            var secrets = new System.Collections.Generic.List<EarthOnline.NPC.NPCSecret.Secret>();
+
+            switch (name)
+            {
+                case "张老":
+                    secrets.Add(new EarthOnline.NPC.NPCSecret.Secret { revealThreshold = 3, hint = "张老说话时总是下意识地摸左手...那里以前应该戴过戒指。", revelation = "你问他手上的印记。张老沉默了很久：'那是我妻子留下的。她死在了一个虚空裂缝里...三十年了，我每天都在想怎么去那里找她。'" });
+                    secrets.Add(new EarthOnline.NPC.NPCSecret.Secret { revealThreshold = 8, hint = "张老提到'天元宗'时的眼神不对——那不是敬仰，是仇恨。", revelation = "'老夫曾是天元宗内门弟子。三十年前，宗门发现了虚空裂缝的秘密——可以从中提取力量。我妻子反对，第二天她就'意外'掉进裂缝了。'" });
+                    secrets.Add(new EarthOnline.NPC.NPCSecret.Secret { revealThreshold = 15, hint = "张老的书房里藏着一卷泛黄的手稿，上面的字迹不是他的。", revelation = "'这是虚空裂缝的地图。我花了三十年画的。每一条裂缝都在变化——但它们都指向同一个地方。虚空里...有人。或者说，有什么东西。我妻子没有死。她被关在里面。'" });
+                    break;
+
+                case "王铁柱":
+                    secrets.Add(new EarthOnline.NPC.NPCSecret.Secret { revealThreshold = 3, hint = "王铁柱打铁的手法不像是普通铁匠——每一锤都有灵力波动。", revelation = "'你发现了？我以前不是打铁的。我是...铸剑师。给修士铸剑的。后来因为一把剑，我被赶出了炼器阁。'" });
+                    secrets.Add(new EarthOnline.NPC.NPCSecret.Secret { revealThreshold = 8, hint = "铁匠铺后院有一把用布包着的剑，从来不给任何人看。", revelation = "'这把剑...(他掀开布)是我铸的最后一把灵剑。它杀过人。不是我杀的。但用剑的人——是我弟弟。他拿着这把剑杀了天元宗的一个长老。他们现在还在找他。也在找铸剑的人。'" });
+                    break;
+
+                case "李灵儿":
+                    secrets.Add(new EarthOnline.NPC.NPCSecret.Secret { revealThreshold = 3, hint = "李灵儿开的药方...有几味药的用法完全不对。除非——不是在治人。", revelation = "'你懂药理？那我不瞒你了。我不是在治病——我是在研制一种毒。专门针对...修真者的毒。'" });
+                    secrets.Add(new EarthOnline.NPC.NPCSecret.Secret { revealThreshold = 8, hint = "李灵儿提到她父亲时用的是'被天元宗的人害死的'——但她说的是'人'，不是'弟子'或'长老'。", revelation = "'我爹是天元宗的副宗主。他发现了宗主在用人血炼丹。第二天他就'走火入魔'了。一身的修为，一夜之间全废了。他们没杀他——他们让他活着，变成一个废人，让所有人都看到：这就是反对宗主的下场。'" });
+                    break;
+
+                case "陈半仙":
+                    secrets.Add(new EarthOnline.NPC.NPCSecret.Secret { revealThreshold = 3, hint = "陈半仙自称'走过半个大陆'——但他卖的永远只有那几样东西。他的货不是走商收的，是...", revelation = "'你以为我是流浪商人？哈！我是倒斗的——专门挖古修士的墓。这些东西都是从墓里挖出来的。'" });
+                    secrets.Add(new EarthOnline.NPC.NPCSecret.Secret { revealThreshold = 8, hint = "陈半仙有时候会盯着某个方向发呆很久，嘴里念叨着'快了快了'。", revelation = "'我在找一个墓。不是普通的墓——是一座活着的墓。它每隔一百年出现一次，每次在不同的地方。下次出现是三个月后。里面的东西...随便拿出一件就能让整个大陆的修士疯狂。你想不想一起去？'" });
+                    break;
+            }
+
+            sec.secrets = secrets.ToArray();
         }
 
         static Font GetChineseFont()
