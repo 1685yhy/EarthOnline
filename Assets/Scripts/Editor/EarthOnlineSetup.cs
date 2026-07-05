@@ -23,7 +23,8 @@ namespace EarthOnline.Editor
                 if (go == null) continue;
                 string n = go.name;
                 if (cleanNames.Contains(n) || n.StartsWith("Tree_") || n.StartsWith("Rock_")
-                    || n.StartsWith("Pickup_") || n.StartsWith("House_") || n.StartsWith("Fence_"))
+                    || n.StartsWith("Pickup_") || n.StartsWith("House_") || n.StartsWith("Fence_")
+                    || n.StartsWith("Enemy_"))
                     Object.DestroyImmediate(go);
             }
 
@@ -151,6 +152,22 @@ namespace EarthOnline.Editor
                 }
             }
 
+            // ====== ENEMIES ======
+            CreateEnemy("Enemy_Wolf1", new Vector3(-12, 1, -3), "wolf_001", "野狼",
+                maxHP: 40, attack: 6, speed: 2.5f, detect: 10f, patrol: 8f,
+                dropId: "item_spirit_stone", dropName: "灵石碎片", dropQty: 2,
+                color: new Color(0.4f, 0.3f, 0.2f));
+
+            CreateEnemy("Enemy_Wolf2", new Vector3(10, 1, -8), "wolf_002", "灰狼",
+                maxHP: 40, attack: 6, speed: 2.5f, detect: 10f, patrol: 8f,
+                dropId: "item_spirit_stone", dropName: "灵石碎片", dropQty: 2,
+                color: new Color(0.5f, 0.35f, 0.25f));
+
+            CreateEnemy("Enemy_Bear", new Vector3(-8, 1.5f, 10), "bear_001", "狂暴熊",
+                maxHP: 100, attack: 15, speed: 2f, detect: 6f, patrol: 4f,
+                dropId: "item_pill_001", dropName: "聚气丹", dropQty: 3,
+                color: new Color(0.5f, 0.25f, 0.1f));
+
             // ====== HUD ======
             CreateHUD();
 
@@ -223,6 +240,36 @@ namespace EarthOnline.Editor
             pickup.quantity = qty;
             pickup.value = value;
             pickup.pickupRange = 2.5f;
+        }
+
+        static void CreateEnemy(string name, Vector3 pos, string id, string displayName,
+            int maxHP, int attack, float speed, float detect, float patrol,
+            string dropId, string dropName, int dropQty, Color color)
+        {
+            var go = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+            go.name = name;
+            go.transform.position = pos;
+            go.transform.localScale = new Vector3(0.9f, 1.1f, 0.9f);
+            Object.DestroyImmediate(go.GetComponent<Rigidbody>());
+
+            var enemyType = System.Type.GetType("EarthOnline.Combat.EnemyAI, Assembly-CSharp");
+            if (enemyType != null)
+            {
+                var comp = go.AddComponent(enemyType);
+                enemyType.GetField("enemyId")?.SetValue(comp, id);
+                enemyType.GetField("enemyName")?.SetValue(comp, displayName);
+                enemyType.GetField("maxHP")?.SetValue(comp, maxHP);
+                enemyType.GetField("attackPower")?.SetValue(comp, attack);
+                enemyType.GetField("moveSpeed")?.SetValue(comp, speed);
+                enemyType.GetField("detectRange")?.SetValue(comp, detect);
+                enemyType.GetField("patrolRadius")?.SetValue(comp, patrol);
+                enemyType.GetField("dropItemId")?.SetValue(comp, dropId);
+                enemyType.GetField("dropItemName")?.SetValue(comp, dropName);
+                enemyType.GetField("dropQuantity")?.SetValue(comp, dropQty);
+            }
+
+            var r = go.GetComponent<Renderer>();
+            if (r != null) { var m = new Material(Shader.Find("Standard")); m.color = color; r.material = m; }
         }
 
         static void CreateHUD()

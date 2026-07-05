@@ -32,6 +32,7 @@ namespace EarthOnline
             EnsureComponent<TimeManager>();
             EnsureComponent<PlayerStats>();
             EnsureComponent<QuestManager>();
+            EnsureComponent<EarthOnline.Combat.CombatSystem>();
 
             RegisterAllGifts();
             AutoActivateStarterGift();
