@@ -45,7 +45,7 @@ namespace EarthOnline.UI
 
             var stats = PlayerStats.Instance;
             if (stats != null)
-                Debug.Log($"  Lv.{stats.playerLevel} | HP:{stats.currentHP}/{stats.maxHP} | 💰{stats.currency} | ⭐{stats.cultivation}");
+                Debug.Log($"  Lv.{stats.playerLevel} | HP:{stats.currentHP}/{stats.maxHP} | 💰{stats.spiritStones} | ⭐{stats.cultivation}");
 
             var eq = EquipmentManager.Instance;
             if (eq != null) Debug.Log($"  {eq.GetSummary()}");
@@ -92,7 +92,7 @@ namespace EarthOnline.UI
             if (stats != null && time != null)
             {
                 Debug.Log($"  最终状态: Lv.{stats.playerLevel} | 第{time.GameDay}天");
-                Debug.Log($"  金币: {stats.currency} | 修为: {stats.cultivation}");
+                Debug.Log($"  灵石: {stats.spiritStones} | 修为: {stats.cultivation}");
             }
 
             Debug.Log("                                            ");

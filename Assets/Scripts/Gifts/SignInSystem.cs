@@ -108,7 +108,7 @@ namespace EarthOnline.Gifts
             PlayerPrefs.SetInt($"SignIn_{GiftId}_Days", _consecutiveDays);
             PlayerPrefs.SetString($"SignIn_{GiftId}_Last", now.ToString("O"));
 
-            Debug.Log($"[{GiftName}] ✓ 签到第 {_consecutiveDays} 天！获得 {totalReward} 金币 (基础{reward} + 等级加成{bonus})");
+            Debug.Log($"[{GiftName}] ✓ 签到第 {_consecutiveDays} 天！获得 {totalReward} 灵石 (基础{reward} + 等级加成{bonus})");
 
             EventBus.Publish("OnSignInComplete", new Dictionary<string, object>
             {
@@ -131,7 +131,7 @@ namespace EarthOnline.Gifts
             int nextReward = _config.dailyRewards[nextDayIndex];
 
             Debug.Log($"[{GiftName}] 连续{_consecutiveDays}天 | " +
-                $"下次奖励:{nextReward}金币 | " +
+                $"下次奖励:{nextReward}灵石 | " +
                 $"状态:{(canSign ? "可签到" : "冷却中")} | Lv.{Level}");
         }
 
@@ -143,8 +143,8 @@ namespace EarthOnline.Gifts
                 Type = GiftType,
                 Rarity = Rarity,
                 Level = Level,
-                Description = $"每日签到获得金币奖励。连续签到 {_consecutiveDays} 天。\n" +
-                    $"下次奖励: {_config.dailyRewards[Mathf.Min(_consecutiveDays, _config.dailyRewards.Length - 1)]} 金币",
+                Description = $"每日签到获得灵石奖励。连续签到 {_consecutiveDays} 天。\n" +
+                    $"下次奖励: {_config.dailyRewards[Mathf.Min(_consecutiveDays, _config.dailyRewards.Length - 1)]} 灵石",
                 Abilities = new List<string> { "sign_in (签到)", "get_status (查看状态)" },
                 StoryHint = _consecutiveDays >= 7
                     ? "你发现系统日志里有一段被删除的记录..."

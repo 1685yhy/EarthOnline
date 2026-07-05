@@ -217,11 +217,11 @@ namespace EarthOnline.Framework
             var stats = PlayerStats.Instance;
             if (stats != null)
             {
-                stats.AddCurrency(q.rewardGold);
+                stats.AddSpiritStone(q.rewardGold);
                 stats.AddCultivation(q.rewardExp);
             }
 
-            Debug.Log($"[Quest] ✅ 完成: {q.title}! +{q.rewardGold}金币 +{q.rewardExp}修为");
+            Debug.Log($"[Quest] ✅ 完成: {q.title}! +{q.rewardGold}灵石 +{q.rewardExp}修为");
             if (q.dialogueOnComplete != null)
                 foreach (var line in q.dialogueOnComplete)
                     Debug.Log($"[Quest:{q.title}] NPC: {line}");

@@ -84,23 +84,23 @@ namespace EarthOnline
         void OnFirstQuest(Dictionary<string, object> data)
         {
             ShowTip("first_quest",
-                $"📋 接受任务：{data["title"]}！任务进度在屏幕左上角显示。完成任务获得金币和修为奖励。");
+                $"📋 接受任务：{data["title"]}！任务进度在屏幕左上角显示。完成任务获得灵石和修为奖励。");
         }
 
         void OnFirstQuestDone(Dictionary<string, object> data)
         {
             ShowTip("first_quest_done",
-                $"✅ 任务完成：{data["title"]}！+{data["rewardGold"]}金币 +{data["rewardExp"]}修为。继续和NPC对话获取更多任务！");
+                $"✅ 任务完成：{data["title"]}！+{data["rewardGold"]}灵石 +{data["rewardExp"]}修为。继续和NPC对话获取更多任务！");
         }
 
         void OnNightFall(Dictionary<string, object> data)
         {
             int day = (int)data["day"];
-            ShowTip("boss_warning", "⚠️ 北方紫色漩涡附近有强大守护者(300HP)！建议等级5+，装备武器后再去挑战。死亡会失去20%金币。");
+            ShowTip("boss_warning", "⚠️ 北方紫色漩涡附近有强大守护者(300HP)！建议等级5+，装备武器后再去挑战。死亡会失去20%灵石。");
             if (day == 1)
                 ShowTip("first_night", "🌙 一天过去了。敌人在夜间更加活跃，小心！每天开始时会自动存档(F5可随时手动存档)。");
             if (day == 1)
-                ShowTip("save_hint", "💾 按F5随时手动存档，按J查看成就。死亡会失去20%金币但不会丢失物品。");
+                ShowTip("save_hint", "💾 按F5随时手动存档，按J查看成就。死亡会失去20%灵石但不会丢失物品。");
         }
 
         void OnDestroy()

@@ -15,7 +15,7 @@ namespace EarthOnline
     {
         [Header("玩家设置")]
         public string playerName = "穿越者";
-        public int startingCurrency = 100;
+        public int startingSpiritStone = 100;
 
         private GameState _state = GameState.Init;
         public GameState CurrentState => _state;
@@ -390,7 +390,7 @@ namespace EarthOnline
                     playerPosY = player != null ? player.transform.position.y : 0,
                     playerPosZ = player != null ? player.transform.position.z : 0,
                     playerLevel = stats != null ? stats.playerLevel : 1,
-                    playerCurrency = stats != null ? stats.currency : 0,
+                    playerSpiritStones = stats != null ? stats.spiritStones : 0,
                     gameDay = time != null ? time.GameDay : 1,
                     currentSceneName = "EarthOnline_Main"
                 };
@@ -412,7 +412,7 @@ namespace EarthOnline
                     playerPosY = player != null ? player.transform.position.y : 0,
                     playerPosZ = player != null ? player.transform.position.z : 0,
                     playerLevel = stats != null ? stats.playerLevel : 1,
-                    playerCurrency = stats != null ? stats.currency : 0,
+                    playerSpiritStones = stats != null ? stats.spiritStones : 0,
                     gameDay = time != null ? time.GameDay : 1,
                     currentSceneName = "EarthOnline_Main"
                 });

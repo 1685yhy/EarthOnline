@@ -60,13 +60,13 @@ namespace EarthOnline.Framework
             if (shopItem.stock <= 0) { Debug.Log("[Shop] 已售罄！"); return false; }
 
             var stats = PlayerStats.Instance;
-            if (stats == null || stats.currency < shopItem.price)
+            if (stats == null || stats.spiritStones < shopItem.price)
             {
-                Debug.Log($"[Shop] 金币不足！需要{shopItem.price}💰");
+                Debug.Log($"[Shop] 灵石不足！需要{shopItem.price}💰");
                 return false;
             }
 
-            stats.AddCurrency(-shopItem.price);
+            stats.AddSpiritStone(-shopItem.price);
             shopItem.stock--;
 
             var inv = InventoryManager.Instance;
@@ -95,7 +95,7 @@ namespace EarthOnline.Framework
 
             int sellPrice = item.value / 2;
             inv.RemoveItem(itemId, 1);
-            stats.AddCurrency(sellPrice);
+            stats.AddSpiritStone(sellPrice);
 
             Debug.Log($"[Shop] 出售 {item.name} +{sellPrice}💰");
             return true;
@@ -110,7 +110,7 @@ namespace EarthOnline.Framework
                 string stockStr = s.stock > 0 ? $"库存:{s.stock}" : "售罄";
                 Debug.Log($"  [{s.rarity}] {s.itemName} — {s.price}💰 ({stockStr}) ID:{s.itemId}");
             }
-            Debug.Log($"  你的金币: {PlayerStats.Instance?.currency ?? 0}💰");
+            Debug.Log($"  你的灵石: {PlayerStats.Instance?.spiritStones ?? 0}💰");
             Debug.Log($"  按B+数字购买 (如 B1=买第1个) | 按N卖背包物品");
         }
     }

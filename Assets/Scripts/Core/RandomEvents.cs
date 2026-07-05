@@ -36,8 +36,8 @@ namespace EarthOnline
                 OnTrigger = () => {
                     Debug.Log("[Event] 🧳 流浪商人路过！陈半仙的商店8折优惠(仅限今日)。");
                     var stats = PlayerStats.Instance;
-                    if (stats != null) stats.AddCurrency(50);
-                    Debug.Log("[Event] 陈大仙给了你50金币的见面礼。");
+                    if (stats != null) stats.AddSpiritStone(50);
+                    Debug.Log("[Event] 陈大仙给了你50灵石的见面礼。");
                 }
             });
 
@@ -82,7 +82,7 @@ namespace EarthOnline
             });
 
             _events.Add(new GameEvent { id = "goblin", title = "宝藏哥布林！",
-                description = "一只背着宝袋的哥布林！击败它获得金币！",
+                description = "一只背着宝袋的哥布林！击败它获得灵石！",
                 OnTrigger = () => {
                     var go = GameObject.CreatePrimitive(PrimitiveType.Capsule);
                     go.name = "Goblin_Treasure"; go.transform.position = new Vector3(Random.Range(-8,8), 1, Random.Range(-8,8));
@@ -100,7 +100,7 @@ namespace EarthOnline
                     }
                     var rr = go.GetComponent<Renderer>();
                     if (rr != null) { var m = new Material(Shader.Find("Standard")); m.color = new Color(1f,0.85f,0.1f); m.EnableKeyword("_EMISSION"); m.SetColor("_EmissionColor", new Color(1f,0.85f,0.1f)*0.5f); rr.material = m; }
-                    PlayerStats.Instance?.AddCurrency(100);
+                    PlayerStats.Instance?.AddSpiritStone(100);
                 }
             });
 

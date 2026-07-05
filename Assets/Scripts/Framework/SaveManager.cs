@@ -115,7 +115,7 @@ namespace EarthOnline.Framework
         public int gameHour = 8;
         public int gameMinute = 0;
         public int playerLevel = 1;
-        public long playerCurrency = 0;
+        public long playerSpiritStones = 0;
         public List<NPCProgressData> npcProgress = new List<NPCProgressData>();
         public List<StringPair> extraData = new List<StringPair>();
     }

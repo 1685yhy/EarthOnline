@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace EarthOnline
 {
     /// <summary>
-    /// 玩家属性 —— HP、修为、金币、等级。
+    /// 玩家属性 —— HP、修为、灵石、等级。
     /// </summary>
     public class PlayerStats : MonoBehaviour
     {
@@ -15,7 +15,7 @@ namespace EarthOnline
         public int maxHP = 100;
         public int currentHP = 100;
         public int cultivation = 0;       // 修为
-        public long currency = 0;         // 金币
+        public long spiritStones = 0;         // 灵石
         public int playerLevel = 1;
         public int expToNextLevel = 100;
         public int currentExp = 0;
@@ -36,7 +36,7 @@ namespace EarthOnline
         void OnSignInReward(Dictionary<string, object> data)
         {
             int reward = data.ContainsKey("reward") ? (int)data["reward"] : 0;
-            AddCurrency(reward);
+            AddSpiritStone(reward);
         }
 
         void OnCultivationGain(Dictionary<string, object> data)
@@ -45,10 +45,10 @@ namespace EarthOnline
             AddCultivation(amount);
         }
 
-        public void AddCurrency(long amount)
+        public void AddSpiritStone(long amount)
         {
-            currency += amount;
-            Debug.Log($"[Player] +{amount}金币 (总计:{currency})");
+            spiritStones += amount;
+            Debug.Log($"[Player] +{amount}灵石 (总计:{spiritStones})");
             UpdateHUD();
         }
 
@@ -69,9 +69,9 @@ namespace EarthOnline
                 if (playerLevel % 5 == 0)
                 {
                     int goldReward = playerLevel * 50;
-                    currency += goldReward;
+                    spiritStones += goldReward;
                     bonus = $" +{goldReward}💰奖励";
-                    Debug.Log($"[Player] 🎉 Lv.{playerLevel}成就奖励: +{goldReward}金币！");
+                    Debug.Log($"[Player] 🎉 Lv.{playerLevel}成就奖励: +{goldReward}灵石！");
                 }
 
                 currentHP = maxHP;
@@ -92,9 +92,9 @@ namespace EarthOnline
             if (currentHP <= 0)
             {
                 currentHP = 0;
-                long lostGold = currency / 5; // 失去20%金币
-                currency -= lostGold;
-                Debug.Log($"[Player] 💀 你倒下了...失去了{lostGold}金币(20%)。但故事不会就此结束。");
+                long lostGold = spiritStones / 5; // 失去20%灵石
+                spiritStones -= lostGold;
+                Debug.Log($"[Player] 💀 你倒下了...失去了{lostGold}灵石(20%)。但故事不会就此结束。");
                 EventBus.Publish("OnPlayerDeath", new Dictionary<string, object> {{"lostGold", lostGold}});
                 currentHP = maxHP / 2;
             }
@@ -114,7 +114,7 @@ namespace EarthOnline
             var timeStr = TimeManager.Instance.TimeString;
             var dayStr = $"第{TimeManager.Instance.GameDay}天";
             var weather = WeatherSystem.Instance?.GetWeatherEmoji() ?? "";
-            var status = $"🏷️ Lv.{playerLevel} | ❤️ {currentHP}/{maxHP} | 💰 {currency} | ⭐ {cultivation} | {weather} {timeStr} {dayStr}";
+            var status = $"🏷️ Lv.{playerLevel} | ❤️ {currentHP}/{maxHP} | 💰 {spiritStones} | ⭐ {cultivation} | {weather} {timeStr} {dayStr}";
             EventBus.Publish("OnStatusUpdate", new Dictionary<string, object> { {"status", status} });
         }
 

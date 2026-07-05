@@ -51,7 +51,7 @@ namespace EarthOnline.Framework
             Add("death_1", "涅槃重生", "首次死亡", 10);
             Add("boss_kill", "弑神者", "击败虚空行者Boss", 1000);
             Add("collector", "收藏家", "收集所有类型物品", 150);
-            Add("rich", "富甲一方", "拥有1000金币", 100);
+            Add("rich", "富甲一方", "拥有1000灵石", 100);
         }
 
         void Add(string id, string title, string desc, int reward)
@@ -77,7 +77,7 @@ namespace EarthOnline.Framework
                 "death_1" => true,
                 "boss_kill" => true,
                 "collector" => InventoryManager.Instance?.Count >= 10,
-                "rich" => PlayerStats.Instance?.currency >= 1000,
+                "rich" => PlayerStats.Instance?.spiritStones >= 1000,
                 _ => false
             };
 
@@ -89,7 +89,7 @@ namespace EarthOnline.Framework
             var a = _achievements[id];
             a.unlocked = true;
             var stats = PlayerStats.Instance;
-            if (stats != null) stats.AddCurrency(a.reward);
+            if (stats != null) stats.AddSpiritStone(a.reward);
 
             Debug.Log($"🏆 成就解锁: [{a.title}] {a.description} +{a.reward}💰");
             EarthOnline.Combat.FloatingDamage.Spawn(
