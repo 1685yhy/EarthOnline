@@ -55,10 +55,10 @@ namespace EarthOnline.NPC
             _nameTagText.text = string.IsNullOrEmpty(npcTitle)
                 ? npcName : $"{npcName}\n<size=10>{npcTitle}</size>";
             // 使用系统字体（2022.3和Unity 6均兼容）
-            Font builtinFont = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-            if (builtinFont == null)
-                builtinFont = Font.CreateDynamicFontFromOSFont("Arial", 14);
-            _nameTagText.font = builtinFont;
+            Font cnFont = Font.CreateDynamicFontFromOSFont("SimHei", 14);
+            if (cnFont == null) cnFont = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            if (cnFont == null) cnFont = Font.CreateDynamicFontFromOSFont("Arial", 14);
+            _nameTagText.font = cnFont;
             _nameTagText.fontSize = 14;
             _nameTagText.alignment = TextAnchor.MiddleCenter;
             _nameTagText.color = Color.white;

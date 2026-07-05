@@ -341,6 +341,13 @@ namespace EarthOnline.Editor
             if (r != null) { var m = new Material(Shader.Find("Standard")); m.color = color; r.material = m; }
         }
 
+        static Font GetChineseFont()
+        {
+            var f = Font.CreateDynamicFontFromOSFont("SimHei", 14);
+            if (f == null) f = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            return f;
+        }
+
         static void CreateHUD()
         {
             var hudGo = new GameObject("GameHUD");
@@ -357,7 +364,7 @@ namespace EarthOnline.Editor
             // Interaction hint
             var hintGo = new GameObject("InteractionHint"); hintGo.transform.SetParent(hudGo.transform);
             var hintText = hintGo.AddComponent<UnityEngine.UI.Text>();
-            hintText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            hintText.font = GetChineseFont();
             hintText.fontSize = 18; hintText.alignment = TextAnchor.MiddleCenter; hintText.color = Color.white;
             var hr = hintGo.GetComponent<RectTransform>();
             hr.anchorMin = hr.anchorMax = new Vector2(0.5f, 0.08f);
@@ -371,7 +378,7 @@ namespace EarthOnline.Editor
             dr.sizeDelta = new Vector2(500, 100); dr.anchoredPosition = Vector2.zero;
             var dlgTextGo = new GameObject("DialogueText"); dlgTextGo.transform.SetParent(dlgGo.transform);
             var dlgText = dlgTextGo.AddComponent<UnityEngine.UI.Text>();
-            dlgText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            dlgText.font = GetChineseFont();
             dlgText.fontSize = 20; dlgText.alignment = TextAnchor.MiddleCenter; dlgText.color = Color.white;
             var dtr = dlgTextGo.GetComponent<RectTransform>();
             dtr.anchorMin = Vector2.zero; dtr.anchorMax = Vector2.one; dtr.sizeDelta = Vector2.zero;
@@ -379,7 +386,7 @@ namespace EarthOnline.Editor
             // Status
             var statusGo = new GameObject("StatusText"); statusGo.transform.SetParent(hudGo.transform);
             var statusText = statusGo.AddComponent<UnityEngine.UI.Text>();
-            statusText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+            statusText.font = GetChineseFont();
             statusText.fontSize = 16; statusText.alignment = TextAnchor.UpperRight; statusText.color = Color.white;
             var sr = statusGo.GetComponent<RectTransform>();
             sr.anchorMin = sr.anchorMax = Vector2.one; sr.pivot = Vector2.one;
