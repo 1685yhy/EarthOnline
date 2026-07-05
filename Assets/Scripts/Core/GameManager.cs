@@ -43,6 +43,7 @@ namespace EarthOnline
             EnsureComponent<ShopManager>();
             EnsureComponent<WeatherSystem>();
             EnsureComponent<AchievementManager>();
+            EnsureComponent<RandomEvents>();
 
             RegisterAllGifts();
             AutoActivateStarterGift();
