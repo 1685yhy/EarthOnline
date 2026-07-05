@@ -21,6 +21,7 @@ namespace EarthOnline.NPC
         private Text _nameTagText;
         private Transform _playerTransform;
         private bool _playerInRange = false;
+        public bool IsInteracting { get; private set; } = false;
 
         void Start()
         {

@@ -26,18 +26,33 @@ namespace EarthOnline
 
         void Start()
         {
-            // 确保核心框架组件存在（EventBus是静态类，不需要Component）
             EnsureComponent<GiftManager>();
             EnsureComponent<SaveManager>();
+            EnsureComponent<InventoryManager>();
 
-            // 注册所有金手指模板
             RegisterAllGifts();
-
-            // 测试：自动给玩家激活一个签到系统
             AutoActivateStarterGift();
 
+            // 监听黑铁戒指拾取 → 激活老爷爷
+            EventBus.Subscribe("OnItemAdded", OnItemPickedUp);
+
             _state = GameState.Playing;
-            Debug.Log("========== [GameManager] EarthOnline V0.1 Ready ==========");
+            Debug.Log("========== [GameManager] EarthOnline V0.2 Ready ==========");
+        }
+
+        void OnItemPickedUp(Dictionary<string, object> data)
+        {
+            string itemId = data.ContainsKey("itemId") ? data["itemId"].ToString() : "";
+            if (itemId == "item_ring_dark")
+            {
+                var giftMgr = GiftManager.Instance;
+                if (giftMgr != null)
+                {
+                    var oldMaster = giftMgr.ActivateGift("gift_old_master_001");
+                    if (oldMaster != null)
+                        Debug.Log($"[GameManager] 『{oldMaster.GiftName}』已觉醒！一股古老的气息从黑铁戒指中涌出...");
+                }
+            }
         }
 
         void EnsureComponent<T>() where T : Component
@@ -64,7 +79,20 @@ namespace EarthOnline
             });
             gm.RegisterTemplate(signIn);
 
-            Debug.Log("[GameManager] All gift templates registered.");
+            // 注册老爷爷
+            var oldMaster = new OldMaster();
+            oldMaster.Initialize(new Dictionary<string, object>
+            {
+                {"id", "gift_old_master_001"},
+                {"name", "戒指老爷爷"},
+                {"type", "Mentor"},
+                {"rarity", "SR"},
+                {"storyOrigin", "上古天元宗首席炼丹宗师，渡劫失败后残魂封印于黑铁戒指中。已等待有缘人千年。"},
+                {"storyMystery", "追杀他的人是谁？天陨丹方究竟是什么？为什么这个丹方的最后一个字，在你的血液里？"}
+            });
+            gm.RegisterTemplate(oldMaster);
+
+            Debug.Log("[GameManager] All gift templates registered (2).");
         }
 
         void AutoActivateStarterGift()
@@ -112,11 +140,50 @@ namespace EarthOnline
                 var gm = GiftManager.Instance;
                 if (gm != null)
                 {
+                    foreach (var g in gm.GetActiveGifts())
+                        g.UseAbility("get_status");
+                }
+                var inv = InventoryManager.Instance;
+                if (inv != null)
+                {
+                    var items = inv.GetAllItems();
+                    Debug.Log($"[Inventory] 背包 {inv.Count}/{inv.maxSlots}: " +
+                        string.Join(", ", items.ConvertAll(i => $"{i.name}x{i.quantity}")));
+                }
+            }
+
+            // 按O键与老爷爷交谈
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                var gm = GiftManager.Instance;
+                if (gm != null && gm.HasGiftOfType("Mentor"))
+                {
                     var gifts = gm.GetActiveGifts();
                     foreach (var g in gifts)
                     {
-                        g.UseAbility("get_status");
+                        if (g.GiftType == "Mentor")
+                            g.UseAbility("ask_advice");
                     }
+                }
+                else
+                {
+                    Debug.Log("[GameManager] 你还没有遇到任何导师。或许可以在村子里找找线索...");
+                }
+            }
+
+            // 按P键查看背包
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                var inv = InventoryManager.Instance;
+                if (inv != null)
+                {
+                    var items = inv.GetAllItems();
+                    if (items.Count == 0)
+                        Debug.Log("[Inventory] 背包空空如也。去探索世界捡些东西吧！");
+                    else
+                        Debug.Log($"[Inventory] 背包 ({inv.Count}/{inv.maxSlots}):\n" +
+                            string.Join("\n", items.ConvertAll(i =>
+                                $"  [{i.rarity}] {i.name} x{i.quantity} — {i.description}")));
                 }
             }
         }
