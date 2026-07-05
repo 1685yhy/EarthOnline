@@ -40,6 +40,7 @@ namespace EarthOnline
             EnsureComponent<TutorialManager>();
             EnsureComponent<EquipmentManager>();
             EnsureComponent<EarthOnline.UI.PauseMenu>();
+            EnsureComponent<ShopManager>();
 
             RegisterAllGifts();
             AutoActivateStarterGift();
@@ -297,6 +298,47 @@ namespace EarthOnline
             if (Input.GetKeyDown(KeyCode.Alpha2)) UseGiftAbility("ask_advice");
             if (Input.GetKeyDown(KeyCode.Alpha3)) UseGiftAbility("heal");
             if (Input.GetKeyDown(KeyCode.Alpha4)) UseGiftAbility("cultivate");
+
+            // B键打开商店 (需靠近商人NPC)
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                var shop = ShopManager.Instance;
+                if (shop != null)
+                {
+                    // Find nearest NPC
+                    var player = GameObject.FindGameObjectWithTag("Player");
+                    if (player != null)
+                    {
+                        var npcs = Object.FindObjectsOfType<EarthOnline.NPC.NPCBase>();
+                        EarthOnline.NPC.NPCBase closest = null;
+                        float bestDist = 6f;
+                        foreach (var n in npcs)
+                        {
+                            float d = Vector3.Distance(player.transform.position, n.transform.position);
+                            if (d < bestDist) { bestDist = d; closest = n; }
+                        }
+                        if (closest != null)
+                            shop.ShowShop(closest.npcId);
+                        else
+                            Debug.Log("[Shop] 附近没有商人。去村子里找陈半仙吧！");
+                    }
+                }
+            }
+
+            // N键出售背包中第一个物品
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                var shop = ShopManager.Instance;
+                var inv = InventoryManager.Instance;
+                if (shop != null && inv != null)
+                {
+                    var items = inv.GetAllItems();
+                    if (items.Count > 0)
+                        shop.Sell(items[0].id);
+                    else
+                        Debug.Log("[Shop] 背包空空，没什么可卖的。");
+                }
+            }
         }
 
         void OnPlayerDied(Dictionary<string, object> data)

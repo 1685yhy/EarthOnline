@@ -63,8 +63,22 @@ namespace EarthOnline
                 expToNextLevel = Mathf.FloorToInt(expToNextLevel * 1.5f);
                 Debug.Log($"[Player] 升级! Lv.{playerLevel}! (HP+20)");
                 maxHP += 20; currentHP = maxHP;
+
+                // 每5级额外奖励
+                string bonus = "";
+                if (playerLevel % 5 == 0)
+                {
+                    int goldReward = playerLevel * 50;
+                    currency += goldReward;
+                    bonus = $" +{goldReward}💰奖励";
+                    Debug.Log($"[Player] 🎉 Lv.{playerLevel}成就奖励: +{goldReward}金币！");
+                }
+
+                currentHP = maxHP;
+                Combat.FloatingDamage.Spawn(transform.position,
+                    $"Lv.{playerLevel}!", new Color(1f, 0.85f, 0f), 2f);
                 EventBus.Publish("OnPlayerLevelUp", new Dictionary<string, object> {
-                    {"level", playerLevel}, {"maxHP", maxHP}
+                    {"level", playerLevel}, {"maxHP", maxHP}, {"bonus", bonus}
                 });
             }
             Debug.Log($"[Player] +{amount}修为 (总计:{cultivation}, Lv.{playerLevel})");
