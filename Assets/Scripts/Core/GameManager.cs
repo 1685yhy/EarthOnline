@@ -42,6 +42,7 @@ namespace EarthOnline
             EnsureComponent<EarthOnline.UI.PauseMenu>();
             EnsureComponent<ShopManager>();
             EnsureComponent<WeatherSystem>();
+            EnsureComponent<AchievementManager>();
 
             RegisterAllGifts();
             AutoActivateStarterGift();
