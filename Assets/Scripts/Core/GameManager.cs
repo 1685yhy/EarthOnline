@@ -45,6 +45,7 @@ namespace EarthOnline
             EnsureComponent<AchievementManager>();
             EnsureComponent<RandomEvents>();
             EnsureComponent<OpeningSequence>();
+            EnsureComponent<EarthOnline.Combat.BuffManager>();
 
             RegisterAllGifts();
             AutoActivateStarterGift();
@@ -483,7 +484,19 @@ namespace EarthOnline
             var gm = GiftManager.Instance;
             if (gm == null) return;
             foreach (var g in gm.GetActiveGifts())
+            {
                 g.UseAbility(abilityName);
+                // Buff bindings
+                if (abilityName == "sign_in")
+                    EarthOnline.Combat.BuffManager.Instance?.Apply(
+                        EarthOnline.Combat.BuffType.AttackUp, 0.2f, 300f, "签到祝福");
+                if (abilityName == "heal")
+                    EarthOnline.Combat.BuffManager.Instance?.Apply(
+                        EarthOnline.Combat.BuffType.DefenseUp, 0.15f, 180f, "圣体护盾");
+                if (abilityName == "cultivate")
+                    EarthOnline.Combat.BuffManager.Instance?.Apply(
+                        EarthOnline.Combat.BuffType.SpeedUp, 0.1f, 180f, "灵气灌注");
+            }
         }
 
         void OnDestroy()

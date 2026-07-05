@@ -81,6 +81,29 @@ namespace EarthOnline
                 }
             });
 
+            _events.Add(new GameEvent { id = "goblin", title = "宝藏哥布林！",
+                description = "一只背着宝袋的哥布林！击败它获得金币！",
+                OnTrigger = () => {
+                    var go = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+                    go.name = "Goblin_Treasure"; go.transform.position = new Vector3(Random.Range(-8,8), 1, Random.Range(-8,8));
+                    go.transform.localScale = new Vector3(0.6f, 0.8f, 0.6f);
+                    Object.DestroyImmediate(go.GetComponent<Rigidbody>());
+                    var t = System.Type.GetType("EarthOnline.Combat.EnemyAI, Assembly-CSharp");
+                    if (t != null) {
+                        var c = go.AddComponent(t);
+                        t.GetField("enemyId")?.SetValue(c, "goblin_treasure");
+                        t.GetField("enemyName")?.SetValue(c, "宝藏哥布林");
+                        t.GetField("maxHP")?.SetValue(c, 20); t.GetField("attackPower")?.SetValue(c, 0);
+                        t.GetField("moveSpeed")?.SetValue(c, 6f); t.GetField("detectRange")?.SetValue(c, 15f);
+                        t.GetField("dropItemId")?.SetValue(c, "item_spirit_core_001");
+                        t.GetField("dropItemName")?.SetValue(c, "灵气核心"); t.GetField("dropQuantity")?.SetValue(c, 2);
+                    }
+                    var rr = go.GetComponent<Renderer>();
+                    if (rr != null) { var m = new Material(Shader.Find("Standard")); m.color = new Color(1f,0.85f,0.1f); m.EnableKeyword("_EMISSION"); m.SetColor("_EmissionColor", new Color(1f,0.85f,0.1f)*0.5f); rr.material = m; }
+                    PlayerStats.Instance?.AddCurrency(100);
+                }
+            });
+
             _events.Add(new GameEvent { id = "treasure_map", title = "发现藏宝图！",
                 description = "在地上捡到一张破旧的藏宝图。宝箱已重置！",
                 OnTrigger = () => {
