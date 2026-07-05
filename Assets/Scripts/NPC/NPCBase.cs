@@ -109,13 +109,51 @@ namespace EarthOnline.NPC
             var rel = GetComponent<NPCRelationship>();
             if (rel != null) text = rel.GetPersonalizedGreeting();
 
-            Debug.Log($"[NPC:{npcName}] {text}");
+            // 检查是否有秘密可揭示
+            var sec = GetComponent<NPCSecret>();
+            string hint = sec?.GetHint();
+
+            Debug.Log($"╔══════════════════════════════╗");
+            Debug.Log($"║  {npcName}{(string.IsNullOrEmpty(npcTitle) ? "" : $" · {npcTitle}")}");
+            Debug.Log($"╠══════════════════════════════╣");
+            Debug.Log($"║  \"{text}\"");
+            if (!string.IsNullOrEmpty(hint))
+                Debug.Log($"║  ({hint})");
+            Debug.Log($"╚══════════════════════════════╝");
+
             EarthOnline.Framework.EventBus.Publish("OnNPCInteract", new Dictionary<string, object>
             {
                 {"npcId", npcId}, {"npcName", npcName}, {"dialogue", text}
             });
 
-            Invoke(nameof(EndInteraction), 1.5f);
+            // V2.0: 如果有商店，在对话中提供选项
+            var shop = EarthOnline.Framework.ShopManager.Instance;
+            if (shop != null)
+            {
+                var items = shop.GetShop(npcId);
+                if (items.Count > 0)
+                {
+                    Debug.Log($"[{npcName}] 💬 '需要看看我的货吗？' (按Y打开商店，其他键继续)");
+                    StartCoroutine(WaitForShopInput(npcId));
+                }
+            }
+
+            Invoke(nameof(EndInteraction), 3f);
+        }
+
+        System.Collections.IEnumerator WaitForShopInput(string shopNpcId)
+        {
+            float deadline = Time.time + 3f;
+            while (Time.time < deadline)
+            {
+                if (Input.GetKeyDown(KeyCode.Y))
+                {
+                    EarthOnline.Framework.ShopManager.Instance?.ShowShop(shopNpcId);
+                    yield break;
+                }
+                if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Y)) yield break;
+                yield return null;
+            }
         }
 
         void EndInteraction()

@@ -385,12 +385,7 @@ namespace EarthOnline
                 if (cs != null) cs.CycleTarget();
             }
 
-            // B键打开商店 (需靠近商人NPC) — 也可通过NPC对话选择
-            if (Input.GetKeyDown(KeyCode.B))
-            {
-                TryOpenShop();
-            }
-
+            // 商店已改为NPC对话中按Y打开 (V2.0沉浸式交互)
             // (N键改为Shift+N防误触，见上方)
         }
 
