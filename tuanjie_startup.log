@@ -1,0 +1,35 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+[Licensing::IpcConnector] Connection attempt to the License Client on channel: "LicenseClient-A" failed because channel doesn't exist; code: "0x80000002"
+[Licensing::Module] GetFullLicensingClientPath:	 E:/EarthOnline/UnityEditor/Tuanjie-1.9.3/Editor/Data/Resources/Licensing/Client/Tuanjie.Licensing.Client.exe
+[Licensing::Module] Successfully launched the LicensingClient (PId: 12432)
+[Licensing::IpcConnector] Successfully connected to the License Client on channel: "LicenseClient-A" at "2026-07-04T12:36:18.5335291Z"
+[Licensing::Client] Error: Code 0 while verifying Licensing Client signature (process Id: 12432, path: "E:/EarthOnline/UnityEditor/Tuanjie-1.9.3/Editor/Data/Resources/Licensing/Client/Tuanjie.Licensing.Client.exe")
+[Licensing::Module] Error: LicensingClient has failed validation; ignoring
+[Licensing::Client] Successfully send message: {"AuthorizationCheck":"Ewh7pi6kCek+Hg==","messageType":"HandshakeRequest","protocolVersion":"1.12","userAgent":"TuanjieEditor/2022.3.62t11 (Windows; U; Windows NT 10.0; zh)","externalCorrelationId":"7881960999575936896"} at 1783168578
+[Licensing::Client] Successfully receive message: {"protocolVersion":"1.12","sessionId":"a8bd70588c1044e189f0d6a671cc7064","context":{"DeviceName":"","DeviceModel":"COLORFIRE B760M-A MEOW WIFI D5  (Colorful Technology And Development Co.,LTD)","PhysicalMemoryMB":"32599","SystemLanguageISO":"zh","ProcessorCount":"20","ProcessorType":"13th Gen Intel(R) Core(TM) i5-13600KF","OperatingSystem":"Windows 10  (10.0.26200) 64bit","OperatingSystemNumeric":"1000","Legacy.MachineBinding1":"00326-10000-00000-AA215","Legacy.MachineBinding2":"01000_01_214004_10.7","Legacy.MachineBinding4":"RGVmYXVsdCBzdHJpbmc=","Legacy.MachineBinding5":"8c:32:23:06:61:76","EnvironmentUser":"A","EnvironmentDomain":"海洋的DIY","EnvironmentHostname":"海洋的DIY"},"assemblyProductVersion":"1.14.0+249b3dc","machineId":"yMgjXuIJpoXjn20/idVxM1tzKgk=","correlationId":"da0d4784794fb2d38ca0d95c4a7e5bad","responseCode":200,"responseStatus":"Handshake successful","messageType":"HandshakeResponse"} at 1783168578
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.14.0+249b3dc
+  Session Id:              a8bd70588c1044e189f0d6a671cc7064
+  Correlation Id:          da0d4784794fb2d38ca0d95c4a7e5bad
+  External correlation Id: 7881960999575936896
+  Machine Id:              yMgjXuIJpoXjn20/idVxM1tzKgk=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-A" (connect: 1.04s, validation: 0.05s, handshake: 0.11s)
+[Licensing::IpcConnector] Successfully connected to the License Notification on channel: "LicenseClient-A-notifications" at "2026-07-04T12:36:18.7013823Z"
+[Licensing::Module] Connected to LicensingClient (PId: 12432, launch time: 0.01, total connection time: 1.21s)
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully send message: {"AuthorizationCheck":"1DivmPxYAmwmBQ==","messageType":"UpdateLicenseRequest","AccessToken":"","OrgId":"","ProjectId":"","forceUpdateLicense":true} at 1783168578
+[Licensing::Client] Successfully receive message: {"responseCode":500,"responseStatus":"Unable to update licenses. Errors: No ULF license found.,Token not found in cache","messageType":"UpdateLicenseResponse"} at 1783168578
+[Licensing::Client] Error: Code 500 while processing request (status: Unable to update licenses. Errors: No ULF license found.,Token not found in cache)
+[Licensing::Client] Error: Code 500 while updating license in client (status: Unable to update licenses. Errors: No ULF license found.,Token not found in cache)
+Built from 'tuanjie/1.9/staging' branch; Version is '2022.3.62t11 (b99029341900) revision 12161065'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26200) 64bit Core' Language: 'zh' Physical Memory: 32599 MB
+[Licensing::Client] Successfully send message: {"AuthorizationCheck":"Yq4yMlFYSlAuKw==","messageType":"EntitlementDetailsRequest","entitlementIds":["com.unity.editor.legacy.pro","com.unity.editor.ui"],"packageEntitlementIds":[],"includeCustomData":false} at 1783168578
+[Licensing::Client] Successfully receive message: {"responseCode":404,"responseStatus":"Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids","messageType":"EntitlementDetailsResponse"} at 1783168578
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+[Licensing::Module] Error: 'com.unity.editor.ui' was not found.
+BatchMode: 0, IsHumanControllingUs: 1, StartBugReporterOnCrash: 1, Is64bit: 1, IsPro: 0
+[Licensing::Client] Successfully send message: {"AuthorizationCheck":"Yq4yMlFYSlAuKw==","messageType":"EntitlementDetailsRequest","entitlementIds":["com.unity.editor.headless","com.unity.editor.ui"],"packageEntitlementIds":[],"includeCustomData":false} at 1783168578
+[Licensing::Client] Successfully receive message: {"responseCode":404,"responseStatus":"Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids","messageType":"EntitlementDetailsResponse"} at 1783168578
+[Licensing::Client] Error: Code 404 while processing request (status: Found 0 entitlement groups and 0 free entitlements matching requested entitlement ids)
+No valid Unity Editor license found. Please activate your license.
+Exiting without the bug reporter. Application will terminate with return code 1
