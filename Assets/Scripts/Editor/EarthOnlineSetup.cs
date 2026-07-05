@@ -16,7 +16,7 @@ namespace EarthOnline.Editor
             var cleanNames = new System.Collections.Generic.List<string> {
                 "Ground", "Player", "OldMan_Zhang", "GameManager",
                 "Canvas", "FrameworkManagers", "NPC_Elder", "CameraRig", "GameHUD",
-                "NPC_Wang", "NPC_Li", "NPC_Chen", "VillageHouse"
+                "NPC_Wang", "NPC_Li", "NPC_Chen", "NPC_Zhao", "VillageHouse"
             };
             foreach (var go in Object.FindObjectsOfType<GameObject>())
             {
@@ -24,7 +24,7 @@ namespace EarthOnline.Editor
                 string n = go.name;
                 if (cleanNames.Contains(n) || n.StartsWith("Tree_") || n.StartsWith("Rock_")
                     || n.StartsWith("Pickup_") || n.StartsWith("House_") || n.StartsWith("Fence_")
-                    || n.StartsWith("Enemy_") || n.StartsWith("Chest_") || n == "NPC_Chen"
+                    || n.StartsWith("Enemy_") || n.StartsWith("Chest_") || n == "NPC_Chen" || n == "NPC_Zhao"
                     || n.StartsWith("Dungeon") || n.StartsWith("Flower_") || n.StartsWith("Travel_"))
                     Object.DestroyImmediate(go);
             }
@@ -112,6 +112,11 @@ namespace EarthOnline.Editor
                 "npc_chen_001", "陈半仙", "流浪商人",
                 "走过路过不要错过！从东土大唐到西域荒漠，我陈半仙什么好东西没见过？",
                 new Color(0.9f, 0.7f, 0.1f), true);
+
+            CreateNPC("NPC_Zhao", new Vector3(-2, 1.2f, -2),
+                "npc_zhao_001", "赵掌柜", "云来客栈老板",
+                "客官里边请！住宿50灵石一晚，免费送早餐。想打听消息？那得看你请我喝什么酒了。",
+                new Color(0.7f, 0.3f, 0.1f), true);
 
             // ====== VILLAGE BUILDINGS ======
             CreateBuilding("House_Blacksmith", new Vector3(-6, 0, 7), new Vector3(3, 2, 3), new Color(0.4f, 0.3f, 0.2f));
@@ -366,6 +371,11 @@ namespace EarthOnline.Editor
                 case "李灵儿":
                     secrets.Add(new EarthOnline.NPC.NPCSecret.Secret { revealThreshold = 3, hint = "李灵儿开的药方...有几味药的用法完全不对。除非——不是在治人。", revelation = "'你懂药理？那我不瞒你了。我不是在治病——我是在研制一种毒。专门针对...修真者的毒。'" });
                     secrets.Add(new EarthOnline.NPC.NPCSecret.Secret { revealThreshold = 8, hint = "李灵儿提到她父亲时用的是'被天元宗的人害死的'——但她说的是'人'，不是'弟子'或'长老'。", revelation = "'我爹是天元宗的副宗主。他发现了宗主在用人血炼丹。第二天他就'走火入魔'了。一身的修为，一夜之间全废了。他们没杀他——他们让他活着，变成一个废人，让所有人都看到：这就是反对宗主的下场。'" });
+                    break;
+
+                case "赵掌柜":
+                    secrets.Add(new EarthOnline.NPC.NPCSecret.Secret { revealThreshold = 3, hint = "赵掌柜记性特别好——他能记住每一个来过客栈的人。", revelation = "'我在这里开了三十年客栈。见过的人比天元宗长老见过的还多。你想知道什么？'" });
+                    secrets.Add(new EarthOnline.NPC.NPCSecret.Secret { revealThreshold = 8, hint = "赵掌柜有一个从不打开的账本——封面上写着一个'虚'字。", revelation = "'这个账本...记的不是灵石流水。是每一个从虚空裂缝里出来的人。三十年了——你是第47个。前46个...后来都消失了。有的被宗门带走了。有的被杀了。有的一觉醒来就不在了。你小心点。'" });
                     break;
 
                 case "陈半仙":
