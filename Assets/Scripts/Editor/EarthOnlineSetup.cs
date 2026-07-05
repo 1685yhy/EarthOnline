@@ -25,7 +25,7 @@ namespace EarthOnline.Editor
                 if (cleanNames.Contains(n) || n.StartsWith("Tree_") || n.StartsWith("Rock_")
                     || n.StartsWith("Pickup_") || n.StartsWith("House_") || n.StartsWith("Fence_")
                     || n.StartsWith("Enemy_") || n.StartsWith("Chest_") || n == "NPC_Chen"
-                    || n.StartsWith("Dungeon"))
+                    || n.StartsWith("Dungeon") || n.StartsWith("Flower_"))
                     Object.DestroyImmediate(go);
             }
 
@@ -193,6 +193,17 @@ namespace EarthOnline.Editor
                 color: new Color(0.6f, 0.1f, 0.5f));
 
             // Dungeon entrance
+            // Decorative village items
+            for (int i = -4; i <= 4; i++)
+            {
+                var flower = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                flower.name = $"Flower_{i}"; flower.transform.position = new Vector3(i * 1.5f, 0.05f, 0.5f);
+                flower.transform.localScale = Vector3.one * 0.15f;
+                var fr = flower.GetComponent<Renderer>();
+                if (fr != null) { var fm = new Material(Shader.Find("Standard")); fm.color = Random.value > 0.5f ? new Color(1,0.2f,0.2f) : new Color(1,1,0.2f); fr.material = fm; }
+                flower.GetComponent<Collider>().isTrigger = true;
+            }
+
             var dungeon = new GameObject("DungeonEntrance");
             dungeon.transform.position = new Vector3(0, 0, -15);
             var dc = GameObject.CreatePrimitive(PrimitiveType.Cylinder); dc.name = "DungeonVisual";

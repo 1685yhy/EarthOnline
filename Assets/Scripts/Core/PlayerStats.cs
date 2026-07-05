@@ -111,7 +111,8 @@ namespace EarthOnline
             if (TimeManager.Instance == null) return;
             var timeStr = TimeManager.Instance.TimeString;
             var dayStr = $"第{TimeManager.Instance.GameDay}天";
-            var status = $"🏷️ Lv.{playerLevel} | ❤️ {currentHP}/{maxHP} | 💰 {currency} | ⭐ {cultivation} | 🕐 {timeStr} {dayStr}";
+            var weather = WeatherSystem.Instance?.GetWeatherEmoji() ?? "";
+            var status = $"🏷️ Lv.{playerLevel} | ❤️ {currentHP}/{maxHP} | 💰 {currency} | ⭐ {cultivation} | {weather} {timeStr} {dayStr}";
             EventBus.Publish("OnStatusUpdate", new Dictionary<string, object> { {"status", status} });
         }
 
