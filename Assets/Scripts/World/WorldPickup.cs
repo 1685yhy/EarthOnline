@@ -93,7 +93,11 @@ namespace EarthOnline
 
             if (inv.AddItem(item))
             {
-                Debug.Log($"[Pickup] 获得 {itemName} x{quantity} ({itemRarity})");
+                string storyName = ItemDatabase.GetDisplayName(itemId);
+                string displayName = storyName != itemId ? $"{storyName}({itemName})" : itemName;
+                Debug.Log($"[Pickup] ✨ 获得 [{itemRarity}] {displayName} x{quantity}");
+                if (ItemDatabase.Stories.ContainsKey(itemId))
+                    Debug.Log($"[Pickup] '{ItemDatabase.Stories[itemId].story}'");
                 Destroy(gameObject);
             }
         }

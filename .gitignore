@@ -31,3 +31,5 @@ Thumbs.db
 
 # Packages (lock files only - manifest is important)
 Packages/packages-lock.json
+_StackSmash/
+_EverythingCombiner/
