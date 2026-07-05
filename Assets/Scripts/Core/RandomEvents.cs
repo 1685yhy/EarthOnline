@@ -112,6 +112,28 @@ namespace EarthOnline
                     foreach (var c in chests) c.isOpened = false;
                 }
             });
+
+            _events.Add(new GameEvent { id = "secret_realm", title = "秘境裂缝出现！",
+                description = "一道空间裂缝在空中裂开——秘境入口出现了。限时30分钟！",
+                OnTrigger = () => {
+                    Debug.Log("[Event] 🌌 秘境裂缝！限时30分钟，先到先得！");
+                    var stats = PlayerStats.Instance;
+                    if (stats != null) { stats.AddCultivation(30); stats.spiritStones += 80; }
+                    Debug.Log("[Event] 你在裂缝边缘吸收了大量逸散灵气：+30修为 +80灵石。");
+                }
+            });
+
+            _events.Add(new GameEvent { id = "elder_visit", title = "神秘老者来访",
+                description = "一位白发老者来到村子。他说他在找一个人——'戴着黑铁戒指的人'。",
+                OnTrigger = () => {
+                    Debug.Log("[Event] 👴 神秘老者：'我在找一个人。一个戴着黑铁戒指的人。你见过吗？'");
+                    Debug.Log("[Event] 老者没有等你回答，自顾自地走远了。但他走后——");
+                    Debug.Log("[Event] 你发现地上有一卷泛黄的羊皮纸。上面写着：'天陨丹方——残卷（一）'。");
+                    var stats = PlayerStats.Instance;
+                    if (stats != null) stats.AddCultivation(100);
+                    Debug.Log("[Event] 残卷中蕴含的古老知识让你获得了+100修为。");
+                }
+            });
         }
 
         IEnumerator EventLoop()
