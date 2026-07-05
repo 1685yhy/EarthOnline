@@ -55,8 +55,14 @@ namespace EarthOnline
             EventBus.Subscribe("OnPlayerDeath", OnPlayerDied);
             EventBus.Subscribe("OnDayPassed", OnDayPassed_Save);
 
+            // V2.0: 随机出身
+            EnsureComponent<OriginManager>();
+            var (origin, cfg) = OriginManager.RollOrigin();
+            var player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null) OriginManager.ApplyOrigin(origin, player);
+
             _state = GameState.Playing;
-            Debug.Log("========== [GameManager] 🌍 地球Online V1.5 Ready ==========");
+            Debug.Log($"========== [GameManager] 🌍 地球Online V2.0 | {cfg.name} | {cfg.startRealm} ==========");
         }
 
         void OnItemPickedUp(Dictionary<string, object> data)

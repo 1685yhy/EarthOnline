@@ -108,7 +108,7 @@ namespace EarthOnline
             UpdateHUD();
         }
 
-        void UpdateHUD()
+        public void UpdateHUD()
         {
             if (TimeManager.Instance == null) return;
             var timeStr = TimeManager.Instance.TimeString;
