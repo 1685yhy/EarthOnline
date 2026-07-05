@@ -16,7 +16,7 @@ namespace EarthOnline.Editor
             var cleanNames = new System.Collections.Generic.List<string> {
                 "Ground", "Player", "OldMan_Zhang", "GameManager",
                 "Canvas", "FrameworkManagers", "NPC_Elder", "CameraRig", "GameHUD",
-                "NPC_Wang", "NPC_Li", "VillageHouse"
+                "NPC_Wang", "NPC_Li", "NPC_Chen", "VillageHouse"
             };
             foreach (var go in Object.FindObjectsOfType<GameObject>())
             {
@@ -24,7 +24,7 @@ namespace EarthOnline.Editor
                 string n = go.name;
                 if (cleanNames.Contains(n) || n.StartsWith("Tree_") || n.StartsWith("Rock_")
                     || n.StartsWith("Pickup_") || n.StartsWith("House_") || n.StartsWith("Fence_")
-                    || n.StartsWith("Enemy_"))
+                    || n.StartsWith("Enemy_") || n.StartsWith("Chest_") || n == "NPC_Chen")
                     Object.DestroyImmediate(go);
             }
 
@@ -107,6 +107,11 @@ namespace EarthOnline.Editor
                 "最近采到的灵药越来越少了...山里好像有什么东西在驱赶采药人。",
                 new Color(0.3f, 0.7f, 0.4f), false);
 
+            CreateNPC("NPC_Chen", new Vector3(-3, 1.2f, -8),
+                "npc_chen_001", "陈半仙", "流浪商人",
+                "走过路过不要错过！从东土大唐到西域荒漠，我陈半仙什么好东西没见过？",
+                new Color(0.9f, 0.7f, 0.1f), true);
+
             // ====== VILLAGE BUILDINGS ======
             CreateBuilding("House_Blacksmith", new Vector3(-6, 0, 7), new Vector3(3, 2, 3), new Color(0.4f, 0.3f, 0.2f));
             CreateBuilding("House_Herb", new Vector3(5, 0, -7), new Vector3(3, 1.5f, 3), new Color(0.3f, 0.5f, 0.3f));
@@ -151,6 +156,14 @@ namespace EarthOnline.Editor
                     if (r != null) { var m = new Material(Shader.Find("Standard")); m.color = new Color(0.4f, 0.35f, 0.3f); r.material = m; }
                 }
             }
+
+            // ====== TREASURE CHESTS ======
+            var chest1 = new GameObject("Chest_Forest"); chest1.transform.position = new Vector3(-10, 0.5f, -5);
+            chest1.AddComponent<EarthOnline.TreasureChest>();
+            var chest2 = new GameObject("Chest_Ruins"); chest2.transform.position = new Vector3(10, 0.5f, 7);
+            chest2.AddComponent<EarthOnline.TreasureChest>();
+            var chest3 = new GameObject("Chest_Cave"); chest3.transform.position = new Vector3(0, 0.5f, -12);
+            chest3.AddComponent<EarthOnline.TreasureChest>();
 
             // ====== ENEMIES ======
             CreateEnemy("Enemy_Wolf1", new Vector3(-12, 1, -3), "wolf_001", "野狼",
