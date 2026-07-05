@@ -177,7 +177,25 @@ namespace EarthOnline
             });
             gm.RegisterTemplate(bloodline);
 
-            Debug.Log("[GameManager] All gift templates registered (5).");
+            // 天机术
+            var divination = new HeavenlyDivination();
+            divination.Initialize(new Dictionary<string, object> {
+                {"id", "gift_divination_001"}, {"name", "天机术"}, {"type", "Knowledge"}, {"rarity", "R"},
+                {"storyOrigin", "窥探命运者必遭天谴。但穿越者本就是逆天而行——你早已在天道的黑名单上。"},
+                {"storyMystery", "你在命运线中看到的那个吞噬世界的阴影——和签到系统制造者看到的虚影是同一个吗？"}
+            });
+            gm.RegisterTemplate(divination);
+
+            // 吞噬系统
+            var devour = new DevourSystem();
+            devour.Initialize(new Dictionary<string, object> {
+                {"id", "gift_devour_001"}, {"name", "吞噬系统"}, {"type", "System"}, {"rarity", "SSR"},
+                {"storyOrigin", "吞噬生命的禁术。上一个使用者已经完全转化为了虚空生物——就是那个在追杀老爷爷的人。"},
+                {"storyMystery", "妖兽不是天生的。它们是上一个被虚空吞噬的世界的幸存者。吞噬它们——你也在变成它们。你还能回头吗？"}
+            });
+            gm.RegisterTemplate(devour);
+
+            Debug.Log("[GameManager] All gift templates registered (7).");
         }
 
         void AutoActivateStarterGift()
