@@ -199,8 +199,10 @@ namespace EarthOnline
                 if (inv != null)
                 {
                     var items = inv.GetAllItems();
-                    Debug.Log($"[Inventory] 背包 {inv.Count}/{inv.maxSlots}: " +
-                        string.Join(", ", items.ConvertAll(i => $"{i.name}x{i.quantity}")));
+                    if (items.Count > 0)
+                        Debug.Log($"[Inventory] 背包 {inv.Count}/{inv.maxSlots}:\n" +
+                            string.Join("\n", items.ConvertAll(i =>
+                                $"  [{i.rarity}] {i.name} x{i.quantity} — {i.description}")));
                 }
             }
 
@@ -239,6 +241,20 @@ namespace EarthOnline
                 }
             }
 
+            // 按J键查看成就
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                var am = AchievementManager.Instance;
+                if (am != null)
+                {
+                    var all = am.GetAll();
+                    int unlocked = all.FindAll(a => a.unlocked).Count;
+                    Debug.Log($"🏆 成就 ({unlocked}/{all.Count}):");
+                    foreach (var a in all)
+                        Debug.Log($"  {(a.unlocked ? "✅" : "🔒")} {a.title} — {a.description} (+{a.reward}💰)");
+                }
+            }
+
             // 按C键制作
             if (Input.GetKeyDown(KeyCode.C))
             {
@@ -259,13 +275,21 @@ namespace EarthOnline
                 }
             }
 
-            // 按K键执行第一个可用制作
+            // 按K键执行第一个可用制作(带预览)
             if (Input.GetKeyDown(KeyCode.K))
             {
                 var cm = CraftingManager.Instance;
                 var recipes = cm?.GetAvailableRecipes();
                 if (recipes != null && recipes.Count > 0)
-                    cm.Craft(recipes[0].id);
+                {
+                    var r = recipes[0];
+                    var inv = InventoryManager.Instance;
+                    var ings = string.Join(", ", System.Linq.Enumerable.Select(
+                        r.ingredients, kvp => $"{kvp.Key}:{kvp.Value}"));
+                    Debug.Log($"[Craft] 将制作 [{r.resultRarity}]{r.resultItemName} x{r.resultQuantity}，消耗: {ings}");
+                    Debug.Log("[Craft] 按Y确认制作，其他键取消。");
+                    StartCoroutine(ConfirmCraft(r.id));
+                }
                 else
                     Debug.Log("[Craft] 没有可制作的配方。需要材料！");
             }
@@ -441,6 +465,17 @@ namespace EarthOnline
                 shop.ShowShop(closest.npcId);
             else
                 Debug.Log("[Shop] 附近没有商人。村子里找陈半仙(金色NPC)或李灵儿(绿色NPC)按B购物。");
+        }
+
+        System.Collections.IEnumerator ConfirmCraft(string recipeId)
+        {
+            float deadline = Time.time + 3f;
+            while (Time.time < deadline)
+            {
+                if (Input.GetKeyDown(KeyCode.Y)) { CraftingManager.Instance?.Craft(recipeId); yield break; }
+                if (Input.anyKeyDown) { Debug.Log("[Craft] 取消制作。"); yield break; }
+                yield return null;
+            }
         }
 
         void UseGiftAbility(string abilityName)

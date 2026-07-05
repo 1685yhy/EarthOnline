@@ -92,9 +92,11 @@ namespace EarthOnline
             if (currentHP <= 0)
             {
                 currentHP = 0;
-                Debug.Log("[Player] 你倒下了...但故事不会就此结束。");
-                EventBus.Publish("OnPlayerDeath");
-                currentHP = maxHP / 2; // 复活
+                long lostGold = currency / 5; // 失去20%金币
+                currency -= lostGold;
+                Debug.Log($"[Player] 💀 你倒下了...失去了{lostGold}金币(20%)。但故事不会就此结束。");
+                EventBus.Publish("OnPlayerDeath", new Dictionary<string, object> {{"lostGold", lostGold}});
+                currentHP = maxHP / 2;
             }
             UpdateHUD();
         }

@@ -103,7 +103,7 @@ namespace EarthOnline
 
             // Scale with player level
             int playerLv = PlayerStats.Instance?.playerLevel ?? 1;
-            float scaleMult = 1f + (playerLv - 1) * 0.15f; // +15% per level
+            float scaleMult = 1f + (playerLv - 1) * 0.10f; // +10% per level (was 15%, too aggressive)
             int scaledHP = Mathf.RoundToInt(sp.maxHP * scaleMult);
             int scaledAtk = Mathf.RoundToInt(sp.attackPower * scaleMult);
 

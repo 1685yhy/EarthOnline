@@ -73,8 +73,9 @@ namespace EarthOnline.Combat
             {
                 // 计算伤害（含装备加成+暴击）
                 int eqBonus = EquipmentManager.Instance?.AttackBonus ?? 0;
+                float weatherMult = WeatherSystem.Instance?.WeatherAttackModifier ?? 1f;
                 bool crit = Random.value < 0.15f;
-                int totalAtk = baseAttackPower + eqBonus;
+                int totalAtk = Mathf.RoundToInt((baseAttackPower + eqBonus) * weatherMult);
                 int damage = crit ? Mathf.FloorToInt(totalAtk * 1.8f) : totalAtk;
                 closestEnemy.TakeDamage(damage, crit);
 

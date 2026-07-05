@@ -50,7 +50,7 @@ namespace EarthOnline
             ShowTip("combat", "⚔️ 小心野外的敌人！左键点击攻击，H键使用回复物品。");
 
             yield return new WaitForSeconds(6f);
-            ShowTip("gifts", "💎 捡到特殊物品可以觉醒金手指能力。按数字键1-4使用技能。");
+            ShowTip("gifts", "💎 捡到特殊物品可以觉醒金手指能力。村子附近藏着黑铁戒指(SR)和混沌碎片(SSR)——找到它们！");
         }
 
         void ShowTip(string id, string message)
@@ -96,8 +96,11 @@ namespace EarthOnline
         void OnNightFall(Dictionary<string, object> data)
         {
             int day = (int)data["day"];
+            ShowTip("boss_warning", "⚠️ 北方紫色漩涡附近有强大守护者(300HP)！建议等级5+，装备武器后再去挑战。死亡会失去20%金币。");
             if (day == 1)
-                ShowTip("first_night", "🌙 一天过去了。敌人在夜间更加活跃，小心！每天开始时会自动存档。");
+                ShowTip("first_night", "🌙 一天过去了。敌人在夜间更加活跃，小心！每天开始时会自动存档(F5可随时手动存档)。");
+            if (day == 1)
+                ShowTip("save_hint", "💾 按F5随时手动存档，按J查看成就。死亡会失去20%金币但不会丢失物品。");
         }
 
         void OnDestroy()
