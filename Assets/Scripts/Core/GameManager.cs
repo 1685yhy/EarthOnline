@@ -38,6 +38,7 @@ namespace EarthOnline
             EnsureComponent<CraftingManager>();
             EnsureComponent<EnemyRespawner>();
             EnsureComponent<TutorialManager>();
+            EnsureComponent<EquipmentManager>();
 
             RegisterAllGifts();
             AutoActivateStarterGift();
@@ -53,6 +54,8 @@ namespace EarthOnline
         void OnItemPickedUp(Dictionary<string, object> data)
         {
             string itemId = data.ContainsKey("itemId") ? data["itemId"].ToString() : "";
+            string itemType = data.ContainsKey("itemType") ? data["itemType"].ToString() : "";
+
             if (itemId == "item_ring_dark")
             {
                 var giftMgr = GiftManager.Instance;
@@ -60,7 +63,7 @@ namespace EarthOnline
                 {
                     var om = giftMgr.ActivateGift("gift_old_master_001");
                     if (om != null)
-                        Debug.Log($"[GameManager] 『{om.GiftName}』已觉醒！一股古老的气息从黑铁戒指中涌出...");
+                        Debug.Log($"[GameManager] 『{om.GiftName}』已觉醒！");
                 }
             }
             else if (itemId == "item_chaos_fragment")
@@ -70,9 +73,22 @@ namespace EarthOnline
                 {
                     var db = giftMgr.ActivateGift("gift_divine_body_001");
                     if (db != null)
+                        Debug.Log($"[GameManager] 『{db.GiftName}』觉醒！虚空中有东西注意到了你...");
+                }
+            }
+
+            // 自动装备武器/防具
+            if (itemType == "Weapon" || itemType == "Armor" || itemType == "Accessory")
+            {
+                var eq = EquipmentManager.Instance;
+                var inv = InventoryManager.Instance;
+                if (eq != null && inv != null)
+                {
+                    var item = inv.GetItem(itemId);
+                    if (item != null)
                     {
-                        Debug.Log($"[GameManager] 混沌碎片融入体内...『{db.GiftName}』觉醒！");
-                        Debug.Log($"[GameManager] ⚠️ 你感觉到虚空中有什么东西注意到了你...");
+                        inv.RemoveItem(itemId, 1);
+                        eq.Equip(item);
                     }
                 }
             }
@@ -179,6 +195,8 @@ namespace EarthOnline
                     foreach (var g in gm.GetActiveGifts())
                         g.UseAbility("get_status");
                 }
+                var eq = EquipmentManager.Instance;
+                if (eq != null) Debug.Log($"[Equip] {eq.GetSummary()}");
                 var inv = InventoryManager.Instance;
                 if (inv != null)
                 {

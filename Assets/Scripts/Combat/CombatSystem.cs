@@ -67,9 +67,11 @@ namespace EarthOnline.Combat
 
             if (closestEnemy != null)
             {
-                // 计算伤害（含暴击）
+                // 计算伤害（含装备加成+暴击）
+                int eqBonus = EquipmentManager.Instance?.AttackBonus ?? 0;
                 bool crit = Random.value < 0.15f;
-                int damage = crit ? Mathf.FloorToInt(baseAttackPower * 1.8f) : baseAttackPower;
+                int totalAtk = baseAttackPower + eqBonus;
+                int damage = crit ? Mathf.FloorToInt(totalAtk * 1.8f) : totalAtk;
                 closestEnemy.TakeDamage(damage, crit);
 
                 Debug.Log($"[Combat] 攻击{(crit ? "暴击！" : "")} {damage}伤害 → {closestEnemy.enemyName}");

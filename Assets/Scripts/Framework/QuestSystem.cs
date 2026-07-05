@@ -45,6 +45,7 @@ namespace EarthOnline.Framework
             RegisterQuests();
             EventBus.Subscribe("OnNPCInteract", OnNPCInteracted);
             EventBus.Subscribe("OnItemAdded", OnItemPickedUp);
+            EventBus.Subscribe("OnEnemyKilled", OnEnemyKilled);
         }
 
         void RegisterQuests()
@@ -82,6 +83,38 @@ namespace EarthOnline.Framework
                     "送到了？好嘞！这是给你的跑腿费。对了，李灵儿有没有说最近山里采不到药的事？最近确实不太平啊..."
                 }
             });
+
+            // 任务3：消灭野狼
+            RegisterQuest(new Quest
+            {
+                id = "quest_wolf_001", title = "清除狼患", type = "Kill",
+                npcGiverId = "npc_li_001", npcName = "李灵儿",
+                description = "村子周围的野狼越来越多了，李灵儿担心采药人会受伤。消灭2只野狼。",
+                targetId = "wolf_001", targetCount = 2,
+                rewardGold = 100, rewardExp = 80,
+                dialogueOnAccept = new List<string> {
+                    "村子外面的野狼越来越多了...我一个人不敢出去采药。你能帮我清理一下吗？两只就够了，剩下的我自己来。"
+                },
+                dialogueOnComplete = new List<string> {
+                    "太好了！这下安全多了。这些丹药你拿着，是我自己炼的。对了，你有没有在村子北边看到一个黑色的漩涡？那里最近散发出很强的灵力波动..."
+                }
+            });
+
+            // 任务4：探索地下城入口
+            RegisterQuest(new Quest
+            {
+                id = "quest_dungeon_001", title = "虚空裂缝", type = "Explore",
+                npcGiverId = "npc_zhang_001", npcName = "张老",
+                description = "张老感知到村子北边有一个异常的空间裂缝。去调查一下那个紫色漩涡。",
+                targetId = "DungeonEntrance", targetCount = 1,
+                rewardGold = 200, rewardExp = 150,
+                dialogueOnAccept = new List<string> {
+                    "你也感觉到了吧？村子北边的异常灵力。那里有一个空间裂缝。老夫年纪大了，走不动了。你去看看是什么情况。注意安全——裂缝附近有强大的守护者。"
+                },
+                dialogueOnComplete = new List<string> {
+                    "果然...虚空行者。那是从裂缝中跑出来的怪物。看来这个世界的屏障比我想象的更脆弱。'天陨丹方'...可能和这个裂缝有关。"
+                }
+            });
         }
 
         void RegisterQuest(Quest q)
@@ -100,6 +133,42 @@ namespace EarthOnline.Framework
                 {
                     CompleteQuest(q);
                     return;
+                }
+            }
+        }
+
+        void OnEnemyKilled(Dictionary<string, object> data)
+        {
+            string enemyId = data.ContainsKey("enemyId") ? data["enemyId"].ToString() : "";
+            foreach (var q in _activeQuests)
+            {
+                if (q.isAccepted && !q.isCompleted && q.type == "Kill"
+                    && (q.targetId == enemyId || q.targetId.StartsWith("wolf_") && enemyId.StartsWith("wolf_")))
+                {
+                    q.currentCount++;
+                    Debug.Log($"[Quest] {q.title}: {q.currentCount}/{q.targetCount}");
+                    if (q.currentCount >= q.targetCount)
+                        CompleteQuest(q);
+                }
+            }
+        }
+
+        void Update()
+        {
+            // Explore quests: check if player is near target
+            var player = GameObject.FindGameObjectWithTag("Player");
+            if (player == null) return;
+            foreach (var q in _activeQuests)
+            {
+                if (q.isAccepted && !q.isCompleted && q.type == "Explore")
+                {
+                    var target = GameObject.Find(q.targetId);
+                    if (target != null)
+                    {
+                        float dist = Vector3.Distance(player.transform.position, target.transform.position);
+                        if (dist <= 5f)
+                            CompleteQuest(q);
+                    }
                 }
             }
         }
@@ -172,6 +241,7 @@ namespace EarthOnline.Framework
         {
             EventBus.Unsubscribe("OnNPCInteract", OnNPCInteracted);
             EventBus.Unsubscribe("OnItemAdded", OnItemPickedUp);
+            EventBus.Unsubscribe("OnEnemyKilled", OnEnemyKilled);
         }
     }
 }

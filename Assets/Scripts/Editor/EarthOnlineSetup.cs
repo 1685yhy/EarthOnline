@@ -24,7 +24,8 @@ namespace EarthOnline.Editor
                 string n = go.name;
                 if (cleanNames.Contains(n) || n.StartsWith("Tree_") || n.StartsWith("Rock_")
                     || n.StartsWith("Pickup_") || n.StartsWith("House_") || n.StartsWith("Fence_")
-                    || n.StartsWith("Enemy_") || n.StartsWith("Chest_") || n == "NPC_Chen")
+                    || n.StartsWith("Enemy_") || n.StartsWith("Chest_") || n == "NPC_Chen"
+                    || n.StartsWith("Dungeon"))
                     Object.DestroyImmediate(go);
             }
 
@@ -128,6 +129,10 @@ namespace EarthOnline.Editor
                 "item_ring_dark", "黑铁戒指", "Quest", "SR", 1, 200);
             CreatePickup("Pickup_Chaos", new Vector3(-9, 0.5f, -8),
                 "item_chaos_fragment", "混沌碎片", "Quest", "SSR", 1, 500);
+            CreatePickup("Pickup_Sword", new Vector3(6, 0.5f, -3),
+                "item_iron_sword", "铁剑", "Weapon", "R", 1, 80);
+            CreatePickup("Pickup_Armor", new Vector3(-6, 0.5f, 2),
+                "item_leather_armor", "皮甲", "Armor", "R", 1, 60);
 
             // ====== TREES & ROCKS ======
             var envPositions = new Vector3[] {
@@ -180,6 +185,28 @@ namespace EarthOnline.Editor
                 maxHP: 100, attack: 15, speed: 2f, detect: 6f, patrol: 4f,
                 dropId: "item_pill_001", dropName: "聚气丹", dropQty: 3,
                 color: new Color(0.5f, 0.25f, 0.1f));
+
+            // Boss enemy
+            CreateEnemy("Enemy_Boss", new Vector3(0, 2f, -15), "boss_001", "虚空行者",
+                maxHP: 300, attack: 30, speed: 3f, detect: 12f, patrol: 3f,
+                dropId: "item_spirit_core_001", dropName: "灵气核心", dropQty: 3,
+                color: new Color(0.6f, 0.1f, 0.5f));
+
+            // Dungeon entrance
+            var dungeon = new GameObject("DungeonEntrance");
+            dungeon.transform.position = new Vector3(0, 0, -15);
+            var dc = GameObject.CreatePrimitive(PrimitiveType.Cylinder); dc.name = "DungeonVisual";
+            dc.transform.SetParent(dungeon.transform);
+            dc.transform.localPosition = Vector3.zero;
+            dc.transform.localScale = new Vector3(3, 0.3f, 3);
+            var dr = dc.GetComponent<Renderer>();
+            if (dr != null) { var dm = new Material(Shader.Find("Standard")); dm.color = new Color(0.1f, 0.05f, 0.1f); dr.material = dm; }
+            var dc2 = GameObject.CreatePrimitive(PrimitiveType.Cylinder); dc2.name = "DungeonPortal";
+            dc2.transform.SetParent(dungeon.transform);
+            dc2.transform.localPosition = Vector3.up * 0.5f;
+            dc2.transform.localScale = new Vector3(2, 0.2f, 2);
+            var dr2 = dc2.GetComponent<Renderer>();
+            if (dr2 != null) { var dm2 = new Material(Shader.Find("Standard")); dm2.color = new Color(0.5f, 0f, 0.8f); dm2.EnableKeyword("_EMISSION"); dm2.SetColor("_EmissionColor", new Color(0.5f, 0f, 0.8f) * 0.5f); dr2.material = dm2; }
 
             // ====== HUD ======
             CreateHUD();
