@@ -53,7 +53,7 @@ namespace EarthOnline
             EventBus.Subscribe("OnDayPassed", OnDayPassed_Save);
 
             _state = GameState.Playing;
-            Debug.Log("========== [GameManager] EarthOnline V0.3 Ready ==========");
+            Debug.Log("========== [GameManager] 🌍 地球Online V1.5 Ready ==========");
         }
 
         void OnItemPickedUp(Dictionary<string, object> data)

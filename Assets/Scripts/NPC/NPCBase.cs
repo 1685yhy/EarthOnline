@@ -66,6 +66,25 @@ namespace EarthOnline.NPC
             textRect.sizeDelta = new Vector2(180, 36);
 
             _nameTagInstance.AddComponent<Billboard>();
+
+            // Quest marker
+            InvokeRepeating(nameof(UpdateQuestMarker), 1f, 5f);
+        }
+
+        void UpdateQuestMarker()
+        {
+            // Simple: check via QuestManager if this NPC has quests
+            var qm = Object.FindObjectOfType<EarthOnline.Framework.QuestManager>();
+            if (qm != null)
+            {
+                var quest = qm.GetQuestFromNPC(npcId);
+                if (quest != null && _nameTagText != null)
+                {
+                    string marker = quest.isAccepted ? " ❓" : " ❗";
+                    if (!_nameTagText.text.EndsWith("❗") && !_nameTagText.text.EndsWith("❓"))
+                        _nameTagText.text += marker;
+                }
+            }
         }
 
         void Update()
