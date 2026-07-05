@@ -159,7 +159,25 @@ namespace EarthOnline
             });
             gm.RegisterTemplate(divineBody);
 
-            Debug.Log("[GameManager] All gift templates registered (3).");
+            // 神豪系统
+            var wealth = new WealthSystem();
+            wealth.Initialize(new Dictionary<string, object> {
+                {"id", "gift_wealth_001"}, {"name", "神豪系统"}, {"type", "System"}, {"rarity", "SR"},
+                {"storyOrigin", "来自026号平行世界——那个世界因为贫富差距引发世界大战而自我毁灭。本系统是那个世界最后的遗物。"},
+                {"storyMystery", "026号世界毁灭的真正原因是什么？系统里隐藏的'求救信号'——是谁发的？他/她还活着吗？"}
+            });
+            gm.RegisterTemplate(wealth);
+
+            // 青龙血脉
+            var bloodline = new BloodlineAwakening();
+            bloodline.Initialize(new Dictionary<string, object> {
+                {"id", "gift_bloodline_001"}, {"name", "青龙血脉"}, {"type", "Bloodline"}, {"rarity", "SSR"},
+                {"storyOrigin", "上古青龙的后裔。血脉越觉醒越不像人——但力量也越强。这片大陆上有人在猎杀血脉觉醒者，用他们的血炼制'升仙丹'。"},
+                {"storyMystery", "猎杀者是谁？猎杀者总部为什么在天元宗——这个'正道第一宗门'？宗主的真实身份是什么？"}
+            });
+            gm.RegisterTemplate(bloodline);
+
+            Debug.Log("[GameManager] All gift templates registered (5).");
         }
 
         void AutoActivateStarterGift()
