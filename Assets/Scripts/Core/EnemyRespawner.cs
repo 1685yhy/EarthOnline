@@ -101,20 +101,26 @@ namespace EarthOnline
             go.transform.localScale = new Vector3(0.9f, 1.1f, 0.9f);
             Object.DestroyImmediate(go.GetComponent<Rigidbody>());
 
+            // Scale with player level
+            int playerLv = PlayerStats.Instance?.playerLevel ?? 1;
+            float scaleMult = 1f + (playerLv - 1) * 0.15f; // +15% per level
+            int scaledHP = Mathf.RoundToInt(sp.maxHP * scaleMult);
+            int scaledAtk = Mathf.RoundToInt(sp.attackPower * scaleMult);
+
             var enemyType = System.Type.GetType("EarthOnline.Combat.EnemyAI, Assembly-CSharp");
             if (enemyType != null)
             {
                 var comp = go.AddComponent(enemyType);
                 enemyType.GetField("enemyId")?.SetValue(comp, sp.enemyId);
                 enemyType.GetField("enemyName")?.SetValue(comp, sp.enemyName);
-                enemyType.GetField("maxHP")?.SetValue(comp, sp.maxHP);
-                enemyType.GetField("attackPower")?.SetValue(comp, sp.attackPower);
+                enemyType.GetField("maxHP")?.SetValue(comp, scaledHP);
+                enemyType.GetField("attackPower")?.SetValue(comp, scaledAtk);
                 enemyType.GetField("moveSpeed")?.SetValue(comp, sp.moveSpeed);
                 enemyType.GetField("detectRange")?.SetValue(comp, sp.detectRange);
                 enemyType.GetField("patrolRadius")?.SetValue(comp, sp.patrolRadius);
                 enemyType.GetField("dropItemId")?.SetValue(comp, sp.dropItemId);
                 enemyType.GetField("dropItemName")?.SetValue(comp, sp.dropItemName);
-                enemyType.GetField("dropQuantity")?.SetValue(comp, sp.dropQuantity);
+                enemyType.GetField("dropQuantity")?.SetValue(comp, sp.dropQuantity + playerLv / 3);
             }
 
             var r = go.GetComponent<Renderer>();

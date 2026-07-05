@@ -263,6 +263,16 @@ namespace EarthOnline.Editor
             go.AddComponent<EarthOnline.NPC.NPCWander>();
             go.AddComponent<EarthOnline.NPC.NPCRelationship>();
 
+            // Add schedule based on NPC role
+            var schedule = go.AddComponent<EarthOnline.NPC.NPCSchedule>();
+            if (title.Contains("商人"))
+            {
+                schedule.schedule = new EarthOnline.NPC.NPCSchedule.TimeSlot[] {
+                    new() { startHour=6, endHour=18, position=pos, activity="在摊位卖货" },
+                    new() { startHour=18, endHour=6, position=pos+new Vector3(2,0,2), activity="在篝火旁休息" },
+                };
+            }
+
             var r = go.GetComponent<Renderer>();
             if (r != null) { var m = new Material(Shader.Find("Standard")); m.color = color; r.material = m; }
         }
