@@ -54,6 +54,10 @@ namespace EarthOnline.Framework
                 ("item_spirit_stone", 3), ("item_herb_001", 1));
             AddRecipe("craft_spirit_bomb", "灵气炸弹", "Consumable", "R", 2, 50,
                 ("item_spirit_stone", 5));
+            AddRecipe("craft_antidote", "解毒丹", "Consumable", "R", 2, 35,
+                ("item_herb_001", 2));
+            AddRecipe("craft_spirit_amulet", "灵蕴护符", "Accessory", "SR", 1, 350,
+                ("item_spirit_jade", 1), ("item_spirit_core_001", 2));
         }
 
         void AddRecipe(string id, string name, string type, string rarity, int qty, int value, params (string, int)[] ings)
