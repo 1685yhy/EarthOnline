@@ -279,6 +279,10 @@ namespace EarthOnline.Editor
                 "disc_stone_001", "界碑残片", "一块断裂的石碑。上面刻着'灵气大陆·北域·天元——'后面的字被毁掉了。碑座的另一面刻着不同的文字——不是人族的语言。",
                 "item_spirit_stone", "灵石碎片", 5, 30);
 
+            CreateDiscovery("Discovery_Altar", new Vector3(12, 0.5f, -10),
+                "disc_altar_001", "古老祭坛", "一个被藤蔓覆盖的石制祭坛。上面有已经干涸的血迹——黑色的，不像是人血。祭坛的中心有一个凹槽——恰好能放下一枚黑铁戒指。",
+                "item_spirit_core_001", "灵气核心", 1, 100);
+
             // ====== HUD ======
             CreateHUD();
 

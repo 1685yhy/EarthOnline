@@ -147,6 +147,8 @@ namespace EarthOnline
             });
         }
 
+            _events.Add(new GameEvent { id = "hunter_guild", title = "猎人工会招募！", description = "猎人工会今日招募新人。击杀妖兽可获得额外奖励。", OnTrigger = () => { Debug.Log("[Event] 🏹 猎人工会招募！击杀妖兽掉落翻倍，持续10分钟。"); } });
+
         IEnumerator EventLoop()
         {
             while (true)
