@@ -14,8 +14,9 @@ namespace EarthOnline
         [Header("基础属性")]
         public int maxHP = 100;
         public int currentHP = 100;
-        public int cultivation = 0;       // 修为
-        public long spiritStones = 0;         // 灵石
+        public int cultivation = 0;          // 修为
+        public long spiritStones = 0;        // 灵石(货币，不可直接修炼)
+        public int spiritEssence = 0;        // 灵韵(修炼资源，从灵石转化)
         public int playerLevel = 1;
         public int expToNextLevel = 100;
         public int currentExp = 0;
@@ -49,6 +50,21 @@ namespace EarthOnline
         {
             spiritStones += amount;
             Debug.Log($"[Player] +{amount}灵石 (总计:{spiritStones})");
+            UpdateHUD();
+        }
+
+        /// <summary>将灵石转化为灵韵用于修炼。兑换率：10灵石=1灵韵</summary>
+        public void ConvertToEssence(int spiritStoneCost)
+        {
+            if (spiritStones < spiritStoneCost)
+            {
+                Debug.Log($"[Player] 灵石不足。需要{spiritStoneCost}灵石。");
+                return;
+            }
+            spiritStones -= spiritStoneCost;
+            int essenceGain = spiritStoneCost / 10;
+            spiritEssence += essenceGain;
+            Debug.Log($"[Player] 💱 转化{spiritStoneCost}灵石→{essenceGain}灵韵 (灵韵:{spiritEssence})");
             UpdateHUD();
         }
 
@@ -125,7 +141,7 @@ namespace EarthOnline
             else if (cultivation >= 300) realmDisplay = "筑基期";
             else if (cultivation >= 100) realmDisplay = "练气期";
 
-            var status = $"🏷️ Lv.{playerLevel} {realmDisplay} | ❤️ {currentHP}/{maxHP} | {spiritStones}{currencyDisplay} | ⭐ {cultivation} | {weather} {timeStr} {dayStr}";
+            var status = $"🏷️ Lv.{playerLevel} {realmDisplay} | ❤️ {currentHP}/{maxHP} | 💎{spiritStones}灵石 | ✨{spiritEssence}灵韵 | ⭐ {cultivation} | {weather} {timeStr} {dayStr}";
             EventBus.Publish("OnStatusUpdate", new Dictionary<string, object> { {"status", status} });
         }
 
