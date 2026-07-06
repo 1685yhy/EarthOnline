@@ -117,7 +117,7 @@ namespace EarthOnline.Combat
             if (Time.time - _lastCastTime < castTime) return; // 还在掐诀
             if (_currentSpiritEnergy < spiritCostPerAttack)
             {
-                Debug.Log("[Combat] 灵力不足！等待回复...");
+                CombatFeedback.LowSpiritWarning();
                 return;
             }
 
@@ -142,6 +142,7 @@ namespace EarthOnline.Combat
             int damage = crit ? Mathf.RoundToInt(totalAtk * 1.8f) : Mathf.RoundToInt(totalAtk);
 
             _lockedTarget.TakeDamage(damage, crit);
+            CombatFeedback.Shake(crit ? 0.15f : 0.08f);
 
             string critText = crit ? " 暴击！" : "";
             Debug.Log($"[Combat] 灵击！{damage}伤害 → {_lockedTarget.enemyName}{critText} (灵力:{_currentSpiritEnergy:F0}/{maxSpiritEnergy})");

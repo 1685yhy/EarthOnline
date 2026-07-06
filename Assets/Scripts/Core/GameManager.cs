@@ -46,6 +46,7 @@ namespace EarthOnline
             EnsureComponent<RandomEvents>();
             EnsureComponent<OpeningSequence>();
             EnsureComponent<EarthOnline.Combat.BuffManager>();
+            EnsureComponent<EarthOnline.Combat.CombatFeedback>();
             EnsureComponent<TitleManager>();
 
             RegisterAllGifts();
