@@ -25,7 +25,8 @@ namespace EarthOnline.Editor
                 if (cleanNames.Contains(n) || n.StartsWith("Tree_") || n.StartsWith("Rock_")
                     || n.StartsWith("Pickup_") || n.StartsWith("House_") || n.StartsWith("Fence_")
                     || n.StartsWith("Enemy_") || n.StartsWith("Chest_") || n == "NPC_Chen" || n == "NPC_Zhao"
-                    || n.StartsWith("Dungeon") || n.StartsWith("Flower_") || n.StartsWith("Travel_"))
+                    || n.StartsWith("Dungeon") || n.StartsWith("Flower_") || n.StartsWith("Travel_")
+                    || n.StartsWith("Discovery_"))
                     Object.DestroyImmediate(go);
             }
 
@@ -253,6 +254,19 @@ namespace EarthOnline.Editor
             var dr2 = dc2.GetComponent<Renderer>();
             if (dr2 != null) { var dm2 = new Material(Shader.Find("Standard")); dm2.color = new Color(0.5f, 0f, 0.8f); dm2.EnableKeyword("_EMISSION"); dm2.SetColor("_EmissionColor", new Color(0.5f, 0f, 0.8f) * 0.5f); dr2.material = dm2; }
 
+            // ====== HIDDEN DISCOVERIES ======
+            CreateDiscovery("Discovery_Cave", new Vector3(-15, 0.5f, -15),
+                "disc_cave_001", "隐士洞府", "一个被藤蔓遮蔽的洞府。里面有一具坐化的骷髅——手边放着一卷未写完的功法。最后一页的字迹越来越潦草，最后一行是：'他们来了...如果有人在看这个...快走...'",
+                "", "", 0, 80);
+
+            CreateDiscovery("Discovery_Tree", new Vector3(15, 1, 15),
+                "disc_tree_001", "万年古树", "这棵树的树干上刻满了名字。最早的已经模糊不清——那是三千年前的文字。最近的名字还在：'李太白到此一游'。旁边有人用小字补了一句：'太白已飞升，留剑影于此树。有缘者可见。'",
+                "", "", 0, 50);
+
+            CreateDiscovery("Discovery_Stone", new Vector3(-5, 0.5f, -12),
+                "disc_stone_001", "界碑残片", "一块断裂的石碑。上面刻着'灵气大陆·北域·天元——'后面的字被毁掉了。碑座的另一面刻着不同的文字——不是人族的语言。",
+                "item_spirit_stone", "灵石碎片", 5, 30);
+
             // ====== HUD ======
             CreateHUD();
 
@@ -412,6 +426,18 @@ namespace EarthOnline.Editor
             var f = Font.CreateDynamicFontFromOSFont("SimHei", 14);
             if (f == null) f = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             return f;
+        }
+
+        static void CreateDiscovery(string name, Vector3 pos, string id, string title, string text,
+            string itemId, string itemName, int qty, int cultivation)
+        {
+            var go = new GameObject(name);
+            go.transform.position = pos;
+            var d = go.AddComponent<EarthOnline.HiddenDiscovery>();
+            d.discoveryId = id; d.discoveryName = title; d.discoveryText = text;
+            d.rewardItemId = itemId; d.rewardItemName = itemName;
+            d.rewardQuantity = qty; d.rewardCultivation = cultivation;
+            d.triggerRange = 3f;
         }
 
         static void CreateHUD()
