@@ -157,6 +157,10 @@ namespace EarthOnline
             {
                 yield return new WaitForSeconds(checkInterval);
                 if (Random.value < eventChance)
+            _events.Add(new GameEvent { id = "auction", title = "拍卖会开始！", description = "稀有物品拍卖！谁出价高归谁。", OnTrigger = () => { Debug.Log("[Event] 🔨 拍卖会！灵气核心正在拍卖..."); var s = PlayerStats.Instance; if(s!=null && s.spiritStones>=100){s.spiritStones-=100; s.AddCultivation(50); Debug.Log("[Event] 你以100灵石拍到了灵气核心！+50修为。");}else{Debug.Log("[Event] 灵石不够——被别人拍走了。");} } });
+            _events.Add(new GameEvent { id = "festival", title = "灵灯节！", description = "一年一度的灵灯节，全村欢庆。", OnTrigger = () => { Debug.Log("[Event] 🏮 灵灯节！村子沉浸在节日的喜悦中。所有NPC好感+2。"); var npcs = Object.FindObjectsOfType<EarthOnline.NPC.NPCBase>(); foreach(var n in npcs){var m=n.GetComponent<EarthOnline.NPC.NPCMemory>();if(m!=null)m.Remember(EarthOnline.NPC.MemoryType.Helped,"一起庆祝灵灯节",3);} } });
+            _events.Add(new GameEvent { id = "earthquake", title = "地动！", description = "一场地震——震开了一个隐藏的洞口。", OnTrigger = () => { Debug.Log("[Event] 🌋 地动山摇！一个新洞口出现了。+30修为（探索奖励）。"); PlayerStats.Instance?.AddCultivation(30); } });
+
                 {
                     TriggerRandomEvent();
                 }
