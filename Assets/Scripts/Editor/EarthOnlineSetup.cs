@@ -315,6 +315,16 @@ namespace EarthOnline.Editor
             go.AddComponent<EarthOnline.NPC.NPCWander>();
             go.AddComponent<EarthOnline.NPC.NPCRelationship>();
             go.AddComponent<EarthOnline.NPC.NPCActivity>();
+            // Set work lines based on NPC
+            var act = go.GetComponent<EarthOnline.NPC.NPCActivity>();
+            act.workLines = displayName switch {
+                "张老" => new[]{"这炉丹药还差三味...", "年轻人应该多出去走走。", "虚空...不会放过任何人的。"},
+                "王铁柱" => new[]{"这把剑的钢口还差一锤...", "好铁！好铁！", "当年我在炼器阁...算了不说也罢。"},
+                "李灵儿" => new[]{"这株药草的药性不对...", "凡是药三分毒。", "爹...我今天又梦到你了。"},
+                "陈半仙" => new[]{"走过路过不要错过！", "这件东西...说实话我也不确定是什么。", "古墓快出现了...得准备准备了。"},
+                "赵掌柜" => new[]{"客官里边请！", "我在这开了三十年店——什么人没见过。", "你是第47个。小心点。"},
+                _ => new[]{"..."}
+            };
             AddNPCSecrets(go, displayName);
 
             // Add schedule based on NPC role
