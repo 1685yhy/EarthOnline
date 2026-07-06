@@ -84,7 +84,7 @@ namespace EarthOnline
 
         void OnEnemyKilled(Dictionary<string, object> data)
         {
-            string enemy = data.ContainsKey("enemyName")?.ToString() ?? "敌人";
+            string enemy = data.ContainsKey("enemyName") ? data["enemyName"]?.ToString() ?? "敌人" : "敌人";
             AddGossip($"有人在附近击杀了{enemy}", "目击者", 3);
         }
 
