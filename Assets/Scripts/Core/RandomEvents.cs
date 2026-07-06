@@ -157,6 +157,8 @@ namespace EarthOnline
             {
                 yield return new WaitForSeconds(checkInterval);
                 if (Random.value < eventChance)
+            _events.Add(new GameEvent { id = "rare_herb", title = "珍稀药草出现", description = "一株百年难遇的灵草在附近出现了！", OnTrigger = () => { Debug.Log("[Event] 🌿 发现百年灵草！+80修为。——可惜刚采完就被天元宗的采药队看到了。他们记下了你的脸。"); PlayerStats.Instance?.AddCultivation(80); FactionSystem.Instance?.ModifyReputation("tianyuan", -5); } });
+
             _events.Add(new GameEvent { id = "ghost_rumors", title = "鬼镇传闻", description = "传言南边废弃的镇子晚上会发出奇怪的光。", OnTrigger = () => { Debug.Log("[Event] 👻 南边废弃小镇晚上有光——不是鬼火，是灵力波动。那里可能有被封存的法宝。"); } });
             _events.Add(new GameEvent { id = "rainbow_cloud", title = "七彩祥云", description = "天边出现了七彩祥云——吉兆！", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(30); PlayerStats.Instance?.AddSpiritStone(50); Debug.Log("[Event] 🌈 七彩祥云！吉兆降临。+30修为 +50灵石。"); } });
             _events.Add(new GameEvent { id = "wandering_poet", title = "游吟诗人", description = "一个游吟诗人在客栈里弹唱。歌词里有虚空裂缝的秘密。", OnTrigger = () => { Debug.Log("[Event] 🎵 游吟诗人唱道：虚空有口，吞天噬地；穿越者来，有去无回。——这是在说虚空裂缝？"); PlayerStats.Instance?.AddCultivation(20); } });
