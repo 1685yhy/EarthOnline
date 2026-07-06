@@ -61,6 +61,7 @@ namespace EarthOnline
             EnsureComponent<CultivationManager>();
             EnsureComponent<RumorSystem>();
             EnsureComponent<CrimeSystem>();
+            EnsureComponent<ReputationSystem>();
             var (origin, cfg) = OriginManager.RollOrigin();
             var player = GameObject.FindGameObjectWithTag("Player");
             if (player != null) OriginManager.ApplyOrigin(origin, player);

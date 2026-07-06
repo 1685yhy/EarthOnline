@@ -67,8 +67,7 @@ namespace EarthOnline
             bounty += 50;
             wantedTimer = 0;
             UpdateCrimeLevel();
-
-            Debug.Log($"🚨 [通缉] {record}！悬赏+50灵石。当前悬赏:{bounty}灵石。等级:{currentLevel}");
+            ReputationSystem.Instance?.AddInfamy(15, record);
 
             // 附近NPC目睹→态度变化
             NotifyNearbyNPCs(location, MemoryType.Harmed, $"目睹玩家攻击{npcName}", -10);
