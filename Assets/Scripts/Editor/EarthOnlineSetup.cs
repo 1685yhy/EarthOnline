@@ -105,6 +105,8 @@ namespace EarthOnline.Editor
                 new Color(0.6f, 0.4f, 0.2f), true);
 
             CreateNPC("NPC_Li", new Vector3(3, 1.2f, -5),
+            CreateEnemy("Enemy_Imp", new Vector3(-5, 1f, 15), "imp_001", "小恶魔", maxHP: 15, attack: 3, speed: 5f, detect: 4f, patrol: 8f, dropId: "item_spirit_stone", dropName: "灵石碎片", dropQty: 1, color: new Color(0.8f, 0.1f, 0.1f));
+
                 "npc_li_001", "李灵儿", "药铺掌柜",
                 "最近采到的灵药越来越少了...山里好像有什么东西在驱赶采药人。",
                 new Color(0.3f, 0.7f, 0.4f), false);

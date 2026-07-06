@@ -82,6 +82,7 @@ namespace EarthOnline
                 origin = "妖兽体内"
             },
             ["item_heal_pill_001"] = new ItemStory { displayName = "续命散", rarityName = "回血丹", story = "李灵儿炼的第一炉丹药。那一年她十岁，父亲刚被废掉修为。她把丹药塞进父亲嘴里——'爹，吃下去就会好的。'父亲笑了——那是他最后一次笑。", origin = "李灵儿·第一炉" },
+            ["item_treasure_map"] = new ItemStory { displayName = "故人归途", rarityName = "藏宝图碎片", story = "一共七片——指向上一个穿越者的遗书。他把自己的金手指埋在了那里。他希望有人能找到——在他死后。", origin = "第46号穿越者·遗物" },
             ["item_talisman_protection"] = new ItemStory { displayName = "平安扣", rarityName = "护身玉符", story = "一个母亲给即将远行的儿子的护身符。母亲是凡人——她不知道这块玉符能不能在修真者的世界里保护儿子。她只是把它放进儿子手里，说：'娘在家里等你。'儿子再也没有回来。玉符自己回来了——上面多了一道裂纹。", origin = "凡人母亲的祈愿" },
             ["item_cultivation_elixir"] = new ItemStory {
                 displayName = "月华露", rarityName = "修炼灵液",
