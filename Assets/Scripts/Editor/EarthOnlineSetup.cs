@@ -307,6 +307,7 @@ namespace EarthOnline.Editor
             }
             go.AddComponent<EarthOnline.NPC.NPCWander>();
             go.AddComponent<EarthOnline.NPC.NPCRelationship>();
+            go.AddComponent<EarthOnline.NPC.NPCActivity>();
             AddNPCSecrets(go, displayName);
 
             // Add schedule based on NPC role
