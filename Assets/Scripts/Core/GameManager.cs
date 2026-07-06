@@ -65,6 +65,7 @@ namespace EarthOnline
             EnsureComponent<AntagonistSystem>();
             EnsureComponent<FactionSystem>();
             EnsureComponent<GossipSystem>();
+            EnsureComponent<MarketSystem>();
             var (origin, cfg) = OriginManager.RollOrigin();
             var player = GameObject.FindGameObjectWithTag("Player");
             if (player != null) OriginManager.ApplyOrigin(origin, player);
@@ -475,6 +476,12 @@ namespace EarthOnline
             if (Input.GetKeyDown(KeyCode.G))
             {
                 CrimeSystem.Instance?.PayBounty();
+            }
+
+            // M键查看市场行情
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                MarketSystem.Instance?.ShowMarketReport();
             }
 
             // 商店已改为NPC对话中按Y打开 (V2.0沉浸式交互)
