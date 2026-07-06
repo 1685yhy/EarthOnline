@@ -56,6 +56,21 @@ namespace EarthOnline
                 story = "已经能微弱地动弹——它差一点就能成精了。采它的人在旁边等了三天三夜，等到它最放松的那一刻。吃下它的人会获得它千年积累的灵力——但也会继承它对采药人的恨意。",
                 origin = "深山老林·千年成精"
             },
+            ["item_spirit_stone"] = new ItemStory {
+                displayName = "碎灵", rarityName = "下品灵石",
+                story = "最常见的修炼货币。但这一块有点不同——它的切面里封着一只已经石化的远古昆虫。虫子的姿势像是在逃跑。它在躲什么？",
+                origin = "普通矿脉"
+            },
+            ["item_herb_001"] = new ItemStory {
+                displayName = "血痕草", rarityName = "止血草",
+                story = "叶片边缘天然带着红色的纹路——像血迹。古籍上记载：第一株止血草是上古一位女修用自己的血浇灌出来的。她是一个凡人，爱上了一个修士。修士受伤了，她没有灵药。她割开了自己的手腕。",
+                origin = "上古传说"
+            },
+            ["item_pill_001"] = new ItemStory {
+                displayName = "凝气散", rarityName = "聚气丹",
+                story = "最基础的修炼丹药。炼丹师学徒的第一课。这枚丹药上有一道裂纹——是炼丹师在出炉时手抖了。他的师父说：'每一道裂纹都是教训。记住它。'",
+                origin = "炼丹学徒"
+            },
             ["item_cultivation_elixir"] = new ItemStory {
                 displayName = "月华露", rarityName = "修炼灵液",
                 story = "只有在月圆之夜、灵气浓度最高的山顶才能采集到的露水。每一滴都经过月光淬炼。陈半仙说他曾在一个古墓里见过一池月华露——守池的是一具活着的骷髅。",
