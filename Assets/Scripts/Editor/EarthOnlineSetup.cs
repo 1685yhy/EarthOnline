@@ -534,6 +534,8 @@ namespace EarthOnline.Editor
             var go = new GameObject(name); go.transform.position = pos;
             var sv = go.AddComponent<EarthOnline.SpiritVein>();
             sv.veinName = veinName; sv.cultivationMultiplier = mult; sv.spiritRegenBonus = regen;
+            var challenge = go.AddComponent<EarthOnline.SpiritVeinChallenge>();
+            challenge.dailyCost = Mathf.RoundToInt(mult * 15); // 倍率越高持有成本越高
         }
 
         static void CreateDiscovery(string name, Vector3 pos, string id, string title, string text,
