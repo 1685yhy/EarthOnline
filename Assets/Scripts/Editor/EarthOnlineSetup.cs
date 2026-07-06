@@ -212,6 +212,11 @@ namespace EarthOnline.Editor
                 dropId: "item_spirit_stone", dropName: "灵石碎片", dropQty: 2,
                 color: new Color(0.4f, 0.4f, 0.7f));
 
+            CreateEnemy("Enemy_Bandit", new Vector3(8, 1.2f, -14), "bandit_001", "山贼",
+                maxHP: 45, attack: 10, speed: 2.5f, detect: 10f, patrol: 12f,
+                dropId: "item_herb_001", dropName: "止血草", dropQty: 2,
+                color: new Color(0.3f, 0.2f, 0.1f));
+
             // Boss enemy
             CreateEnemy("Enemy_Boss", new Vector3(0, 2f, -15), "boss_001", "虚空行者",
                 maxHP: 300, attack: 30, speed: 3f, detect: 12f, patrol: 3f,
