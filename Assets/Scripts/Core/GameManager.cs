@@ -253,7 +253,7 @@ namespace EarthOnline
             // 鉴宝灵瞳
             var merchantEye = new MerchantEye();
             merchantEye.Initialize(new Dictionary<string, object> {
-                {"id", "gift_eye_001"}, {"name", "鉴宝灵瞳"}, {"type", "Talent"}, {"rarity": "R"},
+                {"id", "gift_eye_001"}, {"name", "鉴宝灵瞳"}, {"type", "Talent"}, {"rarity", "R"},
                 {"storyOrigin", "能看到物品承载的记忆和执念。看得越多，越发现这个世界被'使用'过——被修改过。有人在操控一切。"},
                 {"storyMystery", "张老身上的虚空痕迹最多——因为他妻子在虚空里。但有一个人，痕迹不是黑色的，是金色的。他是谁？他为什么不同？"}
             });

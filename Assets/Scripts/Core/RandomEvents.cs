@@ -123,6 +123,17 @@ namespace EarthOnline
                 }
             });
 
+            _events.Add(new GameEvent { id = "meteor", title = "天降陨石！",
+                description = "一颗陨石坠落在村子附近。里面可能有好东西——也可能有不好的东西。",
+                OnTrigger = () => {
+                    Debug.Log("[Event] ☄️ 天降陨石！一颗发着紫光的陨石坠落在不远处。");
+                    var stats = PlayerStats.Instance;
+                    if (stats != null) { stats.AddCultivation(50); stats.spiritStones += 100; }
+                    Debug.Log("[Event] 陨石碎片中蕴含着浓郁的灵气 +50修为 +100灵石。");
+                    Debug.Log("[Event] 但陨石坑里还有一些...蠕动的东西。最好不要在那里待太久。");
+                }
+            });
+
             _events.Add(new GameEvent { id = "elder_visit", title = "神秘老者来访",
                 description = "一位白发老者来到村子。他说他在找一个人——'戴着黑铁戒指的人'。",
                 OnTrigger = () => {

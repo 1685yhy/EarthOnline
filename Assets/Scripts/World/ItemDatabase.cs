@@ -71,6 +71,11 @@ namespace EarthOnline
                 story = "最基础的修炼丹药。炼丹师学徒的第一课。这枚丹药上有一道裂纹——是炼丹师在出炉时手抖了。他的师父说：'每一道裂纹都是教训。记住它。'",
                 origin = "炼丹学徒"
             },
+            ["item_ancient_scripture"] = new ItemStory {
+                displayName = "虚空经·残页", rarityName = "上古残卷",
+                story = "纸张的材料不是这个世界的东西。上面的文字会自动变化——每次打开都是不同的内容。最后一页只有一句话：'写下这些的人还活着。他在虚空里。他在写。不要让他的手稿被读完——读完的那一天，他会从最后一页爬出来。'",
+                origin = "虚空中的手稿"
+            },
             ["item_cultivation_elixir"] = new ItemStory {
                 displayName = "月华露", rarityName = "修炼灵液",
                 story = "只有在月圆之夜、灵气浓度最高的山顶才能采集到的露水。每一滴都经过月光淬炼。陈半仙说他曾在一个古墓里见过一池月华露——守池的是一具活着的骷髅。",

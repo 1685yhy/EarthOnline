@@ -148,6 +148,8 @@ namespace EarthOnline.Editor
                 "item_spirit_jade", "灵玉", "Material", "SR", 1, 200);
             CreatePickup("Pickup_Ginseng", new Vector3(-15, 0.5f, -4),
                 "item_ginseng_1000yr", "千年灵芝", "Consumable", "SSR", 1, 500);
+            CreatePickup("Pickup_Scripture", new Vector3(0, 0.5f, 16),
+                "item_ancient_scripture", "上古残卷", "Skill", "SSR", 1, 800);
 
             // ====== TREES & ROCKS ======
             var envPositions = new Vector3[] {
