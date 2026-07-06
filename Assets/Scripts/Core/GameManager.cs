@@ -232,7 +232,16 @@ namespace EarthOnline
             });
             gm.RegisterTemplate(beastTamer);
 
-            Debug.Log("[GameManager] All gift templates registered (11).");
+            // 药王谷传承
+            var alchemy = new AlchemyMaster();
+            alchemy.Initialize(new Dictionary<string, object> {
+                {"id", "gift_alchemy_001"}, {"name", "药王谷传承"}, {"type", "Knowledge"}, {"rarity", "SR"},
+                {"storyOrigin", "药王谷——天下炼丹师的圣地。五十年前一夜之间凭空消失。三千弟子、所有典籍、整座山谷——连同谷主——人间蒸发。只有一枚传承玉简留了下来。"},
+                {"storyMystery", "谷主为什么要启动那个阵法？他说'虚空进来了'——虚空是什么？为什么它在炉火里？它为什么在等你？"}
+            });
+            gm.RegisterTemplate(alchemy);
+
+            Debug.Log("[GameManager] All gift templates registered (12).");
         }
 
         void AutoActivateStarterGift()
