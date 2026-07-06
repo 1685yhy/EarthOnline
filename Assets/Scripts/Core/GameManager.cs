@@ -58,6 +58,7 @@ namespace EarthOnline
             // V2.0: 随机出身
             EnsureComponent<OriginManager>();
             EnsureComponent<CultivationManager>();
+            EnsureComponent<RumorSystem>();
             var (origin, cfg) = OriginManager.RollOrigin();
             var player = GameObject.FindGameObjectWithTag("Player");
             if (player != null) OriginManager.ApplyOrigin(origin, player);
