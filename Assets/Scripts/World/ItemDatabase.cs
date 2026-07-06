@@ -46,6 +46,16 @@ namespace EarthOnline
                 story = "纸张已经泛黄发脆。第一页写着：'此卷传自剑仙李太白。然太白飞升后，世间无人能练至第七层。后学者慎之。'卷中夹着一片枯叶——可能是太白飞升前看最后一眼人间时落下的。",
                 origin = "剑仙李太白遗物"
             },
+            ["item_spirit_jade"] = new ItemStory {
+                displayName = "凝魄", rarityName = "上品灵玉",
+                story = "不是挖出来的——是'长'出来的。灵玉只能在灵气浓度极高的地方自然结晶。这一块的中心有一滴已经凝固的血——可能是某个修士在修炼时滴落的。",
+                origin = "灵气结晶"
+            },
+            ["item_ginseng_1000yr"] = new ItemStory {
+                displayName = "千年参王", rarityName = "千年灵芝",
+                story = "已经能微弱地动弹——它差一点就能成精了。采它的人在旁边等了三天三夜，等到它最放松的那一刻。吃下它的人会获得它千年积累的灵力——但也会继承它对采药人的恨意。",
+                origin = "深山老林·千年成精"
+            },
             ["item_cultivation_elixir"] = new ItemStory {
                 displayName = "月华露", rarityName = "修炼灵液",
                 story = "只有在月圆之夜、灵气浓度最高的山顶才能采集到的露水。每一滴都经过月光淬炼。陈半仙说他曾在一个古墓里见过一池月华露——守池的是一具活着的骷髅。",
