@@ -251,6 +251,7 @@ namespace EarthOnline.Editor
             var dc = GameObject.CreatePrimitive(PrimitiveType.Cylinder); dc.name = "DungeonVisual";
             dc.transform.SetParent(dungeon.transform);
             dc.transform.localPosition = Vector3.zero;
+            CreatePickup("Pickup_Pearl", new Vector3(18, 0.5f, 8), "item_spirit_pearl", "灵珠", "Material", "SR", 1, 300);
             dc.transform.localScale = new Vector3(3, 0.3f, 3);
             var dr = dc.GetComponent<Renderer>();
             if (dr != null) { var dm = new Material(Shader.Find("Standard")); dm.color = new Color(0.1f, 0.05f, 0.1f); dr.material = dm; }
