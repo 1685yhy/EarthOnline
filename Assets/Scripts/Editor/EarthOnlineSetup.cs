@@ -26,7 +26,7 @@ namespace EarthOnline.Editor
                     || n.StartsWith("Pickup_") || n.StartsWith("House_") || n.StartsWith("Fence_")
                     || n.StartsWith("Enemy_") || n.StartsWith("Chest_") || n == "NPC_Chen" || n == "NPC_Zhao"
                     || n.StartsWith("Dungeon") || n.StartsWith("Flower_") || n.StartsWith("Travel_")
-                    || n.StartsWith("Discovery_"))
+                    || n.StartsWith("Discovery_") || n.StartsWith("灵脉_"))
                     Object.DestroyImmediate(go);
             }
 
@@ -261,6 +261,11 @@ namespace EarthOnline.Editor
             var dr2 = dc2.GetComponent<Renderer>();
             if (dr2 != null) { var dm2 = new Material(Shader.Find("Standard")); dm2.color = new Color(0.5f, 0f, 0.8f); dm2.EnableKeyword("_EMISSION"); dm2.SetColor("_EmissionColor", new Color(0.5f, 0f, 0.8f) * 0.5f); dr2.material = dm2; }
 
+            // ====== SPIRIT VEINS ======
+            CreateSpiritVein("灵脉_村庄", new Vector3(0, 0.1f, 2), "小型灵脉", 1.5f, 3f);
+            CreateSpiritVein("灵脉_森林", new Vector3(-10, 0.1f, -3), "森林灵脉", 1.8f, 4f);
+            CreateSpiritVein("灵脉_裂缝", new Vector3(0, 0.1f, -20), "虚空边缘灵脉", 2.5f, 5f); // 高风险高回报
+
             // ====== HIDDEN DISCOVERIES ======
             CreateDiscovery("Discovery_Cave", new Vector3(-15, 0.5f, -15),
                 "disc_cave_001", "隐士洞府", "一个被藤蔓遮蔽的洞府。里面有一具坐化的骷髅——手边放着一卷未写完的功法。最后一页的字迹越来越潦草，最后一行是：'他们来了...如果有人在看这个...快走...'",
@@ -434,6 +439,13 @@ namespace EarthOnline.Editor
             var f = Font.CreateDynamicFontFromOSFont("SimHei", 14);
             if (f == null) f = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             return f;
+        }
+
+        static void CreateSpiritVein(string name, Vector3 pos, string veinName, float mult, float regen)
+        {
+            var go = new GameObject(name); go.transform.position = pos;
+            var sv = go.AddComponent<EarthOnline.SpiritVein>();
+            sv.veinName = veinName; sv.cultivationMultiplier = mult; sv.spiritRegenBonus = regen;
         }
 
         static void CreateDiscovery(string name, Vector3 pos, string id, string title, string text,
