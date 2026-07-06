@@ -281,7 +281,11 @@ namespace EarthOnline.Editor
             // ====== SPIRIT VEINS ======
             CreateSpiritVein("灵脉_村庄", new Vector3(0, 0.1f, 2), "小型灵脉", 1.5f, 3f);
             CreateSpiritVein("灵脉_森林", new Vector3(-10, 0.1f, -3), "森林灵脉", 1.8f, 4f);
-            CreateSpiritVein("灵脉_裂缝", new Vector3(0, 0.1f, -20), "虚空边缘灵脉", 2.5f, 5f); // 高风险高回报
+            CreateSpiritVein("灵脉_裂缝", new Vector3(0, 0.1f, -20), "虚空边缘灵脉", 2.5f, 5f);
+            CreateSpiritVein("灵脉_南", new Vector3(8, 0.1f, -10), "南部灵脉", 1.3f, 2f);
+            CreateSpiritVein("灵脉_西", new Vector3(-15, 0.1f, 0), "西部灵脉", 1.6f, 3f);
+            CreateSpiritVein("灵脉_东", new Vector3(18, 0.1f, 3), "东部灵脉", 1.4f, 2f);
+            CreateSpiritVein("灵脉_山洞", new Vector3(-12, 0.1f, 8), "山洞灵脉", 2.0f, 4f);
 
             // ====== HIDDEN DISCOVERIES ======
             CreateDiscovery("Discovery_Cave", new Vector3(-15, 0.5f, -15),
@@ -337,6 +341,7 @@ namespace EarthOnline.Editor
             go.AddComponent<EarthOnline.NPC.NPCRelationship>();
             go.AddComponent<EarthOnline.NPC.NPCActivity>();
             go.AddComponent<EarthOnline.NPC.NPCMemory>();
+            go.AddComponent<EarthOnline.NPC.NPCNaturalSchedule>();
             // Set work lines based on NPC
             var act = go.GetComponent<EarthOnline.NPC.NPCActivity>();
             act.workLines = displayName switch {
