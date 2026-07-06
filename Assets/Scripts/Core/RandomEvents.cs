@@ -157,6 +157,10 @@ namespace EarthOnline
             {
                 yield return new WaitForSeconds(checkInterval);
                 if (Random.value < eventChance)
+            _events.Add(new GameEvent { id = "master_visits", title = "高人路过", description = "一位隐世高人路过村子。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(80); Debug.Log("[Event] 🧙 隐世高人路过！传授了你一些修炼心得 +80修为。"); Debug.Log("[Event] 临走前他说：北边的虚空裂缝里——有你想要的所有答案。但你得先变得足够强。"); } });
+            _events.Add(new GameEvent { id = "smugglers", title = "走私贩来了", description = "一伙走私贩在村口摆摊——价格极低但来源不明。", OnTrigger = () => { PlayerStats.Instance?.spiritStones += 30; Debug.Log("[Event] 🕵️ 走私贩的货便宜但来路不明。你买了些低价灵石 +30灵石。"); ReputationSystem.Instance?.AddInfamy(3, "购买走私物品"); } });
+            _events.Add(new GameEvent { id = "heavenly_omens", title = "天降异象！", description = "天空中出现了一道金色的裂缝——有人在飞升？", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(100); Debug.Log("[Event] 🌟 天降异象！有人在飞升——但失败了。逸散的灵力洒遍了大地。+100修为。"); Debug.Log("[Event] 飞升失败的人——是你认识的吗？还是——未来的你？"); } });
+
             _events.Add(new GameEvent { id = "auction", title = "拍卖会开始！", description = "稀有物品拍卖！谁出价高归谁。", OnTrigger = () => { Debug.Log("[Event] 🔨 拍卖会！灵气核心正在拍卖..."); var s = PlayerStats.Instance; if(s!=null && s.spiritStones>=100){s.spiritStones-=100; s.AddCultivation(50); Debug.Log("[Event] 你以100灵石拍到了灵气核心！+50修为。");}else{Debug.Log("[Event] 灵石不够——被别人拍走了。");} } });
             _events.Add(new GameEvent { id = "festival", title = "灵灯节！", description = "一年一度的灵灯节，全村欢庆。", OnTrigger = () => { Debug.Log("[Event] 🏮 灵灯节！村子沉浸在节日的喜悦中。所有NPC好感+2。"); var npcs = Object.FindObjectsOfType<EarthOnline.NPC.NPCBase>(); foreach(var n in npcs){var m=n.GetComponent<EarthOnline.NPC.NPCMemory>();if(m!=null)m.Remember(EarthOnline.NPC.MemoryType.Helped,"一起庆祝灵灯节",3);} } });
             _events.Add(new GameEvent { id = "earthquake", title = "地动！", description = "一场地震——震开了一个隐藏的洞口。", OnTrigger = () => { Debug.Log("[Event] 🌋 地动山摇！一个新洞口出现了。+30修为（探索奖励）。"); PlayerStats.Instance?.AddCultivation(30); } });
