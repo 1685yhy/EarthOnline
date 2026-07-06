@@ -46,6 +46,10 @@ namespace EarthOnline.Framework
                 ("item_pill_001", 3), ("item_spirit_stone", 5));
             AddRecipe("craft_dragon_scale_armor", "龙鳞甲", "Armor", "SSR", 1, 800,
                 ("item_leather_armor", 1), ("item_spirit_core_001", 3), ("item_chaos_fragment", 1));
+            AddRecipe("craft_spirit_elixir", "灵力药剂", "Consumable", "R", 3, 60,
+                ("item_herb_001", 2), ("item_spirit_stone", 2));
+            AddRecipe("craft_breakthrough_pill", "突破丹", "Consumable", "SR", 1, 300,
+                ("item_pill_001", 5), ("item_spirit_core_001", 1), ("item_ginseng_1000yr", 1));
         }
 
         void AddRecipe(string id, string name, string type, string rarity, int qty, int value, params (string, int)[] ings)
