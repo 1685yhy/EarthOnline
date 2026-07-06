@@ -223,7 +223,16 @@ namespace EarthOnline
             });
             gm.RegisterTemplate(timeRegression);
 
-            Debug.Log("[GameManager] All gift templates registered (10).");
+            // 御兽宗师
+            var beastTamer = new BeastTamer();
+            beastTamer.Initialize(new Dictionary<string, object> {
+                {"id", "gift_beast_001"}, {"name", "御兽宗师"}, {"type", "Talent"}, {"rarity", "SR"},
+                {"storyOrigin", "御兽师曾是一个被尊崇的职业——直到天元宗五十年前将其定为'妖修'，全部处决。最后一位御兽师躲进了妖兽森林。"},
+                {"storyMystery", "天元宗为什么突然将御兽师定为妖修？五十年前发生了什么——让一个正道宗门对御兽师赶尽杀绝？"}
+            });
+            gm.RegisterTemplate(beastTamer);
+
+            Debug.Log("[GameManager] All gift templates registered (11).");
         }
 
         void AutoActivateStarterGift()
