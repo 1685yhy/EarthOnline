@@ -104,6 +104,15 @@ namespace EarthOnline.NPC
         {
             IsInteracting = true;
 
+            // V2.2: 优先使用对话树
+            var tree = GetComponent<DialogueTree>();
+            if (tree != null)
+            {
+                tree.StartDialogue();
+                Invoke(nameof(EndInteraction), 30f); // 对话树有更长时限
+                return;
+            }
+
             // 使用好感度系统的个性化问候
             string text = greetingText;
             var rel = GetComponent<NPCRelationship>();

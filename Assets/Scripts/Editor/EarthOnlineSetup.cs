@@ -343,6 +343,7 @@ namespace EarthOnline.Editor
             go.AddComponent<EarthOnline.NPC.NPCMemory>();
             go.AddComponent<EarthOnline.NPC.NPCNaturalSchedule>();
             go.AddComponent<EarthOnline.NPC.NPCNetwork>();
+            go.AddComponent<EarthOnline.NPC.DialogueTree>();
             // Set work lines based on NPC
             var act = go.GetComponent<EarthOnline.NPC.NPCActivity>();
             act.workLines = displayName switch {
