@@ -259,7 +259,16 @@ namespace EarthOnline
             });
             gm.RegisterTemplate(merchantEye);
 
-            Debug.Log("[GameManager] All gift templates registered (14).");
+            // 梦境行者
+            var dreamWalker = new DreamWalker();
+            dreamWalker.Initialize(new Dictionary<string, object> {
+                {"id", "gift_dream_001"}, {"name", "梦境行者"}, {"type", "Mystery"}, {"rarity", "SSR"},
+                {"storyOrigin", "每个人的梦都是一扇门。所有的门都通向同一片虚空。有一个穿越者在用梦境向全大陆发送警告——他的梦里，虚空已经吞噬了半个世界。"},
+                {"storyMystery", "那个穿越者是谁？他看到了未来还是过去？如果他看到的是未来——还来得及改变吗？"}
+            });
+            gm.RegisterTemplate(dreamWalker);
+
+            Debug.Log("[GameManager] All gift templates registered (15). 🎉");
         }
 
         void AutoActivateStarterGift()
