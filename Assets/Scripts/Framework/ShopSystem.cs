@@ -111,7 +111,8 @@ namespace EarthOnline.Framework
                 Debug.Log($"  [{s.rarity}] {s.itemName} — {s.price}💰 ({stockStr}) ID:{s.itemId}");
             }
             Debug.Log($"  你的灵石: {PlayerStats.Instance?.spiritStones ?? 0}💰");
-            Debug.Log($"  按B+数字购买 (如 B1=买第1个) | 按N卖背包物品");
+            Debug.Log($"  价格受名声影响：{ReputationSystem.Instance?.ShopPriceModifier ?? 1f:F2}x");
+            Debug.Log($"  按B+数字购买 | N卖物品");
         }
     }
 }
