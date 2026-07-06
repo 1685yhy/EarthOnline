@@ -140,8 +140,15 @@ namespace EarthOnline
             var player = GameObject.FindGameObjectWithTag("Player");
             if (player == null) return;
 
+            // 高悬赏→守卫可能直接抓住你
+            if (currentLevel >= CrimeLevel.Hunted && Random.value < 0.3f)
+            {
+                ArrestPlayer();
+                return;
+            }
+
             Debug.Log($"[通缉] 👮 守卫巡逻中...你被发现了！悬赏{bounty}灵石。");
-            Debug.Log($"[通缉] 按L查看状态。缴纳{bounty}灵石可清除悬赏。");
+            Debug.Log($"[通缉] 按L查看状态。G键缴纳{bounty}灵石清除悬赏。");
 
             // 高悬赏→守卫主动攻击
             if (currentLevel >= CrimeLevel.Hunted)
@@ -151,9 +158,38 @@ namespace EarthOnline
                 {
                     int guardDamage = 20 + bounty / 10;
                     stats.TakeDamage(guardDamage);
-                    Debug.Log($"[通缉] ⚔️ 守卫对你发动攻击！-{guardDamage}HP。立即缴纳罚款！");
+                    Debug.Log($"[通缉] ⚔️ 守卫对你发动攻击！-{guardDamage}HP。立即缴纳罚款或逃跑！");
                 }
             }
+        }
+
+        /// <summary>被守卫逮捕——入狱</summary>
+        void ArrestPlayer()
+        {
+            Debug.Log($"╔══════════════════════════════╗");
+            Debug.Log($"║  👮 你被守卫逮捕了！          ║");
+            Debug.Log($"║  罪名: {currentLevel}        ║");
+            Debug.Log($"║  悬赏: {bounty}灵石          ║");
+            Debug.Log($"╠══════════════════════════════╣");
+            Debug.Log($"║  选择:                       ║");
+            Debug.Log($"║  G=缴纳罚款释放              ║");
+            Debug.Log($"║  J=入狱服刑(1分钟/50悬赏)   ║");
+            Debug.Log($"╚══════════════════════════════╝");
+
+            // 入狱——失去灵石和时间
+            int jailTime = bounty / 50; // 每50悬赏=1分钟
+            var stats = PlayerStats.Instance;
+            if (stats != null)
+            {
+                long fine = bounty;
+                stats.spiritStones -= Mathf.Min((int)fine, (int)stats.spiritStones);
+                Debug.Log($"[通缉] 🔒 入狱{Mathf.Max(1, jailTime)}分钟。灵石被没收。");
+            }
+
+            // 清除悬赏但留下案底
+            bounty = 0;
+            currentLevel = CrimeLevel.Innocent;
+            ReputationSystem.Instance?.AddInfamy(10, "曾被逮捕入狱");
         }
 
         void NotifyNearbyNPCs(Vector3 location, MemoryType memType, string description, int weight)
