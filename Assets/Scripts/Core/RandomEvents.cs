@@ -157,6 +157,8 @@ namespace EarthOnline
             {
                 yield return new WaitForSeconds(checkInterval);
                 if (Random.value < eventChance)
+            _events.Add(new GameEvent { id = "full_moon", title = "满月之夜", description = "月圆之夜——灵气浓度翻倍。修炼事半功倍。", OnTrigger = () => { Debug.Log("[Event] 🌕 满月！灵气浓度翻倍——修炼效率x2持续至天明。"); } });
+
             _events.Add(new GameEvent { id = "tournament", title = "宗门大比！", description = "一年一度的宗门比武大会。观众也有奖励。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(40); Debug.Log("[Event] 🏟️ 宗门大比！观看比赛+40修为。"); Debug.Log("[Event] 天元宗的代表——是一个只有十岁的孩子。他在决赛中击败了所有成年修士。观众席上的大人们在鼓掌——但他们的眼睛里不是骄傲。是恐惧。"); } });
 
                 {

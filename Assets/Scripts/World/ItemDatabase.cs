@@ -81,6 +81,8 @@ namespace EarthOnline
                 story = "妖兽体内凝结的灵力精华。每一颗都是妖兽一生的修为结晶。握着它的时候——你能短暂地感受到那只妖兽的记忆碎片：森林、月光、还有把它杀死的那个修士的脸。",
                 origin = "妖兽体内"
             },
+            ["item_heal_pill_001"] = new ItemStory { displayName = "续命散", rarityName = "回血丹", story = "李灵儿炼的第一炉丹药。那一年她十岁，父亲刚被废掉修为。她把丹药塞进父亲嘴里——'爹，吃下去就会好的。'父亲笑了——那是他最后一次笑。", origin = "李灵儿·第一炉" },
+            ["item_talisman_protection"] = new ItemStory { displayName = "平安扣", rarityName = "护身玉符", story = "一个母亲给即将远行的儿子的护身符。母亲是凡人——她不知道这块玉符能不能在修真者的世界里保护儿子。她只是把它放进儿子手里，说：'娘在家里等你。'儿子再也没有回来。玉符自己回来了——上面多了一道裂纹。", origin = "凡人母亲的祈愿" },
             ["item_cultivation_elixir"] = new ItemStory {
                 displayName = "月华露", rarityName = "修炼灵液",
                 story = "只有在月圆之夜、灵气浓度最高的山顶才能采集到的露水。每一滴都经过月光淬炼。陈半仙说他曾在一个古墓里见过一池月华露——守池的是一具活着的骷髅。",
