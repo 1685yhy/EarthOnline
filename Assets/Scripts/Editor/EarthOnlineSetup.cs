@@ -105,12 +105,11 @@ namespace EarthOnline.Editor
                 new Color(0.6f, 0.4f, 0.2f), true);
 
             CreateNPC("NPC_Li", new Vector3(3, 1.2f, -5),
-            CreateEnemy("Enemy_Spider", new Vector3(12, 1, -15), "spider_001", "毒蛛", maxHP: 20, attack: 5, speed: 3f, detect: 6f, patrol: 6f, dropId: "item_herb_001", dropName: "止血草", dropQty: 1, color: new Color(0.2f, 0.1f, 0.2f));
-            CreateEnemy("Enemy_Golem", new Vector3(-18, 2, -2), "golem_001", "石魔像", maxHP: 150, attack: 20, speed: 1f, detect: 4f, patrol: 2f, dropId: "item_spirit_core_001", dropName: "灵气核心", dropQty: 2, color: new Color(0.4f, 0.35f, 0.3f));
-
                 "npc_li_001", "李灵儿", "药铺掌柜",
                 "最近采到的灵药越来越少了...山里好像有什么东西在驱赶采药人。",
                 new Color(0.3f, 0.7f, 0.4f), false);
+            CreateEnemy("Enemy_Spider", new Vector3(12, 1, -15), "spider_001", "毒蛛", 20, 5, 3f, 6f, 6f, "item_herb_001", "止血草", 1, new Color(0.2f, 0.1f, 0.2f));
+            CreateEnemy("Enemy_Golem", new Vector3(-18, 2, -2), "golem_001", "石魔像", 150, 20, 1f, 4f, 2f, "item_spirit_core_001", "灵气核心", 2, new Color(0.4f, 0.35f, 0.3f));
 
             CreateNPC("NPC_Chen", new Vector3(-3, 1.2f, -8),
                 "npc_chen_001", "陈半仙", "流浪商人",
@@ -274,12 +273,11 @@ namespace EarthOnline.Editor
                 "你看到一个人——他坐在一块石头上，面前漂浮着一个由光构成的球体。那是签到系统。他输入了最后一行代码-然后虚空从地面裂缝涌出，吞没了他。三百年前。这个人来自一个你不认识的文明——但你知道他的恐惧。",
                 "gift_sign_in_001", "npc_zhang_001");
 
-            CreateEcho("Echo_Alchemist", new Vector3(8, 0.5f, 12),
-                "echo_alchemy_001", "药王谷·最后的炉火",
-                "一个白发老人在丹炉前跪着，双手按在炉壁上。他的身后是三千弟子的虚影——所有人的手都叠在他的手上。他在用所有人的生命力维持这个阵法。虚空在炉火里。他抬起头——他的眼睛和你对视了一秒。'它还在。它在等你。'",
             var fish1 = new GameObject("Fishing_River"); fish1.transform.position = new Vector3(8, 0.5f, -16); fish1.AddComponent<EarthOnline.FishingSpot>();
             var fish2 = new GameObject("Fishing_Lake"); fish2.transform.position = new Vector3(-14, 0.5f, 10); fish2.AddComponent<EarthOnline.FishingSpot>();
-
+            CreateEcho("Echo_Alchemist", new Vector3(8, 0.5f, 12),
+                "echo_alchemy_001", "药王谷·最后的炉火",
+                "一个白发老人在丹炉前跪着...",
                 "gift_alchemy_001", "npc_li_001");
 
             CreateEcho("Echo_Ring", new Vector3(-3, 0.5f, -6),
