@@ -157,6 +157,10 @@ namespace EarthOnline
             {
                 yield return new WaitForSeconds(checkInterval);
                 if (Random.value < eventChance)
+            _events.Add(new GameEvent { id = "ghost_rumors", title = "鬼镇传闻", description = "传言南边废弃的镇子晚上会发出奇怪的光。", OnTrigger = () => { Debug.Log("[Event] 👻 南边废弃小镇晚上有光——不是鬼火，是灵力波动。那里可能有被封存的法宝。"); } });
+            _events.Add(new GameEvent { id = "rainbow_cloud", title = "七彩祥云", description = "天边出现了七彩祥云——吉兆！", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(30); PlayerStats.Instance?.AddSpiritStone(50); Debug.Log("[Event] 🌈 七彩祥云！吉兆降临。+30修为 +50灵石。"); } });
+            _events.Add(new GameEvent { id = "wandering_poet", title = "游吟诗人", description = "一个游吟诗人在客栈里弹唱。歌词里有虚空裂缝的秘密。", OnTrigger = () => { Debug.Log("[Event] 🎵 游吟诗人唱道：虚空有口，吞天噬地；穿越者来，有去无回。——这是在说虚空裂缝？"); PlayerStats.Instance?.AddCultivation(20); } });
+
             _events.Add(new GameEvent { id = "dragon_sighting", title = "龙影掠过", description = "天空中有巨大的影子飞过——龙？", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); Debug.Log("[Event] 🐉 龙影！天空中有龙飞过——所有人都看到了。+50修为。"); } });
             _events.Add(new GameEvent { id = "merchant_caravan", title = "大商队抵达", description = "一支大型商队抵达村子。稀有商品限时供应！", OnTrigger = () => { Debug.Log("[Event] 🐪 大商队！所有商店库存翻倍、价格-30%。"); PlayerStats.Instance?.AddSpiritStone(30); } });
 

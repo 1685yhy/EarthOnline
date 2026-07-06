@@ -105,6 +105,9 @@ namespace EarthOnline.Editor
                 new Color(0.6f, 0.4f, 0.2f), true);
 
             CreateNPC("NPC_Li", new Vector3(3, 1.2f, -5),
+            CreateEnemy("Enemy_Slime", new Vector3(10, 1f, 10), "slime_001", "灵气史莱姆", maxHP: 10, attack: 2, speed: 1f, detect: 3f, patrol: 3f, dropId: "item_herb_001", dropName: "止血草", dropQty: 2, color: new Color(0.2f, 0.8f, 0.3f));
+            CreateEnemy("Enemy_Harpy", new Vector3(-10, 2f, -16), "harpy_001", "鹰身女妖", maxHP: 35, attack: 10, speed: 5f, detect: 15f, patrol: 20f, dropId: "item_spirit_stone", dropName: "灵石碎片", dropQty: 3, color: new Color(0.7f, 0.7f, 0.2f));
+
             CreateEnemy("Enemy_Imp", new Vector3(-5, 1f, 15), "imp_001", "小恶魔", maxHP: 15, attack: 3, speed: 5f, detect: 4f, patrol: 8f, dropId: "item_spirit_stone", dropName: "灵石碎片", dropQty: 1, color: new Color(0.8f, 0.1f, 0.1f));
 
                 "npc_li_001", "李灵儿", "药铺掌柜",

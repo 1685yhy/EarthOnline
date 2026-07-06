@@ -82,6 +82,9 @@ namespace EarthOnline
                 origin = "妖兽体内"
             },
             ["item_heal_pill_001"] = new ItemStory { displayName = "续命散", rarityName = "回血丹", story = "李灵儿炼的第一炉丹药。那一年她十岁，父亲刚被废掉修为。她把丹药塞进父亲嘴里——'爹，吃下去就会好的。'父亲笑了——那是他最后一次笑。", origin = "李灵儿·第一炉" },
+            ["item_spirit_pearl"] = new ItemStory { displayName = "鲛人泪", rarityName = "灵珠", story = "传说鲛人哭泣时会落下珍珠。但这颗不是泪——是鲛人的眼珠。有人在海底发现了它——发现者第二天就失踪了。他的遗物里只有这颗珠子——和一句话：海里有人在叫我。", origin = "深海·鲛人之眼" },
+            ["item_spirit_amulet"] = new ItemStory { displayName = "往生扣", rarityName = "灵蕴护符", story = "一位元婴修士在飞升前为凡间妻子炼制的最后一件东西。他说：戴上它——下辈子我会找到你。妻子戴了一辈子。她说：我不要下辈子——我要这辈子。", origin = "元婴修士·最后遗物" },
+
             ["item_treasure_map"] = new ItemStory { displayName = "故人归途", rarityName = "藏宝图碎片", story = "一共七片——指向上一个穿越者的遗书。他把自己的金手指埋在了那里。他希望有人能找到——在他死后。", origin = "第46号穿越者·遗物" },
             ["item_talisman_protection"] = new ItemStory { displayName = "平安扣", rarityName = "护身玉符", story = "一个母亲给即将远行的儿子的护身符。母亲是凡人——她不知道这块玉符能不能在修真者的世界里保护儿子。她只是把它放进儿子手里，说：'娘在家里等你。'儿子再也没有回来。玉符自己回来了——上面多了一道裂纹。", origin = "凡人母亲的祈愿" },
             ["item_cultivation_elixir"] = new ItemStory {
