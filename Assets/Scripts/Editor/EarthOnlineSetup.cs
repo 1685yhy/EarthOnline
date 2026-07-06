@@ -26,7 +26,7 @@ namespace EarthOnline.Editor
                     || n.StartsWith("Pickup_") || n.StartsWith("House_") || n.StartsWith("Fence_")
                     || n.StartsWith("Enemy_") || n.StartsWith("Chest_") || n == "NPC_Chen" || n == "NPC_Zhao"
                     || n.StartsWith("Dungeon") || n.StartsWith("Flower_") || n.StartsWith("Travel_")
-                    || n.StartsWith("Discovery_") || n.StartsWith("灵脉_"))
+                    || n.StartsWith("Discovery_") || n.StartsWith("灵脉_") || n.StartsWith("Echo_"))
                     Object.DestroyImmediate(go);
             }
 
@@ -262,6 +262,22 @@ namespace EarthOnline.Editor
             var dr2 = dc2.GetComponent<Renderer>();
             if (dr2 != null) { var dm2 = new Material(Shader.Find("Standard")); dm2.color = new Color(0.5f, 0f, 0.8f); dm2.EnableKeyword("_EMISSION"); dm2.SetColor("_EmissionColor", new Color(0.5f, 0f, 0.8f) * 0.5f); dr2.material = dm2; }
 
+            // ====== WORLD ECHOES ======
+            CreateEcho("Echo_Civilization", new Vector3(-12, 0.5f, -12),
+                "echo_civ_001", "文明终结之日",
+                "你看到一个人——他坐在一块石头上，面前漂浮着一个由光构成的球体。那是签到系统。他输入了最后一行代码-然后虚空从地面裂缝涌出，吞没了他。三百年前。这个人来自一个你不认识的文明——但你知道他的恐惧。",
+                "gift_sign_in_001", "npc_zhang_001");
+
+            CreateEcho("Echo_Alchemist", new Vector3(8, 0.5f, 12),
+                "echo_alchemy_001", "药王谷·最后的炉火",
+                "一个白发老人在丹炉前跪着，双手按在炉壁上。他的身后是三千弟子的虚影——所有人的手都叠在他的手上。他在用所有人的生命力维持这个阵法。虚空在炉火里。他抬起头——他的眼睛和你对视了一秒。'它还在。它在等你。'",
+                "gift_alchemy_001", "npc_li_001");
+
+            CreateEcho("Echo_Ring", new Vector3(-3, 0.5f, -6),
+                "echo_ring_001", "黑铁戒指·铸造之日",
+                "一枚黑铁戒指躺在锻造台上。一只苍老的手把它捡起来——那是年轻时的张老。他在戒指上刻了一个名字。名字被虚空腐蚀了，看不清。但这枚戒指是他为一个人铸的。一个他等了三十年、还在等的人。",
+                "gift_old_master_001", "npc_zhang_001");
+
             // ====== SPIRIT VEINS ======
             CreateSpiritVein("灵脉_村庄", new Vector3(0, 0.1f, 2), "小型灵脉", 1.5f, 3f);
             CreateSpiritVein("灵脉_森林", new Vector3(-10, 0.1f, -3), "森林灵脉", 1.8f, 4f);
@@ -320,6 +336,7 @@ namespace EarthOnline.Editor
             go.AddComponent<EarthOnline.NPC.NPCWander>();
             go.AddComponent<EarthOnline.NPC.NPCRelationship>();
             go.AddComponent<EarthOnline.NPC.NPCActivity>();
+            go.AddComponent<EarthOnline.NPC.NPCMemory>();
             // Set work lines based on NPC
             var act = go.GetComponent<EarthOnline.NPC.NPCActivity>();
             act.workLines = displayName switch {
@@ -454,6 +471,15 @@ namespace EarthOnline.Editor
             var f = Font.CreateDynamicFontFromOSFont("SimHei", 14);
             if (f == null) f = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             return f;
+        }
+
+        static void CreateEcho(string name, Vector3 pos, string id, string title, string text,
+            string giftId, string npcId)
+        {
+            var go = new GameObject(name); go.transform.position = pos;
+            var echo = go.AddComponent<EarthOnline.WorldEcho>();
+            echo.echoId = id; echo.echoTitle = title; echo.echoText = text;
+            echo.connectedGiftId = giftId; echo.connectedNpcId = npcId;
         }
 
         static void CreateSpiritVein(string name, Vector3 pos, string veinName, float mult, float regen)

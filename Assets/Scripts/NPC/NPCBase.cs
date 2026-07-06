@@ -109,12 +109,18 @@ namespace EarthOnline.NPC
             var rel = GetComponent<NPCRelationship>();
             if (rel != null) text = rel.GetPersonalizedGreeting();
 
+            // 检查NPC记忆——基于过往互动改变态度
+            var mem = GetComponent<NPCMemory>();
+            string reflection = mem?.GetMemoryReflection();
+
             // 检查是否有秘密可揭示
             var sec = GetComponent<NPCSecret>();
             string hint = sec?.GetHint();
 
             Debug.Log($"── {npcName}{(string.IsNullOrEmpty(npcTitle) ? "" : $" · {npcTitle}")} ──");
             Debug.Log($"\"{text}\"");
+            if (!string.IsNullOrEmpty(reflection))
+                Debug.Log($"({reflection})");
             if (!string.IsNullOrEmpty(hint))
                 Debug.Log($"({hint})");
 
