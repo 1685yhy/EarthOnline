@@ -145,9 +145,11 @@ namespace EarthOnline
                     Debug.Log("[Event] 残卷中蕴含的古老知识让你获得了+100修为。");
                 }
             });
-        }
 
-            _events.Add(new GameEvent { id = "hunter_guild", title = "猎人工会招募！", description = "猎人工会今日招募新人。击杀妖兽可获得额外奖励。", OnTrigger = () => { Debug.Log("[Event] 🏹 猎人工会招募！击杀妖兽掉落翻倍，持续10分钟。"); } });
+            var hunterEvent = new GameEvent { id = "hunter_guild", title = "猎人工会招募！", description = "猎人工会今日招募新人。击杀妖兽可获得额外奖励。" };
+            hunterEvent.OnTrigger = () => { Debug.Log("[Event] 🏹 猎人工会招募！击杀妖兽掉落翻倍，持续10分钟。"); };
+            _events.Add(hunterEvent);
+        }
 
         IEnumerator EventLoop()
         {
