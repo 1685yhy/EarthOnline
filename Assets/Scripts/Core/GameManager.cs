@@ -241,7 +241,16 @@ namespace EarthOnline
             });
             gm.RegisterTemplate(alchemy);
 
-            Debug.Log("[GameManager] All gift templates registered (12).");
+            // 影分身
+            var shadowClone = new ShadowClone();
+            shadowClone.Initialize(new Dictionary<string, object> {
+                {"id", "gift_shadow_001"}, {"name", "影分身"}, {"type", "Ability"}, {"rarity", "SR"},
+                {"storyOrigin", "分出去的每一片灵魂都不会完整地回来。它们会去一个地方——一个充满'你'的地方。虚空在用你的灵魂碎片做实验。"},
+                {"storyMystery", "虚空为什么在复制你？成千上万个你的副本——它们被用来做什么？"}
+            });
+            gm.RegisterTemplate(shadowClone);
+
+            Debug.Log("[GameManager] All gift templates registered (13).");
         }
 
         void AutoActivateStarterGift()
