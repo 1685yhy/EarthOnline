@@ -157,6 +157,8 @@ namespace EarthOnline
                     TriggerRandomEvent();
                 }
             }
+            _events.Add(new GameEvent { id = "market_day", title = "月度坊市开放！", description = "每月一次的大型坊市今日开放。", OnTrigger = () => { Debug.Log("[Event] 🏪 月度坊市！所有商人价格-20%。"); PlayerStats.Instance.spiritStones += 50; Debug.Log("[Event] 捡到钱包 +50灵石。"); } });
+
         }
 
         void TriggerRandomEvent()
