@@ -64,6 +64,7 @@ namespace EarthOnline
             EnsureComponent<ReputationSystem>();
             EnsureComponent<AntagonistSystem>();
             EnsureComponent<FactionSystem>();
+            EnsureComponent<GossipSystem>();
             var (origin, cfg) = OriginManager.RollOrigin();
             var player = GameObject.FindGameObjectWithTag("Player");
             if (player != null) OriginManager.ApplyOrigin(origin, player);
