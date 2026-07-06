@@ -122,6 +122,7 @@ namespace EarthOnline.Editor
             CreateBuilding("House_Blacksmith", new Vector3(-6, 0, 7), new Vector3(3, 2, 3), new Color(0.4f, 0.3f, 0.2f));
             CreateBuilding("House_Herb", new Vector3(5, 0, -7), new Vector3(3, 1.5f, 3), new Color(0.3f, 0.5f, 0.3f));
             CreateBuilding("House_Elder", new Vector3(8, 0, 5), new Vector3(2, 1.8f, 2), new Color(0.5f, 0.4f, 0.3f));
+            CreateBuilding("House_Inn", new Vector3(-2, 0, -1), new Vector3(4, 2.5f, 4), new Color(0.7f, 0.5f, 0.2f));
 
             // ====== WORLD PICKUPS ======
             CreatePickup("Pickup_Herb", new Vector3(8, 0.5f, 2),
@@ -142,6 +143,10 @@ namespace EarthOnline.Editor
                 "item_cultivation_elixir", "修炼灵液", "Consumable", "SR", 1, 100);
             CreatePickup("Pickup_Scroll", new Vector3(10, 0.5f, -12),
                 "item_skill_scroll", "残缺功法", "Skill", "SR", 1, 150);
+            CreatePickup("Pickup_Jade", new Vector3(15, 0.5f, -2),
+                "item_spirit_jade", "灵玉", "Material", "SR", 1, 200);
+            CreatePickup("Pickup_Ginseng", new Vector3(-15, 0.5f, -4),
+                "item_ginseng_1000yr", "千年灵芝", "Consumable", "SSR", 1, 500);
 
             // ====== TREES & ROCKS ======
             var envPositions = new Vector3[] {
