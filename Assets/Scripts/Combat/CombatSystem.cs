@@ -74,7 +74,7 @@ namespace EarthOnline.Combat
         }
 
         /// <summary>
-        /// 左键点击：选中+攻击一步完成（降低操作门槛）
+        /// 左键点击：选中+攻击一步完成
         /// </summary>
         void TrySelectTarget()
         {
@@ -86,16 +86,31 @@ namespace EarthOnline.Combat
                 if (enemy != null && !enemy.IsDead)
                 {
                     _lockedTarget = enemy;
-                    // 如果有灵力→自动释放灵击；否则→免费基础攻击
                     if (_currentSpiritEnergy >= spiritCostPerAttack)
                         CastSpiritAttack();
                     else
                         CastBasicAttack();
                     return;
                 }
+
+                // V2.1: 点击了NPC→攻击NPC→触发犯罪系统
+                var npc = hit.collider.GetComponent<EarthOnline.NPC.NPCBase>();
+                if (npc != null)
+                {
+                    AttackNPC(npc);
+                    return;
+                }
             }
-            // 点空了→取消锁定
             if (_lockedTarget != null) { _lockedTarget = null; }
+        }
+
+        /// <summary>攻击NPC——触发犯罪</summary>
+        void AttackNPC(EarthOnline.NPC.NPCBase npc)
+        {
+            int dmg = Mathf.RoundToInt(baseSpiritAttack * 0.5f);
+            Debug.Log($"[Combat] ⚔️ 攻击了{npc.npcName}！");
+            CrimeSystem.Instance?.ReportAssault(npc.npcName, npc.transform.position);
+            CombatFeedback.Shake(0.1f);
         }
 
         /// <summary>

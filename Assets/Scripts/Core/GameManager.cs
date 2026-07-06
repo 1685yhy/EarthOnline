@@ -60,6 +60,7 @@ namespace EarthOnline
             EnsureComponent<OriginManager>();
             EnsureComponent<CultivationManager>();
             EnsureComponent<RumorSystem>();
+            EnsureComponent<CrimeSystem>();
             var (origin, cfg) = OriginManager.RollOrigin();
             var player = GameObject.FindGameObjectWithTag("Player");
             if (player != null) OriginManager.ApplyOrigin(origin, player);
@@ -457,6 +458,19 @@ namespace EarthOnline
             {
                 var cs = EarthOnline.Combat.CombatSystem.Instance;
                 if (cs != null) cs.CycleTarget();
+            }
+
+            // L键查看通缉状态
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                var crime = CrimeSystem.Instance;
+                if (crime != null) Debug.Log($"[通缉] {crime.GetStatusText()}\n  犯罪记录:{(crime.crimeRecord.Count > 0 ? string.Join(", ", crime.crimeRecord) : "无")}");
+            }
+
+            // G键缴纳罚款
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                CrimeSystem.Instance?.PayBounty();
             }
 
             // 商店已改为NPC对话中按Y打开 (V2.0沉浸式交互)
