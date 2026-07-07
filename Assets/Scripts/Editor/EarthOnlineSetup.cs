@@ -105,6 +105,8 @@ namespace EarthOnline.Editor
                 new Color(0.6f, 0.4f, 0.2f), true);
 
             CreateNPC("NPC_Li", new Vector3(3, 1.2f, -5),
+            CreateEnemy("Enemy_Shadow", new Vector3(2, 1f, 20), "shadow_001", "魅影", maxHP: 25, attack: 8, speed: 6f, detect: 8f, patrol: 15f, dropId: "item_spirit_stone", dropName: "灵石碎片", dropQty: 2, color: new Color(0.05f, 0.05f, 0.05f));
+
                 "npc_li_001", "李灵儿", "药铺掌柜",
                 "最近采到的灵药越来越少了...山里好像有什么东西在驱赶采药人。",
                 new Color(0.3f, 0.7f, 0.4f), false);
@@ -250,6 +252,8 @@ namespace EarthOnline.Editor
             var ft2 = tp2.AddComponent<EarthOnline.FastTravel>(); ft2.pointName = "虚空裂缝入口"; ft2.pointId = "dungeon_entrance";
             var tp3 = new GameObject("Travel_Forest"); tp3.transform.position = new Vector3(15, 0.5f, 0);
             var ft3 = tp3.AddComponent<EarthOnline.FastTravel>(); ft3.pointName = "东边森林"; ft3.pointId = "east_forest";
+            CreatePickup("Pickup_Crystal", new Vector3(20, 0.5f, -5), "item_void_crystal", "虚空结晶", "Material", "SSR", 1, 1000);
+
 
             var dungeon = new GameObject("DungeonEntrance");
             dungeon.transform.position = new Vector3(0, 0, -15);

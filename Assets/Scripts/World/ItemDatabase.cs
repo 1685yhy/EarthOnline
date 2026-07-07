@@ -82,6 +82,8 @@ namespace EarthOnline
                 origin = "妖兽体内"
             },
             ["item_heal_pill_001"] = new ItemStory { displayName = "续命散", rarityName = "回血丹", story = "李灵儿炼的第一炉丹药。那一年她十岁，父亲刚被废掉修为。她把丹药塞进父亲嘴里——'爹，吃下去就会好的。'父亲笑了——那是他最后一次笑。", origin = "李灵儿·第一炉" },
+            ["item_void_crystal"] = new ItemStory { displayName = "虚空之泪", rarityName = "虚空结晶", story = "虚空也会哭。当它在虚空中飘浮了足够久——吸收了足够多穿越者的记忆和遗憾——就会凝结成这种结晶。握在手里——你能感受到那47个穿越者的一生。他们每个人——都想回家。", origin = "虚空·穿越者记忆凝结" },
+
             ["item_spirit_pearl"] = new ItemStory { displayName = "鲛人泪", rarityName = "灵珠", story = "传说鲛人哭泣时会落下珍珠。但这颗不是泪——是鲛人的眼珠。有人在海底发现了它——发现者第二天就失踪了。他的遗物里只有这颗珠子——和一句话：海里有人在叫我。", origin = "深海·鲛人之眼" },
             ["item_spirit_amulet"] = new ItemStory { displayName = "往生扣", rarityName = "灵蕴护符", story = "一位元婴修士在飞升前为凡间妻子炼制的最后一件东西。他说：戴上它——下辈子我会找到你。妻子戴了一辈子。她说：我不要下辈子——我要这辈子。", origin = "元婴修士·最后遗物" },
 

@@ -157,6 +157,8 @@ namespace EarthOnline
             {
                 yield return new WaitForSeconds(checkInterval);
                 if (Random.value < eventChance)
+            _events.Add(new GameEvent { id = "ancient_ruins", title = "遗迹发光", description = "地底深处传来震动——远古遗迹在苏醒。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(100); Debug.Log("[Event] 🏛️ 远古遗迹！地面裂开——一座被封印万年的地宫露出了入口。+100修为。"); Debug.Log("[Event] 地宫入口的石门上刻着一行字：我们封印的不是怪物——是我们自己。"); } });
+
             _events.Add(new GameEvent { id = "rare_herb", title = "珍稀药草出现", description = "一株百年难遇的灵草在附近出现了！", OnTrigger = () => { Debug.Log("[Event] 🌿 发现百年灵草！+80修为。——可惜刚采完就被天元宗的采药队看到了。他们记下了你的脸。"); PlayerStats.Instance?.AddCultivation(80); FactionSystem.Instance?.ModifyReputation("tianyuan", -5); } });
 
             _events.Add(new GameEvent { id = "ghost_rumors", title = "鬼镇传闻", description = "传言南边废弃的镇子晚上会发出奇怪的光。", OnTrigger = () => { Debug.Log("[Event] 👻 南边废弃小镇晚上有光——不是鬼火，是灵力波动。那里可能有被封存的法宝。"); } });
