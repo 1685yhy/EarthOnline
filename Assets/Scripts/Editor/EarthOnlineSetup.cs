@@ -114,6 +114,9 @@ namespace EarthOnline.Editor
             CreateEnemy("Enemy_Ghoul", new Vector3(-16, 1f, 16), "ghoul_001", "食尸鬼", 40, 12, 3f, 10f, 8f, "item_herb_001", "止血草", 2, new Color(0.1f, 0.3f, 0.1f));
             CreateEnemy("Enemy_Shadow", new Vector3(2, 1f, 20), "shadow_001", "魅影", 25, 8, 6f, 8f, 15f, "item_spirit_stone", "灵石碎片", 2, new Color(0.05f, 0.05f, 0.05f));
             CreateEnemy("Enemy_Wraith", new Vector3(0, 1.5f, 18), "wraith_001", "虚空游魂", 60, 15, 2f, 20f, 10f, "item_spirit_core_001", "灵气核心", 2, new Color(0.1f, 0.1f, 0.3f));
+            CreateNPC("NPC_Mystic", new Vector3(-10, 1.2f, 18), "npc_mystic_001", "云游道人", "神秘道人", "贫道云游四方——见过虚空吞噬的世界不止这一个。你身上有地球意志的印记。它选中了你——你知道代价是什么吗？", new Color(0.6f, 0.6f, 0.9f), true);
+            CreateNPC("NPC_Guard", new Vector3(0, 1.2f, -22), "npc_guard_001", "守卫队长", "守卫", "没人能越过这条线。虚空行者之外的东西——不是你能对抗的。等你足够强了再来。", new Color(0.3f, 0.3f, 0.5f), true);
+
             CreateNPC("NPC_Liu", new Vector3(-8, 1.2f, -12), "npc_liu_001", "刘猎户", "猎人", "北山的野兽越来越多了——不像是自然迁徙，像是被什么东西赶出来的。你要去北边的话小心点。", new Color(0.5f, 0.4f, 0.2f), true);
             CreateNPC("NPC_Miner", new Vector3(-15, 1.2f, -8), "npc_miner_001", "老矿工", "矿工", "我挖了二十年矿——最近挖出来的灵石都是黑的。像被什么东西污染了。工头说是自然现象。狗屁。", new Color(0.4f, 0.3f, 0.3f), true);
             CreateNPC("NPC_Apprentice", new Vector3(3, 1.2f, 12), "npc_apprentice_001", "小药童", "药童", "李师父教我认药已经三年了！我马上就能自己开炉炼丹了——不过上次差点把药铺烧了...", new Color(0.3f, 0.8f, 0.3f), false);
@@ -249,6 +252,8 @@ namespace EarthOnline.Editor
                 flower.transform.localScale = Vector3.one * 0.15f;
                 var fr = flower.GetComponent<Renderer>();
                 if (fr != null) { var fm = new Material(Shader.Find("Standard")); fm.color = Random.value > 0.5f ? new Color(1,0.2f,0.2f) : new Color(1,1,0.2f); fr.material = fm; }
+            CreatePickup("Pickup_Feather", new Vector3(22, 0.5f, 3), "item_phoenix_feather", "凤羽", "Material", "SSR", 1, 800);
+
                 flower.GetComponent<Collider>().isTrigger = true;
             }
 
