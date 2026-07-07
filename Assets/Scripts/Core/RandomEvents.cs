@@ -157,6 +157,8 @@ namespace EarthOnline
             {
                 yield return new WaitForSeconds(checkInterval);
                 if (Random.value < eventChance)
+            _events.Add(new GameEvent { id = "immortal_visits", title = "仙人下凡", description = "一位真正的仙人下凡——他在找一个人。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(200); Debug.Log("[Event] ✨ 仙人下凡！他环顾四周：第47号...你在这里。你体内的东西——不属于这个世界。它在找你。做好准备。"); } });
+
             _events.Add(new GameEvent { id = "blood_moon", title = "血月当空", description = "月亮变成了血红色——妖兽狂暴，但击杀奖励翻倍。", OnTrigger = () => { Debug.Log("[Event] 🌑 血月！妖兽狂暴——但击杀奖励x2。持续至天明。"); } });
             _events.Add(new GameEvent { id = "sage_appears", title = "圣人降临", description = "一位大乘期修士路过——他看了你一眼。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(200); Debug.Log("[Event] 👁️ 大乘期修士看了你一眼——有意思。你体内有不止一个世界的力量。等你到了渡劫期——来找我。他留下了坐标。"); } });
 

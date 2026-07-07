@@ -104,12 +104,10 @@ namespace EarthOnline.Editor
                 "嘿！要打铁吗？我这儿可是整个新手村最好的铁匠铺！虽然新手村就我一家铁匠铺...",
                 new Color(0.6f, 0.4f, 0.2f), true);
 
-            CreateNPC("NPC_Li", new Vector3(3, 1.2f, -5),
-            CreateEnemy("Enemy_Gargoyle", new Vector3(5, 2f, -20), "gargoyle_001", "石像鬼", maxHP: 90, attack: 20, speed: 1.5f, detect: 6f, patrol: 0f, dropId: "item_spirit_core_001", dropName: "灵气核心", dropQty: 3, color: new Color(0.3f, 0.3f, 0.3f));
+            CreateNPC("NPC_Li", new Vector3(3, 1.2f, -5), "npc_li_001", "李灵儿", "药铺掌柜", "最近采到的灵药越来越少了...", new Color(0.3f, 0.7f, 0.4f), false);
+            CreateEnemy("Enemy_Lich", new Vector3(0, 1.5f, 22), "lich_001", "巫妖", maxHP: 120, attack: 28, speed: 1f, detect: 20f, patrol: 3f, dropId: "item_void_crystal", dropName: "虚空结晶", dropQty: 2, color: new Color(0.05f, 0.05f, 0.1f));
 
-                "npc_li_001", "李灵儿", "药铺掌柜",
-                "最近采到的灵药越来越少了...山里好像有什么东西在驱赶采药人。",
-                new Color(0.3f, 0.7f, 0.4f), false);
+            CreateEnemy("Enemy_Gargoyle", new Vector3(5, 2f, -20), "gargoyle_001", "石像鬼", 90, 20, 1.5f, 6f, 0f, "item_spirit_core_001", "灵气核心", 3, new Color(0.3f, 0.3f, 0.3f));
             CreateEnemy("Enemy_Elemental", new Vector3(22, 1.5f, -10), "elemental_001", "火元素", 80, 22, 2f, 8f, 4f, "item_spirit_core_001", "灵气核心", 3, new Color(1f, 0.4f, 0.1f));
             CreateEnemy("Enemy_IceWraith", new Vector3(-22, 1.5f, 10), "ice_001", "冰霜之灵", 65, 16, 2.5f, 10f, 8f, "item_spirit_jade", "灵玉", 1, new Color(0.1f, 0.6f, 1f));
             CreateEnemy("Enemy_Drake", new Vector3(20, 2f, 0), "drake_001", "幼龙", 200, 25, 3f, 15f, 12f, "item_spirit_core_001", "灵气核心", 4, new Color(0.8f, 0.3f, 0.05f));
