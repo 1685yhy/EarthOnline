@@ -82,6 +82,8 @@ namespace EarthOnline
                 origin = "妖兽体内"
             },
             ["item_heal_pill_001"] = new ItemStory { displayName = "续命散", rarityName = "回血丹", story = "李灵儿炼的第一炉丹药。那一年她十岁，父亲刚被废掉修为。她把丹药塞进父亲嘴里——'爹，吃下去就会好的。'父亲笑了——那是他最后一次笑。", origin = "李灵儿·第一炉" },
+            ["item_spirit_lotus"] = new ItemStory { displayName = "轮回之莲", rarityName = "千年灵莲", story = "一千年开花——一千年凋谢。每一片花瓣都蕴含着一次轮回的记忆。吃下它——你会记起你的前世。你是第47个穿越者——但你不是第一次来这个世界。", origin = "轮回·前世记忆" },
+            ["item_dragon_fang"] = new ItemStory { displayName = "龙之遗言", rarityName = "龙牙", story = "不是被拔下来的——是龙自己吐出来的。龙族灭族前——每条龙都把自己的一颗牙留给了这个世界。当我们不在了——让这些牙替我们守护这片大陆。", origin = "龙族·最后的遗言" },
             ["item_dragon_egg"] = new ItemStory { displayName = "龙之遗孤", rarityName = "龙蛋", story = "一颗还活着的龙蛋。蛋壳上刻着龙族的最后一句话：我们把最后的孩子留给你们。不要让虚空找到它。龙族灭绝了——但这颗蛋还在等待。", origin = "龙族·最后的遗孤" },
             ["item_titan_core"] = new ItemStory { displayName = "古神之心", rarityName = "泰坦核心", story = "上古泰坦的核心——它活着的时候——身高万丈。它倒下的时候——砸出了一条山脉。它的核心还在跳动——它在等有人配得上它的力量。", origin = "上古泰坦·遗骸" },
             ["item_star_dust"] = new ItemStory { displayName = "星之泪", rarityName = "星尘", story = "不是灰尘——是星星的尸体。每一颗星星死去的时候——会撒下这样的粉末。收集足够多——你就可以点燃一颗新的星星。", origin = "星辰·遗骸" },

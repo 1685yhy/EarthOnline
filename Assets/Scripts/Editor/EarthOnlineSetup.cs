@@ -114,6 +114,14 @@ namespace EarthOnline.Editor
             CreateEnemy("Enemy_Treant", new Vector3(15, 4f, 20), "treant_001", "古树精", maxHP: 250, attack: 35, speed: 0.5f, detect: 5f, patrol: 0f, dropId: "item_ancient_rune", dropName: "远古符文", dropQty: 1, color: new Color(0.2f, 0.5f, 0.1f));
             CreateEnemy("Enemy_Basilisk", new Vector3(18, 1.2f, 15), "basilisk_001", "蛇怪", 110, 24, 2.5f, 12f, 8f, "item_spirit_core_001", "灵气核心", 3, new Color(0.1f, 0.5f, 0.1f));
             CreateEnemy("Enemy_Lich", new Vector3(0, 1.5f, 22), "lich_001", "巫妖", 120, 28, 1f, 20f, 3f, "item_void_crystal", "虚空结晶", 2, new Color(0.05f, 0.05f, 0.1f));
+            CreateNPC("NPC_Crier", new Vector3(true|0f, 1.2f, -4f), "npc_crier_001", "报信人", "报信人", new Color(号外号外！天元宗宗主闭关突破——青云门趁机抢占北矿！散修联盟呼吁双方克制——商盟囤积灵石坐等发财！f, 号外号外！天元宗宗主闭关突破——青云门趁机抢占北矿！散修联盟呼吁双方克制——商盟囤积灵石坐等发财！f, 号外号外！天元宗宗主闭关突破——青云门趁机抢占北矿！散修联盟呼吁双方克制——商盟囤积灵石坐等发财！f), 0.6,0.5,0.4);
+            CreateNPC("NPC_Peddler", new Vector3(true|2f, 1.2f, 6f), "npc_peddler_001", "小贩", "小贩", new Color(卖糖葫芦咯——修士也吃糖葫芦！别看我是凡人——我见过的修士比你们见过的凡人都多！f, 卖糖葫芦咯——修士也吃糖葫芦！别看我是凡人——我见过的修士比你们见过的凡人都多！f, 卖糖葫芦咯——修士也吃糖葫芦！别看我是凡人——我见过的修士比你们见过的凡人都多！f), 0.9,0.5,0.3);
+            CreateNPC("NPC_Spy", new Vector3(true|15f, 1.2f, -10f), "npc_spy_001", "???", "神秘人", new Color((这个人什么都不说——但他的眼神告诉你——他在观察你。他的袖口绣着天元宗的标记。)f, (这个人什么都不说——但他的眼神告诉你——他在观察你。他的袖口绣着天元宗的标记。)f, (这个人什么都不说——但他的眼神告诉你——他在观察你。他的袖口绣着天元宗的标记。)f), 0.1,0.1,0.1);
+            CreateNPC("NPC_Monk", new Vector3(true|-5f, 1.2f, 10f), "npc_monk_001", "苦行僧", "苦行僧", new Color(阿弥陀佛。贫僧从西天来——要去东海。路过此地——感觉这里有什么东西不对劲。不是虚空——是人心。f, 阿弥陀佛。贫僧从西天来——要去东海。路过此地——感觉这里有什么东西不对劲。不是虚空——是人心。f, 阿弥陀佛。贫僧从西天来——要去东海。路过此地——感觉这里有什么东西不对劲。不是虚空——是人心。f), 0.8,0.6,0.3);
+            CreateNPC("NPC_Healer", new Vector3(true|6f, 1.2f, -8f), "npc_healer_001", "孙大夫", "游方郎中", new Color(老夫行医四十年——治过的修士比治过的凡人多。修士的病——不在身体，在道心。f, 老夫行医四十年——治过的修士比治过的凡人多。修士的病——不在身体，在道心。f, 老夫行医四十年——治过的修士比治过的凡人多。修士的病——不在身体，在道心。f), 0.3,0.7,0.3);
+            CreateNPC("NPC_Wanderer", new Vector3(true|12f, 1.2f, 4f), "npc_wanderer_001", "流浪剑客", "流浪剑客", new Color(我没有宗门——我的剑就是我的宗门。你想学剑？先让我看看你的剑心。不是每个人——都适合握剑。f, 我没有宗门——我的剑就是我的宗门。你想学剑？先让我看看你的剑心。不是每个人——都适合握剑。f, 我没有宗门——我的剑就是我的宗门。你想学剑？先让我看看你的剑心。不是每个人——都适合握剑。f), 0.4,0.4,0.6);
+            CreateNPC("NPC_Smith", new Vector3(true|10f, 1.2f, -2f), "npc_smith_002", "赵铁匠", "铸剑师", new Color(王铁柱是我师兄。他离开炼器阁后——我也走了。我不怪他。那把剑——换了我也会铸。f, 王铁柱是我师兄。他离开炼器阁后——我也走了。我不怪他。那把剑——换了我也会铸。f, 王铁柱是我师兄。他离开炼器阁后——我也走了。我不怪他。那把剑——换了我也会铸。f), 0.5,0.3,0.2);
+            CreateNPC("NPC_Elder2", new Vector3(true|-8f, 1.2f, 0f), "npc_elder_002", "周婆婆", "说书人", new Color(老身在这村子里住了六十年——见过的穿越者比见过的晴天都多。你们每个人都觉得自己是主角。有的人确实是——大多数不是。f, 老身在这村子里住了六十年——见过的穿越者比见过的晴天都多。你们每个人都觉得自己是主角。有的人确实是——大多数不是。f, 老身在这村子里住了六十年——见过的穿越者比见过的晴天都多。你们每个人都觉得自己是主角。有的人确实是——大多数不是。f), 0.5,0.3,0.5);
             CreateEnemy("Enemy_Gargoyle", new Vector3(5, 2f, -20), "gargoyle_001", "石像鬼", 90, 20, 1.5f, 6f, 0f, "item_spirit_core_001", "灵气核心", 3, new Color(0.3f, 0.3f, 0.3f));
             CreateEnemy("Enemy_Elemental", new Vector3(22, 1.5f, -10), "elemental_001", "火元素", 80, 22, 2f, 8f, 4f, "item_spirit_core_001", "灵气核心", 3, new Color(1f, 0.4f, 0.1f));
             CreateEnemy("Enemy_IceWraith", new Vector3(-22, 1.5f, 10), "ice_001", "冰霜之灵", 65, 16, 2.5f, 10f, 8f, "item_spirit_jade", "灵玉", 1, new Color(0.1f, 0.6f, 1f));
@@ -244,6 +252,8 @@ namespace EarthOnline.Editor
             CreateEnemy("Enemy_Bandit", new Vector3(8, 1.2f, -14), "bandit_001", "山贼",
                 maxHP: 45, attack: 10, speed: 2.5f, detect: 10f, patrol: 12f,
                 dropId: "item_herb_001", dropName: "止血草", dropQty: 2,
+            CreatePickup("Pickup_Lotus", new Vector3(-20, 0.5f, 5), "item_spirit_lotus", "千年灵莲", "Consumable", "SSR", 1, 1500);
+            CreatePickup("Pickup_Fang", new Vector3(20, 0.5f, -15), "item_dragon_fang", "龙牙", "Material", "SSR", 1, 2000);
                 color: new Color(0.3f, 0.2f, 0.1f));
 
             // Boss enemy
