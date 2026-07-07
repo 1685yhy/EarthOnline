@@ -105,12 +105,14 @@ namespace EarthOnline.Editor
                 new Color(0.6f, 0.4f, 0.2f), true);
 
             CreateNPC("NPC_Li", new Vector3(3, 1.2f, -5),
-            CreateEnemy("Enemy_Scorpion", new Vector3(16, 1f, -12), "scorp_001", "巨蝎", maxHP: 55, attack: 14, speed: 2f, detect: 5f, patrol: 4f, dropId: "item_pill_001", dropName: "聚气丹", dropQty: 2, color: new Color(0.6f, 0.2f, 0.05f));
-            CreateEnemy("Enemy_Ghoul", new Vector3(-16, 1f, 16), "ghoul_001", "食尸鬼", maxHP: 40, attack: 12, speed: 3f, detect: 10f, patrol: 8f, dropId: "item_herb_001", dropName: "止血草", dropQty: 2, color: new Color(0.1f, 0.3f, 0.1f));
+            CreateEnemy("Enemy_Drake", new Vector3(20, 2f, 0), "drake_001", "幼龙", maxHP: 200, attack: 25, speed: 3f, detect: 15f, patrol: 12f, dropId: "item_spirit_core_001", dropName: "灵气核心", dropQty: 4, color: new Color(0.8f, 0.3f, 0.05f));
+            CreateEnemy("Enemy_Cultist", new Vector3(-20, 1f, -18), "cultist_001", "虚空信徒", maxHP: 70, attack: 18, speed: 2f, detect: 12f, patrol: 6f, dropId: "item_void_crystal", dropName: "虚空结晶", dropQty: 1, color: new Color(0.3f, 0.05f, 0.3f));
 
                 "npc_li_001", "李灵儿", "药铺掌柜",
                 "最近采到的灵药越来越少了...山里好像有什么东西在驱赶采药人。",
                 new Color(0.3f, 0.7f, 0.4f), false);
+            CreateEnemy("Enemy_Scorpion", new Vector3(16, 1f, -12), "scorp_001", "巨蝎", 55, 14, 2f, 5f, 4f, "item_pill_001", "聚气丹", 2, new Color(0.6f, 0.2f, 0.05f));
+            CreateEnemy("Enemy_Ghoul", new Vector3(-16, 1f, 16), "ghoul_001", "食尸鬼", 40, 12, 3f, 10f, 8f, "item_herb_001", "止血草", 2, new Color(0.1f, 0.3f, 0.1f));
             CreateEnemy("Enemy_Shadow", new Vector3(2, 1f, 20), "shadow_001", "魅影", 25, 8, 6f, 8f, 15f, "item_spirit_stone", "灵石碎片", 2, new Color(0.05f, 0.05f, 0.05f));
             CreateEnemy("Enemy_Wraith", new Vector3(0, 1.5f, 18), "wraith_001", "虚空游魂", 60, 15, 2f, 20f, 10f, "item_spirit_core_001", "灵气核心", 2, new Color(0.1f, 0.1f, 0.3f));
             CreateEnemy("Enemy_Slime", new Vector3(10, 1f, 10), "slime_001", "灵气史莱姆", 10, 2, 1f, 3f, 3f, "item_herb_001", "止血草", 2, new Color(0.2f, 0.8f, 0.3f));

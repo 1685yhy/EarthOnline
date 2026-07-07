@@ -157,6 +157,9 @@ namespace EarthOnline
             {
                 yield return new WaitForSeconds(checkInterval);
                 if (Random.value < eventChance)
+            _events.Add(new GameEvent { id = "stars_aligned", title = "七星连珠", description = "七颗星辰排成一线——天地灵气暴涨。", OnTrigger = () => { Debug.Log("[Event] 🌟 七星连珠！天地灵气暴涨！所有修炼效率翻倍持续至天明。"); PlayerStats.Instance?.AddCultivation(70); } });
+            _events.Add(new GameEvent { id = "refugees", title = "难民潮", description = "南部小镇被虚空侵蚀——难民逃到了这里。", OnTrigger = () => { Debug.Log("[Event] 🏃 难民潮！南边的镇子没了——被虚空吞了。难民们带来了消息：虚空的扩张速度在加快。"); Debug.Log("[Event] 一个小女孩拉着你的衣角：大哥哥/大姐姐——你能帮我们打回去吗？"); PlayerStats.Instance?.AddSpiritStone(20); } });
+
             _events.Add(new GameEvent { id = "cave_in", title = "矿洞塌方", description = "北部矿脉发生了塌方！有矿工被困。", OnTrigger = () => { Debug.Log("[Event] ⛏️ 矿难！你救出了一个矿工。他感激地给了你报酬。+50灵石 +30修为"); PlayerStats.Instance?.AddSpiritStone(50); PlayerStats.Instance?.AddCultivation(30); } });
 
             _events.Add(new GameEvent { id = "ancient_ruins", title = "遗迹发光", description = "地底深处传来震动——远古遗迹在苏醒。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(100); Debug.Log("[Event] 🏛️ 远古遗迹！地面裂开——一座被封印万年的地宫露出了入口。+100修为。"); Debug.Log("[Event] 地宫入口的石门上刻着一行字：我们封印的不是怪物——是我们自己。"); } });

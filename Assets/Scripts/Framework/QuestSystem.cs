@@ -184,9 +184,10 @@ namespace EarthOnline.Framework
             }
         }
 
+        public QuestData GetQuestFromNPC(string npcId) { return _allQuests.Values.FirstOrDefault(q => q.giverNpcId == npcId && q.status == QuestStatus.Available); }
+
         void CheckExploreQuests()
         {
-        public QuestData GetQuestFromNPC(string npcId) { return _allQuests.Values.FirstOrDefault(q => q.giverNpcId == npcId && q.status == QuestStatus.Available); }
             var player = GameObject.FindGameObjectWithTag("Player");
             if (player == null) return;
             foreach (var q in _activeQuests)
