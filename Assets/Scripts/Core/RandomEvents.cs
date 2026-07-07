@@ -157,6 +157,8 @@ namespace EarthOnline
             {
                 yield return new WaitForSeconds(checkInterval);
                 if (Random.value < eventChance)
+            _events.Add(new GameEvent { id = "time_rift", title = "时间裂缝", description = "一道时间裂缝短暂打开——你看到了过去。", OnTrigger = () => { Debug.Log("[Event] ⏰ 时间裂缝！你看到了三百年前的灵气大陆——那时的虚空还没有来。那时的张老还是个年轻人。他的妻子——还在他身边。"); PlayerStats.Instance?.AddCultivation(80); Debug.Log("[Event] 裂缝关闭了。但那幅画面——你忘不掉。"); } });
+
             _events.Add(new GameEvent { id = "blizzard", title = "暴风雪", description = "突如其来的暴风雪——妖兽躲进巢穴，灵脉被冰封。", OnTrigger = () => { Debug.Log("[Event] ❄️ 暴风雪！妖兽躲藏——但灵脉被冰封，修炼效率下降。"); } });
             _events.Add(new GameEvent { id = "earth_voice", title = "大地之音", description = "大地深处传来低沉的声音——地球意志在呼唤。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(120); Debug.Log("[Event] 🌍 大地之音：你做得很好——但还不够。虚空在加速。你需要在它到来之前变得更强。"); Debug.Log("[Event] 地球意志直接对你说话了。这是第一次——不会是最后一次。"); } });
 
