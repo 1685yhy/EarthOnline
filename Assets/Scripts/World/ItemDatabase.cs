@@ -82,6 +82,7 @@ namespace EarthOnline
                 origin = "妖兽体内"
             },
             ["item_heal_pill_001"] = new ItemStory { displayName = "续命散", rarityName = "回血丹", story = "李灵儿炼的第一炉丹药。那一年她十岁，父亲刚被废掉修为。她把丹药塞进父亲嘴里——'爹，吃下去就会好的。'父亲笑了——那是他最后一次笑。", origin = "李灵儿·第一炉" },
+
             ["item_phoenix_feather"] = new ItemStory { displayName = "不死之证", rarityName = "凤羽", story = "凤凰涅槃时脱落的羽毛。每一根都蕴含着一丝不死之力。传说集齐三根可以炼制不死药——但上一个尝试的人——在丹炉前老死了。他等了凤凰三千年——凤凰没有回来。", origin = "凤凰·涅槃遗物" },
 
             ["item_void_crystal"] = new ItemStory { displayName = "虚空之泪", rarityName = "虚空结晶", story = "虚空也会哭。当它在虚空中飘浮了足够久——吸收了足够多穿越者的记忆和遗憾——就会凝结成这种结晶。握在手里——你能感受到那47个穿越者的一生。他们每个人——都想回家。", origin = "虚空·穿越者记忆凝结" },

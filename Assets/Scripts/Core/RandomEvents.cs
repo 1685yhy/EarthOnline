@@ -157,6 +157,9 @@ namespace EarthOnline
             {
                 yield return new WaitForSeconds(checkInterval);
                 if (Random.value < eventChance)
+            _events.Add(new GameEvent { id = "blizzard", title = "暴风雪", description = "突如其来的暴风雪——妖兽躲进巢穴，灵脉被冰封。", OnTrigger = () => { Debug.Log("[Event] ❄️ 暴风雪！妖兽躲藏——但灵脉被冰封，修炼效率下降。"); } });
+            _events.Add(new GameEvent { id = "earth_voice", title = "大地之音", description = "大地深处传来低沉的声音——地球意志在呼唤。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(120); Debug.Log("[Event] 🌍 大地之音：你做得很好——但还不够。虚空在加速。你需要在它到来之前变得更强。"); Debug.Log("[Event] 地球意志直接对你说话了。这是第一次——不会是最后一次。"); } });
+
             _events.Add(new GameEvent { id = "phoenix", title = "凤凰涅槃", description = "一只凤凰在远处涅槃——凤羽散落大地。", OnTrigger = () => { Debug.Log("[Event] 🔥 凤凰涅槃！凤羽散落。+100修为。"); PlayerStats.Instance?.AddCultivation(100); Debug.Log("[Event] 传说集齐三根凤羽可以炼制不死药——但从未有人做到过。"); } });
 
             _events.Add(new GameEvent { id = "stars_aligned", title = "七星连珠", description = "七颗星辰排成一线——天地灵气暴涨。", OnTrigger = () => { Debug.Log("[Event] 🌟 七星连珠！天地灵气暴涨！所有修炼效率翻倍持续至天明。"); PlayerStats.Instance?.AddCultivation(70); } });
