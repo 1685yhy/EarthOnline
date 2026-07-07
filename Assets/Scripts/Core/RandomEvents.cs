@@ -157,6 +157,9 @@ namespace EarthOnline
             {
                 yield return new WaitForSeconds(checkInterval);
                 if (Random.value < eventChance)
+            _events.Add(new GameEvent { id = "blood_moon", title = "血月当空", description = "月亮变成了血红色——妖兽狂暴，但击杀奖励翻倍。", OnTrigger = () => { Debug.Log("[Event] 🌑 血月！妖兽狂暴——但击杀奖励x2。持续至天明。"); } });
+            _events.Add(new GameEvent { id = "sage_appears", title = "圣人降临", description = "一位大乘期修士路过——他看了你一眼。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(200); Debug.Log("[Event] 👁️ 大乘期修士看了你一眼——有意思。你体内有不止一个世界的力量。等你到了渡劫期——来找我。他留下了坐标。"); } });
+
             _events.Add(new GameEvent { id = "time_rift", title = "时间裂缝", description = "一道时间裂缝短暂打开——你看到了过去。", OnTrigger = () => { Debug.Log("[Event] ⏰ 时间裂缝！你看到了三百年前的灵气大陆——那时的虚空还没有来。那时的张老还是个年轻人。他的妻子——还在他身边。"); PlayerStats.Instance?.AddCultivation(80); Debug.Log("[Event] 裂缝关闭了。但那幅画面——你忘不掉。"); } });
 
             _events.Add(new GameEvent { id = "blizzard", title = "暴风雪", description = "突如其来的暴风雪——妖兽躲进巢穴，灵脉被冰封。", OnTrigger = () => { Debug.Log("[Event] ❄️ 暴风雪！妖兽躲藏——但灵脉被冰封，修炼效率下降。"); } });

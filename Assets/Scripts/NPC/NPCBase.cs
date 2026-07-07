@@ -113,9 +113,9 @@ namespace EarthOnline.NPC
                 // 检查是否有可接任务
                 var qm = EarthOnline.Framework.QuestManager.Instance;
                 if (qm != null) {
-                    var quest = qm.GetQuestFromNPC(_npc.npcId);
+                    var quest = qm.GetQuestFromNPC(npcId);
                     if (quest != null) {
-                        Debug.Log($"[{_npc.npcName}] 📋 有任务可接：{quest.title}。按Q接受。");
+                        Debug.Log($"[{npcName}] 📋 有任务可接：{quest.title}。按Q接受。");
                         StartCoroutine(WaitForQuestAccept(quest.id));
                     }
                 }
@@ -174,6 +174,21 @@ namespace EarthOnline.NPC
                     yield break;
                 }
                 if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Y)) yield break;
+                yield return null;
+            }
+        }
+
+        System.Collections.IEnumerator WaitForQuestAccept(string questId)
+        {
+            float deadline = Time.time + 5f;
+            while (Time.time < deadline)
+            {
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    EarthOnline.Framework.QuestManager.Instance?.AcceptQuest(questId);
+                    yield break;
+                }
+                if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Q)) yield break;
                 yield return null;
             }
         }

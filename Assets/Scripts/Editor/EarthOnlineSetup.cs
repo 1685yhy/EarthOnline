@@ -105,12 +105,13 @@ namespace EarthOnline.Editor
                 new Color(0.6f, 0.4f, 0.2f), true);
 
             CreateNPC("NPC_Li", new Vector3(3, 1.2f, -5),
-            CreateEnemy("Enemy_Elemental", new Vector3(22, 1.5f, -10), "elemental_001", "火元素", maxHP: 80, attack: 22, speed: 2f, detect: 8f, patrol: 4f, dropId: "item_spirit_core_001", dropName: "灵气核心", dropQty: 3, color: new Color(1f, 0.4f, 0.1f));
-            CreateEnemy("Enemy_IceWraith", new Vector3(-22, 1.5f, 10), "ice_001", "冰霜之灵", maxHP: 65, attack: 16, speed: 2.5f, detect: 10f, patrol: 8f, dropId: "item_spirit_jade", dropName: "灵玉", dropQty: 1, color: new Color(0.1f, 0.6f, 1f));
+            CreateEnemy("Enemy_Gargoyle", new Vector3(5, 2f, -20), "gargoyle_001", "石像鬼", maxHP: 90, attack: 20, speed: 1.5f, detect: 6f, patrol: 0f, dropId: "item_spirit_core_001", dropName: "灵气核心", dropQty: 3, color: new Color(0.3f, 0.3f, 0.3f));
 
                 "npc_li_001", "李灵儿", "药铺掌柜",
                 "最近采到的灵药越来越少了...山里好像有什么东西在驱赶采药人。",
                 new Color(0.3f, 0.7f, 0.4f), false);
+            CreateEnemy("Enemy_Elemental", new Vector3(22, 1.5f, -10), "elemental_001", "火元素", 80, 22, 2f, 8f, 4f, "item_spirit_core_001", "灵气核心", 3, new Color(1f, 0.4f, 0.1f));
+            CreateEnemy("Enemy_IceWraith", new Vector3(-22, 1.5f, 10), "ice_001", "冰霜之灵", 65, 16, 2.5f, 10f, 8f, "item_spirit_jade", "灵玉", 1, new Color(0.1f, 0.6f, 1f));
             CreateEnemy("Enemy_Drake", new Vector3(20, 2f, 0), "drake_001", "幼龙", 200, 25, 3f, 15f, 12f, "item_spirit_core_001", "灵气核心", 4, new Color(0.8f, 0.3f, 0.05f));
             CreateEnemy("Enemy_Cultist", new Vector3(-20, 1f, -18), "cultist_001", "虚空信徒", 70, 18, 2f, 12f, 6f, "item_void_crystal", "虚空结晶", 1, new Color(0.3f, 0.05f, 0.3f));
             CreateEnemy("Enemy_Scorpion", new Vector3(16, 1f, -12), "scorp_001", "巨蝎", 55, 14, 2f, 5f, 4f, "item_pill_001", "聚气丹", 2, new Color(0.6f, 0.2f, 0.05f));
