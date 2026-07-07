@@ -59,12 +59,9 @@ namespace EarthOnline.Framework
             AddRecipe("craft_dragon_pill", "龙血丹", "Consumable", "SSR", 1, 600, ("item_pill_001", 5), ("item_spirit_core_001", 2), ("item_ginseng_1000yr", 1));
             AddRecipe("craft_antidote", "解毒丹", "Consumable", "R", 2, 35,
                 ("item_herb_001", 2));
-            AddRecipe("craft_spirit_amulet", "灵蕴护符", "Accessory", "SR", 1, 350,
+            AddRecipe("craft_spirit_amulet", "灵蕴护符", "Accessory", "SR", 1, 350, ("item_spirit_jade", 1), ("item_spirit_core_001", 2));
             AddRecipe("craft_rune_blade", "符文之刃", "Weapon", "SSR", 1, 1800, ("item_ancient_rune", 1), ("item_steel_sword", 2), ("item_spirit_core_001", 3));
-
-                ("item_spirit_jade", 1), ("item_spirit_core_001", 2));
-            AddRecipe("craft_blood_sword", "血祭之刃", "Weapon", "SSR", 1, 1200,
-                ("item_steel_sword", 1), ("item_void_crystal", 1));
+            AddRecipe("craft_blood_sword", "血祭之刃", "Weapon", "SSR", 1, 1200, ("item_steel_sword", 1), ("item_void_crystal", 1));
             AddRecipe("craft_world_amulet", "世界护符", "Accessory", "SSR", 1, 1500,
                 ("item_world_seed", 1), ("item_spirit_core_001", 5), ("item_void_crystal", 1));
             AddRecipe("craft_phoenix_elixir", "凤凰药剂", "Consumable", "SSR", 1, 800,
