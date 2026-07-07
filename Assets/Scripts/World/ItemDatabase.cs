@@ -82,6 +82,8 @@ namespace EarthOnline
                 origin = "妖兽体内"
             },
             ["item_heal_pill_001"] = new ItemStory { displayName = "续命散", rarityName = "回血丹", story = "李灵儿炼的第一炉丹药。那一年她十岁，父亲刚被废掉修为。她把丹药塞进父亲嘴里——'爹，吃下去就会好的。'父亲笑了——那是他最后一次笑。", origin = "李灵儿·第一炉" },
+            ["item_titan_core"] = new ItemStory { displayName = "古神之心", rarityName = "泰坦核心", story = "上古泰坦的核心——它活着的时候——身高万丈。它倒下的时候——砸出了一条山脉。它的核心还在跳动——它在等有人配得上它的力量。", origin = "上古泰坦·遗骸" },
+            ["item_star_dust"] = new ItemStory { displayName = "星之泪", rarityName = "星尘", story = "不是灰尘——是星星的尸体。每一颗星星死去的时候——会撒下这样的粉末。收集足够多——你就可以点燃一颗新的星星。", origin = "星辰·遗骸" },
             ["item_void_heart"] = new ItemStory { displayName = "虚空的心脏", rarityName = "虚空之心", story = "虚空的中心——一颗还在跳动的心脏。它不是器官——是所有被虚空吞噬的世界的集体执念凝聚成的实体。握住它的那一刻——你听到了47个穿越者同时在你耳边说话。", origin = "虚空·集体执念" },
             ["item_amber_fossil"] = new ItemStory { displayName = "时光琥珀", rarityName = "琥珀化石", story = "一只远古蝴蝶被封在琥珀里。不是死了——是时间停止了。它的翅膀还在微微发光。三千年了——它在等有人把它放出来。", origin = "远古·时间囚笼" },
             ["item_ancient_rune"] = new ItemStory { displayName = "天道碎片", rarityName = "远古符文", story = "天道的法则被刻在这些符文上。不是人刻的——是天道自己在崩溃时脱落下来的。每收集一枚符文——你就离理解这个世界的真相更近一步。也离天道崩溃的真正原因更近一步。", origin = "天道·崩溃碎片" },

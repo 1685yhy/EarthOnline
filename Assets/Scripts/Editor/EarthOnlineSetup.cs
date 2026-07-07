@@ -105,6 +105,7 @@ namespace EarthOnline.Editor
                 new Color(0.6f, 0.4f, 0.2f), true);
 
             CreateNPC("NPC_Li", new Vector3(3, 1.2f, -5), "npc_li_001", "李灵儿", "药铺掌柜", "最近采到的灵药越来越少了...", new Color(0.3f, 0.7f, 0.4f), false);
+            CreateEnemy("Enemy_Titan", new Vector3(-25, 3f, -25), "titan_001", "泰坦巨像", maxHP: 500, attack: 50, speed: 0.8f, detect: 10f, patrol: 2f, dropId: "item_ancient_rune", dropName: "远古符文", dropQty: 2, color: new Color(0.6f, 0.5f, 0.3f));
             CreateEnemy("Enemy_Phoenix", new Vector3(0, 5f, 25), "phoenix_001", "不死鸟", maxHP: 300, attack: 40, speed: 6f, detect: 30f, patrol: 20f, dropId: "item_phoenix_feather", dropName: "凤羽", dropQty: 2, color: new Color(1f, 0.5f, 0.1f));
             CreateEnemy("Enemy_Wyvern", new Vector3(-18, 3f, -20), "wyvern_001", "双足飞龙", maxHP: 180, attack: 30, speed: 4f, detect: 20f, patrol: 15f, dropId: "item_spirit_core_001", dropName: "灵气核心", dropQty: 5, color: new Color(0.4f, 0.1f, 0.4f));
             CreateEnemy("Enemy_Treant", new Vector3(15, 4f, 20), "treant_001", "古树精", maxHP: 250, attack: 35, speed: 0.5f, detect: 5f, patrol: 0f, dropId: "item_ancient_rune", dropName: "远古符文", dropQty: 1, color: new Color(0.2f, 0.5f, 0.1f));
@@ -251,6 +252,8 @@ namespace EarthOnline.Editor
             // Dungeon entrance
             // Decorative village items
             for (int i = -4; i <= 4; i++)
+            CreatePickup("Pickup_TitanCore", new Vector3(-25, 0.5f, -20), "item_titan_core", "泰坦核心", "Material", "SSR", 1, 2500);
+            CreatePickup("Pickup_StarDust", new Vector3(25, 0.5f, 20), "item_star_dust", "星尘", "Material", "SSR", 1, 2000);
             {
             CreatePickup("Pickup_Core", new Vector3(0, 0.5f, -25), "item_void_heart", "虚空之心", "Quest", "SSR", 1, 3000);
                 var flower = GameObject.CreatePrimitive(PrimitiveType.Sphere);
