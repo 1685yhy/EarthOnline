@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using EarthOnline.Framework;
 
@@ -160,7 +161,7 @@ namespace EarthOnline.Framework
 
         void OnEnemyKilled(Dictionary<string, object> data)
         {
-            string eId = data.ContainsKey("enemyId")?.ToString() ?? "";
+            string eId = data.ContainsKey("enemyId") ? data["enemyId"]?.ToString() ?? "" : "";
             foreach (var q in _activeQuests)
             {
                 if ((q.type == QuestType.Combat || q.type == QuestType.Boss) && q.status == QuestStatus.Accepted)
@@ -174,7 +175,7 @@ namespace EarthOnline.Framework
 
         void OnItemCollected(Dictionary<string, object> data)
         {
-            string itemId = data.ContainsKey("itemId")?.ToString() ?? "";
+            string itemId = data.ContainsKey("itemId") ? data["itemId"]?.ToString() ?? "" : "";
             int qty = data.ContainsKey("quantity") ? (int)data["quantity"] : 1;
             foreach (var q in _activeQuests)
             {
@@ -185,6 +186,7 @@ namespace EarthOnline.Framework
 
         void CheckExploreQuests()
         {
+        public QuestData GetQuestFromNPC(string npcId) { return _allQuests.Values.FirstOrDefault(q => q.giverNpcId == npcId && q.status == QuestStatus.Available); }
             var player = GameObject.FindGameObjectWithTag("Player");
             if (player == null) return;
             foreach (var q in _activeQuests)
@@ -200,5 +202,6 @@ namespace EarthOnline.Framework
 
         public List<QuestData> GetActiveQuests() => _activeQuests.FindAll(q => q.status == QuestStatus.Accepted);
         public List<QuestData> GetAvailableQuests() => new(_allQuests.Values.Where(q => q.status == QuestStatus.Available));
+        public QuestData GetQuestFromNPC(string npcId) => _allQuests.Values.FirstOrDefault(q => q.id == npcId && q.status == QuestStatus.Available);
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using EarthOnline.Framework;
 
 namespace EarthOnline.NPC
 {
@@ -80,7 +81,7 @@ namespace EarthOnline.NPC
                 var quest = qm.GetQuestFromNPC(npcId);
                 if (quest != null && _nameTagText != null)
                 {
-                    string marker = quest.isAccepted ? " ❓" : " ❗";
+                    string marker = quest.status == QuestStatus.Accepted ? " ❓" : " ❗";
                     if (!_nameTagText.text.EndsWith("❗") && !_nameTagText.text.EndsWith("❓"))
                         _nameTagText.text += marker;
                 }
