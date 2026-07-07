@@ -157,6 +157,7 @@ namespace EarthOnline
             {
                 yield return new WaitForSeconds(checkInterval);
                 if (Random.value < eventChance)
+            _events.Add(new GameEvent { id = "final_warning", title = "最终警告", description = "所有穿越者的残影同时出现在你面前。", OnTrigger = () => { Debug.Log("[Event] 👻 46个穿越者的残影同时出现。他们齐声说：我们失败了——但你还有机会。虚空知道你的存在了。它在加速。你只有30天。"); PlayerStats.Instance?.AddCultivation(300); } });
             _events.Add(new GameEvent { id = "void_expansion", title = "虚空扩张", description = "虚空裂缝——比昨天大了一倍。", OnTrigger = () => { Debug.Log("[Event] 🕳️ 虚空裂缝扩大了一倍。张老的声音从远处传来：它不会停的——直到吞掉一切。"); PlayerStats.Instance?.AddCultivation(50); } });
             _events.Add(new GameEvent { id = "forest_awakens", title = "森林苏醒", description = "古树精从千年沉睡中醒来——它在找人。", OnTrigger = () => { Debug.Log("[Event] 🌳 森林苏醒！古树精低沉的声音回荡：第47号...来见我。我有话——关于你之前的46个人。"); } });
             _events.Add(new GameEvent { id = "starfall", title = "星辰坠落", description = "一颗星星从天而降——不是陨石，是一座塔。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(150); Debug.Log("[Event] 🌟 星之塔坠落！一座来自天外的塔插在大地上。门上写着：入此塔者——可窥天道。"); } });
