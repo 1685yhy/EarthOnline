@@ -150,6 +150,8 @@ namespace EarthOnline.Combat
 
             // 伤害计算
             float totalAtk = (baseSpiritAttack + eqBonus) * suppressionMult;
+            float comboMult = SkillComboSystem.Instance?.RegisterHit(_lockedTarget.enemyId) ?? 1f;
+            totalAtk *= comboMult;
             float weatherMult = WeatherSystem.Instance?.WeatherAttackModifier ?? 1f;
             totalAtk *= weatherMult;
 

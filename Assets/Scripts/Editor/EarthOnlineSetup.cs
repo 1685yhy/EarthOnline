@@ -105,16 +105,13 @@ namespace EarthOnline.Editor
                 new Color(0.6f, 0.4f, 0.2f), true);
 
             CreateNPC("NPC_Li", new Vector3(3, 1.2f, -5),
-            CreateEnemy("Enemy_Wraith", new Vector3(0, 1.5f, 18), "wraith_001", "虚空游魂", maxHP: 60, attack: 15, speed: 2f, detect: 20f, patrol: 10f, dropId: "item_spirit_core_001", dropName: "灵气核心", dropQty: 2, color: new Color(0.1f, 0.1f, 0.3f));
-
-            CreateEnemy("Enemy_Slime", new Vector3(10, 1f, 10), "slime_001", "灵气史莱姆", maxHP: 10, attack: 2, speed: 1f, detect: 3f, patrol: 3f, dropId: "item_herb_001", dropName: "止血草", dropQty: 2, color: new Color(0.2f, 0.8f, 0.3f));
-            CreateEnemy("Enemy_Harpy", new Vector3(-10, 2f, -16), "harpy_001", "鹰身女妖", maxHP: 35, attack: 10, speed: 5f, detect: 15f, patrol: 20f, dropId: "item_spirit_stone", dropName: "灵石碎片", dropQty: 3, color: new Color(0.7f, 0.7f, 0.2f));
-
-            CreateEnemy("Enemy_Imp", new Vector3(-5, 1f, 15), "imp_001", "小恶魔", maxHP: 15, attack: 3, speed: 5f, detect: 4f, patrol: 8f, dropId: "item_spirit_stone", dropName: "灵石碎片", dropQty: 1, color: new Color(0.8f, 0.1f, 0.1f));
-
                 "npc_li_001", "李灵儿", "药铺掌柜",
                 "最近采到的灵药越来越少了...山里好像有什么东西在驱赶采药人。",
                 new Color(0.3f, 0.7f, 0.4f), false);
+            CreateEnemy("Enemy_Wraith", new Vector3(0, 1.5f, 18), "wraith_001", "虚空游魂", 60, 15, 2f, 20f, 10f, "item_spirit_core_001", "灵气核心", 2, new Color(0.1f, 0.1f, 0.3f));
+            CreateEnemy("Enemy_Slime", new Vector3(10, 1f, 10), "slime_001", "灵气史莱姆", 10, 2, 1f, 3f, 3f, "item_herb_001", "止血草", 2, new Color(0.2f, 0.8f, 0.3f));
+            CreateEnemy("Enemy_Harpy", new Vector3(-10, 2f, -16), "harpy_001", "鹰身女妖", 35, 10, 5f, 15f, 20f, "item_spirit_stone", "灵石碎片", 3, new Color(0.7f, 0.7f, 0.2f));
+            CreateEnemy("Enemy_Imp", new Vector3(-5, 1f, 15), "imp_001", "小恶魔", 15, 3, 5f, 4f, 8f, "item_spirit_stone", "灵石碎片", 1, new Color(0.8f, 0.1f, 0.1f));
             CreateEnemy("Enemy_Spider", new Vector3(12, 1, -15), "spider_001", "毒蛛", 20, 5, 3f, 6f, 6f, "item_herb_001", "止血草", 1, new Color(0.2f, 0.1f, 0.2f));
             CreateEnemy("Enemy_Golem", new Vector3(-18, 2, -2), "golem_001", "石魔像", 150, 20, 1f, 4f, 2f, "item_spirit_core_001", "灵气核心", 2, new Color(0.4f, 0.35f, 0.3f));
 
