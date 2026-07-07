@@ -262,12 +262,7 @@ namespace EarthOnline.Editor
             CreatePickup("Pickup_Core", new Vector3(0, 0.5f, -25), "item_void_heart", "虚空之心", "Quest", "SSR", 1, 3000);
                 var flower = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             CreatePickup("Pickup_Rune", new Vector3(-23, 0.5f, -15), "item_ancient_rune", "远古符文", "Material", "SSR", 1, 1500);
-
-            CreatePickup("Pickup_Amber", new Vector3(-12, 0.5f, 14), "item_amber_fossil", "琥珀化石", "Material", "SR", 1, 200);
-                flower.name = $"Flower_{i}"; flower.transform.position = new Vector3(i * 1.5f, 0.05f, 0.5f);
-            CreatePickup("Pickup_Orb", new Vector3(-20, 0.5f, 20), "item_mana_orb", "灵能宝珠", "Material", "SSR", 1, 1200);
-            CreatePickup("Pickup_Seed", new Vector3(24, 0.5f, -8), "item_world_seed", "世界树种", "Quest", "SSR", 1, 2000);
-
+//
                 flower.transform.localScale = Vector3.one * 0.15f;
                 var fr = flower.GetComponent<Renderer>();
                 if (fr != null) { var fm = new Material(Shader.Find("Standard")); fm.color = Random.value > 0.5f ? new Color(1,0.2f,0.2f) : new Color(1,1,0.2f); fr.material = fm; }
