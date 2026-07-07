@@ -4,35 +4,32 @@ using EarthOnline.Framework;
 
 namespace EarthOnline.Framework
 {
-    /// <summary>
-    /// 简易任务系统 —— 接受/完成/追踪任务。
-    /// </summary>
+    public enum QuestType { Guidance, Combat, Explore, Collect, Talk, Boss }
+    public enum QuestStatus { Available, Accepted, InProgress, Completed, Failed }
+
     [System.Serializable]
-    public class Quest
+    public class QuestData
     {
-        public string id;
-        public string title;
-        public string description;
-        public string npcGiverId;
-        public string npcName;
-        public string type;          // Talk, Collect, Kill, Explore
-        public string targetId;      // 目标物品/NPC ID
-        public int targetCount;
-        public int currentCount;
-        public int rewardGold;
-        public int rewardExp;
-        public bool isCompleted;
-        public bool isAccepted;
-        public List<string> dialogueOnAccept;
-        public List<string> dialogueOnComplete;
+        public string id, title, description;
+        public QuestType type;
+        public QuestStatus status;
+        public string giverNpcId, giverName;
+        public string targetId;
+        public int targetCount, currentCount;
+        public int rewardSpiritStones, rewardCultivation;
+        public string rewardItemId;
+        public string nextQuestId;
+        public string completionText;
+        public List<string> dialogueOnAccept = new();
+        public List<string> dialogueOnComplete = new();
     }
 
     public class QuestManager : MonoBehaviour
     {
         public static QuestManager Instance { get; private set; }
-
-        private List<Quest> _activeQuests = new List<Quest>();
-        private List<string> _completedQuestIds = new List<string>();
+        private Dictionary<string, QuestData> _allQuests = new();
+        private List<QuestData> _activeQuests = new();
+        public int questsCompleted;
 
         void Awake()
         {
@@ -42,206 +39,166 @@ namespace EarthOnline.Framework
 
         void Start()
         {
-            RegisterQuests();
-            EventBus.Subscribe("OnNPCInteract", OnNPCInteracted);
-            EventBus.Subscribe("OnItemAdded", OnItemPickedUp);
+            RegisterAllQuests();
+            EventBus.Subscribe("OnNPCInteract", OnNpcInteract);
             EventBus.Subscribe("OnEnemyKilled", OnEnemyKilled);
+            EventBus.Subscribe("OnItemAdded", OnItemCollected);
         }
 
-        void RegisterQuests()
+        void RegisterAllQuests()
         {
-            // 任务1：帮张老采药
-            RegisterQuest(new Quest
-            {
-                id = "quest_herb_001", title = "张老的请求", type = "Collect",
-                npcGiverId = "npc_zhang_001", npcName = "张老",
-                description = "张老需要3株止血草来炼制丹药。在村庄周围可以找到发绿光的药草。",
-                targetId = "item_herb_001", targetCount = 3,
-                rewardGold = 50, rewardExp = 30,
-                dialogueOnAccept = new List<string> {
-                    "老夫最近身体不适，需要几株止血草炼药。你能帮我去找找吗？3株就够了。",
-                    "止血草就在村子周围，发绿光的就是。"
-                },
-                dialogueOnComplete = new List<string> {
-                    "好小子！效率不错。这几颗灵石你收着。……另外，老夫观察到一件事：村子西边的山里有异动，最近别往那边去。"
-                }
+            // 引导任务
+            AddQuest(new QuestData {
+                id="q_guide_01", title="初临灵气大陆", type=QuestType.Guidance, status=QuestStatus.Available,
+                giverNpcId="npc_zhang_001", giverName="张老",
+                description="你刚刚穿越到灵气大陆。张老似乎知道很多事情——去和他聊聊。",
+                targetId="npc_zhang_001", targetCount=1,
+                rewardSpiritStones=30, rewardCultivation=20,
+                nextQuestId="q_guide_02",
+                completionText="张老看着你，眼神里有一丝欣慰：'第47个了。希望你能比前面的人走得更远。'",
+                dialogueOnAccept=new(){"终于又有人穿过来了。这个世界比你想象的大得多——也危险得多。先去村子里转转吧。"},
+                dialogueOnComplete=new(){"你比我想的要聪明。拿着，这是我年轻时的一些修炼心得。"}
+            });
+            AddQuest(new QuestData {
+                id="q_guide_02", title="认识村子", type=QuestType.Talk, status=QuestStatus.Available,
+                giverNpcId="npc_zhang_001", giverName="张老",
+                description="张老建议你先去认识村子里的人。和王铁柱聊聊，再去看看李灵儿的药铺。",
+                targetId="npc_wang_001", targetCount=1,
+                rewardSpiritStones=20, rewardCultivation=15,
+                nextQuestId="q_guide_03",
+                completionText="你对这个村子有了基本了解。每个人都有自己的故事——也有自己的秘密。",
+            });
+            AddQuest(new QuestData {
+                id="q_guide_03", title="野外初探", type=QuestType.Combat, status=QuestStatus.Available,
+                giverNpcId="npc_wang_001", giverName="王铁柱",
+                description="王铁柱说野外有野狼出没。新手练手的好机会——击败1只野狼。",
+                targetId="wolf_001", targetCount=1,
+                rewardSpiritStones=50, rewardCultivation=30, rewardItemId="item_iron_sword",
+                completionText="王铁柱点点头：'不错！这把铁剑送你了——虽然是旧的，但比空手强。'",
             });
 
-            // 任务2：帮铁匠送剑
-            RegisterQuest(new Quest
-            {
-                id = "quest_sword_001", title = "铁匠的订单", type = "Talk",
-                npcGiverId = "npc_wang_001", npcName = "王铁柱",
-                description = "王铁柱打好了一把剑，需要你送到李灵儿那里。",
-                targetId = "npc_li_001", targetCount = 1,
-                rewardGold = 80, rewardExp = 50,
-                dialogueOnAccept = new List<string> {
-                    "嘿！你可算来了。我这儿有把剑是要送给李灵儿的，但我这儿走不开。你替我跑一趟？",
-                    "她就在村子南边的药铺。"
-                },
-                dialogueOnComplete = new List<string> {
-                    "送到了？好嘞！这是给你的跑腿费。对了，李灵儿有没有说最近山里采不到药的事？最近确实不太平啊..."
-                }
+            // 战斗任务
+            AddQuest(new QuestData {
+                id="q_combat_01", title="清除狼患", type=QuestType.Combat, status=QuestStatus.Available,
+                giverNpcId="npc_li_001", giverName="李灵儿",
+                description="野狼让采药人不敢进山。击败3只野狼让李灵儿能安全采药。",
+                targetId="wolf_001", targetCount=3,
+                rewardSpiritStones=80, rewardCultivation=40,
+                completionText="李灵儿松了一口气：'终于能进山采药了。这个村子要是没有你——不知道该怎么办。'",
             });
 
-            // 任务3：消灭野狼
-            RegisterQuest(new Quest
-            {
-                id = "quest_wolf_001", title = "清除狼患", type = "Kill",
-                npcGiverId = "npc_li_001", npcName = "李灵儿",
-                description = "村子周围的野狼越来越多了，李灵儿担心采药人会受伤。消灭2只野狼。",
-                targetId = "wolf_001", targetCount = 2,
-                rewardGold = 100, rewardExp = 80,
-                dialogueOnAccept = new List<string> {
-                    "村子外面的野狼越来越多了...我一个人不敢出去采药。你能帮我清理一下吗？两只就够了，剩下的我自己来。"
-                },
-                dialogueOnComplete = new List<string> {
-                    "太好了！这下安全多了。这些丹药你拿着，是我自己炼的。对了，你有没有在村子北边看到一个黑色的漩涡？那里最近散发出很强的灵力波动..."
-                }
+            // 探索任务
+            AddQuest(new QuestData {
+                id="q_explore_01", title="虚空裂缝调查", type=QuestType.Explore, status=QuestStatus.Available,
+                giverNpcId="npc_zhang_001", giverName="张老",
+                description="北边的虚空裂缝越来越大。去看看那里发生了什么。注意安全——裂缝附近有强大的守护者。",
+                targetId="DungeonEntrance", targetCount=1,
+                rewardSpiritStones=150, rewardCultivation=80,
+                completionText="张老面色凝重：'果然...虚空裂缝在扩大。我们需要做好准备。'",
             });
 
-            // 任务4：探索地下城入口
-            RegisterQuest(new Quest
-            {
-                id = "quest_dungeon_001", title = "虚空裂缝", type = "Explore",
-                npcGiverId = "npc_zhang_001", npcName = "张老",
-                description = "张老感知到村子北边有一个异常的空间裂缝。去调查一下那个紫色漩涡。",
-                targetId = "DungeonEntrance", targetCount = 1,
-                rewardGold = 200, rewardExp = 150,
-                dialogueOnAccept = new List<string> {
-                    "你也感觉到了吧？村子北边的异常灵力。那里有一个空间裂缝。老夫年纪大了，走不动了。你去看看是什么情况。注意安全——裂缝附近有强大的守护者。"
-                },
-                dialogueOnComplete = new List<string> {
-                    "果然...虚空行者。那是从裂缝中跑出来的怪物。看来这个世界的屏障比我想象的更脆弱。'天陨丹方'...可能和这个裂缝有关。"
-                }
+            // Boss任务
+            AddQuest(new QuestData {
+                id="q_boss_01", title="挑战虚空行者", type=QuestType.Boss, status=QuestStatus.Available,
+                giverNpcId="npc_zhao_001", giverName="赵掌柜",
+                description="赵掌柜说虚空行者守护着裂缝。击败它——你就能进入虚空边缘。建议Lv.5+。",
+                targetId="boss_001", targetCount=1,
+                rewardSpiritStones=300, rewardCultivation=150, rewardItemId="item_spirit_core_001",
+                completionText="赵掌柜瞪大了眼睛：'你做到了...第47个穿越者——第一个击败虚空行者的人。'",
             });
         }
 
-        void RegisterQuest(Quest q)
+        void AddQuest(QuestData q) { _allQuests[q.id] = q; }
+
+        void Update() { CheckExploreQuests(); }
+
+        public bool AcceptQuest(string questId)
         {
+            if (!_allQuests.ContainsKey(questId)) return false;
+            var q = _allQuests[questId];
+            if (q.status != QuestStatus.Available) return false;
+            q.status = QuestStatus.Accepted;
             _activeQuests.Add(q);
-            Debug.Log($"[QuestManager] Quest registered: {q.title}");
+            if (q.dialogueOnAccept.Count > 0) Debug.Log($"[任务] 📋 {q.giverName}：'{q.dialogueOnAccept[0]}'");
+            Debug.Log($"[任务] 📋 接受：{q.title}");
+            EventBus.Publish("OnQuestAccepted", new Dictionary<string, object> {{"questId", q.id}, {"title", q.title}});
+            return true;
         }
 
-        void OnNPCInteracted(Dictionary<string, object> data)
+        void CompleteQuest(QuestData q)
+        {
+            q.status = QuestStatus.Completed; questsCompleted++;
+            _activeQuests.Remove(q);
+
+            var stats = PlayerStats.Instance;
+            if (stats != null)
+            {
+                if (q.rewardSpiritStones > 0) stats.AddSpiritStone(q.rewardSpiritStones);
+                if (q.rewardCultivation > 0) stats.AddCultivation(q.rewardCultivation);
+            }
+            if (!string.IsNullOrEmpty(q.rewardItemId)) InventoryManager.Instance?.AddItem(new Item { id=q.rewardItemId, name=q.rewardItemId, quantity=1, value=50 });
+
+            Debug.Log($"[任务] ✅ 完成：{q.title}！+{q.rewardSpiritStones}灵石 +{q.rewardCultivation}修为");
+            if (!string.IsNullOrEmpty(q.completionText)) Debug.Log($"[任务] {q.completionText}");
+
+            EventBus.Publish("OnQuestCompleted", new Dictionary<string, object> {{"questId", q.id}, {"title", q.title}});
+
+            // 解锁下一个任务
+            if (!string.IsNullOrEmpty(q.nextQuestId) && _allQuests.ContainsKey(q.nextQuestId))
+                _allQuests[q.nextQuestId].status = QuestStatus.Available;
+        }
+
+        void OnNpcInteract(Dictionary<string, object> data)
         {
             string npcId = data.ContainsKey("npcId") ? data["npcId"].ToString() : "";
-            // Check if any quest from this NPC
             foreach (var q in _activeQuests)
             {
-                if (q.isAccepted && !q.isCompleted && q.type == "Talk" && q.targetId == npcId)
-                {
-                    CompleteQuest(q);
-                    return;
-                }
+                if (q.type == QuestType.Talk && q.targetId == npcId && q.status == QuestStatus.Accepted)
+                { q.currentCount++; if (q.currentCount >= q.targetCount) CompleteQuest(q); }
             }
         }
 
         void OnEnemyKilled(Dictionary<string, object> data)
         {
-            string enemyId = data.ContainsKey("enemyId") ? data["enemyId"].ToString() : "";
+            string eId = data.ContainsKey("enemyId")?.ToString() ?? "";
             foreach (var q in _activeQuests)
             {
-                if (q.isAccepted && !q.isCompleted && q.type == "Kill"
-                    && (q.targetId == enemyId || q.targetId.StartsWith("wolf_") && enemyId.StartsWith("wolf_")))
+                if ((q.type == QuestType.Combat || q.type == QuestType.Boss) && q.status == QuestStatus.Accepted)
                 {
-                    q.currentCount++;
-                    Debug.Log($"[Quest] {q.title}: {q.currentCount}/{q.targetCount}");
-                    if (q.currentCount >= q.targetCount)
-                        CompleteQuest(q);
+                    if (eId.StartsWith("wolf_") && q.targetId.StartsWith("wolf_")) q.currentCount++;
+                    else if (eId == q.targetId) q.currentCount++;
+                    if (q.currentCount >= q.targetCount) CompleteQuest(q);
                 }
             }
         }
 
-        void Update()
+        void OnItemCollected(Dictionary<string, object> data)
         {
-            // Explore quests: check if player is near target
+            string itemId = data.ContainsKey("itemId")?.ToString() ?? "";
+            int qty = data.ContainsKey("quantity") ? (int)data["quantity"] : 1;
+            foreach (var q in _activeQuests)
+            {
+                if (q.type == QuestType.Collect && q.targetId == itemId && q.status == QuestStatus.Accepted)
+                { q.currentCount += qty; if (q.currentCount >= q.targetCount) CompleteQuest(q); }
+            }
+        }
+
+        void CheckExploreQuests()
+        {
             var player = GameObject.FindGameObjectWithTag("Player");
             if (player == null) return;
             foreach (var q in _activeQuests)
             {
-                if (q.isAccepted && !q.isCompleted && q.type == "Explore")
+                if (q.type == QuestType.Explore && q.status == QuestStatus.Accepted)
                 {
                     var target = GameObject.Find(q.targetId);
-                    if (target != null)
-                    {
-                        float dist = Vector3.Distance(player.transform.position, target.transform.position);
-                        if (dist <= 5f)
-                            CompleteQuest(q);
-                    }
-                }
-            }
-        }
-
-        void OnItemPickedUp(Dictionary<string, object> data)
-        {
-            string itemId = data.ContainsKey("itemId") ? data["itemId"].ToString() : "";
-            int qty = data.ContainsKey("quantity") ? (int)data["quantity"] : 1;
-
-            foreach (var q in _activeQuests)
-            {
-                if (q.isAccepted && !q.isCompleted && q.type == "Collect" && q.targetId == itemId)
-                {
-                    q.currentCount += qty;
-                    Debug.Log($"[Quest] {q.title}: {q.currentCount}/{q.targetCount}");
-                    if (q.currentCount >= q.targetCount)
+                    if (target != null && Vector3.Distance(player.transform.position, target.transform.position) < 5f)
                         CompleteQuest(q);
                 }
             }
         }
 
-        public Quest GetQuestFromNPC(string npcId)
-        {
-            return _activeQuests.Find(q => q.npcGiverId == npcId && !q.isCompleted);
-        }
-
-        public void AcceptQuest(Quest q)
-        {
-            if (q.isAccepted) return;
-            q.isAccepted = true;
-            Debug.Log($"[Quest] 接受任务: {q.title}");
-            if (q.dialogueOnAccept != null)
-                foreach (var line in q.dialogueOnAccept)
-                    Debug.Log($"[Quest:{q.title}] NPC: {line}");
-
-            EventBus.Publish("OnQuestAccepted", new Dictionary<string, object> {
-                {"questId", q.id}, {"title", q.title}
-            });
-        }
-
-        void CompleteQuest(Quest q)
-        {
-            q.isCompleted = true;
-            _completedQuestIds.Add(q.id);
-
-            var stats = PlayerStats.Instance;
-            if (stats != null)
-            {
-                stats.AddSpiritStone(q.rewardGold);
-                stats.AddCultivation(q.rewardExp);
-            }
-
-            Debug.Log($"[Quest] ✅ 完成: {q.title}! +{q.rewardGold}灵石 +{q.rewardExp}修为");
-            if (q.dialogueOnComplete != null)
-                foreach (var line in q.dialogueOnComplete)
-                    Debug.Log($"[Quest:{q.title}] NPC: {line}");
-
-            EventBus.Publish("OnQuestCompleted", new Dictionary<string, object> {
-                {"questId", q.id}, {"title", q.title},
-                {"rewardGold", q.rewardGold}, {"rewardExp", q.rewardExp}
-            });
-        }
-
-        public List<Quest> GetActiveQuests()
-        {
-            return _activeQuests.FindAll(q => q.isAccepted && !q.isCompleted);
-        }
-
-        void OnDestroy()
-        {
-            EventBus.Unsubscribe("OnNPCInteract", OnNPCInteracted);
-            EventBus.Unsubscribe("OnItemAdded", OnItemPickedUp);
-            EventBus.Unsubscribe("OnEnemyKilled", OnEnemyKilled);
-        }
+        public List<QuestData> GetActiveQuests() => _activeQuests.FindAll(q => q.status == QuestStatus.Accepted);
+        public List<QuestData> GetAvailableQuests() => new(_allQuests.Values.Where(q => q.status == QuestStatus.Available));
     }
 }

@@ -59,9 +59,9 @@ namespace EarthOnline.Framework
             AddRecipe("craft_antidote", "解毒丹", "Consumable", "R", 2, 35,
                 ("item_herb_001", 2));
             AddRecipe("craft_spirit_amulet", "灵蕴护符", "Accessory", "SR", 1, 350,
-            AddRecipe("craft_elixir_supreme", "大还丹", "Consumable", "SSR", 1, 500, ("item_heal_pill_001", 3), ("item_spirit_core_001", 2), ("item_cultivation_elixir", 1));
-
                 ("item_spirit_jade", 1), ("item_spirit_core_001", 2));
+            AddRecipe("craft_elixir_supreme", "大还丹", "Consumable", "SSR", 1, 500,
+                ("item_heal_pill_001", 3), ("item_spirit_core_001", 2), ("item_cultivation_elixir", 1));
         }
 
         void AddRecipe(string id, string name, string type, string rarity, int qty, int value, params (string, int)[] ings)
