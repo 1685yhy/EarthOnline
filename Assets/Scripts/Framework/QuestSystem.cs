@@ -203,6 +203,5 @@ namespace EarthOnline.Framework
 
         public List<QuestData> GetActiveQuests() => _activeQuests.FindAll(q => q.status == QuestStatus.Accepted);
         public List<QuestData> GetAvailableQuests() => new(_allQuests.Values.Where(q => q.status == QuestStatus.Available));
-        public QuestData GetQuestFromNPC(string npcId) => _allQuests.Values.FirstOrDefault(q => q.id == npcId && q.status == QuestStatus.Available);
     }
 }

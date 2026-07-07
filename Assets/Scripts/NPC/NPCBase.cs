@@ -110,6 +110,15 @@ namespace EarthOnline.NPC
             if (tree != null)
             {
                 tree.StartDialogue();
+                // 检查是否有可接任务
+                var qm = EarthOnline.Framework.QuestManager.Instance;
+                if (qm != null) {
+                    var quest = qm.GetQuestFromNPC(_npc.npcId);
+                    if (quest != null) {
+                        Debug.Log($"[{_npc.npcName}] 📋 有任务可接：{quest.title}。按Q接受。");
+                        StartCoroutine(WaitForQuestAccept(quest.id));
+                    }
+                }
                 Invoke(nameof(EndInteraction), 30f); // 对话树有更长时限
                 return;
             }
@@ -148,6 +157,7 @@ namespace EarthOnline.NPC
                 {
                     Debug.Log($"[{npcName}] 💬 '需要看看我的货吗？' (按Y打开商店，其他键继续)");
                     StartCoroutine(WaitForShopInput(npcId));
+        System.Collections.IEnumerator WaitForQuestAccept(string questId) { float deadline = Time.time + 5f; while (Time.time < deadline) { if (Input.GetKeyDown(KeyCode.Q)) { EarthOnline.Framework.QuestManager.Instance?.AcceptQuest(questId); yield break; } if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Q)) yield break; yield return null; } }
                 }
             }
 
@@ -155,6 +165,7 @@ namespace EarthOnline.NPC
         }
 
         System.Collections.IEnumerator WaitForShopInput(string shopNpcId)
+        System.Collections.IEnumerator WaitForQuestAccept(string questId) { float deadline = Time.time + 5f; while (Time.time < deadline) { if (Input.GetKeyDown(KeyCode.Q)) { EarthOnline.Framework.QuestManager.Instance?.AcceptQuest(questId); yield break; } if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Q)) yield break; yield return null; } }
         {
             float deadline = Time.time + 3f;
             while (Time.time < deadline)
