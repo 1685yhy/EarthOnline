@@ -105,6 +105,7 @@ namespace EarthOnline.Editor
                 new Color(0.6f, 0.4f, 0.2f), true);
 
             CreateNPC("NPC_Li", new Vector3(3, 1.2f, -5), "npc_li_001", "李灵儿", "药铺掌柜", "最近采到的灵药越来越少了...", new Color(0.3f, 0.7f, 0.4f), false);
+            CreateEnemy("Enemy_Basilisk", new Vector3(18, 1.2f, 15), "basilisk_001", "蛇怪", maxHP: 110, attack: 24, speed: 2.5f, detect: 12f, patrol: 8f, dropId: "item_spirit_core_001", dropName: "灵气核心", dropQty: 3, color: new Color(0.1f, 0.5f, 0.1f));
             CreateEnemy("Enemy_Lich", new Vector3(0, 1.5f, 22), "lich_001", "巫妖", 120, 28, 1f, 20f, 3f, "item_void_crystal", "虚空结晶", 2, new Color(0.05f, 0.05f, 0.1f));
             CreateEnemy("Enemy_Gargoyle", new Vector3(5, 2f, -20), "gargoyle_001", "石像鬼", 90, 20, 1.5f, 6f, 0f, "item_spirit_core_001", "灵气核心", 3, new Color(0.3f, 0.3f, 0.3f));
             CreateEnemy("Enemy_Elemental", new Vector3(22, 1.5f, -10), "elemental_001", "火元素", 80, 22, 2f, 8f, 4f, "item_spirit_core_001", "灵气核心", 3, new Color(1f, 0.4f, 0.1f));
@@ -251,6 +252,7 @@ namespace EarthOnline.Editor
                 var flower = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             CreatePickup("Pickup_Rune", new Vector3(-23, 0.5f, -15), "item_ancient_rune", "远古符文", "Material", "SSR", 1, 1500);
 
+            CreatePickup("Pickup_Amber", new Vector3(-12, 0.5f, 14), "item_amber_fossil", "琥珀化石", "Material", "SR", 1, 200);
                 flower.name = $"Flower_{i}"; flower.transform.position = new Vector3(i * 1.5f, 0.05f, 0.5f);
             CreatePickup("Pickup_Orb", new Vector3(-20, 0.5f, 20), "item_mana_orb", "灵能宝珠", "Material", "SSR", 1, 1200);
             CreatePickup("Pickup_Seed", new Vector3(24, 0.5f, -8), "item_world_seed", "世界树种", "Quest", "SSR", 1, 2000);
