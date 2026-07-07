@@ -105,6 +105,8 @@ namespace EarthOnline.Editor
                 new Color(0.6f, 0.4f, 0.2f), true);
 
             CreateNPC("NPC_Li", new Vector3(3, 1.2f, -5), "npc_li_001", "李灵儿", "药铺掌柜", "最近采到的灵药越来越少了...", new Color(0.3f, 0.7f, 0.4f), false);
+            CreateEnemy("Enemy_Leviathan", new Vector3(0, 2f, 30), "leviathan_001", "利维坦", maxHP: 800, attack: 60, speed: 1f, detect: 30f, patrol: 5f, dropId: "item_titan_core", dropName: "泰坦核心", dropQty: 1, color: new Color(0.01f, 0.1f, 0.3f));
+            CreateEnemy("Enemy_Reaper", new Vector3(-30, 2f, -30), "reaper_001", "收割者", maxHP: 400, attack: 45, speed: 3f, detect: 25f, patrol: 10f, dropId: "item_void_heart", dropName: "虚空之心", dropQty: 1, color: new Color(0.02f, 0.02f, 0.02f));
             CreateEnemy("Enemy_Hydra", new Vector3(10, 2f, 25), "hydra_001", "九头蛇", maxHP: 350, attack: 35, speed: 2f, detect: 15f, patrol: 10f, dropId: "item_void_crystal", dropName: "虚空结晶", dropQty: 3, color: new Color(0.1f, 0.3f, 0.5f));
             CreateEnemy("Enemy_Titan", new Vector3(-25, 3f, -25), "titan_001", "泰坦巨像", maxHP: 500, attack: 50, speed: 0.8f, detect: 10f, patrol: 2f, dropId: "item_ancient_rune", dropName: "远古符文", dropQty: 2, color: new Color(0.6f, 0.5f, 0.3f));
             CreateEnemy("Enemy_Phoenix", new Vector3(0, 5f, 25), "phoenix_001", "不死鸟", maxHP: 300, attack: 40, speed: 6f, detect: 30f, patrol: 20f, dropId: "item_phoenix_feather", dropName: "凤羽", dropQty: 2, color: new Color(1f, 0.5f, 0.1f));

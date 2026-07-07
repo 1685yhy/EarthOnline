@@ -157,6 +157,7 @@ namespace EarthOnline
             {
                 yield return new WaitForSeconds(checkInterval);
                 if (Random.value < eventChance)
+            _events.Add(new GameEvent { id = "heavens_tear", title = "天裂", description = "天空裂开了一道口子——不是虚空，是飞升通道。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(500); Debug.Log("[Event] 🌌 天裂！飞升通道短暂打开——逸散的仙灵之气涌入了这个世界。+500修为。"); Debug.Log("[Event] 通道关闭前——你听到了一个声音：上来——我们在这里等你。"); } });
             _events.Add(new GameEvent { id = "abyss_opens", title = "深渊裂开", description = "大地裂开了一道深渊——不是虚空，是更古老的东西。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(200); Debug.Log("[Event] 🌑 深渊裂开。底下不是虚空——是上一个轮回的灵气大陆。埋在下面三千年了。下面的东西——在往上爬。"); } });
             _events.Add(new GameEvent { id = "final_warning", title = "最终警告", description = "所有穿越者的残影同时出现在你面前。", OnTrigger = () => { Debug.Log("[Event] 👻 46个穿越者的残影同时出现。他们齐声说：我们失败了——但你还有机会。虚空知道你的存在了。它在加速。你只有30天。"); PlayerStats.Instance?.AddCultivation(300); } });
             _events.Add(new GameEvent { id = "void_expansion", title = "虚空扩张", description = "虚空裂缝——比昨天大了一倍。", OnTrigger = () => { Debug.Log("[Event] 🕳️ 虚空裂缝扩大了一倍。张老的声音从远处传来：它不会停的——直到吞掉一切。"); PlayerStats.Instance?.AddCultivation(50); } });
