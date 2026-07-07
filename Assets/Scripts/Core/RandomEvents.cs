@@ -157,6 +157,8 @@ namespace EarthOnline
             {
                 yield return new WaitForSeconds(checkInterval);
                 if (Random.value < eventChance)
+            _events.Add(new GameEvent { id = "phoenix", title = "凤凰涅槃", description = "一只凤凰在远处涅槃——凤羽散落大地。", OnTrigger = () => { Debug.Log("[Event] 🔥 凤凰涅槃！凤羽散落。+100修为。"); PlayerStats.Instance?.AddCultivation(100); Debug.Log("[Event] 传说集齐三根凤羽可以炼制不死药——但从未有人做到过。"); } });
+
             _events.Add(new GameEvent { id = "stars_aligned", title = "七星连珠", description = "七颗星辰排成一线——天地灵气暴涨。", OnTrigger = () => { Debug.Log("[Event] 🌟 七星连珠！天地灵气暴涨！所有修炼效率翻倍持续至天明。"); PlayerStats.Instance?.AddCultivation(70); } });
             _events.Add(new GameEvent { id = "refugees", title = "难民潮", description = "南部小镇被虚空侵蚀——难民逃到了这里。", OnTrigger = () => { Debug.Log("[Event] 🏃 难民潮！南边的镇子没了——被虚空吞了。难民们带来了消息：虚空的扩张速度在加快。"); Debug.Log("[Event] 一个小女孩拉着你的衣角：大哥哥/大姐姐——你能帮我们打回去吗？"); PlayerStats.Instance?.AddSpiritStone(20); } });
 

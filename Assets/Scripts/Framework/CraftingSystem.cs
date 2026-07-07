@@ -20,6 +20,7 @@ namespace EarthOnline.Framework
         {
             if (Instance != null && Instance != this) { Destroy(gameObject); return; }
 
+
             Instance = this; DontDestroyOnLoad(gameObject);
         }
 
@@ -59,6 +60,8 @@ namespace EarthOnline.Framework
             AddRecipe("craft_antidote", "解毒丹", "Consumable", "R", 2, 35,
                 ("item_herb_001", 2));
             AddRecipe("craft_spirit_amulet", "灵蕴护符", "Accessory", "SR", 1, 350,
+            AddRecipe("craft_phoenix_elixir", "凤凰药剂", "Consumable", "SSR", 1, 800, ("item_phoenix_feather", 1), ("item_cultivation_elixir", 1), ("item_spirit_core_001", 3));
+            AddRecipe("craft_void_weapon", "虚空之刃", "Weapon", "SSR", 1, 1000, ("item_void_crystal", 1), ("item_steel_sword", 1), ("item_spirit_core_001", 2));
                 ("item_spirit_jade", 1), ("item_spirit_core_001", 2));
             AddRecipe("craft_elixir_supreme", "大还丹", "Consumable", "SSR", 1, 500,
                 ("item_heal_pill_001", 3), ("item_spirit_core_001", 2), ("item_cultivation_elixir", 1));
