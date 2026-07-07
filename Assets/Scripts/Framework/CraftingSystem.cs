@@ -60,6 +60,7 @@ namespace EarthOnline.Framework
             AddRecipe("craft_antidote", "解毒丹", "Consumable", "R", 2, 35,
                 ("item_herb_001", 2));
             AddRecipe("craft_spirit_amulet", "灵蕴护符", "Accessory", "SR", 1, 350, ("item_spirit_jade", 1), ("item_spirit_core_001", 2));
+            AddRecipe("craft_hydra_blade", "九头蛇之刃", "Weapon", "SSR", 1, 2500, ("item_steel_sword", 1), ("item_void_crystal", 3), ("item_spirit_core_001", 5));
             AddRecipe("craft_elixir_ultra", "仙丹", "Consumable", "SSR", 1, 2500, ("item_phoenix_feather", 1), ("item_void_heart", 1), ("item_cultivation_elixir", 3));
             AddRecipe("craft_titan_armor", "泰坦之甲", "Armor", "SSR", 1, 3000, ("item_dragon_scale_armor", 1), ("item_ancient_rune", 2), ("item_spirit_core_001", 5));
             AddRecipe("craft_void_heart", "虚空之心制品", "Accessory", "SSR", 1, 3000, ("item_void_heart", 1), ("item_void_crystal", 3), ("item_ancient_rune", 2));
