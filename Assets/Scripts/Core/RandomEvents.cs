@@ -157,6 +157,8 @@ namespace EarthOnline
             {
                 yield return new WaitForSeconds(checkInterval);
                 if (Random.value < eventChance)
+            _events.Add(new GameEvent { id = "forest_awakens", title = "森林苏醒", description = "古树精从千年沉睡中醒来——它在找人。", OnTrigger = () => { Debug.Log("[Event] 🌳 森林苏醒！古树精低沉的声音回荡：第47号...来见我。我有话——关于你之前的46个人。"); } });
+            _events.Add(new GameEvent { id = "starfall", title = "星辰坠落", description = "一颗星星从天而降——不是陨石，是一座塔。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(150); Debug.Log("[Event] 🌟 星之塔坠落！一座来自天外的塔插在大地上。门上写着：入此塔者——可窥天道。"); } });
             _events.Add(new GameEvent { id = "immortal_visits", title = "仙人下凡", description = "一位真正的仙人下凡——他在找一个人。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(200); Debug.Log("[Event] ✨ 仙人下凡！他环顾四周：第47号...你在这里。你体内的东西——不属于这个世界。它在找你。做好准备。"); } });
 
             _events.Add(new GameEvent { id = "blood_moon", title = "血月当空", description = "月亮变成了血红色——妖兽狂暴，但击杀奖励翻倍。", OnTrigger = () => { Debug.Log("[Event] 🌑 血月！妖兽狂暴——但击杀奖励x2。持续至天明。"); } });

@@ -105,7 +105,9 @@ namespace EarthOnline.Editor
                 new Color(0.6f, 0.4f, 0.2f), true);
 
             CreateNPC("NPC_Li", new Vector3(3, 1.2f, -5), "npc_li_001", "李灵儿", "药铺掌柜", "最近采到的灵药越来越少了...", new Color(0.3f, 0.7f, 0.4f), false);
-            CreateEnemy("Enemy_Basilisk", new Vector3(18, 1.2f, 15), "basilisk_001", "蛇怪", maxHP: 110, attack: 24, speed: 2.5f, detect: 12f, patrol: 8f, dropId: "item_spirit_core_001", dropName: "灵气核心", dropQty: 3, color: new Color(0.1f, 0.5f, 0.1f));
+            CreateEnemy("Enemy_Wyvern", new Vector3(-18, 3f, -20), "wyvern_001", "双足飞龙", maxHP: 180, attack: 30, speed: 4f, detect: 20f, patrol: 15f, dropId: "item_spirit_core_001", dropName: "灵气核心", dropQty: 5, color: new Color(0.4f, 0.1f, 0.4f));
+            CreateEnemy("Enemy_Treant", new Vector3(15, 4f, 20), "treant_001", "古树精", maxHP: 250, attack: 35, speed: 0.5f, detect: 5f, patrol: 0f, dropId: "item_ancient_rune", dropName: "远古符文", dropQty: 1, color: new Color(0.2f, 0.5f, 0.1f));
+            CreateEnemy("Enemy_Basilisk", new Vector3(18, 1.2f, 15), "basilisk_001", "蛇怪", 110, 24, 2.5f, 12f, 8f, "item_spirit_core_001", "灵气核心", 3, new Color(0.1f, 0.5f, 0.1f));
             CreateEnemy("Enemy_Lich", new Vector3(0, 1.5f, 22), "lich_001", "巫妖", 120, 28, 1f, 20f, 3f, "item_void_crystal", "虚空结晶", 2, new Color(0.05f, 0.05f, 0.1f));
             CreateEnemy("Enemy_Gargoyle", new Vector3(5, 2f, -20), "gargoyle_001", "石像鬼", 90, 20, 1.5f, 6f, 0f, "item_spirit_core_001", "灵气核心", 3, new Color(0.3f, 0.3f, 0.3f));
             CreateEnemy("Enemy_Elemental", new Vector3(22, 1.5f, -10), "elemental_001", "火元素", 80, 22, 2f, 8f, 4f, "item_spirit_core_001", "灵气核心", 3, new Color(1f, 0.4f, 0.1f));
