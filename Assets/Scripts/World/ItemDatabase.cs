@@ -82,6 +82,8 @@ namespace EarthOnline
                 origin = "妖兽体内"
             },
             ["item_heal_pill_001"] = new ItemStory { displayName = "续命散", rarityName = "回血丹", story = "李灵儿炼的第一炉丹药。那一年她十岁，父亲刚被废掉修为。她把丹药塞进父亲嘴里——'爹，吃下去就会好的。'父亲笑了——那是他最后一次笑。", origin = "李灵儿·第一炉" },
+            ["item_ancient_rune"] = new ItemStory { displayName = "天道碎片", rarityName = "远古符文", story = "天道的法则被刻在这些符文上。不是人刻的——是天道自己在崩溃时脱落下来的。每收集一枚符文——你就离理解这个世界的真相更近一步。也离天道崩溃的真正原因更近一步。", origin = "天道·崩溃碎片" },
+
             ["item_world_seed"] = new ItemStory { displayName = "创世之种", rarityName = "世界树种", story = "这不是这个世界的东西。它是地球意志投放的——每一颗种子——都是一个新的世界的可能性。这颗种子是给你的。不是让你种的。是让你理解的——你可以创造世界。", origin = "地球意志·创世之种" },
 
 
