@@ -115,6 +115,7 @@ namespace EarthOnline.Editor
             CreateEnemy("Enemy_Basilisk", new Vector3(18, 1.2f, 15), "basilisk_001", "蛇怪", 110, 24, 2.5f, 12f, 8f, "item_spirit_core_001", "灵气核心", 3, new Color(0.1f, 0.5f, 0.1f));
             CreateEnemy("Enemy_Lich", new Vector3(0, 1.5f, 22), "lich_001", "巫妖", 120, 28, 1f, 20f, 3f, "item_void_crystal", "虚空结晶", 2, new Color(0.05f, 0.05f, 0.1f));
             CreateEnemy("Enemy_Gargoyle", new Vector3(5, 2f, -20), "gargoyle_001", "石像鬼", 90, 20, 1.5f, 6f, 0f, "item_spirit_core_001", "灵气核心", 3, new Color(0.3f, 0.3f, 0.3f));
+            CreateEnemy("Enemy_Behemoth", new Vector3(-30, 5f, 30), "behemoth_001", "比蒙巨兽", maxHP: 1000, attack: 70, speed: 1.5f, detect: 25f, patrol: 8f, dropId: "item_titan_core", dropName: "泰坦核心", dropQty: 2, color: new Color(0.5f, 0.3f, 0.1f));
             CreateEnemy("Enemy_Elemental", new Vector3(22, 1.5f, -10), "elemental_001", "火元素", 80, 22, 2f, 8f, 4f, "item_spirit_core_001", "灵气核心", 3, new Color(1f, 0.4f, 0.1f));
             CreateEnemy("Enemy_IceWraith", new Vector3(-22, 1.5f, 10), "ice_001", "冰霜之灵", 65, 16, 2.5f, 10f, 8f, "item_spirit_jade", "灵玉", 1, new Color(0.1f, 0.6f, 1f));
             CreateEnemy("Enemy_Drake", new Vector3(20, 2f, 0), "drake_001", "幼龙", 200, 25, 3f, 15f, 12f, "item_spirit_core_001", "灵气核心", 4, new Color(0.8f, 0.3f, 0.05f));
