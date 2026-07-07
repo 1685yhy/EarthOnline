@@ -157,7 +157,6 @@ namespace EarthOnline.NPC
                 {
                     Debug.Log($"[{npcName}] 💬 '需要看看我的货吗？' (按Y打开商店，其他键继续)");
                     StartCoroutine(WaitForShopInput(npcId));
-        System.Collections.IEnumerator WaitForQuestAccept(string questId) { float deadline = Time.time + 5f; while (Time.time < deadline) { if (Input.GetKeyDown(KeyCode.Q)) { EarthOnline.Framework.QuestManager.Instance?.AcceptQuest(questId); yield break; } if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Q)) yield break; yield return null; } }
                 }
             }
 
@@ -165,7 +164,6 @@ namespace EarthOnline.NPC
         }
 
         System.Collections.IEnumerator WaitForShopInput(string shopNpcId)
-        System.Collections.IEnumerator WaitForQuestAccept(string questId) { float deadline = Time.time + 5f; while (Time.time < deadline) { if (Input.GetKeyDown(KeyCode.Q)) { EarthOnline.Framework.QuestManager.Instance?.AcceptQuest(questId); yield break; } if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Q)) yield break; yield return null; } }
         {
             float deadline = Time.time + 3f;
             while (Time.time < deadline)

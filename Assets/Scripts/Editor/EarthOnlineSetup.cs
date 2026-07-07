@@ -114,6 +114,10 @@ namespace EarthOnline.Editor
             CreateEnemy("Enemy_Ghoul", new Vector3(-16, 1f, 16), "ghoul_001", "食尸鬼", 40, 12, 3f, 10f, 8f, "item_herb_001", "止血草", 2, new Color(0.1f, 0.3f, 0.1f));
             CreateEnemy("Enemy_Shadow", new Vector3(2, 1f, 20), "shadow_001", "魅影", 25, 8, 6f, 8f, 15f, "item_spirit_stone", "灵石碎片", 2, new Color(0.05f, 0.05f, 0.05f));
             CreateEnemy("Enemy_Wraith", new Vector3(0, 1.5f, 18), "wraith_001", "虚空游魂", 60, 15, 2f, 20f, 10f, "item_spirit_core_001", "灵气核心", 2, new Color(0.1f, 0.1f, 0.3f));
+            CreateNPC("NPC_Liu", new Vector3(-8, 1.2f, -12), "npc_liu_001", "刘猎户", "猎人", "北山的野兽越来越多了——不像是自然迁徙，像是被什么东西赶出来的。你要去北边的话小心点。", new Color(0.5f, 0.4f, 0.2f), true);
+            CreateNPC("NPC_Miner", new Vector3(-15, 1.2f, -8), "npc_miner_001", "老矿工", "矿工", "我挖了二十年矿——最近挖出来的灵石都是黑的。像被什么东西污染了。工头说是自然现象。狗屁。", new Color(0.4f, 0.3f, 0.3f), true);
+            CreateNPC("NPC_Apprentice", new Vector3(3, 1.2f, 12), "npc_apprentice_001", "小药童", "药童", "李师父教我认药已经三年了！我马上就能自己开炉炼丹了——不过上次差点把药铺烧了...", new Color(0.3f, 0.8f, 0.3f), false);
+
             CreateEnemy("Enemy_Slime", new Vector3(10, 1f, 10), "slime_001", "灵气史莱姆", 10, 2, 1f, 3f, 3f, "item_herb_001", "止血草", 2, new Color(0.2f, 0.8f, 0.3f));
             CreateEnemy("Enemy_Harpy", new Vector3(-10, 2f, -16), "harpy_001", "鹰身女妖", 35, 10, 5f, 15f, 20f, "item_spirit_stone", "灵石碎片", 3, new Color(0.7f, 0.7f, 0.2f));
             CreateEnemy("Enemy_Imp", new Vector3(-5, 1f, 15), "imp_001", "小恶魔", 15, 3, 5f, 4f, 8f, "item_spirit_stone", "灵石碎片", 1, new Color(0.8f, 0.1f, 0.1f));
