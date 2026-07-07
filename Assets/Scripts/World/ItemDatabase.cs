@@ -82,6 +82,8 @@ namespace EarthOnline
                 origin = "妖兽体内"
             },
             ["item_heal_pill_001"] = new ItemStory { displayName = "续命散", rarityName = "回血丹", story = "李灵儿炼的第一炉丹药。那一年她十岁，父亲刚被废掉修为。她把丹药塞进父亲嘴里——'爹，吃下去就会好的。'父亲笑了——那是他最后一次笑。", origin = "李灵儿·第一炉" },
+            ["item_world_seed"] = new ItemStory { displayName = "创世之种", rarityName = "世界树种", story = "这不是这个世界的东西。它是地球意志投放的——每一颗种子——都是一个新的世界的可能性。这颗种子是给你的。不是让你种的。是让你理解的——你可以创造世界。", origin = "地球意志·创世之种" },
+
 
             ["item_phoenix_feather"] = new ItemStory { displayName = "不死之证", rarityName = "凤羽", story = "凤凰涅槃时脱落的羽毛。每一根都蕴含着一丝不死之力。传说集齐三根可以炼制不死药——但上一个尝试的人——在丹炉前老死了。他等了凤凰三千年——凤凰没有回来。", origin = "凤凰·涅槃遗物" },
 
