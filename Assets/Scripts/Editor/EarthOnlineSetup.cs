@@ -117,7 +117,9 @@ namespace EarthOnline.Editor
             CreateEnemy("Enemy_Gargoyle", new Vector3(5, 2f, -20), "gargoyle_001", "石像鬼", 90, 20, 1.5f, 6f, 0f, "item_spirit_core_001", "灵气核心", 3, new Color(0.3f, 0.3f, 0.3f));
             CreateEnemy("Enemy_Behemoth", new Vector3(-30, 5f, 30), "behemoth_001", "比蒙巨兽", maxHP: 1000, attack: 70, speed: 1.5f, detect: 25f, patrol: 8f, dropId: "item_titan_core", dropName: "泰坦核心", dropQty: 2, color: new Color(0.5f, 0.3f, 0.1f));
             CreateEnemy("Enemy_Kraken", new Vector3(30, 1f, -30), "kraken_001", "深海巨妖", maxHP: 600, attack: 55, speed: 2f, detect: 20f, patrol: 10f, dropId: "item_void_crystal", dropName: "虚空结晶", dropQty: 3, color: new Color(0.02f, 0.1f, 0.2f));
+            CreateEnemy("Enemy_Chimera", new Vector3(25, 3f, 25), "chimera_001", "奇美拉", maxHP: 450, attack: 48, speed: 5f, detect: 18f, patrol: 12f, dropId: "item_dragon_fang", dropName: "龙牙", dropQty: 2, color: new Color(0.7f, 0.2f, 0.6f));
             CreateEnemy("Enemy_Kraken", new Vector3(30, 1f, -30), "kraken_001", "深海巨妖", maxHP: 600, attack: 55, speed: 2f, detect: 20f, patrol: 10f, dropId: "item_void_crystal", dropName: "虚空结晶", dropQty: 3, color: new Color(0.02f, 0.1f, 0.2f));
+            CreateEnemy("Enemy_Chimera", new Vector3(25, 3f, 25), "chimera_001", "奇美拉", maxHP: 450, attack: 48, speed: 5f, detect: 18f, patrol: 12f, dropId: "item_dragon_fang", dropName: "龙牙", dropQty: 2, color: new Color(0.7f, 0.2f, 0.6f));
             CreateEnemy("Enemy_Elemental", new Vector3(22, 1.5f, -10), "elemental_001", "火元素", 80, 22, 2f, 8f, 4f, "item_spirit_core_001", "灵气核心", 3, new Color(1f, 0.4f, 0.1f));
             CreateEnemy("Enemy_IceWraith", new Vector3(-22, 1.5f, 10), "ice_001", "冰霜之灵", 65, 16, 2.5f, 10f, 8f, "item_spirit_jade", "灵玉", 1, new Color(0.1f, 0.6f, 1f));
             CreateEnemy("Enemy_Drake", new Vector3(20, 2f, 0), "drake_001", "幼龙", 200, 25, 3f, 15f, 12f, "item_spirit_core_001", "灵气核心", 4, new Color(0.8f, 0.3f, 0.05f));
