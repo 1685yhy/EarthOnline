@@ -70,6 +70,7 @@ namespace EarthOnline.Framework
             AddRecipe("craft_cerberus_fang", "地狱獠牙", "Weapon", "SSR", 1, 3500, ("item_dragon_fang", 2), ("item_void_heart", 1), ("item_void_crystal", 4));
             AddRecipe("craft_medusa_gaze", "美杜莎之眼", "Accessory", "SSR", 1, 3200, ("item_ancient_rune", 2), ("item_spirit_core_001", 5), ("item_void_crystal", 2));
             AddRecipe("craft_banshee_wail", "女妖之嚎", "Accessory", "SSR", 1, 2800, ("item_void_crystal", 3), ("item_spirit_core_001", 4), ("item_phoenix_feather", 1));
+            AddRecipe("craft_wendigo_claw", "温迪戈之爪", "Weapon", "SSR", 1, 3000, ("item_dragon_fang", 1), ("item_void_crystal", 3), ("item_ancient_rune", 1));
             AddRecipe("craft_wyvern_scale", "飞龙鳞甲", "Armor", "SSR", 1, 2000, ("item_dragon_scale_armor", 1), ("item_spirit_core_001", 5), ("item_void_crystal", 2));
             AddRecipe("craft_serpent_venom", "蛇毒药剂", "Consumable", "SR", 2, 150, ("item_herb_001", 3), ("item_pill_001", 2));
             AddRecipe("craft_rune_blade", "符文之刃", "Weapon", "SSR", 1, 1800, ("item_ancient_rune", 1), ("item_steel_sword", 2), ("item_spirit_core_001", 3));
