@@ -82,12 +82,13 @@ namespace EarthOnline
                 origin = "妖兽体内"
             },
             ["item_heal_pill_001"] = new ItemStory { displayName = "续命散", rarityName = "回血丹", story = "李灵儿炼的第一炉丹药。那一年她十岁，父亲刚被废掉修为。她把丹药塞进父亲嘴里——'爹，吃下去就会好的。'父亲笑了——那是他最后一次笑。", origin = "李灵儿·第一炉" },
+            ["item_mana_orb"] = new ItemStory { displayName = "魂之容器", rarityName = "灵能宝珠", story = "一个用来封印灵魂的宝珠。里面封着三个灵魂——一个是修士，一个是妖兽，一个是凡人。他们被困在这里三千年了——互相陪伴。他们不恨封印他们的人——他们只是寂寞。", origin = "远古·灵魂监狱" },
+            ["item_iron_sword"] = new ItemStory { displayName = "断水", rarityName = "精铁剑", story = "王铁柱年轻时凭记忆锻出的第一把灵剑。剑身上有一道隐约的纹路——那是他见过一头妖兽后刻上去的。这把剑不是最好的——但是是王铁柱最珍惜的。", origin = "王铁柱铸造" },
+            ["item_phoenix_feather"] = new ItemStory { displayName = "不死之证", rarityName = "凤羽", story = "凤凰涅槃时脱落的羽毛。每一根都蕴含着一丝不死之力。传说集齐三根可以炼制不死药——但上一个尝试的人在丹炉前老死了。他等了凤凰三千年——凤凰没有回来。", origin = "凤凰·涅槃遗物" },
+            ["item_amber_fossil"] = new ItemStory { displayName = "时光琥珀", rarityName = "琥珀化石", story = "一只远古蝴蝶被封在琥珀里。不是死了——是时间停止了。它的翅膀还在微微发光。三千年了——它在等有人把它放出来。", origin = "远古·时间囚笼" },
             ["item_spirit_lotus"] = new ItemStory { displayName = "轮回之莲", rarityName = "千年灵莲", story = "一千年开花——一千年凋谢。每一片花瓣都蕴含着一次轮回的记忆。吃下它——你会记起你的前世。你是第47个穿越者——但你不是第一次来这个世界。", origin = "轮回·前世记忆" },
-            ["item_dragon_fang"] = new ItemStory { displayName = "龙之遗言", rarityName = "龙牙", story = "不是被拔下来的——是龙自己吐出来的。龙族灭族前——每条龙都把自己的一颗牙留给了这个世界。当我们不在了——让这些牙替我们守护这片大陆。", origin = "龙族·最后的遗言" },
             ["item_dragon_egg"] = new ItemStory { displayName = "龙之遗孤", rarityName = "龙蛋", story = "一颗还活着的龙蛋。蛋壳上刻着龙族的最后一句话：我们把最后的孩子留给你们。不要让虚空找到它。龙族灭绝了——但这颗蛋还在等待。", origin = "龙族·最后的遗孤" },
-            ["item_titan_core"] = new ItemStory { displayName = "古神之心", rarityName = "泰坦核心", story = "上古泰坦的核心——它活着的时候——身高万丈。它倒下的时候——砸出了一条山脉。它的核心还在跳动——它在等有人配得上它的力量。", origin = "上古泰坦·遗骸" },
             ["item_star_dust"] = new ItemStory { displayName = "星之泪", rarityName = "星尘", story = "不是灰尘——是星星的尸体。每一颗星星死去的时候——会撒下这样的粉末。收集足够多——你就可以点燃一颗新的星星。", origin = "星辰·遗骸" },
-            ["item_void_heart"] = new ItemStory { displayName = "虚空的心脏", rarityName = "虚空之心", story = "虚空的中心——一颗还在跳动的心脏。它不是器官——是所有被虚空吞噬的世界的集体执念凝聚成的实体。握住它的那一刻——你听到了47个穿越者同时在你耳边说话。", origin = "虚空·集体执念" },
             ["item_amber_fossil"] = new ItemStory { displayName = "时光琥珀", rarityName = "琥珀化石", story = "一只远古蝴蝶被封在琥珀里。不是死了——是时间停止了。它的翅膀还在微微发光。三千年了——它在等有人把它放出来。", origin = "远古·时间囚笼" },
             ["item_ancient_rune"] = new ItemStory { displayName = "天道碎片", rarityName = "远古符文", story = "天道的法则被刻在这些符文上。不是人刻的——是天道自己在崩溃时脱落下来的。每收集一枚符文——你就离理解这个世界的真相更近一步。也离天道崩溃的真正原因更近一步。", origin = "天道·崩溃碎片" },
 
@@ -96,7 +97,6 @@ namespace EarthOnline
 
             ["item_phoenix_feather"] = new ItemStory { displayName = "不死之证", rarityName = "凤羽", story = "凤凰涅槃时脱落的羽毛。每一根都蕴含着一丝不死之力。传说集齐三根可以炼制不死药——但上一个尝试的人——在丹炉前老死了。他等了凤凰三千年——凤凰没有回来。", origin = "凤凰·涅槃遗物" },
 
-            ["item_void_crystal"] = new ItemStory { displayName = "虚空之泪", rarityName = "虚空结晶", story = "虚空也会哭。当它在虚空中飘浮了足够久——吸收了足够多穿越者的记忆和遗憾——就会凝结成这种结晶。握在手里——你能感受到那47个穿越者的一生。他们每个人——都想回家。", origin = "虚空·穿越者记忆凝结" },
 
             ["item_spirit_pearl"] = new ItemStory { displayName = "鲛人泪", rarityName = "灵珠", story = "传说鲛人哭泣时会落下珍珠。但这颗不是泪——是鲛人的眼珠。有人在海底发现了它——发现者第二天就失踪了。他的遗物里只有这颗珠子——和一句话：海里有人在叫我。", origin = "深海·鲛人之眼" },
             ["item_spirit_amulet"] = new ItemStory { displayName = "往生扣", rarityName = "灵蕴护符", story = "一位元婴修士在飞升前为凡间妻子炼制的最后一件东西。他说：戴上它——下辈子我会找到你。妻子戴了一辈子。她说：我不要下辈子——我要这辈子。", origin = "元婴修士·最后遗物" },
