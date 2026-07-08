@@ -64,6 +64,7 @@ namespace EarthOnline
             EnsureComponent<CrimeSystem>();
             EnsureComponent<ReputationSystem>();
             EnsureComponent<AntagonistSystem>();
+            EnsureComponent<VillainStoryline>();
             EnsureComponent<FactionSystem>();
             EnsureComponent<GossipSystem>();
             EnsureComponent<MarketSystem>();
