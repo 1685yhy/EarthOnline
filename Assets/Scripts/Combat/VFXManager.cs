@@ -99,7 +99,7 @@ namespace EarthOnline.Combat
                 if (sr != null) { var sm = new Material(Shader.Find("Standard")); sm.color = color; sm.EnableKeyword("_EMISSION"); sm.SetColor("_EmissionColor", color); sr.material = sm; }
                 spark.GetComponent<Collider>().isTrigger = true;
                 var rb = spark.AddComponent<Rigidbody>();
-                rb.useGravity = false; rb.linearVelocity = Random.insideUnitSphere * 3f;
+                rb.useGravity = false; rb.velocity = Random.insideUnitSphere * 3f;
                 Destroy(spark, 0.8f);
             }
         }

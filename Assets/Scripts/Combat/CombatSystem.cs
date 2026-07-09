@@ -124,7 +124,6 @@ namespace EarthOnline.Combat
             int dmg = Mathf.RoundToInt(baseSpiritAttack * 0.4f);
             _lockedTarget.TakeDamage(dmg, false);
             FloatingDamage.Spawn(_lockedTarget.transform.position, $"-{dmg}", new Color(0.5f, 0.5f, 0.5f));
-            VFXManager.Instance?.SpawnSpiritBolt(GameObject.FindGameObjectWithTag("Player")?.transform.position ?? Vector3.zero, _lockedTarget.transform.position, crit);
         }
 
         /// <summary>
@@ -196,7 +195,6 @@ namespace EarthOnline.Combat
             int dmg = Mathf.RoundToInt(baseSpiritAttack * 2.5f);
             _lockedTarget.TakeDamage(dmg, false);
             FloatingDamage.Spawn(_lockedTarget.transform.position, $"-{dmg} 剑气!", new Color(0.3f, 0.7f, 1f));
-            VFXManager.Instance?.SpawnSpiritBolt(GameObject.FindGameObjectWithTag("Player")?.transform.position ?? Vector3.zero, _lockedTarget.transform.position, crit);
             Debug.Log($"[Combat] ⚔️ 剑气斩！{dmg}伤害 → {_lockedTarget.enemyName}");
         }
 
