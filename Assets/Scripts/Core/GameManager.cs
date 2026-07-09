@@ -73,6 +73,7 @@ namespace EarthOnline
             EnsureComponent<AudioManager>();
             EnsureComponent<EarthOnline.UI.UIManager>();
             EnsureComponent<WorldEnvironment>();
+            EnsureComponent<EarthOnline.Combat.VFXManager>();
             var (origin, cfg) = OriginManager.RollOrigin();
             var player = GameObject.FindGameObjectWithTag("Player");
             if (player != null) OriginManager.ApplyOrigin(origin, player);

@@ -124,6 +124,7 @@ namespace EarthOnline.Combat
             int dmg = Mathf.RoundToInt(baseSpiritAttack * 0.4f);
             _lockedTarget.TakeDamage(dmg, false);
             FloatingDamage.Spawn(_lockedTarget.transform.position, $"-{dmg}", new Color(0.5f, 0.5f, 0.5f));
+            VFXManager.Instance?.SpawnSpiritBolt(GameObject.FindGameObjectWithTag("Player")?.transform.position ?? Vector3.zero, _lockedTarget.transform.position, crit);
         }
 
         /// <summary>
@@ -169,6 +170,7 @@ namespace EarthOnline.Combat
             Debug.Log($"[Combat] 灵击！{damage}伤害 → {_lockedTarget.enemyName}{critText} (灵力:{_currentSpiritEnergy:F0}/{maxSpiritEnergy})");
 
             FloatingDamage.Spawn(_lockedTarget.transform.position,
+            VFXManager.Instance?.SpawnSpiritBolt(GameObject.FindGameObjectWithTag("Player")?.transform.position ?? Vector3.zero, _lockedTarget.transform.position, crit);
                 crit ? $"-{damage} 暴击!" : $"-{damage}",
                 crit ? new Color(1f, 0.85f, 0f) : new Color(0.6f, 0.8f, 1f));
 
@@ -194,6 +196,7 @@ namespace EarthOnline.Combat
             int dmg = Mathf.RoundToInt(baseSpiritAttack * 2.5f);
             _lockedTarget.TakeDamage(dmg, false);
             FloatingDamage.Spawn(_lockedTarget.transform.position, $"-{dmg} 剑气!", new Color(0.3f, 0.7f, 1f));
+            VFXManager.Instance?.SpawnSpiritBolt(GameObject.FindGameObjectWithTag("Player")?.transform.position ?? Vector3.zero, _lockedTarget.transform.position, crit);
             Debug.Log($"[Combat] ⚔️ 剑气斩！{dmg}伤害 → {_lockedTarget.enemyName}");
         }
 
