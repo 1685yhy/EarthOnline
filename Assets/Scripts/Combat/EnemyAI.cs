@@ -58,6 +58,13 @@ namespace EarthOnline.Combat
                 attackPower = Mathf.RoundToInt(attackPower * 1.3f);
             }
             currentHP = maxHP;
+            // 4K: 发光材质分级——强敌更亮
+            var r = GetComponent<Renderer>();
+            if (r != null && r.material != null) {
+                r.material.EnableKeyword("_EMISSION");
+                float tier = maxHP > 200 ? 0.8f : maxHP > 100 ? 0.5f : maxHP > 50 ? 0.3f : 0.15f;
+                r.material.SetColor("_EmissionColor", r.material.color * tier);
+            }
             _homePosition = transform.position;
             _player = GameObject.FindGameObjectWithTag("Player")?.transform;
             _cc = GetComponent<CharacterController>();
@@ -149,7 +156,7 @@ namespace EarthOnline.Combat
                         {
                             stats.TakeDamage(attackPower);
                             Debug.Log($"[{enemyName}] 攻击玩家！-{attackPower}HP");
-                        FloatingDamage.Spawn(stats.transform.position,
+                            FloatingDamage.Spawn(stats.transform.position,
                             $"-{attackPower}", new Color(1f, 0.3f, 0.2f));
                         }
                     }
