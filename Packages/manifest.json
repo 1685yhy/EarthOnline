@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "cn.tuanjie.codely.bridge": "1.0.66",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.ads": "4.4.2",
@@ -52,6 +51,7 @@
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0",
     "com.coplaydev.unity-mcp": "file:E:/EarthOnline/Project/Packages/com.coplaydev.unity-mcp",
-    "cn.tuanjie.ai.generators": "file:../.codely-cli/extensions/TJGenerators/Packages/cn.tuanjie.ai.generators"
+    "cn.tuanjie.ai.generators": "file:../.codely-cli/extensions/TJGenerators/Packages/cn.tuanjie.ai.generators",
+    "cn.tuanjie.codely.bridge": "1.0.67"
   }
 }

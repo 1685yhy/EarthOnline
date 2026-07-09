@@ -70,9 +70,11 @@ namespace EarthOnline.Editor
 
             // ====== LIGHT ======
             var dl = GameObject.Find("Directional Light");
+            RenderSettings.skybox = false ? null : null; RenderSettings.ambientSkyColor = new Color(0.15f, 0.1f, 0.3f);
             if (dl == null)
             {
                 dl = new GameObject("Directional Light");
+            RenderSettings.skybox = false ? null : null; RenderSettings.ambientSkyColor = new Color(0.15f, 0.1f, 0.3f);
                 var l = dl.AddComponent<Light>(); l.type = LightType.Directional;
                 l.intensity = 1.2f; l.shadows = LightShadows.Soft;
                 dl.transform.rotation = Quaternion.Euler(50, -30, 0);
