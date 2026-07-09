@@ -96,10 +96,13 @@ namespace EarthOnline.Editor
             }
 
             // ====== NPCs ======
-            CreateNPC("OldMan_Zhang", new Vector3(5, 1.2f, 3),
-                "npc_zhang_001", "张老", "神秘老者",
-                "年轻人，你也穿越了？...看来这个世界的'玩家'越来越多了。",
-                new Color(0.8f, 0.6f, 0.3f), true);
+            // CharacterBuilder NPCs
+            var zhang = EarthOnline.Editor.CharacterBuilder.BuildNPC("OldMan_Zhang", new Color(0.9f, 0.8f, 0.7f), new Color(0.5f, 0.4f, 0.3f), "elder");
+            zhang.transform.position = new Vector3(5, 0, 3);
+            var zh = zhang.AddComponent<EarthOnline.NPC.NPCBase>();
+            zh.npcId = "npc_zhang_001"; zh.npcName = "张老"; zh.npcTitle = "神秘老者";
+            zh.greetingText = "年轻人，你也穿越了？...看来这个世界的玩家越来越多了。";
+            zh.interactionRange = 6f;
 
             CreateNPC("NPC_Wang", new Vector3(-4, 1.2f, 5),
                 "npc_wang_001", "王铁柱", "铁匠",
