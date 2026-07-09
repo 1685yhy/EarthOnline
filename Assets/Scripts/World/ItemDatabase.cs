@@ -36,7 +36,6 @@ namespace EarthOnline
                 story = "这不是炼制的——这是蜕下来的。一头真正的青龙在渡劫前蜕下了这层鳞甲。它是告别，也是遗物。因为那头龙知道：渡劫成功则飞升，失败则灰飞烟灭。无论哪种——都不再需要这层鳞甲了。",
                 origin = "渡劫青龙遗蜕"
             },
-            ["item_cultivation_pill"] = new ItemStory {
                 displayName = "破障丹", rarityName = "筑基灵丹",
                 story = "李灵儿父亲——前天元宗副宗主——留下的丹方。他废掉修为前炼的最后一炉丹。每一颗都蕴含着一个父亲对女儿的歉意。",
                 origin = "李灵儿父亲炼制"
@@ -82,6 +81,7 @@ namespace EarthOnline
                 origin = "妖兽体内"
             },
             ["item_heal_pill_001"] = new ItemStory { displayName = "续命散", rarityName = "回血丹", story = "李灵儿炼的第一炉丹药。那一年她十岁，父亲刚被废掉修为。她把丹药塞进父亲嘴里——'爹，吃下去就会好的。'父亲笑了——那是他最后一次笑。", origin = "李灵儿·第一炉" },
+            ["item_cultivation_pill"] = new ItemStory { displayName = "破障丹", rarityName = "筑基灵丹", story = "李灵儿父亲留下的丹方。他废掉修为前炼的最后一炉丹。每一颗都蕴含着一个父亲对女儿的歉意——对不起，没能保护你。", origin = "天元宗前副宗主·遗物" },
             ["item_mana_orb"] = new ItemStory { displayName = "魂之容器", rarityName = "灵能宝珠", story = "一个用来封印灵魂的宝珠。里面封着三个灵魂——一个是修士，一个是妖兽，一个是凡人。他们被困在这里三千年了——互相陪伴。他们不恨封印他们的人——他们只是寂寞。", origin = "远古·灵魂监狱" },
             ["item_iron_sword"] = new ItemStory { displayName = "断水", rarityName = "精铁剑", story = "王铁柱年轻时凭记忆锻出的第一把灵剑。剑身上有一道隐约的纹路——那是他见过一头妖兽后刻上去的。这把剑不是最好的——但是是王铁柱最珍惜的。", origin = "王铁柱铸造" },
             ["item_phoenix_feather"] = new ItemStory { displayName = "不死之证", rarityName = "凤羽", story = "凤凰涅槃时脱落的羽毛。每一根都蕴含着一丝不死之力。传说集齐三根可以炼制不死药——但上一个尝试的人在丹炉前老死了。他等了凤凰三千年——凤凰没有回来。", origin = "凤凰·涅槃遗物" },
