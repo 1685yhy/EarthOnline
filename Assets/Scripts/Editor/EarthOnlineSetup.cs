@@ -430,6 +430,12 @@ namespace EarthOnline.Editor
             go.name = name;
             go.transform.position = pos;
             go.transform.localScale = new Vector3(0.8f, 1f, 0.8f);
+            // 4K: 体型差异化——不同角色不同体型
+            if (title.Contains("铁匠") || title.Contains("矿工")) go.transform.localScale = new Vector3(1.1f, 0.9f, 1.1f);
+            else if (title.Contains("老者") || title.Contains("掌柜") || title.Contains("婆婆")) go.transform.localScale = new Vector3(0.7f, 0.9f, 0.7f);
+            else if (title.Contains("药童") || title.Contains("小贩")) go.transform.localScale = new Vector3(0.6f, 0.7f, 0.6f);
+            else if (title.Contains("守卫") || title.Contains("队长")) go.transform.localScale = new Vector3(1.2f, 1.1f, 1.2f);
+            else if (title.Contains("商人") || title.Contains("道人")) go.transform.localScale = new Vector3(0.9f, 1.05f, 0.9f);
             Object.DestroyImmediate(go.GetComponent<Rigidbody>());
 
             var npcType = System.Type.GetType("EarthOnline.NPC.NPCBase, Assembly-CSharp");
