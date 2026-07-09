@@ -78,6 +78,9 @@ namespace EarthOnline.Framework
             AddRecipe("craft_blood_armor", "血魔战甲", "Armor", "SSR", 1, 4000, ("item_void_crystal", 4), ("item_titan_core", 1), ("item_dragon_fang", 2));
             AddRecipe("craft_world_eater", "吞星者之刃", "Weapon", "SSR", 1, 10000, ("item_void_heart", 5), ("item_titan_core", 5), ("item_ancient_rune", 5));
             AddRecipe("craft_solar_crown", "太阳王冠", "Accessory", "SSR", 1, 10000, ("item_phoenix_feather", 5), ("item_titan_core", 5), ("item_dragon_fang", 5));
+            AddRecipe("craft_dragon_lord", "龙王之冠", "Accessory", "SSR", 1, 12000, ("item_dragon_fang", 5), ("item_titan_core", 5), ("item_phoenix_feather", 3));
+            AddRecipe("craft_celestial_blade", "天界圣剑", "Weapon", "SSR", 1, 15000, ("item_titan_core", 5), ("item_phoenix_feather", 5), ("item_void_heart", 3));
+            AddRecipe("craft_void_titan_armor", "虚空泰坦甲", "Armor", "SSR", 1, 20000, ("item_void_heart", 5), ("item_titan_core", 5), ("item_ancient_rune", 5));
             AddRecipe("craft_cerberus_fang", "地狱獠牙", "Weapon", "SSR", 1, 3500, ("item_dragon_fang", 2), ("item_void_heart", 1), ("item_void_crystal", 4));
             AddRecipe("craft_medusa_gaze", "美杜莎之眼", "Accessory", "SSR", 1, 3200, ("item_ancient_rune", 2), ("item_spirit_core_001", 5), ("item_void_crystal", 2));
             AddRecipe("craft_banshee_wail", "女妖之嚎", "Accessory", "SSR", 1, 2800, ("item_void_crystal", 3), ("item_spirit_core_001", 4), ("item_phoenix_feather", 1));
