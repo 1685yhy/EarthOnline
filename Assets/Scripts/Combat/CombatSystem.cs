@@ -169,8 +169,8 @@ namespace EarthOnline.Combat
             string critText = crit ? " 暴击！" : "";
             Debug.Log($"[Combat] 灵击！{damage}伤害 → {_lockedTarget.enemyName}{critText} (灵力:{_currentSpiritEnergy:F0}/{maxSpiritEnergy})");
 
-            FloatingDamage.Spawn(_lockedTarget.transform.position,
             VFXManager.Instance?.SpawnSpiritBolt(GameObject.FindGameObjectWithTag("Player")?.transform.position ?? Vector3.zero, _lockedTarget.transform.position, crit);
+            FloatingDamage.Spawn(_lockedTarget.transform.position,
                 crit ? $"-{damage} 暴击!" : $"-{damage}",
                 crit ? new Color(1f, 0.85f, 0f) : new Color(0.6f, 0.8f, 1f));
 
