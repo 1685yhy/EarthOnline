@@ -70,6 +70,7 @@ namespace EarthOnline.Framework
             AddRecipe("craft_immortal_elixir", "仙灵药剂", "Consumable", "SSR", 1, 2000, ("item_phoenix_feather", 1), ("item_spirit_core_001", 5), ("item_ginseng_1000yr", 1));
             AddRecipe("craft_necro_staff", "死灵法杖", "Weapon", "SSR", 1, 3500, ("item_void_crystal", 3), ("item_ancient_rune", 2), ("item_titan_core", 1));
             AddRecipe("craft_archon_blade", "圣光之刃", "Weapon", "SSR", 1, 4000, ("item_titan_core", 2), ("item_phoenix_feather", 2), ("item_ancient_rune", 1));
+            AddRecipe("craft_abyss_core", "深渊核心", "Accessory", "SSR", 1, 5000, ("item_void_heart", 1), ("item_titan_core", 2), ("item_ancient_rune", 3));
             AddRecipe("craft_cerberus_fang", "地狱獠牙", "Weapon", "SSR", 1, 3500, ("item_dragon_fang", 2), ("item_void_heart", 1), ("item_void_crystal", 4));
             AddRecipe("craft_medusa_gaze", "美杜莎之眼", "Accessory", "SSR", 1, 3200, ("item_ancient_rune", 2), ("item_spirit_core_001", 5), ("item_void_crystal", 2));
             AddRecipe("craft_banshee_wail", "女妖之嚎", "Accessory", "SSR", 1, 2800, ("item_void_crystal", 3), ("item_spirit_core_001", 4), ("item_phoenix_feather", 1));
