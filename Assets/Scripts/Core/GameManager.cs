@@ -72,6 +72,7 @@ namespace EarthOnline
             EnsureComponent<WitnessSystem>();
             EnsureComponent<AudioManager>();
             EnsureComponent<EarthOnline.UI.UIManager>();
+            EnsureComponent<WorldEnvironment>();
             var (origin, cfg) = OriginManager.RollOrigin();
             var player = GameObject.FindGameObjectWithTag("Player");
             if (player != null) OriginManager.ApplyOrigin(origin, player);
