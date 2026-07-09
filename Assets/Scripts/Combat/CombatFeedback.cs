@@ -55,5 +55,17 @@ namespace EarthOnline.Combat
         {
             Debug.Log("[Combat] ⚠️ 灵力不足！等待回复或使用基础攻击。");
         }
+
+        /// <summary>命中VFX：冲击波圆环</summary>
+        public static void SpawnHitVFX(Vector3 position)
+        {
+            var go = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            go.name = "HitVFX"; go.transform.position = position;
+            go.transform.localScale = new Vector3(1.5f, 0.05f, 1.5f);
+            var r = go.GetComponent<Renderer>();
+            if (r != null) { var m = new Material(Shader.Find("Standard")); m.color = new Color(0.3f, 0.6f, 1f, 0.5f); r.material = m; }
+            go.GetComponent<Collider>().isTrigger = true;
+            Object.Destroy(go, 0.5f);
+        }
     }
 }

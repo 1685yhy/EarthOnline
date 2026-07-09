@@ -111,6 +111,8 @@ namespace EarthOnline.Combat
             Debug.Log($"[Combat] ⚔️ 攻击了{npc.npcName}！");
             CrimeSystem.Instance?.ReportAssault(npc.npcName, npc.transform.position);
             CombatFeedback.Shake(0.1f);
+            // VFX: 命中圆环特效
+            CombatFeedback.SpawnHitVFX(_lockedTarget.transform.position);
         }
 
         /// <summary>
@@ -160,6 +162,8 @@ namespace EarthOnline.Combat
 
             _lockedTarget.TakeDamage(damage, crit);
             CombatFeedback.Shake(crit ? 0.15f : 0.08f);
+            // VFX: 命中圆环特效
+            CombatFeedback.SpawnHitVFX(_lockedTarget.transform.position);
 
             string critText = crit ? " 暴击！" : "";
             Debug.Log($"[Combat] 灵击！{damage}伤害 → {_lockedTarget.enemyName}{critText} (灵力:{_currentSpiritEnergy:F0}/{maxSpiritEnergy})");
