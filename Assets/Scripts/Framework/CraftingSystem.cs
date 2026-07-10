@@ -89,6 +89,9 @@ namespace EarthOnline.Framework
             AddRecipe("craft_final_weapon", "终焉之刃", "Weapon", "SSR", 1, 50000, ("item_void_heart", 10), ("item_titan_core", 10), ("item_ancient_rune", 10));
             AddRecipe("craft_peace_ring", "和平之戒", "Accessory", "SSR", 1, 30000, ("item_phoenix_feather", 5), ("item_dragon_fang", 5), ("item_void_crystal", 10));
             AddRecipe("craft_new_world_key", "新世界之钥", "Accessory", "SSR", 1, 100000, ("item_void_heart", 10), ("item_phoenix_feather", 10), ("item_dragon_fang", 10));
+            AddRecipe("craft_dream_blade", "梦魇之刃", "Weapon", "SSR", 1, 6000, ("item_void_crystal", 5), ("item_ancient_rune", 2), ("item_dragon_fang", 2));
+            AddRecipe("craft_soul_vessel", "灵魂容器", "Accessory", "SSR", 1, 5500, ("item_void_heart", 2), ("item_phoenix_feather", 2), ("item_ancient_rune", 2));
+            AddRecipe("craft_time_amulet", "时光护符", "Accessory", "SSR", 1, 7000, ("item_phoenix_feather", 3), ("item_void_crystal", 5), ("item_titan_core", 2));
             AddRecipe("craft_cerberus_fang", "地狱獠牙", "Weapon", "SSR", 1, 3500, ("item_dragon_fang", 2), ("item_void_heart", 1), ("item_void_crystal", 4));
             AddRecipe("craft_medusa_gaze", "美杜莎之眼", "Accessory", "SSR", 1, 3200, ("item_ancient_rune", 2), ("item_spirit_core_001", 5), ("item_void_crystal", 2));
             AddRecipe("craft_banshee_wail", "女妖之嚎", "Accessory", "SSR", 1, 2800, ("item_void_crystal", 3), ("item_spirit_core_001", 4), ("item_phoenix_feather", 1));
