@@ -205,6 +205,7 @@ namespace EarthOnline
             _events.Add(new GameEvent { id = "e77", title = "天道授权", description = "天道正式授予穿越者联盟管理世界的权力。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(600); Debug.Log("[Event] 天道授权——穿越者联盟正式成为世界管理机构。"); } });
             _events.Add(new GameEvent { id = "e78", title = "虚空新世界", description = "虚空变成了第二个灵气大陆。", OnTrigger = () => { Debug.Log("[Event] 虚空新世界——曾经的虚空——现在是一片新大陆。"); PlayerStats.Instance?.AddCultivation(500); } });
             _events.Add(new GameEvent { id = "e79", title = "穿越者学院", description = "穿越者联盟建立学院——培养新一代穿越者。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(300); Debug.Log("[Event] 穿越者学院——第1号任院长——第47号是第一位客座教授。我们不再是孤独的战士——我们是一个文明。"); } });
+            _events.Add(new GameEvent { id = "e80", title = "世界树生长", description = "穿越者学院中心种下了一棵世界树——连接所有世界。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(400); Debug.Log("[Event] 世界树——它的根须穿过虚空——连接到每一个被地球意志创造的世界。灵气大陆不再孤单。"); } });
             _events.Add(new GameEvent { id = "night_1", title = "夜之事件1", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
             _events.Add(new GameEvent { id = "night_2", title = "夜之事件2", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
             _events.Add(new GameEvent { id = "night_3", title = "夜之事件3", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
