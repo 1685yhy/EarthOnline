@@ -95,8 +95,6 @@ namespace EarthOnline.Framework
             AddRecipe("craft_nether_sword", "冥龙之剑", "Weapon", "SSR", 1, 8000, ("item_dragon_fang", 3), ("item_void_crystal", 5), ("item_ancient_rune", 3));
             AddRecipe("craft_storm_hammer", "风暴之锤", "Weapon", "SSR", 1, 7000, ("item_titan_core", 3), ("item_phoenix_feather", 2), ("item_dragon_fang", 2));
             AddRecipe("craft_void_eater_armor", "虚空吞噬甲", "Armor", "SSR", 1, 9000, ("item_void_heart", 3), ("item_titan_core", 3), ("item_void_crystal", 5));
-            CreateEnemy("Enemy_VoidHound", new Vector3(15, 1f, -60), "voidhound_001", "虚空猎犬", maxHP: 800, attack: 60, speed: 7f, detect: 40f, patrol: 15f, dropId: "item_void_crystal", dropName: "虚空结晶", dropQty: 3, color: new Color(0.1f, 0.0f, 0.05f));
-            _events.Add(new GameEvent { id = "e86", title = "灵兽觉醒", description = "沉睡万年的灵兽苏醒——它在找人。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(300); Debug.Log("[Event] 灵兽觉醒——一只白泽从地下苏醒。它说：我睡了太久——世界变了。但我还记得我的使命——守护穿越者。"); } });
             AddRecipe("craft_void_hound_fang", "虚空猎牙", "Weapon", "SSR", 1, 5000, ("item_void_crystal", 4), ("item_dragon_fang", 1), ("item_ancient_rune", 1));
             AddRecipe("craft_cerberus_fang", "地狱獠牙", "Weapon", "SSR", 1, 3500, ("item_dragon_fang", 2), ("item_void_heart", 1), ("item_void_crystal", 4));
             AddRecipe("craft_medusa_gaze", "美杜莎之眼", "Accessory", "SSR", 1, 3200, ("item_ancient_rune", 2), ("item_spirit_core_001", 5), ("item_void_crystal", 2));
