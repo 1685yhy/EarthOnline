@@ -202,6 +202,8 @@ namespace EarthOnline
             _events.Add(new GameEvent { id = "e74", title = "穿越者之墓", description = "你找到了第0号穿越者的墓——和遗书。", OnTrigger = () => { Debug.Log("[Event] 第0号穿越者遗书：如果虚空杀不了——就帮它。它不是敌人——它是迷失的孩子。地球意志创造了我——创造了虚空——我们都是它的孩子。"); PlayerStats.Instance?.AddCultivation(800); } });
             _events.Add(new GameEvent { id = "e75", title = "最终和解", description = "地球意志和虚空——达成了和解。", OnTrigger = () => { Debug.Log("[Event] 地球意志：我错了——我不该抛弃虚空。虚空：我错了——我不该怨恨。第47号——谢谢你——让我们重新成为一家人。"); PlayerStats.Instance?.AddCultivation(1000); } });
             _events.Add(new GameEvent { id = "e76", title = "新纪元", description = "虚空变成了一个新世界——一个新的开始。", OnTrigger = () => { Debug.Log("[Event] 虚空不再是虚空了——它变成了一个新世界。和灵气大陆不同——但同样美丽。第0号的灵魂——在新世界的中心——微笑着说：欢迎回家。"); PlayerStats.Instance?.AddCultivation(1000); } });
+            _events.Add(new GameEvent { id = "e77", title = "天道授权", description = "天道正式授予穿越者联盟管理世界的权力。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(600); Debug.Log("[Event] 天道授权——穿越者联盟正式成为世界管理机构。"); } });
+            _events.Add(new GameEvent { id = "e78", title = "虚空新世界", description = "虚空变成了第二个灵气大陆。", OnTrigger = () => { Debug.Log("[Event] 虚空新世界——曾经的虚空——现在是一片新大陆。"); PlayerStats.Instance?.AddCultivation(500); } });
             _events.Add(new GameEvent { id = "night_1", title = "夜之事件1", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
             _events.Add(new GameEvent { id = "night_2", title = "夜之事件2", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
             _events.Add(new GameEvent { id = "night_3", title = "夜之事件3", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
