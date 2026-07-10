@@ -208,6 +208,7 @@ namespace EarthOnline
             _events.Add(new GameEvent { id = "e80", title = "世界树生长", description = "穿越者学院中心种下了一棵世界树——连接所有世界。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(400); Debug.Log("[Event] 世界树——它的根须穿过虚空——连接到每一个被地球意志创造的世界。灵气大陆不再孤单。"); } });
             _events.Add(new GameEvent { id = "e81", title = "时空档案馆", description = "穿越者联盟建立了时空档案馆——记录所有世界的历史。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(300); Debug.Log("[Event] 时空档案馆——你可以在馆里查看任何世界、任何时间的历史。包括——你的前世。"); } });
             _events.Add(new GameEvent { id = "e82", title = "天道重生", description = "崩溃的天道——重生了——带着记忆和教训。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(600); Debug.Log("[Event] 天道重生——新天道不再是冰冷的法则——它记得每一个穿越者的名字。它说：我活过——我也死过——现在我更懂生命的价值。"); } });
+            _events.Add(new GameEvent { id = "e83", title = "世界和平", description = "灵气大陆进入和平纪元——穿越者的使命不再是战斗——是建设。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(500); Debug.Log("[Event] 世界和平——剑收起来了——现在是建设的时候。穿越者学院第一届新生入学——其中有一个孩子——和你穿越时一模一样。"); } });
             _events.Add(new GameEvent { id = "night_1", title = "夜之事件1", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
             _events.Add(new GameEvent { id = "night_2", title = "夜之事件2", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
             _events.Add(new GameEvent { id = "night_3", title = "夜之事件3", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
