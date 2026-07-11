@@ -36,6 +36,7 @@ namespace EarthOnline
 
         private List<DualSoulQuest> _questChain = new();
         private QuestData _currentQuestData;
+        private bool _questManagerActivated;
 
         void Awake()
         {
@@ -49,6 +50,24 @@ namespace EarthOnline
             InitializeDualSoulChain();
             EventBus.Subscribe("OnQuestCompleted", OnQuestCompleted);
             EventBus.Subscribe("OnDualSoulAwakened", OnDualSoulAwakened);
+
+            // 自动激活第一个任务到QuestManager（等一帧确保QuestManager已就绪）
+            StartCoroutine(ActivateFirstQuestInQuestManager());
+        }
+
+        System.Collections.IEnumerator ActivateFirstQuestInQuestManager()
+        {
+            yield return null; // 等一帧确保QuestManager.RegisterAllQuests()已执行
+            var qm = QuestManager.Instance;
+            if (qm != null && qm.AcceptQuest("ds_01"))
+            {
+                _questManagerActivated = true;
+                Debug.Log("[双魂·任务链] 📌 双魂主线任务1已激活到QuestManager");
+            }
+            else
+            {
+                Debug.LogWarning("[双魂·任务链] ⚠ 激活任务1到QuestManager失败，将在Update中重试");
+            }
         }
 
         void OnDestroy()
@@ -61,6 +80,17 @@ namespace EarthOnline
         {
             if (!DualSoulManager.Instance.IsActive) return;
             if (chainCompleted) return;
+
+            // 如果协程未能激活，在Update中兜底重试
+            if (!_questManagerActivated)
+            {
+                var qm = QuestManager.Instance;
+                if (qm != null && qm.AcceptQuest("ds_01"))
+                {
+                    _questManagerActivated = true;
+                    Debug.Log("[双魂·任务链] 📌 双魂主线任务1已激活到QuestManager");
+                }
+            }
 
             // 自动检测任务进度——用于非标准完成条件
             CheckQuestProgress();
@@ -269,31 +299,8 @@ namespace EarthOnline
 
         void RegisterToQuestManager(DualSoulQuest dsq)
         {
-            var qm = QuestManager.Instance;
-            if (qm == null) return;
-
-            // 使用反射或手动构建QuestData
-            var qd = new QuestData
-            {
-                id = dsq.id,
-                title = dsq.title,
-                description = dsq.description,
-                type = dsq.type,
-                status = QuestStatus.InProgress, // 主线自动激活，不用从Available开始
-                giverNpcId = dsq.trigger.type == TriggerType.NpcTalk ? dsq.trigger.npcId : "",
-                giverName = dsq.trigger.type == TriggerType.NpcTalk ? dsq.trigger.npcId : "命运",
-                targetId = "",
-                targetCount = 1,
-                currentCount = 0,
-                rewardSpiritStones = dsq.rewards.spiritStones,
-                rewardCultivation = dsq.rewards.cultivation,
-                rewardItemId = dsq.rewards.rewardItemId ?? "",
-                nextQuestId = dsq.nextQuestId,
-                completionText = GetQuestCompletionText(dsq.id),
-                dialogueOnAccept = new List<string> { GetQuestAcceptDialogue(dsq.id) },
-                dialogueOnComplete = new List<string> { GetQuestCompleteDialogue(dsq.id) }
-            };
-            // 注意：ds_01 初始状态已是 InProgress（主线开局自动激活）
+            // QuestData已在QuestManager.RegisterAllQuests()中预先注册，
+            // 此处无需重复注册。保留方法桩以便后续扩展。
         }
 
         #endregion
@@ -321,26 +328,23 @@ namespace EarthOnline
 
             dsq.onComplete?.Invoke(this);
 
-            // 发放奖励
-            var stats = PlayerStats.Instance;
-            if (stats != null)
-            {
-                if (dsq.rewards.spiritStones > 0) stats.AddSpiritStone(dsq.rewards.spiritStones);
-                if (dsq.rewards.cultivation > 0) stats.AddCultivation(dsq.rewards.cultivation);
-            }
-            if (!string.IsNullOrEmpty(dsq.rewards.rewardItemId))
-            {
-                InventoryManager.Instance?.AddItem(new Item {
-                    id = dsq.rewards.rewardItemId,
-                    name = dsq.rewards.rewardItemId,
-                    quantity = 1
-                });
-            }
-
+            // 标准奖励（灵石/修为/道具）由QuestManager统一发放（调用CompleteQuestById）
+            // 双魂专有奖励（信任度/觉醒度）已在onComplete中通过DualSoulManager处理
             Debug.Log($"[双魂·任务链] ✅ 任务完成 [{currentQuestIndex + 1}/5]：{dsq.title}");
             EventBus.Publish("OnDualSoulQuestCompleted", new Dictionary<string, object> {
                 {"questId", questId}, {"chapter", dsq.chapter}
             });
+
+            // 同步到QuestManager：标记完成 & 自动解锁下一个任务
+            var qm = QuestManager.Instance;
+            if (qm != null)
+            {
+                qm.CompleteQuestById(questId);
+                if (!string.IsNullOrEmpty(dsq.nextQuestId))
+                {
+                    qm.AcceptQuest(dsq.nextQuestId);
+                }
+            }
 
             // 启动下一个任务
             if (!string.IsNullOrEmpty(dsq.nextQuestId))
