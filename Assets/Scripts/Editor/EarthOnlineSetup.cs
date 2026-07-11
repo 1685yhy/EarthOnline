@@ -595,6 +595,9 @@ namespace EarthOnline.Editor
             go.AddComponent<EarthOnline.NPC.NPCMemory>();
             go.AddComponent<EarthOnline.NPC.NPCNaturalSchedule>();
             go.AddComponent<EarthOnline.NPC.NPCNetwork>();
+            // 使用CharacterBuilder替换胶囊体
+            var builtNPC = EarthOnline.Editor.CharacterBuilder.BuildNPC(displayName, new Color(0.85f, 0.75f, 0.65f), color, "elder");
+            if (builtNPC != null) { builtNPC.transform.SetParent(go.transform); builtNPC.transform.localPosition = Vector3.zero; }
             go.AddComponent<EarthOnline.NPC.DialogueTree>();
             go.AddComponent<EarthOnline.NPC.NPCBond>();
             // Set work lines based on NPC
