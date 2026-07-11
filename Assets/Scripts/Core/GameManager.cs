@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using EarthOnline.Framework;
 using EarthOnline.Gifts;
+using EarthOnline.UI;
 
 namespace EarthOnline
 {
@@ -82,7 +83,10 @@ namespace EarthOnline
             if (player != null) OriginManager.ApplyOrigin(origin, player);
 
             _state = GameState.Playing;
-            Debug.Log($"========== [GameManager] 🌍 地球Online V2.0 | {cfg.name} | {cfg.startRealm} ==========");
+            ToastSystem.Instance?.Show(ToastSystem.ToastType.Event, $"地球Online V2.0 | {cfg.name} | {cfg.startRealm}");
+            EventBus.Publish("OnGameStarted", new Dictionary<string, object> {
+                {"origin", cfg.name}, {"realm", cfg.startRealm}
+            });
         }
 
         void OnItemPickedUp(Dictionary<string, object> data)
@@ -97,7 +101,10 @@ namespace EarthOnline
                 {
                     var om = giftMgr.ActivateGift("gift_old_master_001");
                     if (om != null)
-                        Debug.Log($"[GameManager] 『{om.GiftName}』已觉醒！");
+                    {
+                        ToastSystem.Instance?.Show(ToastSystem.ToastType.Event, $"『{om.GiftName}』已觉醒！");
+                        EventBus.Publish("OnGiftAwakened", new Dictionary<string, object> {{"giftName", om.GiftName}});
+                    }
                 }
             }
             else if (itemId == "item_chaos_fragment")
@@ -107,7 +114,10 @@ namespace EarthOnline
                 {
                     var db = giftMgr.ActivateGift("gift_divine_body_001");
                     if (db != null)
-                        Debug.Log($"[GameManager] 『{db.GiftName}』觉醒！虚空中有东西注意到了你...");
+                    {
+                        ToastSystem.Instance?.Show(ToastSystem.ToastType.Event, $"『{db.GiftName}』觉醒！虚空中有东西注意到了你...");
+                        EventBus.Publish("OnGiftAwakened", new Dictionary<string, object> {{"giftName", db.GiftName}});
+                    }
                 }
             }
 
@@ -286,7 +296,7 @@ namespace EarthOnline
             });
             gm.RegisterTemplate(dreamWalker);
 
-            Debug.Log("[GameManager] All gift templates registered (15). 🎉");
+            ToastSystem.Instance?.Show(ToastSystem.ToastType.Event, "所有金手指注册完毕 (15个)");
         }
 
         void AutoActivateStarterGift()
@@ -297,7 +307,7 @@ namespace EarthOnline
                 var gift = gm.ActivateGift("gift_sign_in_001");
                 if (gift != null)
                 {
-                    Debug.Log($"[GameManager] Starter gift activated: {gift.GiftName}");
+                    ToastSystem.Instance?.Show(ToastSystem.ToastType.Currency, $"初始金手指: {gift.GiftName}");
                 }
             }
         }
@@ -317,6 +327,8 @@ namespace EarthOnline
                     {
                         g.UseAbility("sign_in");
                     }
+                    EventBus.Publish("OnSignInComplete", new Dictionary<string, object> {{"reward", 10}});
+                    ToastSystem.Instance?.Show(ToastSystem.ToastType.Currency, "已签到+10灵石！");
                 }
             }
 
@@ -330,7 +342,7 @@ namespace EarthOnline
                         g.UseAbility("get_status");
                 }
                 var eq = EquipmentManager.Instance;
-                if (eq != null) Debug.Log($"[Equip] {eq.GetSummary()}");
+                if (eq != null) ToastSystem.Instance?.Show(ToastSystem.ToastType.Currency, eq.GetSummary());
                 var inv = InventoryManager.Instance;
                 if (inv != null)
                 {
@@ -357,7 +369,7 @@ namespace EarthOnline
                 }
                 else
                 {
-                    Debug.Log("[GameManager] 你还没有遇到任何导师。或许可以在村子里找找线索...");
+                    ToastSystem.Instance?.Show(ToastSystem.ToastType.Event, "你还没有遇到任何导师。或许可以在村子里找找线索...");
                 }
             }
 
@@ -422,12 +434,11 @@ namespace EarthOnline
                     var inv = InventoryManager.Instance;
                     var ings = string.Join(", ", System.Linq.Enumerable.Select(
                         r.ingredients, kvp => $"{kvp.Key}:{kvp.Value}"));
-                    Debug.Log($"[Craft] 将制作 [{r.resultRarity}]{r.resultItemName} x{r.resultQuantity}，消耗: {ings}");
-                    Debug.Log("[Craft] 按Y确认制作，其他键取消。");
+                    ToastSystem.Instance?.Show(ToastSystem.ToastType.Cultivation, $"将制作 [{r.resultRarity}]{r.resultItemName} x{r.resultQuantity}");
                     StartCoroutine(ConfirmCraft(r.id));
                 }
                 else
-                    Debug.Log("[Craft] 没有可制作的配方。需要材料！");
+                    ToastSystem.Instance?.Show(ToastSystem.ToastType.Cultivation, "没有可制作的配方。需要材料！");
             }
 
             // 按H使用回血物品
@@ -441,7 +452,7 @@ namespace EarthOnline
                     {
                         inv.RemoveItem("item_heal_pill_001", 1);
                         stats.Heal(30);
-                        Debug.Log("[Item] 使用回血丹！+30HP");
+                        ToastSystem.Instance?.Show(ToastSystem.ToastType.Combat, "使用回血丹！+30HP");
                         EarthOnline.Combat.FloatingDamage.Spawn(
                             GameObject.FindGameObjectWithTag("Player").transform.position,
                             "+30", Color.green, 1.2f);
@@ -450,10 +461,10 @@ namespace EarthOnline
                     {
                         inv.RemoveItem("item_herb_001", 1);
                         stats.Heal(10);
-                        Debug.Log("[Item] 使用止血草！+10HP");
+                        ToastSystem.Instance?.Show(ToastSystem.ToastType.Combat, "使用止血草！+10HP");
                     }
                     else
-                        Debug.Log("[Item] 没有回复物品。找草药或制作回血丹。");
+                        ToastSystem.Instance?.Show(ToastSystem.ToastType.Combat, "没有回复物品。找草药或制作回血丹。");
                 }
             }
 
@@ -501,7 +512,7 @@ namespace EarthOnline
 
         void OnPlayerDied(Dictionary<string, object> data)
         {
-            Debug.Log("[GameManager] 💀 玩家死亡。3秒后在地图中央重生...");
+            ToastSystem.Instance?.Show(ToastSystem.ToastType.Combat, "玩家死亡。3秒后在地图中央重生...");
             StartCoroutine(RespawnPlayer());
         }
 
@@ -519,7 +530,7 @@ namespace EarthOnline
             }
             var stats = PlayerStats.Instance;
             if (stats != null) stats.Heal(stats.maxHP);
-            Debug.Log("[GameManager] 🏥 已重生！HP全恢复。");
+            ToastSystem.Instance?.Show(ToastSystem.ToastType.Combat, "已重生！HP全恢复。");
         }
 
         void OnDayPassed_Save(Dictionary<string, object> data)
@@ -543,7 +554,7 @@ namespace EarthOnline
                     currentSceneName = "EarthOnline_Main"
                 };
                 sm.Save(saveData);
-                Debug.Log($"[GameManager] 💾 自动存档 — 第{data["day"]}天");
+                ToastSystem.Instance?.Show(ToastSystem.ToastType.Currency, $"自动存档 — 第{data["day"]}天");
             }
         }
 
@@ -564,7 +575,7 @@ namespace EarthOnline
                     gameDay = time != null ? time.GameDay : 1,
                     currentSceneName = "EarthOnline_Main"
                 });
-                Debug.Log("[GameManager] 💾 快速存档完成！(F5)");
+                ToastSystem.Instance?.Show(ToastSystem.ToastType.Currency, "快速存档完成！(F5)");
             }
         }
 
@@ -574,9 +585,9 @@ namespace EarthOnline
             var inv = InventoryManager.Instance;
             if (shop == null || inv == null) return;
             var items = inv.GetAllItems();
-            if (items.Count == 0) { Debug.Log("[Shop] 背包空空。"); return; }
+            if (items.Count == 0) { ToastSystem.Instance?.Show(ToastSystem.ToastType.Currency, "背包空空，无可出售。"); return; }
             var item = items[0];
-            Debug.Log($"[Shop] 按Y确认出售 [{item.rarity}]{item.name}(+{item.value/2}💰)，其他键取消。");
+            ToastSystem.Instance?.Show(ToastSystem.ToastType.Currency, $"按Y确认出售 [{item.rarity}]{item.name}(+{item.value/2}💰)");
             StartCoroutine(WaitForSellConfirm(item.id));
         }
 
@@ -592,12 +603,12 @@ namespace EarthOnline
                 }
                 if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Y))
                 {
-                    Debug.Log("[Shop] 取消出售。");
+                    ToastSystem.Instance?.Show(ToastSystem.ToastType.Currency, "取消出售。");
                     yield break;
                 }
                 yield return null;
             }
-            Debug.Log("[Shop] 超时，取消出售。");
+            ToastSystem.Instance?.Show(ToastSystem.ToastType.Currency, "出售超时，已取消。");
         }
 
         void TryOpenShop()
@@ -614,7 +625,7 @@ namespace EarthOnline
             if (closest != null)
                 shop.ShowShop(closest.npcId);
             else
-                Debug.Log("[Shop] 附近没有商人。村子里找陈半仙(金色NPC)或李灵儿(绿色NPC)按B购物。");
+                ToastSystem.Instance?.Show(ToastSystem.ToastType.Currency, "附近没有商人。找陈半仙或李灵儿按B购物。");
         }
 
         System.Collections.IEnumerator ConfirmCraft(string recipeId)
@@ -623,7 +634,7 @@ namespace EarthOnline
             while (Time.time < deadline)
             {
                 if (Input.GetKeyDown(KeyCode.Y)) { CraftingManager.Instance?.Craft(recipeId); yield break; }
-                if (Input.anyKeyDown) { Debug.Log("[Craft] 取消制作。"); yield break; }
+                if (Input.anyKeyDown) { ToastSystem.Instance?.Show(ToastSystem.ToastType.Cultivation, "取消制作。"); yield break; }
                 yield return null;
             }
         }
@@ -635,6 +646,16 @@ namespace EarthOnline
             foreach (var g in gm.GetActiveGifts())
             {
                 g.UseAbility(abilityName);
+                // 事件推送 — 触发ToastSystem已有的事件监听
+                switch (abilityName)
+                {
+                    case "sign_in":
+                        EventBus.Publish("OnSignInComplete", new Dictionary<string, object> {{"reward", 10}});
+                        break;
+                    case "cultivate":
+                        EventBus.Publish("OnCultivationBoost", new Dictionary<string, object> {{"amount", 5}});
+                        break;
+                }
                 // Buff bindings
                 if (abilityName == "sign_in")
                     EarthOnline.Combat.BuffManager.Instance?.Apply(

@@ -108,10 +108,21 @@ namespace EarthOnline
             if (currentHP <= 0)
             {
                 currentHP = 0;
-                long lostGold = spiritStones / 5; // 失去20%灵石
-                spiritStones -= lostGold;
-                Debug.Log($"[Player] 💀 你倒下了...失去了{lostGold}灵石(20%)。但故事不会就此结束。");
-                EventBus.Publish("OnPlayerDeath", new Dictionary<string, object> {{"lostGold", lostGold}});
+
+                // 新手经济保护：萌新期死亡不损失灵石（经济平衡文档V1 6.2.2）
+                if (NewbieProtection.ShouldLoseSpiritStonesOnDeath)
+                {
+                    long lostGold = spiritStones / 5; // 正常失去20%灵石
+                    spiritStones -= lostGold;
+                    Debug.Log($"[Player] 💀 你倒下了...失去了{lostGold}灵石(20%)。但故事不会就此结束。");
+                    EventBus.Publish("OnPlayerDeath", new Dictionary<string, object> {{"lostGold", lostGold}});
+                }
+                else
+                {
+                    Debug.Log($"[Player] 💀 你倒下了...（新手保护：灵石未损失）");
+                    EventBus.Publish("OnPlayerDeath", new Dictionary<string, object> {{"lostGold", 0L}});
+                }
+
                 currentHP = maxHP / 2;
             }
             UpdateHUD();

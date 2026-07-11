@@ -1,11 +1,22 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 namespace EarthOnline.Combat
 {
+    /// <summary>修真境界枚举</summary>
+    public enum RealmLevel
+    {
+        QiRefining,               // 练气期
+        FoundationEstablishment,   // 筑基期
+        CoreFormation,            // 金丹期
+        NascentSoul               // 元婴期
+    }
+
     /// <summary>
     /// 4K VFX管理器 —— 东方修真视觉特效。
     /// Phase1：灵击弹道 + 命中爆发 + 暴击强化。
+    /// Phase2：境界突破 + 低灵力警告 + 水墨暴击。
     /// </summary>
     public class VFXManager : MonoBehaviour
     {
@@ -20,10 +31,30 @@ namespace EarthOnline.Combat
         public Color hitRingColor = new Color(0.5f, 0.82f, 1f);
         public Color critBurstColor = new Color(1f, 0.82f, 0.5f);
 
+        [Header("境界突破")]
+        public Color qiRefiningColor = new Color(0.6f, 0.9f, 1f);         // 淡青
+        public Color foundationColor = new Color(0.8f, 0.6f, 1f);         // 紫
+        public Color coreFormationColor = new Color(1f, 0.85f, 0.3f);    // 金
+        public Color nascentSoulColor = new Color(1f, 0.4f, 0.6f);       // 赤
+
+        [Header("低灵力警告")]
+        public Color lowSpiritVignetteColor = new Color(0.6f, 0f, 0f, 0.4f);
+        public Color criticalSpiritPulseColor = new Color(0.8f, 0f, 0f, 0.6f);
+        public float pulseFrequency = 1.2f;
+
+        [Header("水墨暴击")]
+        public Color inkColor = new Color(0.05f, 0.05f, 0.05f, 0.8f);
+        public Color inkSplashColor = new Color(0.1f, 0.1f, 0.1f, 0.5f);
+
+        private GameObject vignetteOverlay;
+        private Coroutine warningCoroutine;
+        private Coroutine pulseCoroutine;
+
         void Awake()
         {
             if (Instance != null && Instance != this) { Destroy(gameObject); return; }
             Instance = this; DontDestroyOnLoad(gameObject);
+            CreateWarningOverlay();
         }
 
         /// <summary>灵击弹道：从玩家飞向目标</summary>

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using EarthOnline.Framework;
+using EarthOnline;
 
 namespace EarthOnline.Gifts
 {
@@ -100,7 +101,10 @@ namespace EarthOnline.Gifts
             int dayIndex = Mathf.Min(_consecutiveDays - 1, _config.dailyRewards.Length - 1);
             int reward = _config.dailyRewards[dayIndex];
             int bonus = Mathf.FloorToInt(reward * (Level - 1) * 0.5f);
-            int totalReward = reward + bonus;
+
+            // 新手经济保护：前7天签到额外+20/天（经济平衡文档V1 6.2.1）
+            int newbieBonus = NewbieProtection.GetSignInBonus();
+            int totalReward = reward + bonus + newbieBonus;
 
             _lastSignIn = now;
 
@@ -108,14 +112,16 @@ namespace EarthOnline.Gifts
             PlayerPrefs.SetInt($"SignIn_{GiftId}_Days", _consecutiveDays);
             PlayerPrefs.SetString($"SignIn_{GiftId}_Last", now.ToString("O"));
 
-            Debug.Log($"[{GiftName}] ✓ 签到第 {_consecutiveDays} 天！获得 {totalReward} 灵石 (基础{reward} + 等级加成{bonus})");
+            Debug.Log($"[{GiftName}] ✓ 签到第 {_consecutiveDays} 天！获得 {totalReward} 灵石 (基础{reward} + 等级加成{bonus}" +
+                (newbieBonus > 0 ? $" + 新手加成{newbieBonus}" : "") + $")");
 
             EventBus.Publish("OnSignInComplete", new Dictionary<string, object>
             {
                 {"day", _consecutiveDays},
                 {"reward", totalReward},
                 {"baseReward", reward},
-                {"levelBonus", bonus}
+                {"levelBonus", bonus},
+                {"newbieBonus", newbieBonus}
             });
 
             // 第7天触发故事里程碑

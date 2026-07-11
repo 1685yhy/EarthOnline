@@ -38,6 +38,26 @@ namespace EarthOnline.UI
             BuildUI();
         }
 
+        void Start()
+        {
+            // 监听游戏事件，实时显示事件文字
+            EventBus.Subscribe("OnRealmBreakthrough", data => {
+                ShowEvent($"突破! {data["realm"]}");
+            });
+            EventBus.Subscribe("OnPlayerDeath", _ => {
+                ShowEvent("你已死亡，3秒后重生...");
+            });
+            EventBus.Subscribe("OnDayPassed", data => {
+                ShowEvent($"第{data["day"]}天");
+            });
+            EventBus.Subscribe("OnGiftAwakened", data => {
+                ShowEvent($"金手指觉醒: {data["giftName"]}");
+            });
+            EventBus.Subscribe("OnGameStarted", data => {
+                ShowEvent($"出身 {data["origin"]} | {data["realm"]}");
+            });
+        }
+
         void BuildUI()
         {
             // Canvas
