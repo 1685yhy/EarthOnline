@@ -211,6 +211,7 @@ namespace EarthOnline
             _events.Add(new GameEvent { id = "e83", title = "世界和平", description = "灵气大陆进入和平纪元——穿越者的使命不再是战斗——是建设。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(500); Debug.Log("[Event] 世界和平——剑收起来了——现在是建设的时候。穿越者学院第一届新生入学——其中有一个孩子——和你穿越时一模一样。"); } });
             _events.Add(new GameEvent { id = "e84", title = "道胎觉醒", description = "有人觉醒了万年道胎——整个大陆的灵气都在向他涌去。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(500); Debug.Log("[Event] 道胎觉醒——天元宗宗主狂喜——他等了五十年的肉身——终于成熟了。穿越者——你能在他被炼成丹药前——带他走吗？"); } });
             _events.Add(new GameEvent { id = "e85", title = "双魂共鸣", description = "两个灵魂达到完美同步——发出了超越境界的一击。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(500); Debug.Log("[Event] 双魂共鸣——念安和穿越者的灵魂完美同步。原主人第一次——不是因为被逼——而是因为愿意——释放了全力。"); } });
+            _events.Add(new GameEvent { id = "e86", title = "古宗门遗迹", description = "地下发现了一座被虚空掩埋的远古宗门。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(400); Debug.Log("[Event] 古宗门遗迹——比天元宗更古老的宗门——他们的碑文上刻着：虚空不是敌人——是我们创造的。"); } });
             _events.Add(new GameEvent { id = "night_1", title = "夜之事件1", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
             _events.Add(new GameEvent { id = "night_2", title = "夜之事件2", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
             _events.Add(new GameEvent { id = "night_3", title = "夜之事件3", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
