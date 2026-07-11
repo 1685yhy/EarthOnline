@@ -112,6 +112,7 @@ namespace EarthOnline.Framework
             AddRecipe("craft_void_pact", "虚空契约", "Accessory", "SSR", 1, 6000, ("item_void_heart", 2), ("item_void_crystal", 5), ("item_ancient_rune", 2));
             AddRecipe("craft_soul_bond", "灵魂羁绊", "Accessory", "SSR", 1, 7000, ("item_void_heart", 2), ("item_phoenix_feather", 2), ("item_dragon_fang", 2));
             AddRecipe("craft_fate_thread", "命运之线", "Accessory", "SSR", 1, 8000, ("item_ancient_rune", 3), ("item_phoenix_feather", 3), ("item_void_heart", 1));
+            AddRecipe("craft_world_heart", "世界之心", "Accessory", "SSR", 1, 10000, ("item_void_heart", 5), ("item_titan_core", 5), ("item_phoenix_feather", 5));
             AddRecipe("craft_void_hound_fang", "虚空猎牙", "Weapon", "SSR", 1, 5000, ("item_void_crystal", 4), ("item_dragon_fang", 1), ("item_ancient_rune", 1));
             AddRecipe("craft_cerberus_fang", "地狱獠牙", "Weapon", "SSR", 1, 3500, ("item_dragon_fang", 2), ("item_void_heart", 1), ("item_void_crystal", 4));
             AddRecipe("craft_medusa_gaze", "美杜莎之眼", "Accessory", "SSR", 1, 3200, ("item_ancient_rune", 2), ("item_spirit_core_001", 5), ("item_void_crystal", 2));
