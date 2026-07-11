@@ -550,6 +550,11 @@ namespace EarthOnline
                     playerPosZ = player != null ? player.transform.position.z : 0,
                     playerLevel = stats != null ? stats.playerLevel : 1,
                     playerSpiritStones = stats != null ? stats.spiritStones : 0,
+                    spiritEssence = stats != null ? stats.spiritEssence : 0,
+                    trust = DualSoulManager.Instance != null ? DualSoulManager.Instance.trust : 0,
+                    awakening = DualSoulManager.Instance != null ? DualSoulManager.Instance.awakening : 0,
+                    fame = ReputationSystem.Instance != null ? ReputationSystem.Instance.fame : 0,
+                    infamy = ReputationSystem.Instance != null ? ReputationSystem.Instance.infamy : 0,
                     gameDay = time != null ? time.GameDay : 1,
                     currentSceneName = "EarthOnline_Main"
                 };
@@ -572,6 +577,11 @@ namespace EarthOnline
                     playerPosZ = player != null ? player.transform.position.z : 0,
                     playerLevel = stats != null ? stats.playerLevel : 1,
                     playerSpiritStones = stats != null ? stats.spiritStones : 0,
+                    spiritEssence = stats != null ? stats.spiritEssence : 0,
+                    trust = DualSoulManager.Instance != null ? DualSoulManager.Instance.trust : 0,
+                    awakening = DualSoulManager.Instance != null ? DualSoulManager.Instance.awakening : 0,
+                    fame = ReputationSystem.Instance != null ? ReputationSystem.Instance.fame : 0,
+                    infamy = ReputationSystem.Instance != null ? ReputationSystem.Instance.infamy : 0,
                     gameDay = time != null ? time.GameDay : 1,
                     currentSceneName = "EarthOnline_Main"
                 });

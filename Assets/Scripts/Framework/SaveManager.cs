@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using EarthOnline;
 
 namespace EarthOnline.Framework
 {
@@ -14,7 +15,8 @@ namespace EarthOnline.Framework
 
         private const string SAVE_DIR = "saves";
         private const string SAVE_FILE = "save_001.json";
-        private const int CURRENT_SAVE_VERSION = 1;
+        private const int CURRENT_SAVE_VERSION = 2;
+        private SaveData _lastLoadedData;
 
         void Awake()
         {
@@ -25,6 +27,7 @@ namespace EarthOnline.Framework
             }
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            EventBus.Subscribe("OnGameLoaded", OnGameLoaded);
         }
 
         private string GetSavePath()
@@ -66,6 +69,7 @@ namespace EarthOnline.Framework
                 if (data.version < CURRENT_SAVE_VERSION)
                     data = UpgradeSaveData(data);
 
+                _lastLoadedData = data;
                 Debug.Log($"[SaveManager] Game loaded. Version: {data.version}");
                 return data;
             }
@@ -97,6 +101,57 @@ namespace EarthOnline.Framework
             oldData.version = CURRENT_SAVE_VERSION;
             return oldData;
         }
+
+        /// <summary>
+        /// 当场景加载完成且所有Manager初始化后，恢复存档数据到对应Manager。
+        /// </summary>
+        private void OnGameLoaded(Dictionary<string, object> args)
+        {
+            if (_lastLoadedData != null)
+            {
+                RestoreToManagers(_lastLoadedData);
+                _lastLoadedData = null;
+            }
+        }
+
+        /// <summary>
+        /// 将SaveData中的数据恢复到各Manager的运行时字段。
+        /// </summary>
+        private void RestoreToManagers(SaveData data)
+        {
+            if (data == null) return;
+
+            if (PlayerStats.Instance != null)
+            {
+                PlayerStats.Instance.spiritEssence = data.spiritEssence;
+                PlayerStats.Instance.playerLevel = data.playerLevel;
+                PlayerStats.Instance.spiritStones = data.playerSpiritStones;
+            }
+
+            if (DualSoulManager.Instance != null)
+            {
+                DualSoulManager.Instance.trust = data.trust;
+                DualSoulManager.Instance.awakening = data.awakening;
+            }
+
+            if (ReputationSystem.Instance != null)
+            {
+                ReputationSystem.Instance.fame = data.fame;
+                ReputationSystem.Instance.infamy = data.infamy;
+            }
+
+            Debug.Log("[SaveManager] Restored loaded data to managers: " +
+                      $"spiritEssence={data.spiritEssence}, trust={data.trust}, " +
+                      $"awakening={data.awakening}, fame={data.fame}, infamy={data.infamy}");
+        }
+
+        void OnDestroy()
+        {
+            if (Instance == this)
+            {
+                EventBus.Unsubscribe("OnGameLoaded", OnGameLoaded);
+            }
+        }
     }
 
     [System.Serializable]
@@ -116,6 +171,11 @@ namespace EarthOnline.Framework
         public int gameMinute = 0;
         public int playerLevel = 1;
         public long playerSpiritStones = 0;
+        public int spiritEssence = 0;
+        public int trust = 0;
+        public int awakening = 0;
+        public int fame = 0;
+        public int infamy = 0;
         public List<NPCProgressData> npcProgress = new List<NPCProgressData>();
         public List<StringPair> extraData = new List<StringPair>();
     }
