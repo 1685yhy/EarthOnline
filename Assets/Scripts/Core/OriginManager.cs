@@ -18,7 +18,7 @@ namespace EarthOnline
         Beggar,          // 乞丐
         MerchantChild,   // 商户之子
         ExiledOfficial,  // 被贬官宦
-        PossessedMaster  // 夺舍之身——穿越成被欺负的绝世高手
+        DualSoul  // 双魂一体——穿越者与原主人共享身体，智勇互补
     }
 
     public class OriginManager : MonoBehaviour
@@ -73,12 +73,12 @@ namespace EarthOnline
                 startItems = new[] { ("item_heal_pill_001", 3), ("item_pill_001", 2) },
                 openingText = "你爹说：'修炼？那是烧灵石的无底洞。咱家是做生意的，踏踏实实赚钱不好吗？'\n但你知道，在这个世界上——没有修为，再多的灵石也保不住。\n你偷偷存了一笔钱。今天，你要去见一个人。一个能教你修炼的人。"
             },
-            [PlayerOrigin.PossessedMaster] = new OriginConfig {
-                name = "夺舍之身", description = "你穿越到了一个元婴期高手的身体里。修为通天——但所有人都把原主人当傻子。现在——他的身体是你的了。复仇——从今天开始。",
+            [PlayerOrigin.DualSoul] = new OriginConfig {
+                name = "双魂一体", description = "你没有取代任何人。你和原主人的灵魂共存于同一具身体。他是这片区域最强的修士——但懦弱到被人欺负不敢还手。你帮他看穿谎言——他帮你横扫敌人。",
                 startPos = new Vector3(-12, 2, -15), startScene = "EarthOnline_Main",
                 startRealm = "元婴期", startLayer = 1, startSpiritStones = 5000,
                 startItems = new[] { ("item_steel_sword", 1), ("item_dragon_scale_armor", 1), ("item_heal_pill_001", 10), ("item_cultivation_elixir", 3) },
-                openingText = "你睁开眼睛。不是自己的眼睛。\n低头看——一身白袍，腰间挂着元婴期修士的令牌。\n'师兄！你又偷懒了！长老要罚你！'\n一个小师妹冲进来——她看到你醒了——眼神里闪过一丝慌乱。\n她刚才在翻你的东西。\n'我...我是来叫你起床的...'\n她不知道——这具身体里——已经换了一个人。"
+                openingText = "你睁开眼睛——但这不是你的手。\n一只修长白净的手——元婴期修士的手——正微微发抖。\n'你是谁？'——一个声音在你脑海里响起，充满恐惧。\n那是原主人。他还活着。\n'我...我不知道你怎么进来的...但这是我的身体...'\n他的声音越来越小。他习惯了退让——对所有人都退让。\n小师妹推门进来了：'师兄！你又偷懒！长老要罚你！'\n她一边骂——一边顺手拿走了桌上的丹药。\n她在翻你的东西。她以为你看不见。\n但你看得清清楚楚。\n'她...她只是...'——原主人想辩解。\n你打断了他：'不是。她在偷你东西。睁大眼睛看着。'"
             },
             [PlayerOrigin.ExiledOfficial] = new OriginConfig {
                 name = "被贬官宦", description = "曾经的朝中重臣，因得罪权贵被贬至边疆。但你在朝中的人脉和情报网依然存在。",
