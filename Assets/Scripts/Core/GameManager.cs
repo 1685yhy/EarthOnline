@@ -73,6 +73,7 @@ namespace EarthOnline
             EnsureComponent<AudioManager>();
             EnsureComponent<EarthOnline.UI.UIManager>();
             EnsureComponent<EarthOnline.UI.ToastSystem>();
+            EnsureComponent<PostProcessManager>();
             EnsureComponent<DualSoulManager>();
             EnsureComponent<WorldEnvironment>();
             EnsureComponent<EarthOnline.Combat.VFXManager>();
