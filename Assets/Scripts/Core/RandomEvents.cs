@@ -219,6 +219,7 @@ namespace EarthOnline
             _events.Add(new GameEvent { id = "e91", title = "新的开始", description = "无论选择什么——这都是新的开始。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(500); Debug.Log("[Event] 新的开始——灵气大陆的故事告一段落——但穿越者的旅程才刚刚开始。下一个世界——在等待。"); } });
             _events.Add(new GameEvent { id = "e92", title = "轮回之外", description = "有东西在所有的世界之外——在观察。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(500); Debug.Log("[Event] 轮回之外——在所有世界、所有穿越者、所有虚空之上——有更高维度的存在。它说：有意思——这个人类——值得关注。"); } });
             _events.Add(new GameEvent { id = "e93", title = "世界树的回答", description = "穿越者学院的世界树开花了——每一朵花里都有一个世界的记忆。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(500); Debug.Log("[Event] 世界树开花——你看到无数世界在花瓣里闪烁——每一个世界都有穿越者在战斗。你不孤单。"); } });
+            _events.Add(new GameEvent { id = "e94", title = "最初的穿越者", description = "第0号穿越者的完整记忆被解锁——他是地球意志的第一个实验。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(1000); Debug.Log("[Event] 第0号穿越者——不是地球意志创造的——是地球意志自己。它把自己变成了人类——想要体验活着的感觉。虚空是它忘记脱下的旧壳。"); } });
             _events.Add(new GameEvent { id = "night_1", title = "夜之事件1", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
             _events.Add(new GameEvent { id = "night_2", title = "夜之事件2", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
             _events.Add(new GameEvent { id = "night_3", title = "夜之事件3", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
