@@ -224,6 +224,7 @@ namespace EarthOnline
             _events.Add(new GameEvent { id = "e96", title = "最终感谢", description = "地球Online的所有故事——到这里——但只是第一个世界。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(500); Debug.Log("[Event] 最终感谢——灵气大陆的故事——今天告一段落。但地球Online——才刚刚开始。下一个世界——都市修真——已经在加载。"); } });
             _events.Add(new GameEvent { id = "e97", title = "后会有期", description = "灵气大陆——再见。都市——你好。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(500); Debug.Log("[Event] 后会有期——第47号穿越者——灵气大陆永远不会忘记你。都市世界的传送门已经打开——新的冒险——在等待。"); } });
             _events.Add(new GameEvent { id = "e98", title = "全服公告", description = "全服公告——灵气大陆正式进入长期运营阶段。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(200); Debug.Log("[Event] 全服公告——灵气大陆V1.0正式上线。感谢所有穿越者的陪伴。新世界即将到来。"); } });
+            _events.Add(new GameEvent { id = "e99", title = "百年之后", description = "一百年后——穿越者学院的新生们——在学你的事迹。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(500); Debug.Log("[Event] 百年之后——穿越者学院的新生们在学第47号穿越者的故事。你成了传说——成了教科书里的人物。"); } });
             _events.Add(new GameEvent { id = "night_1", title = "夜之事件1", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
             _events.Add(new GameEvent { id = "night_2", title = "夜之事件2", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
             _events.Add(new GameEvent { id = "night_3", title = "夜之事件3", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
