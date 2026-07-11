@@ -221,6 +221,7 @@ namespace EarthOnline
             _events.Add(new GameEvent { id = "e93", title = "世界树的回答", description = "穿越者学院的世界树开花了——每一朵花里都有一个世界的记忆。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(500); Debug.Log("[Event] 世界树开花——你看到无数世界在花瓣里闪烁——每一个世界都有穿越者在战斗。你不孤单。"); } });
             _events.Add(new GameEvent { id = "e94", title = "最初的穿越者", description = "第0号穿越者的完整记忆被解锁——他是地球意志的第一个实验。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(1000); Debug.Log("[Event] 第0号穿越者——不是地球意志创造的——是地球意志自己。它把自己变成了人类——想要体验活着的感觉。虚空是它忘记脱下的旧壳。"); } });
             _events.Add(new GameEvent { id = "e95", title = "第48号穿越者", description = "地球意志的最后一条消息——下一位穿越者已经在路上。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(500); Debug.Log("[Event] 第48号穿越者——地球意志的最后一条消息：第47号——谢谢你。第48号已经在路上了。不是替代你——是来加入你。多元宇宙——需要你们一起守护。"); } });
+            _events.Add(new GameEvent { id = "e96", title = "最终感谢", description = "地球Online的所有故事——到这里——但只是第一个世界。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(500); Debug.Log("[Event] 最终感谢——灵气大陆的故事——今天告一段落。但地球Online——才刚刚开始。下一个世界——都市修真——已经在加载。"); } });
             _events.Add(new GameEvent { id = "night_1", title = "夜之事件1", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
             _events.Add(new GameEvent { id = "night_2", title = "夜之事件2", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
             _events.Add(new GameEvent { id = "night_3", title = "夜之事件3", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
