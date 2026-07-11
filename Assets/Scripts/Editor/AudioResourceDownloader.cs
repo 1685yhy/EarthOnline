@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -13,7 +11,12 @@ namespace EarthOnline.Editor
     /// Alpha音频资源下载器 —— 自动下载8个P0音频文件并放入正确目录。
     ///
     /// 音频来源: Pixabay (https://pixabay.com/sound-effects/) —— 免费无版权CC0音效。
-    /// 如需替换来源，修改 AudioEntry.Url 即可。
+    /// Pixabay CDN URL 格式: https://cdn.pixabay.com/download/audio/{date}/audio_{hash}.mp3
+    ///
+    /// 如需替换下载链接:
+    ///   1. 访问 https://pixabay.com/sound-effects/ 搜索音效
+    ///   2. 点击下载按钮，复制 CDN 链接
+    ///   3. 替换下方 P0Entries 数组中的 Url
     ///
     /// P0清单（来自 AudioManager EventBus 订阅）:
     ///   SFX:        spirit_attack, enemy_death, item_pickup, player_death, quest_complete, npc_greeting
@@ -23,38 +26,44 @@ namespace EarthOnline.Editor
     {
         // ──────────────────────────────────────────────
         // P0 音频条目定义
+        // 提示: 以下URL为示例格式，请替换为实际Pixabay CDN链接
         // ──────────────────────────────────────────────
 
         private static readonly AudioEntry[] P0Entries =
         {
-            // SFX — 放入 Resources/Audio/SFX/
+            // SFX — 下载到 Resources/Audio/SFX/
             new("spirit_attack",
-                "https://cdn.pixabay.com/download/audio/2022/10/05/audio_a8c7c8c6c0.mp3",
+                "https://cdn.pixabay.com/download/audio/2023/02/14/audio_8a7b6c5d4e.mp3",
                 AudioCategory.SFX),
             new("enemy_death",
-                "https://cdn.pixabay.com/download/audio/2022/11/09/audio_0f1e7c0d2a.mp3",
+                "https://cdn.pixabay.com/download/audio/2023/03/22/audio_1a2b3c4d5e.mp3",
                 AudioCategory.SFX),
             new("item_pickup",
-                "https://cdn.pixabay.com/download/audio/2022/05/27/audio_b4f7e3a4b5.mp3",
+                "https://cdn.pixabay.com/download/audio/2023/04/10/audio_f9e8d7c6b5.mp3",
                 AudioCategory.SFX),
             new("player_death",
-                "https://cdn.pixabay.com/download/audio/2022/08/04/audio_d2e9f0b1c3.mp3",
+                "https://cdn.pixabay.com/download/audio/2023/05/18/audio_0a1b2c3d4e.mp3",
                 AudioCategory.SFX),
             new("quest_complete",
-                "https://cdn.pixabay.com/download/audio/2022/03/15/audio_c5a6d7e8f9.mp3",
+                "https://cdn.pixabay.com/download/audio/2023/06/25/audio_a0b1c2d3e4.mp3",
                 AudioCategory.SFX),
             new("npc_greeting",
-                "https://cdn.pixabay.com/download/audio/2022/06/20/audio_e1f2a3b4c5.mp3",
+                "https://cdn.pixabay.com/download/audio/2023/07/12/audio_5f6g7h8i9j.mp3",
                 AudioCategory.SFX),
 
-            // Narration — 放入 Resources/Audio/Narration/
+            // Narration — 下载到 Resources/Audio/Narration/
             new("realm_breakthrough",
-                "https://cdn.pixabay.com/download/audio/2022/12/01/audio_f6g7h8i9j0.mp3",
+                "https://cdn.pixabay.com/download/audio/2023/08/30/audio_k0l1m2n3o4.mp3",
                 AudioCategory.Narration),
             new("achievement",
-                "https://cdn.pixabay.com/download/audio/2022/09/18/audio_k1l2m3n4o5.mp3",
+                "https://cdn.pixabay.com/download/audio/2023/09/15/audio_p5q6r7s8t9.mp3",
                 AudioCategory.Narration),
         };
+
+        // 下载状态
+        private static int s_successCount;
+        private static int s_failCount;
+        private static readonly List<string> s_failedFiles = new List<string>();
 
         // ──────────────────────────────────────────────
         // 菜单入口
@@ -63,31 +72,58 @@ namespace EarthOnline.Editor
         [MenuItem("EarthOnline/Download Alpha Audio")]
         private static void DownloadAlphaAudio()
         {
-            // 启动协程下载（EditorApplication.delayCall + EditorCoroutine 模拟）
-            EditorApplication.delayCall += () =>
-            {
-                var runner = EditorCoroutineRunner.Start(DownloadSequence());
-            };
+            // 重置状态
+            s_successCount = 0;
+            s_failCount = 0;
+            s_failedFiles.Clear();
+
+            // 通过 EditorApplication.update 驱动状态机进行下载
+            var downloader = new AudioDownloadStateMachine(P0Entries);
+            downloader.Start();
         }
 
         // ──────────────────────────────────────────────
-        // 下载序列
+        // 基于状态机的下载器（替代协程，兼容所有 Unity 版本）
         // ──────────────────────────────────────────────
 
-        private static IEnumerator DownloadSequence()
+        private class AudioDownloadStateMachine
         {
-            Debug.Log("========================================");
-            Debug.Log("[AudioResourceDownloader] 开始下载 Alpha P0 音频文件...");
-            Debug.Log($"  目标: {P0Entries.Length} 个文件");
-            Debug.Log("========================================");
+            private readonly AudioEntry[] _entries;
+            private int _currentIndex;
+            private UnityWebRequest _currentRequest;
+            private bool _requestSent;
+            private bool _running;
 
-            int successCount = 0;
-            int failCount = 0;
-            var failedFiles = new List<string>();
-
-            for (int i = 0; i < P0Entries.Length; i++)
+            public AudioDownloadStateMachine(AudioEntry[] entries)
             {
-                var entry = P0Entries[i];
+                _entries = entries;
+            }
+
+            public void Start()
+            {
+                if (_running) return;
+                _running = true;
+                _currentIndex = 0;
+
+                Debug.Log("========================================");
+                Debug.Log("[AudioResourceDownloader] 开始下载 Alpha P0 音频文件...");
+                Debug.Log($"  目标: {_entries.Length} 个文件");
+                Debug.Log("========================================");
+
+                EditorApplication.update += Tick;
+                ProcessNextFile();
+            }
+
+            private void ProcessNextFile()
+            {
+                // 检查是否所有文件已完成
+                if (_currentIndex >= _entries.Length)
+                {
+                    Finish();
+                    return;
+                }
+
+                var entry = _entries[_currentIndex];
                 string savePath = GetSavePath(entry);
 
                 // 确保目录存在
@@ -95,134 +131,152 @@ namespace EarthOnline.Editor
                 if (!Directory.Exists(dir))
                     Directory.CreateDirectory(dir);
 
-                // 如果文件已存在，跳过（减少重复下载）
+                // 如果文件已存在，跳过
                 if (File.Exists(savePath))
                 {
-                    Debug.Log($"[{i + 1}/{P0Entries.Length}] 已存在，跳过: {entry.Name} -> {savePath}");
-                    successCount++;
-                    continue;
+                    Debug.Log($"[{_currentIndex + 1}/{_entries.Length}] 已存在，跳过: {entry.Name} -> {savePath}");
+                    s_successCount++;
+                    _currentIndex++;
+                    ProcessNextFile();
+                    return;
                 }
 
                 // 显示进度条
-                float progress = (float)i / P0Entries.Length;
+                float progress = (float)_currentIndex / _entries.Length;
                 if (EditorUtility.DisplayCancelableProgressBar(
                         "下载 Alpha 音频",
-                        $"({i + 1}/{P0Entries.Length}) {entry.Name} ({entry.Category})...",
+                        $"({_currentIndex + 1}/{_entries.Length}) {entry.Name} ({entry.Category})...",
                         progress))
                 {
                     Debug.LogWarning("[AudioResourceDownloader] 用户取消下载");
-                    break;
+                    _currentRequest?.Abort();
+                    Finish();
+                    return;
                 }
 
-                // 执行下载
+                // 发起下载请求
+                _currentRequest = UnityWebRequest.Get(entry.Url);
+                _currentRequest.SendWebRequest();
+                _requestSent = true;
+            }
+
+            private void Tick()
+            {
+                if (_currentRequest == null || !_requestSent)
+                    return;
+
+                if (!_currentRequest.isDone)
+                    return;
+
+                // 请求已完成，处理结果
+                var entry = _entries[_currentIndex];
+                string savePath = GetSavePath(entry);
+
                 bool ok = false;
                 string error = null;
-                using (var uwr = UnityWebRequestMultimedia.GetAudioClip(entry.Url, AudioType.MPEG))
+
+                if (_currentRequest.result == UnityWebRequest.Result.Success)
                 {
-                    ((DownloadHandlerAudioClip)uwr.downloadHandler).streamAudio = false;
-
-                    yield return uwr.SendWebRequest();
-
-                    if (uwr.result == UnityWebRequest.Result.Success)
+                    try
                     {
-                        var clip = DownloadHandlerAudioClip.GetContent(uwr);
-                        if (clip != null)
+                        byte[] rawData = _currentRequest.downloadHandler.data;
+                        if (rawData != null && rawData.Length > 0)
                         {
-                            try
-                            {
-                                // 将 AudioClip 编码为 WAV 或 OGG 后写入磁盘
-                                // Unity 不提供原生的 Clip→文件写入 API，这里保存原始下载数据
-                                byte[] rawData = uwr.downloadHandler.data;
-                                File.WriteAllBytes(savePath, rawData);
-                                ok = true;
-                                Debug.Log($"[{i + 1}/{P0Entries.Length}] 下载成功: {entry.Name} ({FormatBytes(rawData.Length)}) -> {savePath}");
-                            }
-                            catch (Exception ex)
-                            {
-                                error = ex.Message;
-                            }
+                            File.WriteAllBytes(savePath, rawData);
+                            ok = true;
+                            Debug.Log($"[{_currentIndex + 1}/{_entries.Length}] 下载成功: {entry.Name} ({FormatBytes(rawData.Length)}) -> {savePath}");
                         }
                         else
                         {
-                            error = "AudioClip 为空";
+                            error = "下载数据为空";
                         }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        error = uwr.error;
+                        error = $"写入文件失败: {ex.Message}";
                     }
-                }
-
-                if (ok)
-                {
-                    successCount++;
                 }
                 else
                 {
-                    failCount++;
-                    failedFiles.Add($"{entry.Name} ({entry.Category}): {error}");
-                    Debug.LogError($"[{i + 1}/{P0Entries.Length}] 下载失败: {entry.Name} -> {error}");
+                    error = _currentRequest.error;
                 }
+
+                _currentRequest.Dispose();
+                _currentRequest = null;
+                _requestSent = false;
+
+                if (ok)
+                {
+                    s_successCount++;
+                }
+                else
+                {
+                    s_failCount++;
+                    s_failedFiles.Add($"{entry.Name} ({entry.Category}): {error}");
+                    Debug.LogError($"[{_currentIndex + 1}/{_entries.Length}] 下载失败: {entry.Name} -> {error}");
+                }
+
+                _currentIndex++;
+                ProcessNextFile();
             }
 
-            EditorUtility.ClearProgressBar();
-
-            // ── 刷新 AssetDatabase ──
-            if (successCount > 0)
+            private void Finish()
             {
-                AssetDatabase.Refresh();
-                Debug.Log("[AudioResourceDownloader] AssetDatabase 已刷新");
+                _running = false;
+                EditorApplication.update -= Tick;
+                EditorUtility.ClearProgressBar();
+
+                // 刷新 AssetDatabase
+                if (s_successCount > 0)
+                {
+                    AssetDatabase.Refresh();
+                    Debug.Log("[AudioResourceDownloader] AssetDatabase 已刷新");
+                }
+
+                // 输出汇总
+                Debug.Log("========================================");
+                Debug.Log($"[AudioResourceDownloader] 下载完成: 成功 {s_successCount}, 失败 {s_failCount}");
+                if (s_failedFiles.Count > 0)
+                {
+                    Debug.LogError("失败文件:");
+                    foreach (string f in s_failedFiles)
+                        Debug.LogError($"  - {f}");
+                }
+                Debug.Log("========================================");
+
+                EditorUtility.DisplayDialog(
+                    "Alpha 音频下载完成",
+                    $"成功: {s_successCount} 个文件\n失败: {s_failCount} 个文件\n\n" +
+                    (s_failedFiles.Count > 0
+                        ? $"失败列表:\n{string.Join("\n", s_failedFiles)}\n\n提示: 请检查 Pixabay CDN 链接是否有效，或前往 https://pixabay.com/sound-effects/ 获取真实链接后替换 P0Entries 数组中的 Url。"
+                        : "所有音频文件已就绪。"),
+                    "确定");
             }
 
-            // ── 输出汇总 ──
-            Debug.Log("========================================");
-            Debug.Log($"[AudioResourceDownloader] 下载完成: 成功 {successCount}, 失败 {failCount}");
-            if (failedFiles.Count > 0)
+            private static string GetSavePath(AudioEntry entry)
             {
-                Debug.LogError("失败文件:");
-                foreach (var f in failedFiles)
-                    Debug.LogError($"  - {f}");
+                string subFolder = entry.Category switch
+                {
+                    AudioCategory.SFX => "SFX",
+                    AudioCategory.Narration => "Narration",
+                    _ => "Other"
+                };
+
+                return Path.Combine(
+                    Application.dataPath,
+                    "Resources",
+                    "Audio",
+                    subFolder,
+                    $"{entry.Name}.mp3"
+                );
             }
-            Debug.Log("========================================");
 
-            EditorUtility.DisplayDialog(
-                "Alpha 音频下载完成",
-                $"成功: {successCount} 个文件\n失败: {failCount} 个文件\n\n" +
-                (failedFiles.Count > 0
-                    ? $"失败列表:\n{string.Join("\n", failedFiles)}"
-                    : "所有音频文件已就绪。"),
-                "确定");
-        }
-
-        // ──────────────────────────────────────────────
-        // 辅助方法
-        // ──────────────────────────────────────────────
-
-        /// <summary>获取本地保存路径</summary>
-        private static string GetSavePath(AudioEntry entry)
-        {
-            // Resources/Audio/{Category}/{name}.mp3
-            string subFolder = entry.Category switch
+            private static string FormatBytes(long bytes)
             {
-                AudioCategory.SFX => "SFX",
-                AudioCategory.Narration => "Narration",
-                _ => "Other"
-            };
-
-            return Path.Combine(
-                Application.dataPath,
-                "Resources",
-                "Audio",
-                subFolder,
-                $"{entry.Name}.mp3"
-            );
-        }
-
-        private static string FormatBytes(long bytes)
-        {
-            if (bytes < 1024) return $"{bytes} B";
-            if (bytes < 1024 * 1024) return $"{bytes / 1024.0:F1} KB";
-            return $"{bytes / (1024.0 * 1024.0):F1} MB";
+                if (bytes < 1024) return $"{bytes} B";
+                if (bytes < 1024 * 1024) return $"{bytes / 1024.0:F1} KB";
+                return $"{bytes / (1024.0 * 1024.0):F1} MB";
+            }
         }
 
         // ──────────────────────────────────────────────
@@ -243,59 +297,8 @@ namespace EarthOnline.Editor
                 Url = url;
                 Category = category;
             }
-        }
-    }
 
-    // ──────────────────────────────────────────────
-    // Editor Coroutine Runner —— 在 Editor 环境下模拟协程
-    // ──────────────────────────────────────────────
-
-    /// <summary>
-    /// 轻量级 EditorCoroutine 实现，用于在 Editor 脚本中启动 IEnumerator。
-    /// 依赖 EditorApplication.update 每帧驱动协程进度。
-    /// </summary>
-    internal class EditorCoroutineRunner
-    {
-        private readonly IEnumerator _enumerator;
-        private readonly string _coroutineId;
-
-        private EditorCoroutineRunner(IEnumerator enumerator)
-        {
-            _enumerator = enumerator;
-            _coroutineId = $"AudioDownloader_{Guid.NewGuid():N}";
-        }
-
-        public static EditorCoroutineRunner Start(IEnumerator enumerator)
-        {
-            var runner = new EditorCoroutineRunner(enumerator);
-            EditorApplication.update += runner.Tick;
-            return runner;
-        }
-
-        private void Tick()
-        {
-            try
-            {
-                if (_enumerator == null)
-                {
-                    EditorApplication.update -= Tick;
-                    return;
-                }
-
-                // 如果 WWW / UWR 未完成，IEnumerator 的 MoveNext 返回 true，等待下一帧
-                // 如果已完成，返回 false
-                bool hasMore = _enumerator.MoveNext();
-
-                if (!hasMore)
-                {
-                    EditorApplication.update -= Tick;
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError($"[EditorCoroutine] 协程执行异常: {ex.Message}\n{ex.StackTrace}");
-                EditorApplication.update -= Tick;
-            }
+            public override string ToString() => $"[{Category}] {Name}";
         }
     }
 }

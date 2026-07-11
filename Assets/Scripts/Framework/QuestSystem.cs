@@ -107,9 +107,67 @@ namespace EarthOnline.Framework
                 rewardSpiritStones=300, rewardCultivation=150, rewardItemId="item_spirit_core_001",
                 completionText="赵掌柜瞪大了眼睛：'你做到了...第47个穿越者——第一个击败虚空行者的人。'",
             });
+
+            // ========== 双魂5主线任务链 ==========
+            // 由DualSoulQuestChain驱动实际触发与CompletionCheck，QuestManager仅跟踪状态/奖励
+            AddQuest(new QuestData {
+                id="ds_01", title="觉醒·第一声低语", type=QuestType.Talk, status=QuestStatus.Available,
+                giverNpcId="", giverName="命运",
+                description="你灵魂中有一个声音在告诉你——有人在偷东西。你不敢看——但这次你得看看。",
+                targetId="", targetCount=1,
+                rewardSpiritStones=50, rewardCultivation=20,
+                nextQuestId="ds_02",
+                completionText="念安开始动摇了。他的世界——第一次出现了裂痕。",
+                dialogueOnAccept=new List<string>{ "（内心低语）'你……你真的是在和我说话？'" },
+                dialogueOnComplete=new List<string>{ "'她……她真的拿了。我一直以为她只是……只是借。但是她没有还过。从来没有。'" }
+            });
+            AddQuest(new QuestData {
+                id="ds_02", title="试探·第一次出手", type=QuestType.Combat, status=QuestStatus.Available,
+                giverNpcId="npc_lin_meng", giverName="林师妹",
+                description="宗门小比在即。明长老故意安排你和筑基期师兄对战——他想看你出丑。但这次——你有帮手。",
+                targetId="ds_02_boss", targetCount=1,
+                rewardSpiritStones=120, rewardCultivation=60, rewardItemId="item_dualsoul_talisman_01",
+                nextQuestId="ds_03",
+                completionText="胜利的滋味是甜的。念安第一次知道——反抗并不总是带来惩罚。",
+                dialogueOnAccept=new List<string>{ "（内心低语）'好。听你的。但我……我怕。'" },
+                dialogueOnComplete=new List<string>{ "'赢了？我赢了？！那个声音——是你的功劳。谢谢。'" }
+            });
+            AddQuest(new QuestData {
+                id="ds_03", title="反击·真相在眼前", type=QuestType.Talk, status=QuestStatus.Available,
+                giverNpcId="", giverName="命运",
+                description="明长老再次设局陷害你——这次是栽赃你偷了宗门秘典。但你早已准备好了证据。在所有人面前——揭穿他。",
+                targetId="", targetCount=3,
+                rewardSpiritStones=200, rewardCultivation=80, rewardItemId="item_evidence_scroll",
+                nextQuestId="ds_04",
+                completionText="宗门炸开了锅。那个任人欺负的懦夫——居然在所有人面前揭穿了真相。",
+                dialogueOnAccept=new List<string>{ "（坚定）'够了。这次——我不躲了。'" },
+                dialogueOnComplete=new List<string>{ "'你看——所有人的表情。他们不敢相信。不敢相信我会反抗。'" }
+            });
+            AddQuest(new QuestData {
+                id="ds_04", title="决战·元婴之怒", type=QuestType.Boss, status=QuestStatus.Available,
+                giverNpcId="npc_tian_xuanzi", giverName="天玄子",
+                description="天玄子（师父）察觉到了你的变化。他派出了大弟子——元婴中期修为——来'清理门户'。这一次，你不再隐藏真正的实力。",
+                targetId="boss_senior_001", targetCount=1,
+                rewardSpiritStones=500, rewardCultivation=200, rewardItemId="item_dualsoul_awaken_core",
+                nextQuestId="ds_05",
+                completionText="天象变色。元婴之威震动整个宗门。所有人——都在颤抖。",
+                dialogueOnAccept=new List<string>{ "（冷笑）'他们想看看我有多强？好。让他们看。'" },
+                dialogueOnComplete=new List<string>{ "'这就是……我的力量？不——这是我们的力量。'" }
+            });
+            AddQuest(new QuestData {
+                id="ds_05", title="真相·二十年骗局", type=QuestType.Talk, status=QuestStatus.Available,
+                giverNpcId="npc_tian_xuanzi", giverName="天玄子",
+                description="天玄子召你进入他的闭关密室。二十年的疑惑即将揭晓——为什么师父养大你却从不真正教你？为什么所有人都在欺负你而他视而不见？因为你的身体——是万年难遇的'道胎'。他养你——只是为了炼你。",
+                targetId="", targetCount=1,
+                rewardSpiritStones=1000, rewardCultivation=500, rewardItemId="item_dualsoul_final_relic",
+                nextQuestId="",
+                completionText="真相大白。道胎的秘密。二十年的骗局。以及——一个新世界的开始。",
+                dialogueOnAccept=new List<string>{ "（平静）'走吧。到该去的地方去。'" },
+                dialogueOnComplete=new List<string>{ "'二十年——原来我从来不是他弟子。我是他的丹药。但你——你是真的。只有你是真的。'" }
+            });
         }
 
-        void AddQuest(QuestData q) { _allQuests[q.id] = q; }
+        public void AddQuest(QuestData q) { _allQuests[q.id] = q; }
 
         void Update() { CheckExploreQuests(); }
 
@@ -126,8 +184,20 @@ namespace EarthOnline.Framework
             return true;
         }
 
+        /// <summary>
+        /// 由DualSoulQuestChain等外部系统调用，完成并同步任务状态到QuestManager
+        /// </summary>
+        public void CompleteQuestById(string questId)
+        {
+            if (_allQuests.TryGetValue(questId, out var q))
+            {
+                CompleteQuest(q);
+            }
+        }
+
         void CompleteQuest(QuestData q)
         {
+            if (q.status == QuestStatus.Completed) return;
             q.status = QuestStatus.Completed; questsCompleted++;
             _activeQuests.Remove(q);
 
