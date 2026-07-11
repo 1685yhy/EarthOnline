@@ -216,6 +216,7 @@ namespace EarthOnline
             _events.Add(new GameEvent { id = "e88", title = "宗门大典", description = "天元宗举办百年大典——所有势力齐聚。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(200); Debug.Log("[Event] 宗门大典——各大势力齐聚天元宗。这是最好的时机——也是最危险的时机。"); } });
             _events.Add(new GameEvent { id = "e89", title = "虚空的真相", description = "地球意志揭示了虚空的真正来源。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(1000); Debug.Log("[Event] 虚空的真相——虚空不是外来的——是地球意志创造的第一个世界。它失败了——被遗忘了——变成了虚空。它不是敌人——是地球意志的第一个孩子。"); } });
             _events.Add(new GameEvent { id = "e90", title = "终焉之刻", description = "所有的线索汇聚——答案就在眼前。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(2000); Debug.Log("[Event] 终焉之刻——所有的故事线——所有的穿越者——所有的世界——都在等待你的最终选择。第47号——你准备好了吗？"); } });
+            _events.Add(new GameEvent { id = "e91", title = "新的开始", description = "无论选择什么——这都是新的开始。", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(500); Debug.Log("[Event] 新的开始——灵气大陆的故事告一段落——但穿越者的旅程才刚刚开始。下一个世界——在等待。"); } });
             _events.Add(new GameEvent { id = "night_1", title = "夜之事件1", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
             _events.Add(new GameEvent { id = "night_2", title = "夜之事件2", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
             _events.Add(new GameEvent { id = "night_3", title = "夜之事件3", description = "自动生成", OnTrigger = () => { PlayerStats.Instance?.AddCultivation(50); } });
