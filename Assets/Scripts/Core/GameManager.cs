@@ -72,6 +72,7 @@ namespace EarthOnline
             EnsureComponent<WitnessSystem>();
             EnsureComponent<AudioManager>();
             EnsureComponent<EarthOnline.UI.UIManager>();
+            EnsureComponent<DualSoulManager>();
             EnsureComponent<WorldEnvironment>();
             EnsureComponent<EarthOnline.Combat.VFXManager>();
             var (origin, cfg) = OriginManager.RollOrigin();
