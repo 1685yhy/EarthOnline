@@ -14,7 +14,8 @@ namespace EarthOnline.Editor
         {
             // ====== CLEAN UP ======
             var cleanNames = new System.Collections.Generic.List<string> {
-                "Ground", "Player", "OldMan_Zhang", "GameManager",
+                "Ground", "Ground_落霞村", "Ground_苍青野", "Ground_虚空边缘",
+                "Player", "OldMan_Zhang", "GameManager",
                 "Canvas", "FrameworkManagers", "NPC_Elder", "CameraRig", "GameHUD",
                 "NPC_Wang", "NPC_Li", "NPC_Chen", "NPC_Zhao", "VillageHouse"
             };
@@ -26,18 +27,38 @@ namespace EarthOnline.Editor
                     || n.StartsWith("Pickup_") || n.StartsWith("House_") || n.StartsWith("Fence_")
                     || n.StartsWith("Enemy_") || n.StartsWith("Chest_") || n == "NPC_Chen" || n == "NPC_Zhao"
                     || n.StartsWith("Dungeon") || n.StartsWith("Flower_") || n.StartsWith("Travel_")
-                    || n.StartsWith("Discovery_") || n.StartsWith("灵脉_") || n.StartsWith("Echo_"))
+                    || n.StartsWith("Discovery_") || n.StartsWith("灵脉_") || n.StartsWith("Echo_")
+                    || n.StartsWith("ZoneMarker_"))
                     Object.DestroyImmediate(go);
             }
 
-            // ====== GROUND ======
-            var ground = GameObject.CreatePrimitive(PrimitiveType.Plane);
-            ground.name = "Ground";
-            ground.transform.position = Vector3.zero;
-            ground.transform.localScale = new Vector3(6, 1, 6);
-            var gm = new Material(Shader.Find("Standard"));
-            gm.color = new Color(0.35f, 0.55f, 0.25f);
-            ground.GetComponent<Renderer>().material = gm;
+            // ====== GROUND - 3区域方案 ======
+            // 区域1: 落霞村（安全区）- 暖黄绿
+            var groundVillage = GameObject.CreatePrimitive(PrimitiveType.Plane);
+            groundVillage.name = "Ground_落霞村";
+            groundVillage.transform.position = new Vector3(0, -0.01f, 3.5f);
+            groundVillage.transform.localScale = new Vector3(3, 1, 1.7f);
+            var matVillage = new Material(Shader.Find("Standard"));
+            matVillage.color = new Color(0.65f, 0.78f, 0.35f);
+            groundVillage.GetComponent<Renderer>().material = matVillage;
+
+            // 区域2: 苍青野（野外）- 灰绿
+            var groundWild = GameObject.CreatePrimitive(PrimitiveType.Plane);
+            groundWild.name = "Ground_苍青野";
+            groundWild.transform.position = new Vector3(10, -0.01f, 20);
+            groundWild.transform.localScale = new Vector3(5, 1, 3);
+            var matWild = new Material(Shader.Find("Standard"));
+            matWild.color = new Color(0.35f, 0.45f, 0.30f);
+            groundWild.GetComponent<Renderer>().material = matWild;
+
+            // 区域3: 虚空边缘（危险区）- 苍白灰
+            var groundVoid = GameObject.CreatePrimitive(PrimitiveType.Plane);
+            groundVoid.name = "Ground_虚空边缘";
+            groundVoid.transform.position = new Vector3(0, -0.01f, -20);
+            groundVoid.transform.localScale = new Vector3(7, 1, 3);
+            var matVoid = new Material(Shader.Find("Standard"));
+            matVoid.color = new Color(0.55f, 0.55f, 0.55f);
+            groundVoid.GetComponent<Renderer>().material = matVoid;
 
             // ====== PLAYER ======
             var player = GameObject.CreatePrimitive(PrimitiveType.Capsule);
@@ -464,6 +485,11 @@ namespace EarthOnline.Editor
             // ====== HUD ======
             CreateHUD();
 
+            // ====== ZONE MARKERS ======
+            CreateZoneMarker("ZoneMarker_落霞村", new Vector3(0, 0.5f, 3), "落霞村", "安全区 - NPC聚集", new Color(0.65f, 0.78f, 0.35f));
+            CreateZoneMarker("ZoneMarker_苍青野", new Vector3(20, 0.5f, 20), "苍青野", "野外 - 敌人/资源/灵脉", new Color(0.35f, 0.45f, 0.30f));
+            CreateZoneMarker("ZoneMarker_虚空边缘", new Vector3(0, 0.5f, -20), "虚空边缘", "危险区 - 虚空敌人", new Color(0.55f, 0.55f, 0.55f));
+
             // ====== SAVE ======
             EditorSceneManager.SaveScene(EditorSceneManager.GetActiveScene());
 
@@ -683,6 +709,33 @@ namespace EarthOnline.Editor
             d.rewardItemId = itemId; d.rewardItemName = itemName;
             d.rewardQuantity = qty; d.rewardCultivation = cultivation;
             d.triggerRange = 3f;
+        }
+
+        static void CreateZoneMarker(string name, Vector3 pos, string zoneName, string description, Color color)
+        {
+            var go = new GameObject(name);
+            go.transform.position = pos;
+
+            // Visual indicator - colored sphere
+            var sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            sphere.name = name + "_Vis";
+            sphere.transform.SetParent(go.transform);
+            sphere.transform.localPosition = Vector3.zero;
+            sphere.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+            var sr = sphere.GetComponent<Renderer>();
+            if (sr != null) { var m = new Material(Shader.Find("Standard")); m.color = color; sr.material = m; }
+            Object.DestroyImmediate(sphere.GetComponent<Collider>());
+
+            // Floating text label
+            var textGo = new GameObject(name + "_Label");
+            textGo.transform.SetParent(go.transform);
+            textGo.transform.localPosition = new Vector3(0, 1.5f, 0);
+            var tm = textGo.AddComponent<TextMesh>();
+            tm.text = zoneName + "\n" + description;
+            tm.fontSize = 16;
+            tm.alignment = TextAlignment.Center;
+            tm.anchor = TextAnchor.MiddleCenter;
+            tm.color = color;
         }
 
         static void CreateHUD()
