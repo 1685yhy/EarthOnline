@@ -9,6 +9,21 @@ namespace EarthOnline.Editor
     /// </summary>
     public static class EarthOnlineSetup
     {
+        // npcId 字符串 → NPCID 枚举映射表
+        private static readonly System.Collections.Generic.Dictionary<string, NPCID> s_npcIdToEnum = new()
+        {
+            {"npc_zhang_001", NPCID.ZhangLao},
+            {"npc_wang_001", NPCID.WangTiezhu},
+            {"npc_li_001", NPCID.LiLinger},
+            {"npc_chen_001", NPCID.ChenBanxian},
+            {"npc_zhao_001", NPCID.ZhaoZhanggui},
+            {"npc_mystic_001", NPCID.YunyouDaoren},
+            {"npc_guard_001", NPCID.ShouweiDuizhang},
+            {"npc_liu_001", NPCID.LiuLiehu},
+            {"npc_miner_001", NPCID.LaoKuanggong},
+            {"npc_apprentice_001", NPCID.XiaoYaotong},
+        };
+
         [MenuItem("EarthOnline/Setup V0.2 Scene")]
         public static void SetupScene()
         {
@@ -532,16 +547,24 @@ namespace EarthOnline.Editor
             go.AddComponent<EarthOnline.NPC.NPCMemory>();
             go.AddComponent<EarthOnline.NPC.NPCNaturalSchedule>();
             go.AddComponent<EarthOnline.NPC.NPCNetwork>();
-            // 使用CharacterBuilder替换胶囊体
-            // CharacterBuilder角色类型映射
-            string role = "peasant";
-            if (displayName.Contains("张老") || displayName.Contains("长老") || displayName.Contains("婆婆") || displayName.Contains("掌柜")) role = "elder";
-            else if (displayName.Contains("铁柱") || displayName.Contains("猎户") || displayName.Contains("矿工")) role = "peasant";
-            else if (displayName.Contains("灵儿") || displayName.Contains("药童")) role = "healer";
-            else if (displayName.Contains("半仙") || displayName.Contains("道人") || displayName.Contains("贩")) role = "merchant";
-            else if (displayName.Contains("守卫") || displayName.Contains("队长")) role = "guard";
-            else if (displayName.Contains("云游") || displayName.Contains("剑客")) role = "warrior";
-            var builtNPC = EarthOnline.Editor.CharacterBuilder.BuildNPC(displayName, new Color(0.85f, 0.75f, 0.65f), color, role);
+            // 使用NPCVisualDatabase查配置，传给CharacterBuilder
+            GameObject builtNPC = null;
+            if (s_npcIdToEnum.TryGetValue(id, out NPCID npcId) && NPCVisualDatabase.TryGetConfig(npcId, out NPCVisualConfig npcConfig))
+            {
+                builtNPC = EarthOnline.Editor.CharacterBuilder.BuildNPC(npcConfig);
+            }
+            else
+            {
+                // 向下兼容：config不存在 → 默认参数
+                string role = "peasant";
+                if (displayName.Contains("张老") || displayName.Contains("长老") || displayName.Contains("婆婆") || displayName.Contains("掌柜")) role = "elder";
+                else if (displayName.Contains("铁柱") || displayName.Contains("猎户") || displayName.Contains("矿工")) role = "peasant";
+                else if (displayName.Contains("灵儿") || displayName.Contains("药童")) role = "healer";
+                else if (displayName.Contains("半仙") || displayName.Contains("道人") || displayName.Contains("贩")) role = "merchant";
+                else if (displayName.Contains("守卫") || displayName.Contains("队长")) role = "guard";
+                else if (displayName.Contains("云游") || displayName.Contains("剑客")) role = "warrior";
+                builtNPC = EarthOnline.Editor.CharacterBuilder.BuildNPC(displayName, new Color(0.85f, 0.75f, 0.65f), color, role);
+            }
             if (builtNPC != null) { builtNPC.transform.SetParent(go.transform); builtNPC.transform.localPosition = Vector3.zero; }
             go.AddComponent<EarthOnline.NPC.DialogueTree>();
             go.AddComponent<EarthOnline.NPC.NPCBond>();

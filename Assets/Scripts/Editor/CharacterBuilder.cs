@@ -121,6 +121,136 @@ namespace EarthOnline.Editor
             return root;
         }
 
+        // ====================================================================
+        // BuildNPC(NPCVisualConfig) —— 基于 NPCVisualDatabase 配置生成角色
+        // ====================================================================
+        public static GameObject BuildNPC(NPCVisualConfig config)
+        {
+            // NPCVisualRole → 内部 role 字符串映射
+            string role = config.roleType switch
+            {
+                NPCVisualRole.Elder => "elder",
+                NPCVisualRole.Merchant => "merchant",
+                NPCVisualRole.Guard => "guard",
+                NPCVisualRole.Healer => "healer",
+                NPCVisualRole.Warrior => "warrior",
+                NPCVisualRole.Peasant => "peasant",
+                NPCVisualRole.FemaleScholar => "warrior",
+                NPCVisualRole.Master => "elder",
+                NPCVisualRole.Drunkard => "peasant",
+                NPCVisualRole.Child => "peasant",
+                _ => "peasant"
+            };
+
+            var root = new GameObject(config.name);
+            root.transform.position = Vector3.zero;
+            root.transform.localScale = new Vector3(config.widthScale, config.heightScale, config.widthScale);
+
+            // === BODY ===
+            var torso = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            torso.name = "Torso"; torso.transform.SetParent(root.transform);
+            torso.transform.localPosition = new Vector3(0, 1.2f, 0);
+            torso.transform.localScale = new Vector3(0.6f, 0.7f, 0.4f);
+            SetMaterial(torso, config.clothColor);
+            RemoveCollider(torso);
+
+            // === HEAD ===
+            var head = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            head.name = "Head"; head.transform.SetParent(root.transform);
+            head.transform.localPosition = new Vector3(0, 1.8f, 0);
+            head.transform.localScale = new Vector3(0.35f, 0.4f, 0.35f);
+            SetMaterial(head, config.skinColor);
+            RemoveCollider(head);
+
+            // Eyes
+            CreateEye(head, new Vector3(-0.1f, 0.05f, 0.3f));
+            CreateEye(head, new Vector3(0.1f, 0.05f, 0.3f));
+
+            // === ARMS ===
+            var leftArm = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            leftArm.name = "LeftArm"; leftArm.transform.SetParent(root.transform);
+            leftArm.transform.localPosition = new Vector3(-0.45f, 1.2f, 0);
+            leftArm.transform.localScale = new Vector3(0.12f, 0.5f, 0.12f);
+            SetMaterial(leftArm, config.clothColor);
+            RemoveCollider(leftArm);
+
+            var rightArm = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            rightArm.name = "RightArm"; rightArm.transform.SetParent(root.transform);
+            rightArm.transform.localPosition = new Vector3(0.45f, 1.2f, 0);
+            rightArm.transform.localScale = new Vector3(0.12f, 0.5f, 0.12f);
+            SetMaterial(rightArm, config.clothColor);
+            RemoveCollider(rightArm);
+
+            // === LEGS ===
+            var leftLeg = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            leftLeg.name = "LeftLeg"; leftLeg.transform.SetParent(root.transform);
+            leftLeg.transform.localPosition = new Vector3(-0.15f, 0.5f, 0);
+            leftLeg.transform.localScale = new Vector3(0.15f, 0.5f, 0.15f);
+            SetMaterial(leftLeg, config.clothColor * 0.7f);
+            RemoveCollider(leftLeg);
+
+            var rightLeg = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            rightLeg.name = "RightLeg"; rightLeg.transform.SetParent(root.transform);
+            rightLeg.transform.localPosition = new Vector3(0.15f, 0.5f, 0);
+            rightLeg.transform.localScale = new Vector3(0.15f, 0.5f, 0.15f);
+            SetMaterial(rightLeg, config.clothColor * 0.7f);
+            RemoveCollider(rightLeg);
+
+            // === ROLE COSTUME ===
+            switch (role)
+            {
+                case "elder":
+                    AddBeard(head);
+                    AddRobe(torso, config.clothColor);
+                    AddHairBun(head);
+                    break;
+                case "merchant":
+                    AddHat(head, config.accentColor);
+                    torso.transform.localScale = new Vector3(0.7f, 0.8f, 0.5f);
+                    break;
+                case "guard":
+                    AddHelmet(head);
+                    AddShoulderPad(root, -0.55f, config.accentColor);
+                    AddShoulderPad(root, 0.55f, config.accentColor);
+                    break;
+                case "healer":
+                    AddHairBun(head);
+                    var belt = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    belt.name = "Belt"; belt.transform.SetParent(torso.transform);
+                    belt.transform.localPosition = Vector3.zero;
+                    belt.transform.localScale = new Vector3(1.1f, 0.15f, 1.1f);
+                    SetMaterial(belt, config.accentColor);
+                    RemoveCollider(belt);
+                    break;
+                case "warrior":
+                    SetMaterial(torso, config.accentColor);
+                    AddShoulderPad(root, -0.55f, config.accentColor);
+                    AddShoulderPad(root, 0.55f, config.accentColor);
+                    break;
+                case "peasant":
+                    SetMaterial(torso, config.clothColor);
+                    break;
+            }
+
+            // === SPIRIT AURA ===
+            if (config.hasAura)
+            {
+                var aura = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                aura.name = "Aura"; aura.transform.SetParent(root.transform);
+                aura.transform.localPosition = new Vector3(0, 1.2f, 0);
+                aura.transform.localScale = Vector3.one * 1.8f;
+                var am = new Material(Shader.Find("Standard"));
+                am.color = new Color(config.auraColor.r, config.auraColor.g, config.auraColor.b, 0.1f);
+                am.EnableKeyword("_EMISSION");
+                am.SetColor("_EmissionColor", config.auraColor * 0.3f);
+                aura.GetComponent<Renderer>().material = am;
+                RemoveCollider(aura);
+            }
+
+            root.AddComponent<UnityEngine.CharacterController>();
+            return root;
+        }
+
         static void CreateEye(GameObject head, Vector3 localPos)
         {
             var eye = GameObject.CreatePrimitive(PrimitiveType.Sphere);
