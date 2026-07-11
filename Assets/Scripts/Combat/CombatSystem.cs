@@ -157,6 +157,18 @@ namespace EarthOnline.Combat
             float weatherMult = WeatherSystem.Instance?.WeatherAttackModifier ?? 1f;
             totalAtk *= weatherMult;
 
+            // 双魂同步率加成
+            if (DualSoulManager.Instance != null && DualSoulManager.Instance.IsActive)
+            {
+                float syncMult = DualSoulManager.Instance.SyncRateDamageMultiplier;
+                totalAtk *= syncMult;
+                if (syncMult > 1f)
+                    Debug.Log($"[双魂] 同步率加成 x{syncMult:F1}");
+
+                // 同步率>=90自动触发双魂合一
+                DualSoulManager.Instance.CheckAndTriggerUnification();
+            }
+
             bool crit = Random.value < 0.12f;
             int damage = crit ? Mathf.RoundToInt(totalAtk * 1.8f) : Mathf.RoundToInt(totalAtk);
 

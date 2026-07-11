@@ -20,6 +20,11 @@ namespace EarthOnline
         public int soulCracks = 0;     // 灵魂裂痕层数
         public float syncRate => (trust + awakening) * 0.5f; // 同步率
 
+        [Header("双魂合一")]
+        public bool isDualSoulUnified = false;
+        public float dualSoulDuration = 10f;
+        private float _dualSoulTimer = 0f;
+
         [Header("原主人信息")]
         public string hostName = "念安";
         public string hostRealm = "元婴期";
@@ -53,6 +58,18 @@ namespace EarthOnline
         void Update()
         {
             if (!IsActive) return;
+
+            // 双魂合一计时
+            if (isDualSoulUnified)
+            {
+                _dualSoulTimer -= Time.deltaTime;
+                if (_dualSoulTimer <= 0f)
+                {
+                    isDualSoulUnified = false;
+                    Debug.Log("[双魂] 双魂合一效果结束。");
+                }
+            }
+
             // 按T和念安对话
             if (Input.GetKeyDown(KeyCode.T) && trust >= 16)
             {
@@ -126,10 +143,57 @@ namespace EarthOnline
         /// <summary>日常意志力恢复</summary>
         public void RestoreWillpower(int amount) { willpower = Mathf.Min(100, willpower + amount); }
 
+        /// <summary>消耗意志力，返回是否成功</summary>
+        public bool ConsumeWillpower(int amount)
+        {
+            if (willpower < amount) return false;
+            willpower -= amount;
+            Debug.Log($"[双魂·意志] -{amount} 意志力({willpower})");
+            return true;
+        }
+
+        /// <summary>双魂合一：同步率超过90触发，全属性+30%持续10秒</summary>
+        public void TriggerDualSoulUnification()
+        {
+            if (isDualSoulUnified)
+            {
+                _dualSoulTimer = dualSoulDuration;
+                Debug.Log("[双魂] 🔥 双魂合一刷新——持续时间重置");
+                return;
+            }
+            isDualSoulUnified = true;
+            _dualSoulTimer = dualSoulDuration;
+            Debug.Log($"[双魂] 🔥🔥 双魂合一！全属性+30% 持续{dualSoulDuration}秒！");
+            EventBus.Publish("OnDualSoulUnified");
+        }
+
+        /// <summary>检查并触发双魂合一</summary>
+        public void CheckAndTriggerUnification()
+        {
+            if (syncRate >= 90f && !isDualSoulUnified)
+                TriggerDualSoulUnification();
+        }
+
+        /// <summary>基于同步率的伤害加成系数（由CombatSystem调用）</summary>
+        public float SyncRateDamageMultiplier
+        {
+            get
+            {
+                if (!IsActive) return 1f;
+                if (syncRate >= 90f) return 2.0f;   // 双魂合一：2倍伤害
+                if (syncRate > 70f) return 1.5f;    // 高度同步：1.5倍伤害
+                return 1.0f;
+            }
+        }
+
+        /// <summary>双魂合一期间全属性倍率</summary>
+        public float StatsMultiplier => IsActive && isDualSoulUnified ? 1.3f : 1.0f;
+
         public string GetStatusText()
         {
             string syncLabel = syncRate >= 90 ? "🔥双魂合一" : syncRate >= 70 ? "⚡高度同步" : syncRate >= 40 ? "🌓半同步" : "🌑各自为战";
-            return $"🌓 双魂 | {hostName}({hostRealm}) | 信任:{trust} 觉醒:{awakening} | {syncLabel} | 意志:{willpower}";
+            string uniLabel = isDualSoulUnified ? $" [合一剩{_dualSoulTimer:F1}秒]" : "";
+            return $"🌓 双魂 | {hostName}({hostRealm}) | 信任:{trust} 觉醒:{awakening} | {syncLabel}{uniLabel} | 意志:{willpower}";
         }
     }
 }
