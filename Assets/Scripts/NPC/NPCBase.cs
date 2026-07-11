@@ -101,35 +101,81 @@ namespace EarthOnline.NPC
             }
         }
 
-        /// <summary>检查此NPC是否有可用任务，若有则显示接受提示并等待Q键输入</summary>
-        private void TryShowQuestPrompt()
-        {
-            var qm = EarthOnline.Framework.QuestManager.Instance;
-            if (qm == null) return;
-
-            var quest = qm.GetQuestFromNPC(npcId);
-            if (quest != null)
-            {
-                Debug.Log($"[{npcName}] [Q] 接受任务: {quest.title}");
-                StartCoroutine(WaitForQuestAccept(quest.id));
-            }
-        }
-
         public virtual void Interact()
         {
             IsInteracting = true;
 
-            // V2.2: 优先使用对话树
+            // 1. 任务检测优先：有可用任务则先展示任务信息，再等待玩家决定。
+            //    这样不受DialogueTree输入干扰（玩家不会错过Q键提示），
+            //    并且对所有NPC生效（不依赖DialogueTree组件）。
+            var qm = EarthOnline.Framework.QuestManager.Instance;
+            if (qm != null)
+            {
+                var quest = qm.GetQuestFromNPC(npcId);
+                if (quest != null)
+                {
+                    ShowQuestOffer(quest);
+                    StartCoroutine(WaitForQuestResolution(quest.id));
+                    return; // 等任务决定后再进入对话
+                }
+            }
+
+            // 2. 无可用任务 → 正常对话
+            BeginDialogueOrGreeting();
+        }
+
+        void ShowQuestOffer(EarthOnline.Framework.QuestData quest)
+        {
+            Debug.Log($"── {npcName}{(string.IsNullOrEmpty(npcTitle) ? "" : $" · {npcTitle}")} ──");
+            Debug.Log($"📋 任务：{quest.title}");
+            Debug.Log($"📄 {quest.description}");
+            string rewardStr = $"🎁 奖励：{quest.rewardSpiritStones}灵石 + {quest.rewardCultivation}修为";
+            if (!string.IsNullOrEmpty(quest.rewardItemId)) rewardStr += $" + {quest.rewardItemId}";
+            Debug.Log(rewardStr);
+            Debug.Log($"[{npcName}] 💡 '我有个任务要交给你...' (按Q接受，其他键跳过)");
+
+            // 游戏内Toast通知
+            var toast = UnityEngine.Object.FindObjectOfType<EarthOnline.UI.ToastSystem>();
+            if (toast != null)
+                toast.Show(EarthOnline.UI.ToastSystem.ToastType.Event,
+                    $"❗ {npcName}发布了任务：{quest.title} — 按Q接受");
+        }
+
+        System.Collections.IEnumerator WaitForQuestResolution(string questId)
+        {
+            float deadline = Time.time + 5f;
+            while (Time.time < deadline)
+            {
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    EarthOnline.Framework.QuestManager.Instance?.AcceptQuest(questId);
+                    yield break; // 接受任务，结束本次交互（玩家可再按E进入对话）
+                }
+                if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Q))
+                    break; // 跳过任务，进入正常对话
+                yield return null;
+            }
+            // 超时/跳过 → 进入对话
+            BeginDialogueOrGreeting();
+        }
+
+        void BeginDialogueOrGreeting()
+        {
             var tree = GetComponent<DialogueTree>();
             if (tree != null)
             {
                 tree.StartDialogue();
-                TryShowQuestPrompt();
-                Invoke(nameof(EndInteraction), 30f); // 对话树有更长时限
+                // 发布交互事件——重要！
+                // DialogueTree路径原本不发布OnNPCInteract，导致Talk/Guidance类任务无法完成
+                EarthOnline.Framework.EventBus.Publish("OnNPCInteract", new Dictionary<string, object>
+                {
+                    {"npcId", npcId}, {"npcName", npcName}, {"dialogue", "对话开始"}
+                });
+                Invoke(nameof(EndInteraction), 30f);
                 return;
             }
 
-            // 使用好感度系统的个性化问候
+            // 无对话树 → 使用好感度系统的个性化问候
             string text = greetingText;
             var rel = GetComponent<NPCRelationship>();
             if (rel != null) text = rel.GetPersonalizedGreeting();
@@ -166,9 +212,6 @@ namespace EarthOnline.NPC
                 }
             }
 
-            // 检查是否有可用任务，提供接受提示
-            TryShowQuestPrompt();
-
             Invoke(nameof(EndInteraction), 3f);
         }
 
@@ -183,24 +226,6 @@ namespace EarthOnline.NPC
                     yield break;
                 }
                 if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Y)) yield break;
-                yield return null;
-            }
-        }
-
-        System.Collections.IEnumerator WaitForQuestAccept(string questId)
-        {
-            float deadline = Time.time + 5f;
-            while (Time.time < deadline)
-            {
-                if (Input.GetKeyDown(KeyCode.Q))
-                {
-                    EarthOnline.Framework.QuestManager.Instance?.AcceptQuest(questId);
-                    Debug.Log($"✅ 已接受任务: {questId}");
-                    // 接受成功后立即更新任务标记
-                    UpdateQuestMarker();
-                    yield break;
-                }
-                if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Q)) yield break;
                 yield return null;
             }
         }

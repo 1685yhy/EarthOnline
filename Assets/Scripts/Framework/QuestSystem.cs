@@ -224,10 +224,18 @@ namespace EarthOnline.Framework
             string npcId = data.ContainsKey("npcId") ? data["npcId"].ToString() : "";
             foreach (var q in _activeQuests)
             {
-                if (q.type == QuestType.Talk && q.targetId == npcId && q.status == QuestStatus.Accepted)
-                { q.currentCount++; if (q.currentCount >= q.targetCount) CompleteQuest(q); }
+                if (q.status != QuestStatus.Accepted) continue;
+                // 对话/引导型任务：与指定NPC对话完成
+                // q_guide_01(Guidance)和q_guide_02(Talk)都需通过NPC对话推进
+                if (q.targetId == npcId && (q.type == QuestType.Talk || q.type == QuestType.Guidance))
+                {
+                    q.currentCount++;
+                    Debug.Log($"[任务] {q.title} 进度：{q.currentCount}/{q.targetCount}");
+                    if (q.currentCount >= q.targetCount) CompleteQuest(q);
+                }
             }
         }
+
 
         void OnEnemyKilled(Dictionary<string, object> data)
         {
