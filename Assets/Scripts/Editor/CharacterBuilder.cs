@@ -135,10 +135,10 @@ namespace EarthOnline.Editor
                 NPCVisualRole.Healer => "healer",
                 NPCVisualRole.Warrior => "warrior",
                 NPCVisualRole.Peasant => "peasant",
-                NPCVisualRole.FemaleScholar => "warrior",
-                NPCVisualRole.Master => "elder",
-                NPCVisualRole.Drunkard => "peasant",
-                NPCVisualRole.Child => "peasant",
+                NPCVisualRole.FemaleScholar => "femalescholar",
+                NPCVisualRole.Master => "master",
+                NPCVisualRole.Drunkard => "drunkard",
+                NPCVisualRole.Child => "child",
                 _ => "peasant"
             };
 
@@ -229,6 +229,56 @@ namespace EarthOnline.Editor
                     break;
                 case "peasant":
                     SetMaterial(torso, config.clothColor);
+                    break;
+                case "femalescholar":
+                    // 纤细体型
+                    torso.transform.localScale = new Vector3(0.45f, 0.65f, 0.35f);
+                    leftArm.transform.localScale = new Vector3(0.09f, 0.5f, 0.09f);
+                    rightArm.transform.localScale = new Vector3(0.09f, 0.5f, 0.09f);
+                    leftLeg.transform.localScale = new Vector3(0.12f, 0.5f, 0.12f);
+                    rightLeg.transform.localScale = new Vector3(0.12f, 0.5f, 0.12f);
+                    // 双发髻
+                    AddTwinBuns(head);
+                    // 香囊配饰
+                    AddSachet(torso, config.accentColor);
+                    break;
+                case "master":
+                    // 最高大
+                    torso.transform.localScale = new Vector3(0.8f, 0.9f, 0.55f);
+                    head.transform.localScale = new Vector3(0.4f, 0.45f, 0.4f);
+                    leftArm.transform.localScale = new Vector3(0.16f, 0.6f, 0.16f);
+                    rightArm.transform.localScale = new Vector3(0.16f, 0.6f, 0.16f);
+                    leftLeg.transform.localScale = new Vector3(0.2f, 0.55f, 0.2f);
+                    rightLeg.transform.localScale = new Vector3(0.2f, 0.55f, 0.2f);
+                    // 道冠
+                    AddDaoCrown(head, config.accentColor);
+                    // 外袍
+                    AddRobe(torso, config.clothColor);
+                    // 浮珠
+                    AddFloatingBeads(root, config.accentColor);
+                    break;
+                case "drunkard":
+                    // 瘦削
+                    torso.transform.localScale = new Vector3(0.5f, 0.7f, 0.35f);
+                    leftArm.transform.localScale = new Vector3(0.1f, 0.5f, 0.1f);
+                    rightArm.transform.localScale = new Vector3(0.1f, 0.5f, 0.1f);
+                    // 散发
+                    AddScatteredHair(head);
+                    // 酒葫芦
+                    AddGourd(root, new Color(0.6f, 0.4f, 0.2f));
+                    break;
+                case "child":
+                    // 最小体型
+                    torso.transform.localScale = new Vector3(0.4f, 0.45f, 0.3f);
+                    head.transform.localScale = new Vector3(0.25f, 0.3f, 0.25f);
+                    leftArm.transform.localScale = new Vector3(0.08f, 0.35f, 0.08f);
+                    rightArm.transform.localScale = new Vector3(0.08f, 0.35f, 0.08f);
+                    leftLeg.transform.localScale = new Vector3(0.1f, 0.35f, 0.1f);
+                    rightLeg.transform.localScale = new Vector3(0.1f, 0.35f, 0.1f);
+                    // 单发髻
+                    AddHairBun(head);
+                    // 小药篮
+                    AddMedicineBasket(root, new Color(0.5f, 0.35f, 0.2f));
                     break;
             }
 
@@ -351,6 +401,149 @@ namespace EarthOnline.Editor
         {
             var c = go.GetComponent<Collider>();
             if (c != null) Object.DestroyImmediate(c);
+        }
+
+        // === FEMALE SCHOLAR COSTUME HELPERS ===
+        static void AddTwinBuns(GameObject head)
+        {
+            var leftBun = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            leftBun.name = "HairBunL"; leftBun.transform.SetParent(head.transform);
+            leftBun.transform.localPosition = new Vector3(-0.15f, 0.25f, -0.05f);
+            leftBun.transform.localScale = Vector3.one * 0.15f;
+            SetMaterial(leftBun, Color.black);
+            RemoveCollider(leftBun);
+            var rightBun = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            rightBun.name = "HairBunR"; rightBun.transform.SetParent(head.transform);
+            rightBun.transform.localPosition = new Vector3(0.15f, 0.25f, -0.05f);
+            rightBun.transform.localScale = Vector3.one * 0.15f;
+            SetMaterial(rightBun, Color.black);
+            RemoveCollider(rightBun);
+        }
+
+        static void AddSachet(GameObject torso, Color color)
+        {
+            var sachet = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            sachet.name = "Sachet"; sachet.transform.SetParent(torso.transform);
+            sachet.transform.localPosition = new Vector3(0.2f, -0.25f, 0.25f);
+            sachet.transform.localScale = Vector3.one * 0.08f;
+            SetMaterial(sachet, color);
+            RemoveCollider(sachet);
+            var tassel = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            tassel.name = "Tassel"; tassel.transform.SetParent(sachet.transform);
+            tassel.transform.localPosition = new Vector3(0f, -0.6f, 0f);
+            tassel.transform.localScale = new Vector3(0.02f, 0.12f, 0.02f);
+            SetMaterial(tassel, color * 0.7f);
+            RemoveCollider(tassel);
+        }
+
+        // === MASTER COSTUME HELPERS ===
+        static void AddDaoCrown(GameObject head, Color color)
+        {
+            var crownBase = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            crownBase.name = "DaoCrownBase"; crownBase.transform.SetParent(head.transform);
+            crownBase.transform.localPosition = new Vector3(0f, 0.2f, 0f);
+            crownBase.transform.localScale = new Vector3(0.3f, 0.2f, 0.3f);
+            SetMaterial(crownBase, color);
+            RemoveCollider(crownBase);
+            var crownTop = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            crownTop.name = "DaoCrownTop"; crownTop.transform.SetParent(crownBase.transform);
+            crownTop.transform.localPosition = new Vector3(0f, 0.6f, 0f);
+            crownTop.transform.localScale = new Vector3(0.6f, 0.12f, 0.6f);
+            SetMaterial(crownTop, color * 0.8f);
+            RemoveCollider(crownTop);
+            var ornament = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            ornament.name = "DaoOrnament"; ornament.transform.SetParent(crownTop.transform);
+            ornament.transform.localPosition = new Vector3(0f, 0.9f, 0f);
+            ornament.transform.localScale = Vector3.one * 0.08f;
+            SetMaterial(ornament, new Color(0.9f, 0.7f, 0.2f));
+            RemoveCollider(ornament);
+        }
+
+        static void AddFloatingBeads(GameObject root, Color color)
+        {
+            var positions = new Vector3[]
+            {
+                new Vector3(0.5f, 1.5f, 0f),
+                new Vector3(-0.5f, 1.5f, 0f),
+                new Vector3(0f, 1.5f, 0.5f),
+                new Vector3(0f, 1.5f, -0.5f)
+            };
+            for (int i = 0; i < positions.Length; i++)
+            {
+                var bead = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                bead.name = "FloatingBead" + i; bead.transform.SetParent(root.transform);
+                bead.transform.localPosition = positions[i];
+                bead.transform.localScale = Vector3.one * 0.07f;
+                SetMaterial(bead, color);
+                RemoveCollider(bead);
+            }
+        }
+
+        // === DRUNKARD COSTUME HELPERS ===
+        static void AddScatteredHair(GameObject head)
+        {
+            var messy = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            messy.name = "MessyHair"; messy.transform.SetParent(head.transform);
+            messy.transform.localPosition = new Vector3(0f, 0.15f, 0.2f);
+            messy.transform.localScale = new Vector3(0.45f, 0.1f, 0.12f);
+            SetMaterial(messy, Color.black);
+            RemoveCollider(messy);
+            for (int i = 0; i < 3; i++)
+            {
+                var strand = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+                strand.name = "HairStrand" + i; strand.transform.SetParent(head.transform);
+                strand.transform.localPosition = new Vector3(-0.1f + i * 0.1f, -0.05f, 0.2f);
+                strand.transform.localScale = new Vector3(0.015f, 0.15f, 0.015f);
+                strand.transform.localEulerAngles = new Vector3(20f, 0f, 5f * (i - 1));
+                SetMaterial(strand, Color.black);
+                RemoveCollider(strand);
+            }
+        }
+
+        static void AddGourd(GameObject root, Color color)
+        {
+            var lower = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            lower.name = "GourdLower"; lower.transform.SetParent(root.transform);
+            lower.transform.localPosition = new Vector3(0.3f, 0.65f, 0f);
+            lower.transform.localScale = new Vector3(0.12f, 0.12f, 0.12f);
+            SetMaterial(lower, color);
+            RemoveCollider(lower);
+            var upper = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            upper.name = "GourdUpper"; upper.transform.SetParent(root.transform);
+            upper.transform.localPosition = new Vector3(0.3f, 0.78f, 0f);
+            upper.transform.localScale = new Vector3(0.08f, 0.09f, 0.08f);
+            SetMaterial(upper, color * 0.85f);
+            RemoveCollider(upper);
+            var cord = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            cord.name = "GourdCord"; cord.transform.SetParent(root.transform);
+            cord.transform.localPosition = new Vector3(0.2f, 0.72f, 0f);
+            cord.transform.localEulerAngles = new Vector3(0f, 0f, 40f);
+            cord.transform.localScale = new Vector3(0.01f, 0.08f, 0.01f);
+            SetMaterial(cord, new Color(0.5f, 0.3f, 0.15f));
+            RemoveCollider(cord);
+        }
+
+        // === CHILD COSTUME HELPERS ===
+        static void AddMedicineBasket(GameObject root, Color color)
+        {
+            var basket = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            basket.name = "MedicineBasket"; basket.transform.SetParent(root.transform);
+            basket.transform.localPosition = new Vector3(-0.3f, 0.55f, 0f);
+            basket.transform.localScale = new Vector3(0.15f, 0.08f, 0.15f);
+            SetMaterial(basket, color);
+            RemoveCollider(basket);
+            var herbs = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            herbs.name = "BasketHerbs"; herbs.transform.SetParent(basket.transform);
+            herbs.transform.localPosition = new Vector3(0f, 0.4f, 0f);
+            herbs.transform.localScale = Vector3.one * 0.4f;
+            SetMaterial(herbs, new Color(0.2f, 0.7f, 0.2f));
+            RemoveCollider(herbs);
+            var handle = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            handle.name = "BasketHandle"; handle.transform.SetParent(root.transform);
+            handle.transform.localPosition = new Vector3(-0.3f, 0.68f, 0f);
+            handle.transform.localScale = new Vector3(0.01f, 0.08f, 0.01f);
+            SetMaterial(handle, color * 0.7f);
+            RemoveCollider(handle);
         }
 
         // === ENEMY BUILDER ===
