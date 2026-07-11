@@ -27,6 +27,50 @@ namespace EarthOnline.Framework
         void Start()
         {
             BuildMainQuestChain();
+            RegisterMainQuestChain();
+            EventBus.Subscribe("OnQuestCompleted", OnMainQuestCompleted);
+        }
+
+        void RegisterMainQuestChain()
+        {
+            for (int i = 0; i < _mainQuests.Count; i++)
+            {
+                var q = _mainQuests[i];
+
+                // Chain: each completed quest unlocks the next via QuestManager.CompleteQuest
+                if (i < _mainQuests.Count - 1)
+                    q.nextQuestId = _mainQuests[i + 1].id;
+
+                // Only mq_01 starts Available; others are locked.
+                // QuestManager.AcceptQuest rejects any non-Available status.
+                // When CompleteQuest processes a main quest, it sets the next quest to Available.
+                q.status = (i == 0) ? QuestStatus.Available : (QuestStatus)(-1);
+
+                QuestManager.Instance.AddQuest(q);
+            }
+
+            Debug.Log($"[主线] 已注册 {_mainQuests.Count} 个主线任务到 QuestManager，初始可用: {_mainQuests[0].id}");
+        }
+
+        void OnMainQuestCompleted(Dictionary<string, object> data)
+        {
+            string questId = data.ContainsKey("questId") ? data["questId"].ToString() : "";
+            if (string.IsNullOrEmpty(questId) || !questId.StartsWith("mq_")) return;
+
+            mainQuestProgress++;
+
+            // Update current chapter based on how many main quests have been completed
+            if (mainQuestProgress >= 12)
+                currentChapter = Chapter.FinalBattle;
+            else if (mainQuestProgress >= 9)
+                currentChapter = Chapter.GatheringPower;
+            else if (mainQuestProgress >= 6)
+                currentChapter = Chapter.SectDarkness;
+            else if (mainQuestProgress >= 3)
+                currentChapter = Chapter.VoidShadow;
+            // else stays Chapter.Prologue (default)
+
+            Debug.Log($"[主线] 进度 {mainQuestProgress}/12 | 当前章节: {currentChapter}");
         }
 
         void BuildMainQuestChain()
@@ -74,7 +118,6 @@ namespace EarthOnline.Framework
                 giverNpcId = giver, giverName = giver,
                 type = type, targetId = target, targetCount = count,
                 rewardSpiritStones = stones, rewardCultivation = cult,
-                status = QuestStatus.Available,
                 completionText = $"主线任务完成：{title}"
             });
         }

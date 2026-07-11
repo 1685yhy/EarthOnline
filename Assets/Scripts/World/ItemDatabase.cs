@@ -94,10 +94,6 @@ namespace EarthOnline
 
             ["item_world_seed"] = new ItemStory { displayName = "创世之种", rarityName = "世界树种", story = "这不是这个世界的东西。它是地球意志投放的——每一颗种子——都是一个新的世界的可能性。这颗种子是给你的。不是让你种的。是让你理解的——你可以创造世界。", origin = "地球意志·创世之种" },
 
-
-            ["item_phoenix_feather"] = new ItemStory { displayName = "不死之证", rarityName = "凤羽", story = "凤凰涅槃时脱落的羽毛。每一根都蕴含着一丝不死之力。传说集齐三根可以炼制不死药——但上一个尝试的人——在丹炉前老死了。他等了凤凰三千年——凤凰没有回来。", origin = "凤凰·涅槃遗物" },
-
-
             ["item_spirit_pearl"] = new ItemStory { displayName = "鲛人泪", rarityName = "灵珠", story = "传说鲛人哭泣时会落下珍珠。但这颗不是泪——是鲛人的眼珠。有人在海底发现了它——发现者第二天就失踪了。他的遗物里只有这颗珠子——和一句话：海里有人在叫我。", origin = "深海·鲛人之眼" },
             ["item_spirit_amulet"] = new ItemStory { displayName = "往生扣", rarityName = "灵蕴护符", story = "一位元婴修士在飞升前为凡间妻子炼制的最后一件东西。他说：戴上它——下辈子我会找到你。妻子戴了一辈子。她说：我不要下辈子——我要这辈子。", origin = "元婴修士·最后遗物" },
 
