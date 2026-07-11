@@ -101,6 +101,20 @@ namespace EarthOnline.NPC
             }
         }
 
+        /// <summary>检查此NPC是否有可用任务，若有则显示接受提示并等待Q键输入</summary>
+        private void TryShowQuestPrompt()
+        {
+            var qm = EarthOnline.Framework.QuestManager.Instance;
+            if (qm == null) return;
+
+            var quest = qm.GetQuestFromNPC(npcId);
+            if (quest != null)
+            {
+                Debug.Log($"[{npcName}] [Q] 接受任务: {quest.title}");
+                StartCoroutine(WaitForQuestAccept(quest.id));
+            }
+        }
+
         public virtual void Interact()
         {
             IsInteracting = true;
@@ -110,15 +124,7 @@ namespace EarthOnline.NPC
             if (tree != null)
             {
                 tree.StartDialogue();
-                // 检查是否有可接任务
-                var qm = EarthOnline.Framework.QuestManager.Instance;
-                if (qm != null) {
-                    var quest = qm.GetQuestFromNPC(npcId);
-                    if (quest != null) {
-                        Debug.Log($"[{npcName}] 📋 有任务可接：{quest.title}。按Q接受。");
-                        StartCoroutine(WaitForQuestAccept(quest.id));
-                    }
-                }
+                TryShowQuestPrompt();
                 Invoke(nameof(EndInteraction), 30f); // 对话树有更长时限
                 return;
             }
@@ -160,6 +166,9 @@ namespace EarthOnline.NPC
                 }
             }
 
+            // 检查是否有可用任务，提供接受提示
+            TryShowQuestPrompt();
+
             Invoke(nameof(EndInteraction), 3f);
         }
 
@@ -186,6 +195,9 @@ namespace EarthOnline.NPC
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
                     EarthOnline.Framework.QuestManager.Instance?.AcceptQuest(questId);
+                    Debug.Log($"✅ 已接受任务: {questId}");
+                    // 接受成功后立即更新任务标记
+                    UpdateQuestMarker();
                     yield break;
                 }
                 if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Q)) yield break;
