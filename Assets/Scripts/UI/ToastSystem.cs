@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using EarthOnline.Framework;
 
 namespace EarthOnline.UI
@@ -118,7 +117,7 @@ namespace EarthOnline.UI
 
             // 图标+文字
             var textGo = new GameObject("Text"); textGo.transform.SetParent(go.transform);
-            var tmp = textGo.AddComponent<TextMeshProUGUI>();
+            var tmp = textGo.AddComponent<Text>();
             tmp.text = $"{config.icon} {message}";
             tmp.fontSize = 14; tmp.color = Color.white;
             var tr = textGo.GetComponent<RectTransform>();

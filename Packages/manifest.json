@@ -1,5 +1,8 @@
 {
   "dependencies": {
+    "cn.tuanjie.ai.generators": "file:../.codely-cli/extensions/TJGenerators/Packages/cn.tuanjie.ai.generators",
+    "cn.tuanjie.codely.bridge": "1.0.67",
+    "com.coplaydev.unity-mcp": "file:E:/EarthOnline/Project/Packages/com.coplaydev.unity-mcp",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.ads": "4.4.2",
@@ -13,7 +16,7 @@
     "com.unity.nuget.newtonsoft-json": "3.2.1",
     "com.unity.purchasing": "4.11.0",
     "com.unity.test-framework": "1.1.33",
-    "com.unity.textmeshpro": "3.0.9",
+    "com.unity.textmeshpro": "3.0.10",
     "com.unity.timeline": "1.7.7",
     "com.unity.ugui": "1.0.0",
     "com.unity.visualscripting": "1.9.4",
@@ -49,9 +52,6 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0",
-    "com.coplaydev.unity-mcp": "file:E:/EarthOnline/Project/Packages/com.coplaydev.unity-mcp",
-    "cn.tuanjie.ai.generators": "file:../.codely-cli/extensions/TJGenerators/Packages/cn.tuanjie.ai.generators",
-    "cn.tuanjie.codely.bridge": "1.0.67"
+    "com.unity.modules.xr": "1.0.0"
   }
 }

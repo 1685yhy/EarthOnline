@@ -46,5 +46,43 @@ namespace EarthOnline.Framework
         {
             _listeners.Clear();
         }
+
+        // ── Typed event system (new code, coexists with string-based) ──
+        private static readonly Dictionary<string, Delegate> _typedListeners
+            = new Dictionary<string, Delegate>();
+
+        public static void Subscribe<T>(Action<T> handler) where T : struct
+        {
+            string key = typeof(T).Name;
+            if (_typedListeners.ContainsKey(key))
+                _typedListeners[key] = Delegate.Combine(_typedListeners[key], handler);
+            else
+                _typedListeners[key] = handler;
+        }
+
+        public static void Unsubscribe<T>(Action<T> handler) where T : struct
+        {
+            string key = typeof(T).Name;
+            if (_typedListeners.ContainsKey(key))
+            {
+                var remaining = Delegate.Remove(_typedListeners[key], handler);
+                if (remaining == null) _typedListeners.Remove(key);
+                else _typedListeners[key] = remaining;
+            }
+        }
+
+        public static void Publish<T>(T data) where T : struct
+        {
+            string key = typeof(T).Name;
+            if (_typedListeners.ContainsKey(key))
+            {
+                var handler = _typedListeners[key] as Action<T>;
+                if (handler != null)
+                {
+                    try { handler.Invoke(data); }
+                    catch (Exception e) { Debug.LogError($"[EventBus] Typed error in '{key}': {e}"); }
+                }
+            }
+        }
     }
 }

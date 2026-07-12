@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using EarthOnline.Framework;
 
 namespace EarthOnline.UI
@@ -16,18 +15,18 @@ namespace EarthOnline.UI
 
         [Header("HUD元素")]
         public GameObject hudRoot;
-        public TextMeshProUGUI realmText;
-        public TextMeshProUGUI hpText;
-        public TextMeshProUGUI spiritText;
-        public TextMeshProUGUI stonesText;
-        public TextMeshProUGUI essenceText;
-        public TextMeshProUGUI timeText;
-        public TextMeshProUGUI eventText;
+        public Text realmText;
+        public Text hpText;
+        public Text spiritText;
+        public Text stonesText;
+        public Text essenceText;
+        public Text timeText;
+        public Text eventText;
         public RawImage minimapImage;
         public GameObject dialoguePanel;
-        public TextMeshProUGUI dialogueText;
+        public Text dialogueText;
         public GameObject choicePanel;
-        public List<TextMeshProUGUI> choiceTexts;
+        public List<Text> choiceTexts;
 
         private float _eventDisplayTimer;
 
@@ -75,15 +74,15 @@ namespace EarthOnline.UI
             var hudBg = hudPanel.AddComponent<Image>();
             hudBg.color = new Color(0, 0, 0, 0.5f);
 
-            realmText = CreateTMPText("Realm", hudPanel.transform, "练气期 第1层", 22, TextAlignmentOptions.TopLeft, Color.white, new Vector2(10, -10));
-            hpText = CreateTMPText("HP", hudPanel.transform, "❤️ 100/100", 18, TextAlignmentOptions.TopLeft, new Color(1f,0.3f,0.3f), new Vector2(10, -40));
-            spiritText = CreateTMPText("Spirit", hudPanel.transform, "🔵 灵力:100", 14, TextAlignmentOptions.TopLeft, new Color(0.3f,0.6f,1f), new Vector2(10, -62));
-            stonesText = CreateTMPText("Stones", hudPanel.transform, "💎 灵石:0", 14, TextAlignmentOptions.TopLeft, new Color(0.3f,0.8f,1f), new Vector2(200, -40));
-            essenceText = CreateTMPText("Essence", hudPanel.transform, "✨ 灵韵:0", 14, TextAlignmentOptions.TopLeft, new Color(0.8f,0.8f,0.3f), new Vector2(200, -62));
-            timeText = CreateTMPText("Time", hudPanel.transform, "🕐 08:00 第1天 ☀️", 14, TextAlignmentOptions.TopLeft, Color.white, new Vector2(10, -84));
+            realmText = CreateTMPText("Realm", hudPanel.transform, "练气期 第1层", 22, TextAnchor.UpperLeft, Color.white, new Vector2(10, -10));
+            hpText = CreateTMPText("HP", hudPanel.transform, "❤️ 100/100", 18, TextAnchor.UpperLeft, new Color(1f,0.3f,0.3f), new Vector2(10, -40));
+            spiritText = CreateTMPText("Spirit", hudPanel.transform, "🔵 灵力:100", 14, TextAnchor.UpperLeft, new Color(0.3f,0.6f,1f), new Vector2(10, -62));
+            stonesText = CreateTMPText("Stones", hudPanel.transform, "💎 灵石:0", 14, TextAnchor.UpperLeft, new Color(0.3f,0.8f,1f), new Vector2(200, -40));
+            essenceText = CreateTMPText("Essence", hudPanel.transform, "✨ 灵韵:0", 14, TextAnchor.UpperLeft, new Color(0.8f,0.8f,0.3f), new Vector2(200, -62));
+            timeText = CreateTMPText("Time", hudPanel.transform, "🕐 08:00 第1天 ☀️", 14, TextAnchor.UpperLeft, Color.white, new Vector2(10, -84));
 
             // --- Event Text Top-Center ---
-            eventText = CreateTMPText("Event", transform, "", 16, TextAlignmentOptions.Top, new Color(1f,0.85f,0.2f), new Vector2(0, -80));
+            eventText = CreateTMPText("Event", transform, "", 16, TextAnchor.UpperCenter, new Color(1f,0.85f,0.2f), new Vector2(0, -80));
             eventText.rectTransform.anchorMin = eventText.rectTransform.anchorMax = new Vector2(0.5f, 1f);
             eventText.rectTransform.sizeDelta = new Vector2(800, 60);
 
@@ -91,7 +90,7 @@ namespace EarthOnline.UI
             dialoguePanel = CreatePanel("Dialogue", new Vector2(0.5f, 0), new Vector2(0.5f, 0), new Vector2(600, 120), new Vector2(0, 150));
             dialoguePanel.transform.SetParent(transform);
             dialoguePanel.AddComponent<Image>().color = new Color(0, 0, 0, 0.7f);
-            dialogueText = CreateTMPText("DlgText", dialoguePanel.transform, "", 18, TextAlignmentOptions.TopLeft, Color.white, new Vector2(10, -10));
+            dialogueText = CreateTMPText("DlgText", dialoguePanel.transform, "", 18, TextAnchor.UpperLeft, Color.white, new Vector2(10, -10));
             dialogueText.rectTransform.sizeDelta = new Vector2(580, 100);
             dialoguePanel.SetActive(false);
 
@@ -99,10 +98,10 @@ namespace EarthOnline.UI
             choicePanel = CreatePanel("Choices", new Vector2(0.5f, 0), new Vector2(0.5f, 0), new Vector2(600, 80), new Vector2(0, 280));
             choicePanel.transform.SetParent(transform);
             choicePanel.AddComponent<Image>().color = new Color(0, 0, 0, 0.5f);
-            choiceTexts = new List<TextMeshProUGUI>();
+            choiceTexts = new List<Text>();
             for (int i = 0; i < 4; i++)
             {
-                var ct = CreateTMPText($"Choice{i}", choicePanel.transform, "", 16, TextAlignmentOptions.Left, Color.white, new Vector2(10, -10 - i*20));
+                var ct = CreateTMPText($"Choice{i}", choicePanel.transform, "", 16, TextAnchor.MiddleLeft, Color.white, new Vector2(10, -10 - i*20));
                 choiceTexts.Add(ct);
             }
             choicePanel.SetActive(false);
@@ -117,11 +116,11 @@ namespace EarthOnline.UI
             return go;
         }
 
-        TextMeshProUGUI CreateTMPText(string name, Transform parent, string text, int fontSize, TextAlignmentOptions align, Color color, Vector2 pos)
+        Text CreateTMPText(string name, Transform parent, string text, int fontSize, TextAnchor align, Color color, Vector2 pos)
         {
             var go = new GameObject(name);
             go.transform.SetParent(parent);
-            var tmp = go.AddComponent<TextMeshProUGUI>();
+            var tmp = go.AddComponent<Text>();
             tmp.text = text; tmp.fontSize = fontSize;
             tmp.alignment = align; tmp.color = color;
             var rt = go.GetComponent<RectTransform>();

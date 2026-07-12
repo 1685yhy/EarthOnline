@@ -313,7 +313,7 @@ namespace EarthOnline
             if (dsq == null) return;
 
             currentQuestIndex = _questChain.IndexOf(dsq);
-            dsq.onAccept?.Invoke(this);
+            dsq.onAccept?.Invoke(_questContext);
 
             Debug.Log($"[双魂·任务链] 📌 当前任务 [{currentQuestIndex + 1}/5]：{dsq.title}");
             EventBus.Publish("OnDualSoulQuestStarted", new Dictionary<string, object> {
@@ -326,7 +326,7 @@ namespace EarthOnline
             var dsq = _questChain.FirstOrDefault(q => q.id == questId);
             if (dsq == null) return;
 
-            dsq.onComplete?.Invoke(this);
+            dsq.onComplete?.Invoke(_questContext);
 
             // 标准奖励（灵石/修为/道具）由QuestManager统一发放（调用CompleteQuestById）
             // 双魂专有奖励（信任度/觉醒度）已在onComplete中通过DualSoulManager处理
@@ -363,7 +363,7 @@ namespace EarthOnline
             var dsq = _questChain.FirstOrDefault(q => q.id == questId);
             if (dsq?.failure.onFail != null)
             {
-                dsq.failure.onFail.Invoke(this);
+                dsq.failure.onFail.Invoke(_questContext);
                 Debug.Log($"[双魂·任务链] ❌ 任务失败 [{currentQuestIndex + 1}/5]：{dsq.title} — {dsq.failure.conditions}");
                 EventBus.Publish("OnDualSoulQuestFailed", new Dictionary<string, object> {
                     {"questId", questId}, {"chapter", dsq.chapter}

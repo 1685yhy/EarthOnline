@@ -4,9 +4,19 @@ using System.Collections.Generic;
 
 namespace EarthOnline
 {
+    public enum DiscoveryType { Landmark, POI, Hidden }
+
+    [System.Serializable]
+    public class DiscoveryRecord
+    {
+        public string DiscoveryId;
+        public string Type;
+        public bool Discovered;
+        public string DiscoverTime;
+    }
+
     /// <summary>
-    /// 隐藏发现 —— 探索特定位置触发事件。
-    /// 没有UI标记。只有走过去了才知道有什么。
+    /// 隐藏发现 —— 探索特定位置触发事件
     /// </summary>
     public class HiddenDiscovery : MonoBehaviour
     {
