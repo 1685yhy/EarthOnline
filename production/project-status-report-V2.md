@@ -21,7 +21,7 @@
 
 | Area | Progress |
 |------|----------|
-| Overall Project | ~30% |
+| Overall Project | ~35% |
 | V2.0 (Spirit Realm Deepening) | ~95% |
 | Core Framework (EventBus, Save/Load) | 100% |
 | Dialogue System | 100% |
@@ -31,7 +31,7 @@
 | Combat System (Basic) | 80% |
 | Cultivation System | 85% |
 | Weather/Time/VFX | 70% |
-| Multi-World Framework | 0% |
+| Multi-World Framework | 15% |
 | Art Assets (3D/2D) | 0% |
 | Audio | 0% |
 | Multiplayer | 0% |
@@ -40,13 +40,13 @@
 
 ## 3. Architecture
 
-### 6 Major Systems (140+ C# Scripts in Assets/)
+### 6 Major Systems (166 C# Scripts in Assets/)
 
 ```
 EarthOnline/
   Assets/
     Scripts/
-      Combat/       — 16 scripts (Boss AI, config loaders, grudge, diplomacy)
+      Combat/       — 17 scripts (Boss AI, config loaders, grudge, diplomacy, SkillDataLoader)
       Core/         — 35 scripts (GameManager, cultivation, alchemy, tribulation)
       Framework/    — 20 scripts (EventBus, achievements, recipes, data loaders)
       NPC/          — 13 scripts (DialogueTree, schedules, relationship)
@@ -57,7 +57,7 @@ EarthOnline/
       Data/         — 1 script (LevelConfig)
       Camera/       — 1 script
       Player/       — 1 script
-    Resources/Data/ — 14 JSON configuration files
+    Resources/Data/ — 18 JSON configuration files
 ```
 
 ### Communication Patterns
@@ -75,9 +75,9 @@ EarthOnline/
 |---|-----------|--------|-------|
 | 1 | EventBus | ✅ Complete | String + typed events, full pub/sub |
 | 2 | Save/Load V2 | ✅ Complete | Spirit essence, trust, awakening, fame, infamy |
-| 3 | NPC Dialogue | ✅ Complete | 10 NPCs, 92 nodes, 106 choices, branching dialogues |
-| 4 | NPC Schedules | ✅ Complete | 10 NPCs, 24h time blocks with location mapping |
-| 5 | Quest System | 🔄 95% | 12 quests (5 main + 5 side + 2 hidden), all triggerable |
+| 3 | NPC Dialogue | ✅ Complete | 20 NPCs, 92+ nodes, branching dialogues + extended file (10 more NPCs) |
+| 4 | NPC Schedules | ✅ Complete | 20 NPCs, 24h time blocks with location mapping |
+| 5 | Quest System | 🔄 95% | 23 quests (12 original + 11 extended), all triggerable |
 | 6 | Economy Config | 🔄 90% | 50 item prices, 9 shops, 10 recipes, 7 travel zones |
 | 7 | Crafting (Alchemy) | 🔄 90% | Gathering, identification, forging, enhancement |
 | 8 | Combat (Basic) | 🔄 80% | DualSoul sync, attributes, enemy spawns |
@@ -90,10 +90,12 @@ EarthOnline/
 | 15 | VFX/Audio Config | 🔄 70% | 41 effect definitions, placeholder audio |
 | 16 | Achievements | 🔄 90% | 30 achievements across 6 categories |
 | 17 | Scene Markers | ✅ Complete | 29 markers (spirit veins, dungeons, travel, chests) |
-| 18 | Gifts/Skills | 🔄 60% | 15 scripts, skill system |
+| 18 | Gifts/Skills | 🔄 70% | 30 techniques across 7 categories with skill tree data |
 | 19 | UI System | 🔄 50% | Crafting, tribulation, world map UIs |
-| 20 | Multi-World | ⬜ Not started | Portal/fracture/unification systems |
-| 21 | Art Assets | ⬜ Not started | Blender/ComfyUI pipeline planned |
+| 20 | Multi-World | 🔄 15% | GDD (1004 lines) + 8 epics/stories complete |
+| 21 | Buff System | 🔄 80% | 35 combat/exploration/cultivation effects in Buffs.json |
+| 22 | World Lore | 🔄 100% | Rich narrative content for immersion |
+| 23 | Art Assets | ⬜ Not started | Blender/ComfyUI pipeline planned |
 
 ---
 
@@ -104,8 +106,10 @@ All configuration is stored as JSON under `Assets/Resources/Data/`.
 | File | Records | Content |
 |------|---------|---------|
 | `NPCDialogues.json` | 10 NPCs, 92 nodes, 106 choices | Dialogue trees with branching |
-| `NPCSchedules.json` | 10 NPCs, 73 time blocks | 24h daily schedules per NPC |
+| `NPCDialogues_Extended.json` | 10 additional NPCs | Extended dialogues for world depth |
+| `NPCSchedules.json` | 20 NPCs, 73+ time blocks | 24h daily schedules per NPC |
 | `Quests.json` | 12 quests | 5 main, 5 side, 2 hidden |
+| `Quests_Extended.json` | 11 additional quests | Extended quest chain |
 | `Items.json` | 50 items | 6 categories (Weapon/Armor/Elixir/Material/Consumable/Special) |
 | `EconomyConfig.json` | 50 prices, 9 shops, 10 crafts, 7 zones | Full economy matrix |
 | `EnemySpawns.json` | 40 spawns across 6 zones | Enemy definitions with respawn/patrol |
@@ -117,6 +121,8 @@ All configuration is stored as JSON under `Assets/Resources/Data/`.
 | `EffectsConfig.json` | 41 effects | VFX/audio effect definitions |
 | `Recipes.json` | 10 recipes | Crafting recipes |
 | `SceneMarkers.json` | 29 markers (7 spirit veins, 5 dungeons, 3 discoveries, 8 travel, 6 chests) | World interactables |
+| `Skills.json` | 30 techniques (7 categories) | Skill tree data |
+| `Buffs.json` | 35 buffs | Combat/exploration/cultivation effects |
 
 ---
 
@@ -125,8 +131,8 @@ All configuration is stored as JSON under `Assets/Resources/Data/`.
 - **Scenes:** `EarthOnline_Main.unity`, `BounceTower_Game.unity`
 - **Main Scene GameObjects:** ~162
 - **Village "落霞村" (Luoxia Village):** Complete layout with NPCs, spawn points, spirit veins
-- **Prefabs:** 66 prefab assets
-- **Screenshots:** 4 captured gameplay proofs
+- **Prefabs:** 3 prefab assets
+- **Screenshots:** 22 captured gameplay proofs
 
 ---
 
@@ -136,18 +142,19 @@ All configuration is stored as JSON under `Assets/Resources/Data/`.
 |------|-------|
 | Production/QA | `production/qa/test-plan-d-line.md` |
 | Production/Releases | `production/releases/alpha-prep-plan.md` |
-| Epics (6) | `production/epics/{alchemy-crafting,boss-system,dungeon-system,new-maps-system,sect-system,tribulation-system}/` |
-| Stories | 29 story files across 6 epics |
-| Design Docs | 1 design doc file |
+| Epics (7) | `production/epics/{alchemy-crafting,boss-system,dungeon-system,multi-world-system,new-maps-system,sect-system,tribulation-system}/` |
+| Stories | 41 story files across 7 epics |
+| Design Docs | 7 GDDs (alchemy, boss, dungeon, multi-world, maps, sect, tribulation) |
+| Level Design | `design/levels/level-layout-v1.md` |
 | Code Quality | `Assets/Design/code-quality-audit.md` |
-| Total Markdown | 154 files |
+| Total Markdown | 164 files |
 
 ---
 
 ## 8. What's Next (Post V2.0)
 
 ### Immediate (V2.1)
-- **Multi-World System** — Dimension fracturing, portal mechanics, realm unification
+- **Multi-World System** — Implementation phase (GDD + 8 stories done, coding next)
 - **Art Assets** — 3D models via Blender pipeline, 2D UI via ComfyUI
 - **Audio** — Background music, SFX integration
 - **Multiplayer Foundation** — Network architecture design
@@ -170,16 +177,16 @@ All configuration is stored as JSON under `Assets/Resources/Data/`.
 
 | Category | Count |
 |----------|-------|
-| C# Scripts (Assets/) | 200 |
-| JSON Data Files | 14 |
+| C# Scripts (Assets/) | 166 |
+| JSON Data Files | 18 |
 | Unity Scenes | 2 (1 main + 1 test) |
-| Unity Prefabs | 66 |
-| Markdown (Design/GDDs/Stories) | 154 |
-| Production Docs | 42 |
-| Design Docs | 1 |
-| Screenshots | 4 |
+| Unity Prefabs | 3 |
+| Markdown (Design/GDDs/Stories) | 164 |
+| Production Docs | 52 |
+| Design Docs | 13 |
+| Screenshots | 22 |
 
 ---
 
 *Generated by Claude Code CCGS Producer — 2026-07-13*
-*Commit: `76a20ec` — feat: V2.0 config data complete*
+*Commit: `7e58a94` — feat: multi-world GDD + skills + buffs + lore + extended NPCs/quests*
