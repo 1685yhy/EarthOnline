@@ -1,0 +1,329 @@
+{
+  "quests": [
+    {
+      "questId": "quest_sect_tianyuan_001",
+      "title": "天元宗入门考核",
+      "description": "你在天元宗山门前遇到了云震长老。他放下话来——天元宗不收废物，但有骨气的人可以一试。通过他的三道考验：击败三个外门弟子、猎取练气巅峰妖兽的内丹、通过心境试炼——你就能成为天元宗内门弟子。",
+      "chapter": "筑基",
+      "prerequisites": ["mq_03"],
+      "objectives": [
+        {
+          "description": "在天元宗演武场击败三个外门弟子",
+          "completionCondition": "kill:npc_tianyuan_apprentice:3"
+        },
+        {
+          "description": "猎取一颗练气巅峰妖兽的内丹",
+          "completionCondition": "collect:item_beast_core:1"
+        },
+        {
+          "description": "接受云震长老的心境试炼",
+          "completionCondition": "talk_npc:npc_tianyuan_elder_001"
+        }
+      ],
+      "rewards": {
+        "cultivationXP": 120,
+        "spiritStones": 200,
+        "itemIds": ["item_tianyuan_token", "item_inner_disciple_robe"]
+      },
+      "isMainQuest": true,
+      "unlockCondition": "quest_completed:mq_03",
+      "giverNpcId": "npc_tianyuan_elder_001",
+      "giverName": "云震长老",
+      "completionText": "云震长老难得露出一丝赞许的神色：'三关皆过——你比我想象的强。从今天起，你就是天元宗内门弟子了。但记住——入了宗门，就不只是你一个人了。你的荣辱——皆系于天元宗。'"
+    },
+    {
+      "questId": "quest_boss_firejiao_001",
+      "title": "讨伐火蛟",
+      "description": "矿脉深处的炎脉中栖息着一头千年火蛟——它被虚空的能量侵蚀后变得无比狂暴，已经吞噬了十几个矿工。天元宗悬赏讨伐，但派去的三波人都没能回来。据说火蛟的鳞甲刀枪不入，唯一的弱点是它腹部的旧伤——那是百年前一个元婴修士留下的。",
+      "chapter": "金丹",
+      "prerequisites": ["quest_sect_tianyuan_001"],
+      "objectives": [
+        {
+          "description": "深入矿脉炎层，找到火蛟巢穴",
+          "completionCondition": "explore:FireJiaoLair"
+        },
+        {
+          "description": "击败被虚空侵蚀的千年火蛟",
+          "completionCondition": "boss:boss_fire_jiao"
+        }
+      ],
+      "rewards": {
+        "cultivationXP": 500,
+        "spiritStones": 1500,
+        "itemIds": ["item_fire_dragon_scale", "item_flame_core", "item_blazing_sword"]
+      },
+      "isMainQuest": true,
+      "unlockCondition": "quest_completed:quest_sect_tianyuan_001",
+      "giverNpcId": "npc_tianyuan_elder_001",
+      "giverName": "云震长老",
+      "completionText": "火蛟庞大的身躯轰然倒下，炎脉中的温度骤然下降。云震长老赶到现场，看着满身焦痕的你，沉默良久：'……你做到了。天元宗建宗八百年——你是第一个单独讨伐火蛟的内门弟子。宗主会亲自见你。做好准备。'"
+    },
+    {
+      "questId": "quest_event_lingqi_001",
+      "title": "灵气暴走",
+      "description": "北山的灵气突然变得狂暴——像沸腾的水一样翻滚。清虚真人说，这是虚空的侵蚀已经影响到灵脉的征兆。灵脉一旦彻底污染，方圆百里的修士都会走火入魔。他需要你前往灵脉源头，找到'灵气暴走'的根源——可能是一个被虚空侵蚀的灵脉核心。",
+      "chapter": "金丹",
+      "prerequisites": ["mq_05"],
+      "objectives": [
+        {
+          "description": "前往北山灵脉源头，调查灵气异常",
+          "completionCondition": "explore:LingmaiSource"
+        },
+        {
+          "description": "净化被虚空污染的灵脉核心",
+          "completionCondition": "boss:boss_corrupted_core"
+        }
+      ],
+      "rewards": {
+        "cultivationXP": 300,
+        "spiritStones": 400,
+        "itemIds": ["item_purified_crystal", "item_lingmai_essence"]
+      },
+      "isMainQuest": false,
+      "unlockCondition": "quest_completed:mq_05",
+      "giverNpcId": "npc_qingyun_elder_001",
+      "giverName": "清虚真人",
+      "completionText": "灵脉核心恢复清澈的那一刻，北山上空翻涌的灵气云渐渐平息。清虚真人闭目感应了片刻，睁开眼说：'好了……灵气恢复稳定了。但你看到的只是表面——灵脉深处还有更大的污染源。等你准备好了——我们再去那里看看。'"
+    },
+    {
+      "questId": "quest_explore_caravan_001",
+      "title": "寻找失踪商队",
+      "description": "天机商盟的一支满载货物的商队在清风岭失踪了——商队有三十人，五辆灵兽车，装载着足够整个北域用三个月的丹药和符箓。金满堂长老急得嘴角起泡——这批货如果不能按时送达，商盟将面临巨额赔偿。他请你沿着商队的路线搜寻，活要见人——死要见尸。",
+      "chapter": "筑基",
+      "prerequisites": [],
+      "objectives": [
+        {
+          "description": "沿清风岭商道搜寻失踪商队的线索",
+          "completionCondition": "explore:CaravanCrashSite"
+        },
+        {
+          "description": "收集散落的商队货物和幸存者信息",
+          "completionCondition": "collect:item_caravan_cargo:5"
+        },
+        {
+          "description": "回到天机商盟向金满堂汇报调查结果",
+          "completionCondition": "talk_npc:npc_shangmeng_elder_001"
+        }
+      ],
+      "rewards": {
+        "cultivationXP": 150,
+        "spiritStones": 500,
+        "itemIds": ["item_shangmeng_credit_token", "item_transport_ring"]
+      },
+      "isMainQuest": false,
+      "unlockCondition": "auto",
+      "giverNpcId": "npc_shangmeng_elder_001",
+      "giverName": "金满堂",
+      "completionText": "金满堂听完你的汇报，脸色铁青：'天元宗干的。那些货车辙印的方向——是去天元宗后山的。他们劫了我的商队——这是要对我商盟宣战。……你辛苦了。这份报酬拿着——接下来的事，商盟自己处理。你卷进来对你没好处。'"
+    },
+    {
+      "questId": "quest_hidden_blackmarket_001",
+      "title": "地下黑市",
+      "description": "赵掌柜收到风声——矿洞第四层的上古地下城里出现了一个隐秘的黑市。那里交易的都是在明面上被禁止的东西：被虚空侵染的兵器、禁术功法、甚至还有——'穿越者情报'。据说黑市的主人是一个不露面的神秘人。赵掌柜想让你混进去调查——黑市里到底在交易什么。但进入地下黑市需要'暗号'——需要先找到一个中间人。",
+      "chapter": "金丹",
+      "prerequisites": ["mq_05"],
+      "objectives": [
+        {
+          "description": "在赌场找到地下黑市的中间人",
+          "completionCondition": "talk_npc:npc_gambler_001"
+        },
+        {
+          "description": "获取进入地下黑市的凭证",
+          "completionCondition": "collect:item_black_market_pass:1"
+        },
+        {
+          "description": "潜入地下黑市，收集交易情报",
+          "completionCondition": "explore:BlackMarket"
+        }
+      ],
+      "rewards": {
+        "cultivationXP": 200,
+        "spiritStones": 600,
+        "itemIds": ["item_forbidden_scroll", "item_shadow_cloak"]
+      },
+      "isMainQuest": false,
+      "unlockCondition": "quest_completed:mq_05",
+      "giverNpcId": "npc_zhao_001",
+      "giverName": "赵掌柜",
+      "completionText": "赵掌柜翻看着你带回来的情报，眉头越皱越紧：'果然……黑市背后是天元宗的人。他们在收购虚空碎片——而且已经收了很多了。宗主到底想干什么？……小友，这事越来越危险了。你暂时不要再深入了——等我联系青云门的人再说。'"
+    },
+    {
+      "questId": "quest_chain_ancientsword_001",
+      "title": "古剑觉醒",
+      "description": "守经老人在整理天机阁古籍时，发现了一本剑谱和一个尘封的木匣——里面是一柄锈迹斑斑的古剑。剑身上刻着'秋水'二字。剑谱上记载——此剑乃三千年前一位女剑仙的本命飞剑，剑中封印着她的剑灵。若能让剑灵觉醒——持剑者将获得一门失传的绝世剑术。但剑灵沉睡太久——需要用特殊的方法唤醒。",
+      "chapter": "金丹",
+      "prerequisites": ["hq_sword_legacy"],
+      "objectives": [
+        {
+          "description": "从天机阁取得古剑'秋水'",
+          "completionCondition": "talk_npc:npc_librarian_001"
+        },
+        {
+          "description": "收集唤醒剑灵的三样材料：晨曦露水、月华结晶、剑主精血",
+          "completionCondition": "collect:item_sword_awaken_material:3"
+        },
+        {
+          "description": "在月光下完成剑灵觉醒仪式",
+          "completionCondition": "boss:boss_sword_spirit_trial"
+        }
+      ],
+      "rewards": {
+        "cultivationXP": 400,
+        "spiritStones": 300,
+        "itemIds": ["item_ancient_sword_qiushui", "item_sword_art_waterfall"]
+      },
+      "isMainQuest": false,
+      "unlockCondition": "quest_completed:hq_sword_legacy",
+      "giverNpcId": "npc_librarian_001",
+      "giverName": "守经老人",
+      "completionText": "月光洒在古剑上，锈迹纷纷脱落——剑身如秋水般澄澈透明。一道白色的剑影从剑中升起，化作一个女子的轮廓，她看了你一眼——'三千年了……唤醒我的人，终于等到了。'守经老人激动得老泪纵横：'天意——这是天意啊！秋水剑选择了你！'"
+    },
+    {
+      "questId": "quest_service_tribulation_001",
+      "title": "渡劫护法",
+      "description": "一位散修在渡劫台前徘徊了三天——他想渡金丹劫，但他没有师门护法，害怕被人偷袭。渡劫翁说，散修渡劫本就艰难——如果有人愿意为他护法，他能多三分把握。他请求你——在散修渡劫期间守在外围，赶走一切靠近的妖兽和心怀不轨的人。",
+      "chapter": "金丹",
+      "prerequisites": [],
+      "objectives": [
+        {
+          "description": "在渡劫台外围为散修护法",
+          "completionCondition": "talk_npc:npc_tribulation_witness_001"
+        },
+        {
+          "description": "击退三波被天劫吸引来的妖兽",
+          "completionCondition": "kill:void_beast:3"
+        }
+      ],
+      "rewards": {
+        "cultivationXP": 200,
+        "spiritStones": 300,
+        "itemIds": ["item_tribulation_fragment", "item_fellowship_token"]
+      },
+      "isMainQuest": false,
+      "unlockCondition": "auto",
+      "giverNpcId": "npc_tribulation_witness_001",
+      "giverName": "渡劫翁",
+      "completionText": "天劫散去，渡劫台上的散修虽然浑身焦黑——但气息已蜕变为金丹。他走下来朝你深深一揖：'恩人！我孤某欠你一条命！以后但有差遣——万死不辞！'渡劫翁在一旁笑着点头：'护法之德——天劫会记住的。你的下一次天劫——会轻松一些。'"
+    },
+    {
+      "questId": "quest_pvp_lingmai_001",
+      "title": "灵脉争夺",
+      "description": "天元宗和青云门在矿脉区域的冲突全面升级了。双方各派出了一支精英小队——目标是控制灵脉核心区。云震长老命令你带领一支天元宗小队抢占灵脉枢纽——同时要防备青云门的伏击。这是一场真正的修士对抗——不是你死，就是我活。",
+      "chapter": "金丹",
+      "prerequisites": ["quest_sect_tianyuan_001"],
+      "objectives": [
+        {
+          "description": "在天元宗小队中集结，前往灵脉枢纽",
+          "completionCondition": "explore:LingmaiJunction"
+        },
+        {
+          "description": "击败青云门精英小队，控制灵脉枢纽",
+          "completionCondition": "kill:qingyun_elite:3"
+        },
+        {
+          "description": "向云震长老汇报战果",
+          "completionCondition": "talk_npc:npc_tianyuan_elder_001"
+        }
+      ],
+      "rewards": {
+        "cultivationXP": 350,
+        "spiritStones": 800,
+        "itemIds": ["item_lingmai_token", "item_sect_contrib_medal"]
+      },
+      "isMainQuest": true,
+      "unlockCondition": "quest_completed:quest_sect_tianyuan_001",
+      "giverNpcId": "npc_tianyuan_elder_001",
+      "giverName": "云震长老",
+      "completionText": "灵脉枢纽的控制权落入天元宗之手。云震长老看着归来的你，点了点头：'任务完成得干净利落——你没有让我失望。但别高兴太早——青云门不会善罢甘休。更大的风暴还在后面。抓紧时间养伤——下一场战斗可能就在明天。'"
+    },
+    {
+      "questId": "quest_world_beasttide_001",
+      "title": "妖兽之潮",
+      "description": "虚空裂缝在一夜之间扩大了七条——大量被虚空侵蚀的妖兽从裂缝中涌出，正在向人类聚居地逼近。守卫老周从城墙上看到——北方的地平线上，密密麻麻的兽潮正在汇聚。按照这个速度——三天之内，兽潮就会抵达村子。必须联合所有力量——天元宗、青云门、散修、商盟——在兽潮抵达之前建立防线。时间不等人。",
+      "chapter": "元婴",
+      "prerequisites": ["quest_sect_tianyuan_001", "mq_05"],
+      "objectives": [
+        {
+          "description": "联合各方势力，组建临时防线",
+          "completionCondition": "talk_npc:npc_guard_001"
+        },
+        {
+          "description": "在兽潮第一波冲击中守住阵地",
+          "completionCondition": "kill:void_beast:10"
+        },
+        {
+          "description": "击杀兽潮首领，瓦解妖兽攻势",
+          "completionCondition": "boss:boss_beast_tide_leader"
+        }
+      ],
+      "rewards": {
+        "cultivationXP": 800,
+        "spiritStones": 2000,
+        "itemIds": ["item_village_defender_medal", "item_beast_tide_relic", "item_hero_armor"]
+      },
+      "isMainQuest": true,
+      "unlockCondition": "quest_completed:quest_sect_tianyuan_001",
+      "giverNpcId": "npc_guard_001",
+      "giverName": "守卫老周",
+      "completionText": "最后一只妖兽倒下的时候——太阳刚好升起。血色的晨曦洒在满目疮痍的战场上，所有人都沉默着。守卫老周拄着刀站在城墙上，声音沙哑：'……活下来了。我们活下来了。'他转头看向你——眼中有什么东西在闪烁：'你救了这个村子。我代表所有人——谢谢你。'"
+    },
+    {
+      "questId": "quest_hidden_heavenshard_001",
+      "title": "天道碎片",
+      "description": "云中子——那个自称来自万象界的跨界旅人——在离开前给了你一个惊人的消息：这个世界的'天道'——支撑整个世界运行的底层规则——出现了裂痕。裂痕产生了七块'天道碎片'——散落在世界各地。如果能集齐这些碎片——也许可以修复天道，阻止虚空彻底吞噬这个世界。但每一块碎片都有强大的守护者——有些是人，有些是妖兽，有些——是连他自己都不知道是什么的东西。第一块碎片的线索——指向虚空裂缝的最深处。",
+      "chapter": "元婴",
+      "prerequisites": ["quest_world_beasttide_001"],
+      "objectives": [
+        {
+          "description": "根据云中子的线索，寻找第一块天道碎片的下落",
+          "completionCondition": "explore:HeavenShardCleft"
+        },
+        {
+          "description": "击败碎片的守护者，夺取第一块天道碎片",
+          "completionCondition": "boss:boss_heaven_shard_guardian"
+        }
+      ],
+      "rewards": {
+        "cultivationXP": 1200,
+        "spiritStones": 3000,
+        "itemIds": ["item_heaven_shard_01", "item_void_resistance_amulet"]
+      },
+      "isMainQuest": true,
+      "unlockCondition": "quest_completed:quest_world_beasttide_001",
+      "giverNpcId": "npc_crossworld_traveler_001",
+      "giverName": "云中子",
+      "completionText": "当你的手触碰到那块散发着金色光芒的碎片时——整个世界仿佛静止了一瞬。你听到了一个声音——不是从耳朵听到的——是从灵魂深处响起的——'第七个寻道者……终于来了。前面六个都死了。你能走多远？'碎片在你掌心微微发热——像是在回应你的决心。远处——虚空裂缝发出了一声低沉的轰鸣——仿佛在警告你。"
+    },
+    {
+      "questId": "quest_hidden_heavenshard_002",
+      "title": "天道碎片·续",
+      "description": "第一块天道碎片在你的掌心闪烁着微光——它似乎在指引你前往下一个碎片的位置。但云中子说过——这个过程不可逆转。一旦开始收集——虚空就会把你视为最大的威胁。更强的爪牙会不断找上你。第二块碎片位于传说中的'不归海'——一片被虚空完全包围的死海。据说海中央有一座孤岛——岛上有一棵枯萎的世界树——树心中封存着第二块天道碎片。但想要到达不归海——你需要一艘能在虚空中航行的船。",
+      "chapter": "元婴",
+      "prerequisites": ["quest_hidden_heavenshard_001"],
+      "objectives": [
+        {
+          "description": "寻找一艘能在虚空中航行的船",
+          "completionCondition": "explore:VoidShipDock"
+        },
+        {
+          "description": "穿越不归海，到达世界树孤岛",
+          "completionCondition": "explore:WorldTreeIsland"
+        },
+        {
+          "description": "击败世界树的守护者，夺取第二块天道碎片",
+          "completionCondition": "boss:boss_world_tree_guardian"
+        }
+      ],
+      "rewards": {
+        "cultivationXP": 2000,
+        "spiritStones": 5000,
+        "itemIds": ["item_heaven_shard_02", "item_world_tree_sprout", "item_void_sailor_compass"]
+      },
+      "isMainQuest": true,
+      "unlockCondition": "quest_completed:quest_hidden_heavenshard_001",
+      "giverNpcId": "npc_crossworld_traveler_001",
+      "giverName": "云中子",
+      "completionText": "世界树的枯枝在你触碰碎片的瞬间——发出了一缕新绿。树活了。虽然只是一根细小的嫩芽——但它在虚空的死海中——活了。你忽然明白——天道碎片不只是修复世界的钥匙。它是希望本身。当你把第二块碎片收入怀中——你听到虚空中传来一声怒吼。它知道你在做什么。它怕了。"
+    }
+  ]
+}

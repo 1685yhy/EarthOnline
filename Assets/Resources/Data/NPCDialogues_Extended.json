@@ -1,0 +1,2459 @@
+{
+  "npcs": [
+    {
+      "npcId": "npc_tianyuan_elder_001",
+      "npcName": "云震长老",
+      "npcTitle": "天元宗·执法长老",
+      "greetingLines": [
+        "（他负手而立，周身灵气激荡如实质）来者何人？报上名来——此乃天元宗内门重地，闲人止步。",
+        "哼，又是来拜师的？天元宗不收废物。先接我三招不死，再谈入门之事。",
+        "（他扫了你一眼，眉头微皱）练气期的修为也敢闯天元宗山门？有点胆识。",
+        "修行之路没有捷径——天元宗的规矩更严。你确定你能承受？",
+        "（他手中的拂尘轻轻一扫，一道气劲擦过你耳边）这一下——只是警告。"
+      ],
+      "farewellLines": [
+        "天元宗不是善堂——拿实力说话。",
+        "想清楚了再来。天元宗的大门——不是为懦夫敞开的。",
+        "记住——天元宗不收废物，但收有骨气的人。"
+      ],
+      "dialogueNodes": [
+        {
+          "id": "start",
+          "speakerName": "云震长老",
+          "text": "此乃天元宗山门。你是何人？来此何事？",
+          "choices": [
+            {
+              "text": "我想加入天元宗。",
+              "nextNodeId": "join_intent",
+              "requiredFame": 0,
+              "maxInfamy": 50,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我来打听消息。",
+              "nextNodeId": "sect_info",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "路过而已，告辞。",
+              "nextNodeId": "farewell",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "join_intent",
+          "speakerName": "云震长老",
+          "text": "（他绕着走了一圈，目光如刀）根骨尚可，灵气驳杂——一看就是散修出身。天元宗入门有三关：第一关在演武场击败三个外门弟子。第二关——去北山猎一只练气巅峰的妖兽回来。第三关……（他意味深长地看着你）通过我的心境考验。你还要试吗？",
+          "choices": [
+            {
+              "text": "我愿意一试。",
+              "nextNodeId": "trial_accept",
+              "requiredFame": 0,
+              "maxInfamy": 50,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "心境考验是什么？",
+              "nextNodeId": "heart_trial",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "……我再考虑考虑。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "trial_accept",
+          "speakerName": "云震长老",
+          "text": "好！有胆量。三日之内完成前两关——然后来找我进行最后的心境试炼。通过了——你就是天元宗内门弟子。通不过——哪来的回哪去。",
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "onChoiceEvents": [],
+          "choices": [],
+          "conditions": []
+        },
+        {
+          "id": "heart_trial",
+          "speakerName": "云震长老",
+          "text": "（他沉默片刻）天元宗的心境试炼——不是考验你的修为。是考验你的底线。我会在你的识海中制造一个幻境——让你面对自己内心最深的恐惧、最大的诱惑、最不愿面对的真相。通过的唯一方法是——守住本心。五百年来，七成应试者都倒在这一关。你还要试吗？",
+          "choices": [
+            {
+              "text": "我不会动摇。",
+              "nextNodeId": "trial_accept",
+              "requiredFame": 10,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "……我还是先做准备吧。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "sect_info",
+          "speakerName": "云震长老",
+          "text": "（他眯起眼睛）打探消息？看你不像天元宗的仇家……行，告诉你也无妨。最近宗门在防备一件事——矿脉那边的上古遗迹被人动了。宗主怀疑是青云门干的。再过半个月——可能要开战了。你若不想被卷进来——趁早离开这个区域。",
+          "choices": [
+            {
+              "text": "上古遗迹是什么？",
+              "nextNodeId": "ancient_ruins_info",
+              "requiredFame": 15,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "多谢告知。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "ancient_ruins_info",
+          "speakerName": "云震长老",
+          "text": "（他压低声音）矿洞第四层有一座上古地下城——不是这个时代的建筑。据说是上一个纪元留下的文明遗迹。里面埋着……控制虚空的钥匙。宗主志在必得。但我总觉得——那东西不该被挖出来。有些秘密——永远埋着才是最好的结局。",
+          "nextNodeId": "start",
+          "onEnterEvent": "reveal_secret",
+          "onExitEvent": "",
+          "choices": [],
+          "conditions": []
+        },
+        {
+          "id": "farewell",
+          "speakerName": "云震长老",
+          "text": "（他摆了摆手）去吧。山门外向东三里有一处灵力泉眼——对练气期修士有好处。算是我送你的见面礼。",
+          "choices": [],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        }
+      ],
+      "secrets": [
+        {
+          "revealThreshold": 5,
+          "hint": "云震长老的拂尘柄上刻着一个女人的名字……",
+          "revelation": "（他察觉到你的目光，将拂尘收入袖中）这是我道侣的遗物。三百年前——她也在天元宗。当时宗主还不是现在这个。她发现了宗主的秘密——然后被人灭口了。我查了三百年——没有找到真凶。但我有预感……快了。"
+        },
+        {
+          "revealThreshold": 10,
+          "hint": "他每个月都会独自下山一次，从不带随从。",
+          "revelation": "（你在山下酒馆'偶遇'了他，他已经有了几分醉意）你知道我下山干什么吗？去见青云门的暗桩。你以为我不忠？错了。我是在阻止一场战争。两宗开战——死的是普通弟子。上面的人根本不在乎。我两头跑——送礼、说情、藏消息——就是为了让这场仗打不起来。天元宗的人骂我软弱。青云门的人骂我虚伪。但我无所谓。活着——比什么都重要。"
+        }
+      ],
+      "relations": [
+        {
+          "targetNpcId": "npc_guard_001",
+          "type": "Stranger",
+          "description": "云震长老知道守卫老周曾是宗门护卫队长",
+          "closeness": 20
+        },
+        {
+          "targetNpcId": "npc_zhang_001",
+          "type": "Stranger",
+          "description": "两人有过一面之缘",
+          "closeness": 10
+        }
+      ]
+    },
+    {
+      "npcId": "npc_qingyun_elder_001",
+      "npcName": "清虚真人",
+      "npcTitle": "青云门·传功长老",
+      "greetingLines": [
+        "（他盘膝坐于松树下，周身云气缭绕恍若仙人）小友远道而来——不妨坐下喝杯茶？",
+        "修真之道，顺天应时。急不得，躁不得。",
+        "（他轻轻拂袖，一片落叶在他掌心化作灵蝶翩翩起舞）你看——万物皆有灵。这就是青云门的道。",
+        "天元宗的人又在山外转悠了……青云门不与他们争——但也不会退。",
+        "你的气息不稳。最近是不是急功近利了？来——喝口清心茶。"
+      ],
+      "farewellLines": [
+        "青云门永远欢迎求道之人——而非逐利之徒。",
+        "若有修行的困惑——随时可以来找我论道。",
+        "急风不终朝，骤雨不终日。修行——最忌一个'急'字。"
+      ],
+      "dialogueNodes": [
+        {
+          "id": "start",
+          "speakerName": "清虚真人",
+          "text": "（他将一杯清茶推到你面前）你身上有虚空的气息。你去过裂缝附近？",
+          "choices": [
+            {
+              "text": "是的——我想了解更多。",
+              "nextNodeId": "void_teach",
+              "requiredFame": 5,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我想请教青云门的功法。",
+              "nextNodeId": "qingyun_art",
+              "requiredFame": 0,
+              "maxInfamy": 50,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "路过讨杯茶喝而已。",
+              "nextNodeId": "tea_talk",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "void_teach",
+          "speakerName": "清虚真人",
+          "text": "（他神色凝重）虚空不是深渊——它是这个世界在'排毒'。修士过度开采灵气、滥用天地之力、以活人炼丹——这些恶行积累的业力，世界承受不住，就以虚空的形式排出。你身上有虚空的气息而不被侵蚀——说明你的灵魂有'抗性'。这很少见。",
+          "choices": [
+            {
+              "text": "那我该怎么利用这种抗性？",
+              "nextNodeId": "resist_use",
+              "requiredFame": 10,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "虚空有意识吗？",
+              "nextNodeId": "void_conscious",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "resist_use",
+          "speakerName": "清虚真人",
+          "text": "青云门有一种功法叫《清心渡厄诀》——修至大成，可以在虚空中自由行走而不被侵蚀。但修炼此诀需要一样东西——'虚空结晶'。你需要在虚空中采集三块结晶作为引子。我给你地图和护身符——如果你敢去的话。",
+          "nextNodeId": "start",
+          "onEnterEvent": "give_herb_quest",
+          "onExitEvent": "",
+          "choices": [],
+          "conditions": []
+        },
+        {
+          "id": "void_conscious",
+          "speakerName": "清虚真人",
+          "text": "（他沉默了很久，茶水凉了也没有察觉）有。虚空中有一个'意识'。它不是善也不是恶——它更像是一种……本能。这个世界排出的'毒'凝聚成了某种集体意识。它憎恨修士——因为修士是这个世界生病的根源。但它也渴望交流——因为它很孤独。三百年来，我只遇到过三个人能和它对话。前两个——都死了。第三个——现在坐在我面前。",
+          "nextNodeId": "start",
+          "onEnterEvent": "reveal_secret",
+          "onExitEvent": "",
+          "choices": [],
+          "conditions": []
+        },
+        {
+          "id": "qingyun_art",
+          "speakerName": "清虚真人",
+          "text": "青云门的核心功法是《青云引》——以自然为师，借天地之力修行。不急于突破瓶颈，而是与天地共鸣——让天地帮你突破。需要我为你演示一段吗？",
+          "choices": [
+            {
+              "text": "请前辈指教！",
+              "nextNodeId": "art_demo",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "gain_cultivation",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "改日再来请教。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "art_demo",
+          "speakerName": "清虚真人",
+          "text": "（他闭目凝神，周身忽然涌出青色灵气——周围的草木随之摇曳，灵气如潮水般涌入你的经脉）感受这股灵气——它是活的。它有自己的意志。青云门的修行——就是和天地做朋友。而不是——掠夺。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "tea_talk",
+          "speakerName": "清虚真人",
+          "text": "（他微笑着给你续了一杯茶）这茶叫'忘忧'——采自青云门后山一棵三千年的灵茶树。一年只能采一两。喝一口——能让你忘记所有烦恼。当然——该面对的事，醒来后还得面对。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        }
+      ],
+      "secrets": [
+        {
+          "revealThreshold": 5,
+          "hint": "他偶尔会用一种古老的语言自言自语……",
+          "revelation": "（你问起他在说什么，他愣了一下）那是……上一个纪元的语言。我在青云门的禁地里发现了一块石碑——上面刻着这种文字。我花了三十年翻译它。上面记载的是——上一次虚空爆发的原因。和这次一模一样。历史在重演——而这一次——我们可能没有下一个纪元了。"
+        },
+        {
+          "revealThreshold": 10,
+          "hint": "他袖中藏着一块黑色的玉简——从不示人。",
+          "revelation": "（他将玉简递给你）这是我师父留下的遗物。他是天元宗上一任宗主——在虚空中失踪了。失踪前他传讯给我——说他在虚空的彼岸发现了一个'出口'。不是走出来的出口——是……另一个世界的入口。他穿过去了。他叫我不要去追。但我一直在准备——我要去找他。"
+        }
+      ],
+      "relations": [
+        {
+          "targetNpcId": "npc_tianyuan_elder_001",
+          "type": "Friend",
+          "description": "两人年轻时曾是至交，如今立场不同",
+          "closeness": 30
+        },
+        {
+          "targetNpcId": "npc_zhang_001",
+          "type": "Stranger",
+          "description": "清虚真人知道张老的身份",
+          "closeness": 15
+        }
+      ]
+    },
+    {
+      "npcId": "npc_shangmeng_elder_001",
+      "npcName": "金满堂",
+      "npcTitle": "天机商盟·首席长老",
+      "greetingLines": [
+        "（他身着金丝锦袍，手指上戴满玉戒，笑容满面）欢迎欢迎！天机商盟——只有你想不到的，没有你买不到的！",
+        "（他拨弄着算盘，珠子噼啪作响）今日灵石汇率又涨了——啧啧，这世道啊。",
+        "听说你最近干得不错？我这儿有几笔生意——保你一本万利。",
+        "（他在你耳边低声说）最新消息——矿脉那边的上古遗迹里出了件好东西。有兴趣？",
+        "做生意讲究诚信——但也要讲究时机。恰好——现在就是最好的时机。"
+      ],
+      "farewellLines": [
+        "下次有好货我第一个通知你。",
+        "灵石是死的，人是活的——花出去的灵石才叫灵石。",
+        "记住——在天机商盟，信誉比修为更重要。"
+      ],
+      "dialogueNodes": [
+        {
+          "id": "start",
+          "speakerName": "金满堂",
+          "text": "（他笑眯眯地搓着手）道友来得正好！我刚到了一批新货——从东海运来的千年珊瑚、从西漠挖出来的上古法器、还有……（他压低声音）从虚空边缘'捡'到的东西。看看？",
+          "choices": [
+            {
+              "text": "看看你有什么好货。",
+              "nextNodeId": "goods_show",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我想做生意，不是买东西。",
+              "nextNodeId": "business_deal",
+              "requiredFame": 10,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "天机商盟是什么来头？",
+              "nextNodeId": "shangmeng_intro",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "下次再逛。",
+              "nextNodeId": "farewell",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "goods_show",
+          "speakerName": "金满堂",
+          "text": "（他像变戏法一样从储物戒里掏出一堆东西）千年血珊瑚——炼体圣品，三千灵石。上古破阵锥——能破大多数金丹级禁制，五千灵石。还有这个——（他神秘地亮出一枚漆黑的珠子）虚空凝珠——从虚空裂缝中孕育出的宝物。关键时刻捏碎它——可以短暂开辟一条空间通道逃生。这个嘛——一万灵石。不二价。",
+          "choices": [
+            {
+              "text": "太贵了。",
+              "nextNodeId": "price_haggle",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我全要了。",
+              "nextNodeId": "bulk_buy",
+              "requiredFame": 20,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "先看看别的。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "price_haggle",
+          "speakerName": "金满堂",
+          "text": "（他做出痛心的表情）道友啊——这已经是成本价了！这样吧——你如果能在七天内帮我从北山取回一件东西——我给你打八折。那件东西是我一个客户的订单——一颗变异妖兽的内丹。你要是能猎到——虚空凝珠八千灵石给你。",
+          "nextNodeId": "start",
+          "onEnterEvent": "give_herb_quest",
+          "onExitEvent": "",
+          "choices": [],
+          "conditions": []
+        },
+        {
+          "id": "bulk_buy",
+          "speakerName": "金满堂",
+          "text": "（他眼睛都亮了）豪气！豪气！我就喜欢和爽快人做生意！——不过灵石不够的话，可以用情报换。你最近是不是在调查天元宗的事？我知道一些内幕——如果你感兴趣，可以用情报抵一部分灵石。",
+          "choices": [
+            {
+              "text": "什么内幕？",
+              "nextNodeId": "shangmeng_secret",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我付灵石。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "shangmeng_secret",
+          "speakerName": "金满堂",
+          "text": "（他环顾四周，确认无人后低声说）天元宗宗主在私下拍卖'改命丹'——用人血和魂魄炼制的禁药。一粒丹能让金丹修士直接跳到元婴。但代价是——服用者会在三年内走火入魔而死。他已经在暗中培养了三十多个'死士'——全是服用了改命丹的元婴修士。他的目标……是整个灵气大陆。",
+          "nextNodeId": "start",
+          "onEnterEvent": "reveal_secret",
+          "onExitEvent": "",
+          "choices": [],
+          "conditions": []
+        },
+        {
+          "id": "business_deal",
+          "speakerName": "金满堂",
+          "text": "（他正色起来）好。天机商盟最近在收购三样东西：虚空碎片、上古法器、高阶妖兽内丹。你有货——我出价。另外——如果你愿意做商盟的'特邀采办'，我可以预付两千灵石的启动资金，你负责去各地寻找稀有货物。利润五五分成。",
+          "choices": [
+            {
+              "text": "我接受特邀采办的邀请。",
+              "nextNodeId": "become_buyer",
+              "requiredFame": 15,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我有货再联系你。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "become_buyer",
+          "speakerName": "金满堂",
+          "text": "（他从怀中取出一块金色的令牌）这是天机商盟的'金令'——持此令可在任何商盟据点调动两千灵石以下的资金。你的第一单任务——去矿脉那边打听一下青云门最近的动向。情报值八百灵石。",
+          "nextNodeId": "start",
+          "onEnterEvent": "gain_cultivation",
+          "onExitEvent": "",
+          "choices": [],
+          "conditions": []
+        },
+        {
+          "id": "shangmeng_intro",
+          "speakerName": "金满堂",
+          "text": "天机商盟的历史比你想象的长得多——我们存在的时间，比天元宗和青云门加起来还要久。我们不参与修真界的争斗——我们只做生意。正派、邪派、散修、妖族——只要出得起价——都是我们的客户。你可以把我们看作这个世界的'暗面经济'。没有我们——这个修真界早乱了。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "farewell",
+          "speakerName": "金满堂",
+          "text": "（他递给你一张金边名片）这是我的灵力传讯符——有需要随时联系。天机商盟——永远敞开大门。",
+          "choices": [],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        }
+      ],
+      "secrets": [
+        {
+          "revealThreshold": 5,
+          "hint": "他算盘上的珠子是用不同修士的金丹打磨的……",
+          "revelation": "（他注意到你的视线，笑了笑）看出來了？這算盘一共三十六颗珠子——每一颗都来自一个元婴期以上的修士。他们不是我杀的——但他们欠商盟的债，死后用金丹抵了。我用这种方式让他们继续'为商盟服务'。你不觉得——这很公平吗？"
+        },
+        {
+          "revealThreshold": 10,
+          "hint": "他偶尔会消失几天，回来后身上带着虚空的气息。",
+          "revelation": "（他疲惫地靠在椅子上，声音沙哑）我去了虚空一趟。不是去探险——是去谈生意。虚空里那个'意识'——是一个很好的交易对象。它要的东西很简单：负面的情绪——恐惧、愤怒、绝望。我给它带这些情绪——它给我虚空结晶。你问我值不值？三百年来——天机商盟一直是这么运作的。你以为我们的极品灵石是从哪来的？"
+        }
+      ],
+      "relations": [
+        {
+          "targetNpcId": "npc_zhao_001",
+          "type": "Friend",
+          "description": "金满堂和赵掌柜有生意往来",
+          "closeness": 35
+        },
+        {
+          "targetNpcId": "npc_chen_001",
+          "type": "Friend",
+          "description": "陈半仙的货很多走商盟渠道",
+          "closeness": 40
+        },
+        {
+          "targetNpcId": "npc_mystery_merchant_001",
+          "type": "Rival",
+          "description": "神秘商人不属于天机商盟体系",
+          "closeness": -15
+        }
+      ]
+    },
+    {
+      "npcId": "npc_sanxiu_tutor_001",
+      "npcName": "墨言先生",
+      "npcTitle": "散修联盟·客卿导师",
+      "greetingLines": [
+        "（他衣衫朴素，背着一只旧竹箱，眼中的光芒却比那些锦袍修士更加明亮）散修？好。散修的路最难走——但走出来的都是人杰。",
+        "今天的课程是《如何在野外辨别有毒灵草》。有兴趣？",
+        "我没有宗门背景——我的一切都是用血和汗换来的。你想学——我教你。",
+        "（他在竹简上飞快地写着什么，头也不抬）又编了一本新的散修生存指南——第三十七版了。",
+        "别信那些宗门弟子的鬼话——散修就是比他们强。因为没有靠山——所以每一步都走得比他们扎实十倍。"
+      ],
+      "farewellLines": [
+        "有空来听课——我不收灵石，只收真心。",
+        "记住——散修的第一课：永远不要把自己的命交到别人手里。",
+        "这份功法你先练着——有问题随时来找我。"
+      ],
+      "dialogueNodes": [
+        {
+          "id": "start",
+          "speakerName": "墨言先生",
+          "text": "（他放下手中的竹简，认真地看着你）又是一个没有宗门的修行者？好。我专门教散修——不收你灵石,只收你的求知欲。想学什么？",
+          "choices": [
+            {
+              "text": "我想学散修的生存之道。",
+              "nextNodeId": "survival_101",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "有没有速成的战斗技巧？",
+              "nextNodeId": "combat_tips",
+              "requiredFame": 5,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你为什么要教散修？",
+              "nextNodeId": "why_teach",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我自己练就好。",
+              "nextNodeId": "farewell",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "survival_101",
+          "speakerName": "墨言先生",
+          "text": "好。散修生存第一法则——不要相信任何免费的东西。免费的丹药可能是毒药，免费的功法可能是陷阱，免费的帮助——可能是要你的命。第二法则——永远留一条退路。打不过就跑，不丢人。第三法则——建立你自己的情报网。宗门有宗门的情报——散修有散修的门道。你需要在每个城镇都认识一个靠得住的人。",
+          "choices": [
+            {
+              "text": "怎么建立情报网？",
+              "nextNodeId": "network_tips",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "受教了！",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "gain_cultivation",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "network_tips",
+          "speakerName": "墨言先生",
+          "text": "（他从竹箱里掏出一本小册子）这是我编的《散修互助名录》——记录了北域三十七个城镇里可以信任的散修联络人。每个名字背后都有我的标注——几时认识、人品如何、擅长什么。别小看这本册子——它救过我的命不止一次。送你了。",
+          "nextNodeId": "start",
+          "onEnterEvent": "gain_cultivation",
+          "onExitEvent": "",
+          "choices": [],
+          "conditions": []
+        },
+        {
+          "id": "combat_tips",
+          "speakerName": "墨言先生",
+          "text": "散修没有宗门那些花里胡哨的传承功法——所以我们的战斗风格必须实用。我教你三招：第一招——'灵气爆步'，在脚下引爆灵气瞬间加速。不是用来进攻的——是用来逃命的。第二招——'虚张声势'，用最大灵气输出伪装高境界气息，吓退不如你机灵的敌人。第三招——'舍身一击'，把所有灵气集中到一击上——不是同归于尽，是打完就跑。",
+          "choices": [
+            {
+              "text": "教我灵气爆步！",
+              "nextNodeId": "teach_step",
+              "requiredFame": 5,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "以后再说。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "teach_step",
+          "speakerName": "墨言先生",
+          "text": "（他站起来演示）看好了——将灵气压缩在足底涌泉穴，然后瞬间释放。关键在于压缩的比例——太大伤经脉，太小没效果。你试试？……对，就是这个感觉！你很有天赋。一般来说散修要练三天才找得到门道——你一次就成了。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "gain_cultivation",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "why_teach",
+          "speakerName": "墨言先生",
+          "text": "（他沉默了一下，继续整理竹简）因为二十五年前——我也是个没人教的散修。在野外被人追杀、被人骗光了灵石、差点死在一座废弃矿洞里。那时候我就在想——如果当时有个人能教我——我是不是就不用走那么多弯路了？现在——我就是那个人。我不想别的散修再经历我当年的绝望。",
+          "choices": [
+            {
+              "text": "你是个好人。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "gain_cultivation",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "那你后来怎么变强的？",
+              "nextNodeId": "his_story",
+              "requiredFame": 10,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "his_story",
+          "speakerName": "墨言先生",
+          "text": "（他露出一丝苦笑）我在那座矿洞里发现了一具枯骨——一个上古散仙的遗骸。他留下了他的修炼心得和一部残缺的功法。我靠着那部功法一步一步走到了今天。所以我相信——每一个散修，都有属于自己的机缘。你的机缘——也许就在下一个转角。",
+          "nextNodeId": "start",
+          "onEnterEvent": "reveal_secret",
+          "onExitEvent": "",
+          "choices": [],
+          "conditions": []
+        },
+        {
+          "id": "farewell",
+          "speakerName": "墨言先生",
+          "text": "（他递给你一卷竹简）拿着——这是我整理的《散修筑基心得》。自己一个人修炼的时候，容易走岔路。这上面写了十七种常见错误和应对方法。",
+          "choices": [],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        }
+      ],
+      "secrets": [
+        {
+          "revealThreshold": 5,
+          "hint": "他的竹箱底部夹层里藏着一块残破的宗门令牌。",
+          "revelation": "（他犹豫了很久，还是打开了夹层）我骗了你。我以前不是散修——我是天元宗的内门弟子。二十五年前，我是宗主的亲传弟子之一。然后我发现了他用活人炼丹的秘密。他派人追杀我——我侥幸逃了。这令牌是我唯一留下的宗门信物。我留着它——是为了提醒自己不要变成那种人。"
+        },
+        {
+          "revealThreshold": 10,
+          "hint": "他每个月圆之夜都会独自去山顶，对着月亮打一套奇怪的拳法。",
+          "revelation": "（你跟着他到了山顶，他打完拳后叹了口气）这部拳法叫《碎虚拳》——是那个上古散仙留下的完整功法中唯一能修炼的部分。一个月圆之夜才能发挥最大威力。练到大成——可以一拳打碎虚空裂缝。我练了二十年——还差最后一重。如果我能练成……也许可以亲手封住那些裂缝。"
+        }
+      ],
+      "relations": [
+        {
+          "targetNpcId": "npc_chen_001",
+          "type": "Friend",
+          "description": "两人都是散修出身，惺惺相惜",
+          "closeness": 45
+        },
+        {
+          "targetNpcId": "npc_apprentice_001",
+          "type": "Stranger",
+          "description": "墨言先生曾指点过小药童认字",
+          "closeness": 15
+        }
+      ]
+    },
+    {
+      "npcId": "npc_mystery_merchant_001",
+      "npcName": "无名商客",
+      "npcTitle": "??? · 没有名字的旅商",
+      "greetingLines": [
+        "（他裹着一件漆黑的斗篷，看不清面容，声音低沉沙哑）你……能看到我？有趣。大多数人看不到我。",
+        "我不常在一个地方停留。今天刚好——我在等一个'有缘人'。也许就是你。",
+        "（他从斗篷下伸出一只苍白的手，掌心躺着一枚发光的晶石）要看看吗？这不是这个世界的东西。",
+        "你的命运线……很混乱。有人在改写它。你想知道是谁吗？……那需要付出代价。",
+        "（他低声笑了一下）我又感觉到那种波动了——又一个穿越者。你们这些人啊……像流星一样砸进这个世界。"
+      ],
+      "farewellLines": [
+        "我们有缘会再见的——在我需要你的时候。",
+        "记住——你看到的我不是真正的我。真正的我——在你看不到的地方。",
+        "下次见面……也许是在另一个世界了。"
+      ],
+      "dialogueNodes": [
+        {
+          "id": "start",
+          "speakerName": "无名商客",
+          "text": "（斗篷下传出低沉的笑声）你身上有很浓的穿越气息。第47个？不对——你是第47个。我数的和这个世界的人数的——不一样。",
+          "choices": [
+            {
+              "text": "你是什么人？",
+              "nextNodeId": "who_are_you",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你有什么卖？",
+              "nextNodeId": "mystery_goods",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你在等什么？",
+              "nextNodeId": "what_waiting",
+              "requiredFame": 5,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "（转身就走）",
+              "nextNodeId": "farewell",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "who_are_you",
+          "speakerName": "无名商客",
+          "text": "（他沉默了很久）我？我忘了。在这个世界流浪了太久——不记得自己原来的名字了。人们叫我'无名商客'。我来自……（他指了指天空）上面的世界。或者说——外面的世界。这个世界是泡泡——无数泡泡中的一个。我可以在泡泡之间穿梭。你是第47个我遇到的穿越者。前面46个……我卖给了他们一些东西。有一些帮到了他们。有一些——害了他们。",
+          "choices": [
+            {
+              "text": "你卖给他们什么了？",
+              "nextNodeId": "sold_goods",
+              "requiredFame": 10,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你能带我离开这个世界？",
+              "nextNodeId": "leave_world",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "sold_goods",
+          "speakerName": "无名商客",
+          "text": "（他轻笑了一声）每个人要的东西不一样。第一个穿越者要了一把能斩断一切的剑——我给了他。他用那把剑斩断了自己的命运——也斩断了自己的生命。第三十一个穿越者要了一颗能让人忘记一切的丹药——我给了他。他忘记了所有痛苦——也忘记了自己为什么要变强。你想要什么？我可以给你——但代价——你未必付得起。",
+          "choices": [
+            {
+              "text": "你要什么代价？",
+              "nextNodeId": "price",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "……我还是靠自己的好。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "price",
+          "speakerName": "无名商客",
+          "text": "（斗篷下伸出三根手指）三种代价：记忆、气运、或者——你的一部分灵魂。我拿走记忆——你忘记一个人。我拿走气运——你接下来十年运气会很差。我拿走灵魂的一部分——你可能永远无法突破化神期。选吧。如果你什么都不想失去——那就去赚灵石。灵石——是唯一不需要灵魂来交换的货币。",
+          "choices": [
+            {
+              "text": "我……突然想到还有事。",
+              "nextNodeId": "farewell",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我付灵石。",
+              "nextNodeId": "mystery_goods",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "mystery_goods",
+          "speakerName": "无名商客",
+          "text": "（他摊开手掌，掌心浮现出几件物品）'星辰沙'——一小撮，可以炼制破界符。'记忆玉'——可以存储一段记忆，像书一样翻阅。'虚空之花'——只开在虚空夹缝中的花。每一件都是这个世界找不到的珍品。价格嘛——比天机商盟便宜一点。因为我不用交税。",
+          "choices": [
+            {
+              "text": "我要星辰沙。",
+              "nextNodeId": "buy_star_sand",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我要记忆玉。",
+              "nextNodeId": "buy_memory_jade",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我先看看再说。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "buy_star_sand",
+          "speakerName": "无名商客",
+          "text": "三千灵石。或者——（他顿了顿）你帮我去虚空裂缝边缘取一件东西。东边第三条裂缝——最深处有一具骸骨。骸骨的手指上有一枚黑色的戒指。把戒指带来给我——星辰沙免费送你，另外再加一件礼物。",
+          "nextNodeId": "start",
+          "onEnterEvent": "reveal_secret",
+          "onExitEvent": "",
+          "choices": [],
+          "conditions": []
+        },
+        {
+          "id": "buy_memory_jade",
+          "speakerName": "无名商客",
+          "text": "两千灵石。或者——（他歪了歪头）用一段你自己的记忆来换。一段你最快乐的记忆——换一枚记忆玉。你可以用记忆玉存储其他的记忆。但那段最快乐的——归我了。",
+          "choices": [
+            {
+              "text": "成交。",
+              "nextNodeId": "memory_deal",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "不，我用灵石买。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "memory_deal",
+          "speakerName": "无名商客",
+          "text": "（他伸出一根手指，轻轻点在你的额头上）好。放松。……好了。你现在不记得你七岁那年夏天在河边抓鱼的事了。但那件事——以后会在我的记忆里。很有趣的一段。多谢款待。",
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "what_waiting",
+          "speakerName": "无名商客",
+          "text": "（他抬头望向天空——但斗篷遮住了他的脸，你不知道他在看什么）我在等天裂开的那一天。虚空的力量在积累——当它积累到一定程度——这个世界会'擦除'自己。就像人死了，身体会腐烂一样。那一天来的时候——所有宗门、所有修士、所有凡人——都会消失。而我——会在那一天到来之前离开。",
+          "choices": [
+            {
+              "text": "那一天什么时候来？",
+              "nextNodeId": "when_doom",
+              "requiredFame": 15,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "……那我该怎么办？",
+              "nextNodeId": "what_to_do",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "when_doom",
+          "speakerName": "无名商客",
+          "text": "（他低声笑）快则三年，慢则十年。看这个世界抗性有多强。你们这些穿越者——是地球意志投放的'抗体'。但抗体够不够强……谁知道呢？你最好抓紧时间变强。非常强。比你现在想象的强十倍。",
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "choices": [],
+          "conditions": []
+        },
+        {
+          "id": "what_to_do",
+          "speakerName": "无名商客",
+          "text": "（他递给你一枚黑色的硬币）拿着。如果那一天真的来了——捏碎它。它会在虚空中打开一条通道——通往另一个世界。但只能用一次。而且——你不能带任何人。只有你自己。你想清楚。",
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "choices": [],
+          "conditions": []
+        },
+        {
+          "id": "leave_world",
+          "speakerName": "无名商客",
+          "text": "（他沉默了很久）不能。至少现在不能。你的锚点还钉在这个世界的命运线上——强行拔除你会魂飞魄散。等你什么时候——你的命运线和这个世界的命运线不再纠缠了——我可以带你走。那通常只发生在……（他顿了顿）你死了之后。或者——这个世界死了之后。",
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "farewell",
+          "speakerName": "无名商客",
+          "text": "（他的身影开始变淡）你做了一个明智的选择。有些东西——不该用灵魂去换。不过下次见面——我可能不会再给你选择了。保重——第47个。",
+          "choices": [],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        }
+      ],
+      "secrets": [
+        {
+          "revealThreshold": 5,
+          "hint": "他的斗篷下——没有影子。",
+          "revelation": "（你注意到了这件事。他低头看了看地面，沉默了）很好——你是第一个注意到我没有影子的穿越者。因为我不是活人。我是一个'回响'——另一个毁灭的世界的最后幸存者。我的世界在三万年前被虚空吞噬了。我在最后一刻逃了出来——变成了现在这个样子。一个没有影子、没有过去、只有记忆的流浪者。"
+        },
+        {
+          "revealThreshold": 10,
+          "hint": "他偶尔会对空无一人的方向说话——像是在和什么看不见的东西交流。",
+          "revelation": "（他转过头，对空无一人的方向说了一句听不懂的话，然后对你解释）抱歉——那是我故乡世界的一个同伴。你也看不见他——但他的灵魂碎片附着在我身上。我们那个世界毁灭的时候——他只来得及把灵魂附在我的影子上。等等——你看不见影子。那你看不见他也很正常。他托我问你——'你有没有见过一只蓝色的蝴蝶？'……那是他的女儿。三万年前走散了。"
+        }
+      ],
+      "relations": [
+        {
+          "targetNpcId": "npc_shangmeng_elder_001",
+          "type": "Rival",
+          "description": "两人在稀有物品市场上是竞争对手",
+          "closeness": -15
+        },
+        {
+          "targetNpcId": "npc_zhang_001",
+          "type": "Stranger",
+          "description": "无名商客知道张老妻子在虚空中的位置",
+          "closeness": 5
+        }
+      ]
+    },
+    {
+      "npcId": "npc_innkeeper_001",
+      "npcName": "柳三娘",
+      "npcTitle": "醉仙楼·老板娘",
+      "greetingLines": [
+        "（她倚在柜台边，手中转着一只酒杯，笑意盈盈）哟——新面孔！今天醉仙楼的酒钱打八折——不过情报费不打折。",
+        "（她放下算盘，一双桃花眼上下打量你）长得倒是不错——可惜是个修行者。修行者都没什么情趣。",
+        "来来来——今天新到了一坛三百年份的'醉仙酿'。喝一杯——能梦到前世的记忆。",
+        "听说北山又出事了？——我这的消息比官府还快。想知道？先点壶酒。",
+        "你身上有股奇怪的味道——不是灵气，不是烟火气……是另一种世界的气味。有意思。"
+      ],
+      "farewellLines": [
+        "下次来坐坐——不喝酒也可以。我这儿的说书先生讲的故事挺好的。",
+        "小心天元宗的人——他们最近在到处打探你的消息。",
+        "有空来吃顿饭——我给你留个靠窗的好位置。"
+      ],
+      "dialogueNodes": [
+        {
+          "id": "start",
+          "speakerName": "柳三娘",
+          "text": "醉仙楼开张五十年——三教九流都在这儿喝过酒。想喝酒还是想听故事——你挑。",
+          "choices": [
+            {
+              "text": "来壶好酒。",
+              "nextNodeId": "order_wine",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我想打听点消息。",
+              "nextNodeId": "gossip",
+              "requiredFame": 5,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "有没有什么活我能干？",
+              "nextNodeId": "side_job",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我只是进来坐坐。",
+              "nextNodeId": "just_sit",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "order_wine",
+          "speakerName": "柳三娘",
+          "text": "好嘞！——（她亲自去后厨端了一壶酒过来，给自己也倒了一杯）这一杯算我请的。你知道为什么吗？因为你让我想起了一个人。一个——跟你一样从裂缝里走出来的人。那是二十年前的事了。他也在我的店里坐过——坐的就是你现在这个位置。点了一壶一样的酒。然后他跟我说了一句话——'这个世界要完了。'我当时以为他在说醉话。现在……（她喝了一口酒）我觉得他说的是真的。",
+          "choices": [
+            {
+              "text": "那个人后来怎么样了？",
+              "nextNodeId": "that_person",
+              "requiredFame": 10,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "他是什么样的人？",
+              "nextNodeId": "what_he_like",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "that_person",
+          "speakerName": "柳三娘",
+          "text": "（她放下酒杯，眼神变得遥远）他走了。第二天一早就走了。走之前他在桌上留了一封信——不是给我的。是给'下一个坐在这个位置上的人'。我想——那就是你。（她从柜台下取出一封泛黄的信）拿着。二十年前——一个穿越者留给你的信。",
+          "nextNodeId": "start",
+          "onEnterEvent": "reveal_secret",
+          "onExitEvent": "",
+          "choices": [],
+          "conditions": []
+        },
+        {
+          "id": "what_he_like",
+          "speakerName": "柳三娘",
+          "text": "他啊……穿着和你差不多——一看就不是这个世界的人。话不多，眼神很透彻。他喝酒的时候从来不笑。但他说了一句话我记得很清楚——'你们这个世界的人太累了。修行、争斗、长生——到头来都逃不过虚空。我们那个世界——人们活得短——但活得开心。'他付了酒钱后就没再回来过。我想——他大概已经不在这个世界了。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "gossip",
+          "speakerName": "柳三娘",
+          "text": "（她看了看四周，压低声音）情报费二百灵石——先付钱。……好，今天有三个消息：第一，天元宗宗主三天前秘密闭关了——对外说是突破化神，但我的人说他是受伤了。第二，矿洞那边的地下古城——有人进去了。一男一女，修为至少在金丹以上。出来的时候——女的受了重伤，男的少了一条胳膊。第三——（她的声音更低了）虚空裂缝的数量，上个月增加了七条。总共有四十七条裂缝了。和穿越者的数量——一样。你不觉得太巧了吗？",
+          "choices": [
+            {
+              "text": "四十七条裂缝对应四十七个穿越者？",
+              "nextNodeId": "forty_seven",
+              "requiredFame": 15,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "多谢消息。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "forty_seven",
+          "speakerName": "柳三娘",
+          "text": "（她冷笑了一声）所以我从来不觉得你们这些'穿越者'是来救世的。你们每来一个人——这个世界就多一道裂口。你们是来拆世界的——不是来救世界的。但你……（她盯着你的眼睛）你和其他人不太一样。你的眼神里没有那种'我是天选之子'的傲慢。所以——我愿意帮你。但要记住——不要让裂缝继续增加了。每增加一条——这个世界就离死亡近一步。",
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "side_job",
+          "speakerName": "柳三娘",
+          "text": "（她想了想）我这倒真有个活。醉仙楼的食材供应商最近一个月没来了——他家在清风岭那边。我怀疑路上出了什么事。你帮我去看看——如果他还活着，催他送货。如果他死了——回来告诉我，我好找新的供应商。酬劳——三百灵石外加包一个月的酒。",
+          "nextNodeId": "start",
+          "onEnterEvent": "give_herb_quest",
+          "onExitEvent": "",
+          "choices": [],
+          "conditions": []
+        },
+        {
+          "id": "just_sit",
+          "speakerName": "柳三娘",
+          "text": "（她笑了笑，给你倒了一杯茶）行。坐坐也好。这世道——能安静坐一会儿都是种奢侈。这壶茶算我请的——'忘忧茶'，能让你的烦恼轻一些。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        }
+      ],
+      "secrets": [
+        {
+          "revealThreshold": 5,
+          "hint": "她后厨有一间密室——钥匙从不离身。",
+          "revelation": "（你找了个机会问起那间密室，她沉默了很久才开口）那里面……住着一个人。一个五十年前就死了的人。我的丈夫。他不是真的活着——是我用'续命术'留住了他的一缕残魂。每隔三天要喂他一滴我的精血。代价是我的修为永远停在筑基后期。值不值？——你再问我一次——我还是会说值。"
+        },
+        {
+          "revealThreshold": 10,
+          "hint": "她腰间的那枚玉佩在夜里会发出微弱的蓝光。",
+          "revelation": "（她摸了摸那枚玉佩）这是那个人——二十年前坐在你这个位置的穿越者——留给我的。他说这枚玉佩能感应到虚空的波动。每次虚空裂缝扩大——它就会发光。最近它几乎每个晚上都在发光。这说明——（她的笑容消失了）虚空在加速扩张。那个人的预言——可能要成真了。"
+        }
+      ],
+      "relations": [
+        {
+          "targetNpcId": "npc_zhao_001",
+          "type": "Friend",
+          "description": "柳三娘和赵掌柜是多年的老朋友",
+          "closeness": 50
+        },
+        {
+          "targetNpcId": "npc_li_001",
+          "type": "Friend",
+          "description": "柳三娘经常关照李灵儿的生意",
+          "closeness": 30
+        },
+        {
+          "targetNpcId": "npc_guard_001",
+          "type": "Friend",
+          "description": "守卫老周是醉仙楼的常客",
+          "closeness": 25
+        }
+      ]
+    },
+    {
+      "npcId": "npc_gambler_001",
+      "npcName": "鬼手侯",
+      "npcTitle": "万宝赌坊·庄家",
+      "greetingLines": [
+        "（他指尖飞速转动着一枚骰子，六面都是'一'）进来看两眼？不赌也没关系——看看热闹也行。",
+        "（他咧嘴一笑，露出一颗金牙）灵石放着也是放着——不如来赌两把！赢了翻倍，输了……就当交学费了！",
+        "（他向前倾身，压低声音）我这有新玩法——'命格赌局'。不赌灵石——赌气运。敢来？",
+        "听说你小子最近混得不错？来来来——赌一把，让我看看你的运气是不是和你的实力一样好。",
+        "（他懒洋洋地靠在赌桌上）今天的运势签上上签——宜出钱，忌小气。"
+      ],
+      "farewellLines": [
+        "赢钱别太得意——赌场最欢迎的就是得意的人。",
+        "输光了？——那边有个当铺。不过别当裤子——我还要做生意呢。",
+        "下次来我带你去贵宾室——那儿的赌局才叫赌局。"
+      ],
+      "dialogueNodes": [
+        {
+          "id": "start",
+          "speakerName": "鬼手侯",
+          "text": "万宝赌坊——灵气大陆最大的连锁赌场！骰子、牌九、灵石轮盘——应有尽有！最低十灵石就能上桌。怎么样——手痒不？",
+          "choices": [
+            {
+              "text": "玩两把骰子。",
+              "nextNodeId": "dice_game",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "什么是命格赌局？",
+              "nextNodeId": "fate_bet",
+              "requiredFame": 10,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你有情报卖吗？",
+              "nextNodeId": "gambler_info",
+              "requiredFame": 5,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我就看看。",
+              "nextNodeId": "farewell",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "dice_game",
+          "speakerName": "鬼手侯",
+          "text": "爽快！规矩很简单——三颗骰子，猜大小。大——三颗加起来十一到十八。小——三到十。猜对了翻倍，猜错了灵石归我。你的本金？——（他看了看你的口袋）我建议你先拿一百灵石试水。",
+          "choices": [
+            {
+              "text": "一百灵石，押大！",
+              "nextNodeId": "dice_big",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "一百灵石，押小！",
+              "nextNodeId": "dice_small",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "算了，下次吧。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "dice_big",
+          "speakerName": "鬼手侯",
+          "text": "（他随手一掷——骰子在桌上滴溜溜转了几圈，停住——六、五、六，十七点！）哟！手气不错！一百变二百！——还要继续吗？",
+          "nextNodeId": "start",
+          "onEnterEvent": "gain_cultivation",
+          "onExitEvent": "",
+          "choices": [],
+          "conditions": []
+        },
+        {
+          "id": "dice_small",
+          "speakerName": "鬼手侯",
+          "text": "（他随手一掷——骰子转了几圈，停住——五、五、六，十六点！）哎呀——开大！一百灵石——归我了。还要再来一把？下一把说不定就翻盘了！",
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "choices": [],
+          "conditions": []
+        },
+        {
+          "id": "fate_bet",
+          "speakerName": "鬼手侯",
+          "text": "（他收起笑容，认真地看着你）命格赌局——不是用灵石赌。是用你的一部分'气运'来赌。如果你赢了——你获得对方的一份气运。如果你输了——你失去一份自己的气运。气运这东西看不见摸不着——但少了它——你会莫名其妙地倒霉。突破失败、法宝损坏、走路摔跤——干什么都不顺。要试试吗？底注——一份气运。",
+          "choices": [
+            {
+              "text": "不赌这个。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "跟你赌。",
+              "nextNodeId": "fate_game_play",
+              "requiredFame": 20,
+              "maxInfamy": 50,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "fate_game_play",
+          "speakerName": "鬼手侯",
+          "text": "好胆色！命格赌局不玩骰子——玩的是'测心术'。我会在桌上扣一张牌——你来猜是红是黑。只猜一次。猜对了——你赢一份气运。猜错了——你输一份。这张牌——我也没有看。（他把一张牌扣在桌上，手掌移开）选吧——红，还是黑？",
+          "choices": [
+            {
+              "text": "红。",
+              "nextNodeId": "fate_red",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "黑。",
+              "nextNodeId": "fate_black",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "fate_red",
+          "speakerName": "鬼手侯",
+          "text": "（他翻开牌——是红桃A）红！你赢了！（他的脸色有些不好看）你的气运——我拿不走。反而我的气运——被你吸走了一丝。有意思。你这个穿越者——运气不太一般。下回不跟你赌命格了。",
+          "nextNodeId": "start",
+          "onEnterEvent": "gain_cultivation",
+          "onExitEvent": "",
+          "choices": [],
+          "conditions": []
+        },
+        {
+          "id": "fate_black",
+          "speakerName": "鬼手侯",
+          "text": "（他翻开牌——是红桃K）红。你输了。你的气运——我收下了。（他深吸一口气，像是品尝了什么美味）嗯——穿越者的气运果然和本地人不一样。有股……'外世界'的味道。下次想赎回去——拿灵石来。一份气运——一万灵石。",
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "gambler_info",
+          "speakerName": "鬼手侯",
+          "text": "（他一边洗牌一边说话）想打听消息来赌场就对了——赌客喝醉了嘴上没把门。最近流传最广的消息是——天元宗地牢里关了一个'预言者'。那人说虚空会在三个月后全面爆发。没人信他。但有意思的是——消息传出来的第二天，那个人就'被自杀'了。你说巧不巧？",
+          "choices": [
+            {
+              "text": "预言者还说了什么？",
+              "nextNodeId": "prophet_more",
+              "requiredFame": 15,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "……谢了。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "prophet_more",
+          "speakerName": "鬼手侯",
+          "text": "他还说——穿越者中有一个会成为'救世主'。但条件是——这个穿越者必须先死一次。我听到这里就笑了——这他妈的算什么预言？先死一次？死都死了还怎么救世？不过……（他压低声音）有个赌客跟我说——那个预言者不是这个世界的土著。他也是个穿越者。是第几个——没有人知道。因为——他的记录被天元宗抹掉了。",
+          "nextNodeId": "start",
+          "onEnterEvent": "reveal_secret",
+          "onExitEvent": "",
+          "choices": [],
+          "conditions": []
+        }
+      ],
+      "secrets": [
+        {
+          "revealThreshold": 5,
+          "hint": "他的右手比左手长了一截——而且骨节粗大得不正常。",
+          "revelation": "（他举起右手，苦笑着说）被人打断过。不是赌债——是情报。三年前我卖了一条关于天元宗的情报给青云门——被天元宗的人知道了。他们派来的人打断了我的右手，警告我'下一次就剁舌头'。但我的手接回去之后——比以前更灵活了。也算是因祸得福吧。"
+        },
+        {
+          "revealThreshold": 10,
+          "hint": "赌场地板下有一块松动的地砖——下面似乎藏着什么。",
+          "revelation": "（你趁没人注意掀开了地砖，下面是一个暗格）里面是一本账册。记录了所有在赌场'命格赌局'中输过气运的人的名字。四十七个名字——对应四十七个穿越者。你是第四十七个。每个名字后面都写着——气运流向。流向——天元宗宗主府。鬼手侯不只是个赌徒。他在给天元宗'收集'穿越者的气运。"
+        }
+      ],
+      "relations": [
+        {
+          "targetNpcId": "npc_zhao_001",
+          "type": "Friend",
+          "description": "赌场和客栈之间有信息合作",
+          "closeness": 30
+        },
+        {
+          "targetNpcId": "npc_shangmeng_elder_001",
+          "type": "Friend",
+          "description": "鬼手侯和商盟有资金往来",
+          "closeness": 40
+        },
+        {
+          "targetNpcId": "npc_guard_001",
+          "type": "Rival",
+          "description": "守卫老周认为赌场是村子的祸害",
+          "closeness": -10
+        }
+      ]
+    },
+    {
+      "npcId": "npc_librarian_001",
+      "npcName": "守经老人",
+      "npcTitle": "天机阁·藏书管理员",
+      "greetingLines": [
+        "（他佝偻着背，从书堆后探出半个脑袋）嘘——书在睡觉。你轻点声。",
+        "（他用鸡毛掸子拂去古籍上的灰尘，打了个喷嚏）阿嚏！——三千年的灰了。你说——一本书三千年没人翻——它该有多孤单？",
+        "借书？规矩先讲好——逾期一天，罚十灵石。损坏书页——罚一百。在书上写字——（他瞪大眼睛）逐出天机阁，永不再入。",
+        "（他抱着一摞比他还高的书卷踉跄走过）让一让让一让——都是孤本！摔一本我这把老骨头赔不起！",
+        "你身上有股战斗的焦味——刚打完架？天机阁内禁止炫耀武功。不过——你可以写成书。"
+      ],
+      "farewellLines": [
+        "知识是唯一不会被虚空吞噬的东西——多看点书。",
+        "下次来我给你找本适合你境界的功法。",
+        "书不会背叛你——比人可靠多了。"
+      ],
+      "dialogueNodes": [
+        {
+          "id": "start",
+          "speakerName": "守经老人",
+          "text": "（他从老花镜上方看着你）天机阁藏书九万三千册——涵盖了灵气大陆五千年的历史、功法、地理、杂记。你想找什么？",
+          "choices": [
+            {
+              "text": "我想找功法。",
+              "nextNodeId": "find_skill",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我想查关于虚空的历史。",
+              "nextNodeId": "void_history",
+              "requiredFame": 5,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "天机阁收书吗？",
+              "nextNodeId": "sell_books",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "打扰了。",
+              "nextNodeId": "farewell",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "find_skill",
+          "speakerName": "守经老人",
+          "text": "（他放下鸡毛掸子）什么境界？练气筑基金丹——说清楚。属性？金木水火土——还是风雷冰暗光？我这里的功法分类比你想象的细得多。",
+          "choices": [
+            {
+              "text": "我练气期，要一本通用功法。",
+              "nextNodeId": "qi_skill",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我要一本火系攻击功法。",
+              "nextNodeId": "fire_skill",
+              "requiredFame": 10,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "有没有上古失传的功法？",
+              "nextNodeId": "ancient_skill",
+              "requiredFame": 20,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "qi_skill",
+          "speakerName": "守经老人",
+          "text": "（他从书架上抽出一本泛黄的小册子）《混元引气诀》——练气期通用功法，不挑属性。特点是稳——修炼速度一般，但绝不容易走火入魔。五百灵石。再加一百灵石——我送你一份手抄的'修炼心得'——我年轻时也是练这个的。",
+          "choices": [
+            {
+              "text": "我要了，加心得。",
+              "nextNodeId": "buy_qi_skill",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "gain_cultivation",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "太贵了。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "buy_qi_skill",
+          "speakerName": "守经老人",
+          "text": "（他开心地把书和一本手抄笔记递给你）好眼光！我当年练到第三层的时候——可以用这功法一口气打坐六个时辰不带岔气的。你练到第三层来找我——我教你第四层的窍门。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "fire_skill",
+          "speakerName": "守经老人",
+          "text": "（他爬到梯子顶上，从最高层抽出一卷赤红色的竹简）《烈焰焚天诀》——上品火系功法。练到极致——可以召唤天火。但先说好——这功法的原主人走火入魔死了。书没问题——但他太贪了。你修炼的时候记住——不要越级使用大招。一千二百灵石。",
+          "choices": [
+            {
+              "text": "买了。",
+              "nextNodeId": "buy_fire_skill",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "gain_cultivation",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我再考虑考虑。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "buy_fire_skill",
+          "speakerName": "守经老人",
+          "text": "爽快！（他把竹简用布包好递给你）我再送你一条忠告——这本书第三十七页夹了一片火凤凰的羽毛书签。那是原主人的遗物。好生保管——也许能给你带来好运。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "ancient_skill",
+          "speakerName": "守经老人",
+          "text": "（他左右看看，压低声音）你运气好——我前几天刚整理到一本。但我不确定它是不是功法——文字我看不懂。像是一种我们不认识的文字。但书页是龙皮做的——光是材料就值几万灵石。如果你有兴趣——三千灵石，你拿走研究。不认识的字……你自己想办法。",
+          "choices": [
+            {
+              "text": "三千灵石——我要了。",
+              "nextNodeId": "buy_ancient_skill",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "……看不懂买来干嘛。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "buy_ancient_skill",
+          "speakerName": "守经老人",
+          "text": "（他小心翼翼地取出一个木匣子）给你。这书在我这放了四十年——没人买得起，也没人看得懂。你是第一个既买得起又对它有好奇心的。也许这就是缘分吧。如果破解了上面的文字——来告诉我上面写了什么。我这把老骨头——想在自己死之前知道这本书说了什么。",
+          "nextNodeId": "start",
+          "onEnterEvent": "reveal_secret",
+          "onExitEvent": "",
+          "choices": [],
+          "conditions": []
+        },
+        {
+          "id": "void_history",
+          "speakerName": "守经老人",
+          "text": "（他表情严肃起来）虚空的历史——是天机阁的禁书区。但我可以告诉你在哪。三楼最里面——靠东墙的书架——第三排左起第七本。书名是《虚空溯源》。那本书被下了禁制——只有身怀虚空气息的人才能翻开。你身上——正好有。去看吧——看完回来告诉我——你看到了什么。",
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "sell_books",
+          "speakerName": "守经老人",
+          "text": "（他眼睛一亮）收！天机阁长期收购上古书籍、功法残卷、地图、日记——任何有历史价值的纸质或玉简记录。价格视稀有程度而定——普通功法残卷一百灵石起。如果是孤本——价格可以谈到一万灵石以上。你有货？",
+          "choices": [
+            {
+              "text": "我找到货了再来。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你认识这本书上的文字吗？",
+              "nextNodeId": "ask_language",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "ask_language",
+          "speakerName": "守经老人",
+          "text": "（他接过你描述的文字，沉思良久）你说的这种文字……我见过。在《虚空溯源》里——有几页附录就是用这种文字写的。如果你能打开那本书——对照着看——也许能找出规律。但更直接的办法是——（他神秘地笑了笑）去找一个'无名商客'。据说他认识所有世界的文字。",
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "farewell",
+          "speakerName": "守经老人",
+          "text": "（他挥了挥鸡毛掸子）书在等你。别让它们等太久。",
+          "choices": [],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        }
+      ],
+      "secrets": [
+        {
+          "revealThreshold": 5,
+          "hint": "他偶尔会在深夜独自对着书架说话——像在和人聊天。",
+          "revelation": "（你深夜来还书，正好撞见。他有些不好意思地解释）这些书里——住着作者的一缕残魂。不是鬼魂——是一种精神印记。写书的人如果修为够高——他的意志会附着在书上。我就是在跟他们聊天。比如这本——（他拍了拍一本兵法）是一个三千年前的将军写的。他正在教我打仗。这本——是一个女丹修写的丹方集。她在教我炼丹。我这一身本事——全是跟书里住的'人'学的。"
+        },
+        {
+          "revealThreshold": 10,
+          "hint": "天机阁地下有一个被封印的入口——他每天都会去检查封印是否完好。",
+          "revelation": "（你终于问他那下面是什么。他沉默了很久）那是天机阁真正的'禁书'——不是书。是一扇门。一扇通往'书的世界'的门。那个世界里——每一本书都是一个真实的天地。走进去——可以在书里生活、修炼、老去。但出来的时候——你会发现外面只过了一刻钟。我年轻时进去过一次——在一本爱情小说里活了七十年。出来的时候——我哭了三天。因为我爱上了那个书里的人。而我再也回不去了。"
+        }
+      ],
+      "relations": [
+        {
+          "targetNpcId": "npc_shangmeng_elder_001",
+          "type": "Friend",
+          "description": "天机阁和天机商盟有古籍收购合作",
+          "closeness": 35
+        },
+        {
+          "targetNpcId": "npc_zhang_001",
+          "type": "Friend",
+          "description": "守经老人认识张老多年",
+          "closeness": 45
+        },
+        {
+          "targetNpcId": "npc_mystery_merchant_001",
+          "type": "Stranger",
+          "description": "守经老人知道无名商客的存在",
+          "closeness": 10
+        }
+      ]
+    },
+    {
+      "npcId": "npc_tribulation_witness_001",
+      "npcName": "渡劫翁",
+      "npcTitle": "渡劫台·守护者",
+      "greetingLines": [
+        "（他盘膝坐在渡劫台边缘，漫天雷云在他头顶翻滚——他却纹丝不动）又有人要渡劫了？——上来吧。",
+        "（他抬头望着漆黑的雷云，眼中倒映着跳动的电光）天劫——是天道对修士的考验。挺过去——海阔天空。挺不过去——灰飞烟灭。",
+        "每百年我坐在这里——看过了太多天骄倒在天劫之下。你是第几个来着？我不数了——数了伤心。",
+        "（他从怀中掏出一壶酒，喝了一口）渡劫前喝一口——壮胆。渡劫后喝一口——庆祝。万一没渡过去——这口酒就是送行酒了。",
+        "你的劫云……不太一样。普通的劫云是黑色的。你头顶那片——是紫色的。传说——紫色的劫云，万中无一。你前世做了什么天怒人怨的事？"
+      ],
+      "farewellLines": [
+        "渡劫的时候——我会在台下看着你。如果你撑不住了——喊一声。我不能帮你挡雷——但我可以给你喊一声加油。",
+        "活着回来——我请你喝最好的酒。",
+        "记住——天劫不是惩罚,是洗礼。渡过去——你就是全新的人。"
+      ],
+      "dialogueNodes": [
+        {
+          "id": "start",
+          "speakerName": "渡劫翁",
+          "text": "（他指了指头顶翻滚的雷云）天劫要来了。是你引来的——还是路过的？",
+          "choices": [
+            {
+              "text": "是我要渡劫。",
+              "nextNodeId": "about_tribulation",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "路过的——我想打听渡劫的事。",
+              "nextNodeId": "tribulation_knowledge",
+              "requiredFame": 5,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "有人在渡劫吗？",
+              "nextNodeId": "current_tribulation",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我只是路过。",
+              "nextNodeId": "farewell",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "about_tribulation",
+          "speakerName": "渡劫翁",
+          "text": "（他认真地打量了你一番）修为够了？心境稳了？护身法宝带了？——行，那我不拦你。但在这之前——我跟你说三件事。第一——天劫不是只有雷。还有心劫。你渡雷劫的时候——天劫会幻化出你最害怕的东西来攻击你的心神。守住本心——比守住身体更重要。第二——如果撑不住了——不要硬撑。认输，退回原境界。丢人——但不会丢命。第三——（他咧嘴一笑）渡完了——来找我喝酒。",
+          "choices": [
+            {
+              "text": "如果我需要人护法呢？",
+              "nextNodeId": "guard_offer",
+              "requiredFame": 10,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "准备好了就开始。",
+              "nextNodeId": "start_tribulation",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "guard_offer",
+          "speakerName": "渡劫翁",
+          "text": "护法？当然可以。我在这渡劫台坐了五百年——渡劫护法是我最擅长的。我的价格是——一千灵石一次。帮你挡住外界的干扰——确保没有人和妖兽在你渡劫的时候偷袭你。如果你需要我出手帮你挡一道雷——那要加钱。一道雷——五百灵石。",
+          "choices": [
+            {
+              "text": "我雇你护法。",
+              "nextNodeId": "hire_guard",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "gain_cultivation",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "太贵了——我自己来。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "hire_guard",
+          "speakerName": "渡劫翁",
+          "text": "（他伸出手和你击了一掌）好！定金五百灵石——渡劫成功后付尾款。你放心——有我在，连只苍蝇都飞不进渡劫台。但你也要答应我一件事——渡劫的时候，不管看到什么幻象——记住那都是假的。不要对幻象出手——你打不过你自己的心魔。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "start_tribulation",
+          "speakerName": "渡劫翁",
+          "text": "（他站起身，让开渡劫台的中心位置）好。上去吧。记住我说的——守住本心。我在下面看着你。万一——我是说万一——你感觉自己撑不住了——就喊'退'。我会启动渡劫台的保护阵——把你送出来。虽然会跌破境界——但至少活着。活着——就还有机会。",
+          "nextNodeId": "",
+          "onEnterEvent": "gain_cultivation",
+          "onExitEvent": "",
+          "choices": [],
+          "conditions": []
+        },
+        {
+          "id": "tribulation_knowledge",
+          "speakerName": "渡劫翁",
+          "text": "想了解天劫？好。天劫分九重——前三重是雷劫，中三重是风火劫，后三重是心魔劫。大多数人倒在中三重的风火劫——因为肉身扛不住。渡过六重就是元婴——渡完九重就是化神。我这一生——见过最厉害的人渡到了第八重——然后倒在了心魔劫下。一个能扛七道天雷的猛人——最后被自己的一滴眼泪打败了。心魔这东西——比你想象的可怕得多。",
+          "choices": [
+            {
+              "text": "怎么抵抗心魔？",
+              "nextNodeId": "heart_demon",
+              "requiredFame": 10,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "渡劫台有什么故事吗？",
+              "nextNodeId": "platform_story",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "heart_demon",
+          "speakerName": "渡劫翁",
+          "text": "（他指了指自己的胸口）心魔——是修士最大的敌人。它不是外来的——它是你自己的一部分。你的恐惧、你的遗憾、你的执念——都会被天劫放大。抵抗心魔最好的方法——不是'压制'它。是'面对'它。当你面对心魔幻象的时候——不要躲。看着它的眼睛——问它——'你想让我怎么样？'——然后告诉它——'我偏不。'",
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "platform_story",
+          "speakerName": "渡劫翁",
+          "text": "（他摸了摸渡劫台上的一道深痕）这道痕——是一千年前一个渡劫失败的人留下的。他渡第九重的时候——被心魔逼疯了。他在彻底失去理智之前——用尽最后的力气在台上刻下了一行字。你猜写的是什么？——'我不后悔。'到死都不后悔修行这条路。这就是修士的骨气。",
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "current_tribulation",
+          "speakerName": "渡劫翁",
+          "text": "（他望向渡劫台中央——那里坐着一个浑身焦黑的人影）一个散修。金丹晋元婴——已经到了第六重了。他撑了六道风火劫——这是第七重——心魔劫。你看他的表情——他在笑。说明他的心魔劫……已经过了。（话音刚落——那个人影站了起来，仰天长啸）哈哈哈！又一个渡过天劫的！五百年了——每一次看到这一幕——我都会热泪盈眶。",
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "farewell",
+          "speakerName": "渡劫翁",
+          "text": "（他挥了挥手）走吧。等你准备好渡劫了——来这里找我。我五百年没挪过窝。",
+          "choices": [],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        }
+      ],
+      "secrets": [
+        {
+          "revealThreshold": 5,
+          "hint": "他的左袖是空的——里面没有手臂。",
+          "revelation": "（你问起他的左臂，他沉默地喝了一口酒）五百年前渡劫的时候丢的。不是被雷劈的——是被我最好的兄弟砍的。他在我心魔劫的时候偷袭我——想夺我的渡劫机缘。我活下来了——他死了。但我这条手臂——是被他的剑斩断的。从那以后我就在这里守着渡劫台——不是为了帮别人渡劫。是为了防止——再有人像他一样——在别人渡劫的时候下黑手。"
+        },
+        {
+          "revealThreshold": 10,
+          "hint": "渡劫台底下埋着什么东西——他每天都会在日出时对它说话。",
+          "revelation": "（你终于鼓起勇气问他。他带你看了一眼——台下的土里埋着一把断剑）这是我那位兄弟的剑。我留着他的剑——不是为了纪念他。是因为他的剑里——封印着他的魂魄。他死之前后悔了。他用最后的力气把自己的魂魄封进了剑里——对我说——'哥，对不起。'五百年了。我每天都在等他把这句话说完。但他只说了一次。从那以后——再也没有说过。"
+        }
+      ],
+      "relations": [
+        {
+          "targetNpcId": "npc_zhang_001",
+          "type": "Friend",
+          "description": "渡劫翁认识张老——张老曾在他这里渡劫",
+          "closeness": 40
+        },
+        {
+          "targetNpcId": "npc_liu_001",
+          "type": "Stranger",
+          "description": "渡劫翁指点过刘猎户如何对抗妖兽心魔",
+          "closeness": 15
+        }
+      ]
+    },
+    {
+      "npcId": "npc_crossworld_traveler_001",
+      "npcName": "云中子",
+      "npcTitle": "无量界·旅人",
+      "greetingLines": [
+        "（他穿着一件缀满星辰的长袍，瞳孔中倒映着不断旋转的星云）啊——又一个新世界。这是第几个来着？我数数……三千七百个？还是四千个？记不清了。",
+        "（他坐在一块石头上，手中捧着一杯发光的液体，像在喝星河）你也是穿越者吧？——我看得出来。你身上有我熟悉的味道——'地球'的味道。",
+        "这个世界很美——但也很悲伤。我走过了四千个世界——这是第一个'正在死亡'的世界。有趣的是——这个世界的人似乎并不在意。",
+        "（他仰头望着天空——目光穿透云层，直达星辰之外）那几颗星星的位置不对。有人动过它们。有意思——这个世界的时间线被人改写过。",
+        "（他从袖子里掏出一个罗盘，指针疯狂旋转）你别动——你身上的命运磁场太强了——干扰了我的导航仪。你绝对是这个世界的'关键人物'。"
+      ],
+      "farewellLines": [
+        "我要去下一个世界了。有缘的话——我们会在别的世界再见。",
+        "记住——你所在的这个世界只是无数泡泡中的一个。泡泡破了——还有别的泡泡。",
+        "如果有一天你想离开这个世界了——捏碎这个星标。它会在无数世界中标记我的位置。"
+      ],
+      "dialogueNodes": [
+        {
+          "id": "start",
+          "speakerName": "云中子",
+          "text": "（他正对着一面水镜整理仪容，看到你后露出了一个大大的笑容）嗨！——我是云中子，无量界旅人。用你们这个世界听得懂的话来说——我是一个'跨位面旅行者'。路过此地，补给一下。",
+          "choices": [
+            {
+              "text": "你来自哪个世界？",
+              "nextNodeId": "origin_world",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你去过多少个世界了？",
+              "nextNodeId": "world_count",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你怎么看这个世界？",
+              "nextNodeId": "opinion",
+              "requiredFame": 5,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "（保持距离）",
+              "nextNodeId": "farewell",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "origin_world",
+          "speakerName": "云中子",
+          "text": "（他指了指头顶）我来自——你和我想象的完全不同。我来自一个叫'万象界'的地方。那里没有灵气——只有'源力'。我们那里的人不修炼——我们'学习'。学习宇宙的规律——掌握了规律就可以改变现实。听起来很扯是吧？但在我的世界——这是小学课程。",
+          "choices": [
+            {
+              "text": "那你为什么离开万象界？",
+              "nextNodeId": "why_leave",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你能教我吗？",
+              "nextNodeId": "teach_me",
+              "requiredFame": 15,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "why_leave",
+          "speakerName": "云中子",
+          "text": "（他的笑容淡了一些）万象界……毁灭了。被虚空吞噬的。不是你们这个世界这种'慢慢渗透'的吞噬——是瞬间的、彻底的、连灰都不剩的毁灭。我是在最后一刻用'星门术'逃出来的。我是万象界的最后一个人。所以我一直在旅行——寻找——重建万象界的方法。",
+          "nextNodeId": "start",
+          "onEnterEvent": "reveal_secret",
+          "onExitEvent": "",
+          "choices": [],
+          "conditions": []
+        },
+        {
+          "id": "teach_me",
+          "speakerName": "云中子",
+          "text": "（他大笑起来）你连这个世界的修行都没搞明白——就想学跨位面的源力操作？先把你的灵气修炼到能徒手撕开空间裂缝再说吧。不过——我可以给你一件小礼物。（他从袖子里掏出一枚星形的徽章）这是'星辉徽章'——戴上它，你能感应到周围的空间波动。如果附近有通往其他世界的裂缝——它会发光。",
+          "nextNodeId": "start",
+          "onEnterEvent": "gain_cultivation",
+          "onExitEvent": "",
+          "choices": [],
+          "conditions": []
+        },
+        {
+          "id": "world_count",
+          "speakerName": "云中子",
+          "text": "（他掰着手指数了数）说实话——数不清了。三千多个是有的。有些世界我待了几年——有些世界我只待了几分钟。最奇怪的一个世界——那里没有时间概念。我进去——出来——外面已经过了一百年。我的胡子都长出来了。最美丽的一个世界——到处都是会唱歌的发光水母。最危险的一个世界——那里的'重力'可以压碎一切。我这个身体——就是在那个世界被压成二维的。后来我用三年时间把自己'充气'回来了。",
+          "choices": [
+            {
+              "text": "你见过其他穿越者吗？",
+              "nextNodeId": "other_travelers",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你经历过最危险的事是什么？",
+              "nextNodeId": "most_dangerous",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "other_travelers",
+          "speakerName": "云中子",
+          "text": "见过。在三千多个世界中——我至少遇到过一百多个'穿越者'。但你们这个世界的穿越者——是最特殊的。其他的穿越者——都是从一个世界穿越到另一个世界。而你们的穿越——是被'地球意志'投送来的。地球——我查过了——在所有已知世界中——地球是唯一一个会主动向外投送灵魂的世界。地球本身——就是一个巨大的、有自我意识的'传送门'。",
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "most_dangerous",
+          "speakerName": "云中子",
+          "text": "（他罕见的沉默了一下）在一个叫'镜界'的地方——那里的一切都是镜子。地面、天空、建筑——全是镜面。你在那里——会看到无数个自己的倒影。但那些倒影——是活的。它们会模仿你——然后——试图取代你。我在那里被困了七年。最后——我打败了自己的倒影——但代价是——我杀死了自己的一个可能性。从此以后——我的人生少了一条分支。也许那条分支才是最好的……谁知道呢。",
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "opinion",
+          "speakerName": "云中子",
+          "text": "（他环顾四周，压低声音）说句实话——这个世界快不行了。虚空的侵蚀已经深入到这个世界的'根基'——就像白蚁蛀空了一座大厦。表面看起来还好好的——但内部已经千疮百孔。你们这个世界的修士还在内斗——天元宗和青云门争矿脉——却不知道等虚空爆发的时候——什么宗门、什么矿脉——全都会消失。我看到很多世界毁灭——最让人痛心的不是天灾——而是人们在天灾面前还在互相残杀。",
+          "choices": [
+            {
+              "text": "这个世界还有救吗？",
+              "nextNodeId": "salvation",
+              "requiredFame": 10,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "……你让我心情很沉重。",
+              "nextNodeId": "comfort",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "salvation",
+          "speakerName": "云中子",
+          "text": "（他认真地想了想）有。但概率很小。需要满足三个条件：第一——所有宗门停止内斗，联合起来。第二——找到虚空的'核心'——不是裂缝——是核心——然后在它完全成形之前摧毁它。第三——（他看着你的眼睛）你们这些穿越者——必须完全觉醒。每个人都有自己的'金手指'——对吧？但你们大多数人只用了一成。你们需要——彻底觉醒。只有穿越者——才有力量对抗虚空。因为你们——本就不属于这个世界。虚空的规则——对你们效果减半。",
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "comfort",
+          "speakerName": "云中子",
+          "text": "（他拍了拍你的肩膀，笑起来）别太难过！我走过三千多个世界——虽然很多都毁灭了——但毁灭之后——新的世界会诞生。就像你们的宇宙——恒星会熄灭——但新的恒星会亮起来。你们这个世界——就算真的毁灭了——你的灵魂也会回到地球。然后——地球会再次把你投送到一个新的世界。你不是第一次穿越了——也不会是最后一次。你的旅程——才刚刚开始。",
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "farewell",
+          "speakerName": "云中子",
+          "text": "（他站起身来，拍了拍长袍上的灰尘）好了——我的导航仪显示——西北方向三百里处有一条不太稳定的空间裂隙。我要去看看那后面是什么世界。有缘再见！（他顿了顿，回头看着你）对了——如果你遇到一个自称'无名商客'的人——离他远一点。他——曾经也是万象界的人。他是我的……学长。但他走了一条不一样的路。",
+          "choices": [],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        }
+      ],
+      "secrets": [
+        {
+          "revealThreshold": 5,
+          "hint": "他的影子有时候和他本人动作不一致……",
+          "revelation": "（你注意到了这个细节。他低头看了看自己的影子，叹了口气）被你发现了。我的影子——在镜界的时候被换掉了。现在这个影子——是那个世界的我的'另一条分支'。它不完全受我控制。有时候它会做我想做的事——有时候它做的是'另一个我'想做的事。比如——它偶尔会指着一个方向——那通常意味着那个方向有危险。但也有一次——它指出了万象界残余碎片的位置。"
+        },
+        {
+          "revealThreshold": 10,
+          "hint": "他长袍内侧绣满了细小的符文——像是一种地图。",
+          "revelation": "（他解开长袍给你看）这不是装饰——这是我用四千年时间描绘的'万界地图'。每一个符文代表一个世界——符文的位置代表那个世界在宇宙中的坐标。你看这里——（他指着一个微微发光的符文）这就是你们这个世界。它在发光——说明它还存在。如果它熄灭了——就说明这个世界已经毁灭了。我每天都会检查一遍。最近——熄灭的符文越来越多了。四千个世界中——已经有一千两百个熄灭了。虚空——不只是侵蚀你们这个世界——它侵蚀所有世界。"
+        }
+      ],
+      "relations": [
+        {
+          "targetNpcId": "npc_mystery_merchant_001",
+          "type": "Rival",
+          "description": "两人曾是万象界的同门——如今道不同",
+          "closeness": -30
+        },
+        {
+          "targetNpcId": "npc_zhang_001",
+          "type": "Stranger",
+          "description": "云中子知道张老妻子的下落",
+          "closeness": 5
+        }
+      ]
+    }
+  ]
+}

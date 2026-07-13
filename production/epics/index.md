@@ -11,3 +11,4 @@ Engine: Unity 2022.3.62t11 (Tuanjie 1.9.3)
 | dungeon-system | Feature | 副本实例系统 | dungeon-system.md | 3 stories | Ready |
 | boss-system | Feature | BOSS战系统 | boss-system.md | 4 stories | Ready |
 | tribulation-system | Feature | 渡劫系统 | tribulation-system.md | 4 stories | Ready |
+| multi-world-system | Framework | 多世界系统 | multi-world-system.md | 8 stories | Ready |

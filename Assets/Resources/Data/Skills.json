@@ -1,0 +1,578 @@
+{
+  "skills": [
+    {
+      "skillId": "sword_basic_slash",
+      "displayName": "基础斩击",
+      "description": "剑修入门招式，以灵力灌注剑身发出斩击。虽为筑基之技，却是万剑之始。",
+      "category": "sword",
+      "requiredRealm": 0,
+      "requiredLayer": 0,
+      "spiritCost": 3,
+      "cooldown": 0.5,
+      "damageMultiplier": 1.0,
+      "buffEffects": null,
+      "comboInto": ["sword_qi_cross"],
+      "unlockCondition": "初始解锁",
+      "isPassive": false
+    },
+    {
+      "skillId": "sword_qi_cross",
+      "displayName": "剑气纵横",
+      "description": "以剑为引，灵力化为剑气横斩而出，可伤及远处之敌。练气期剑修标志性技法。",
+      "category": "sword",
+      "requiredRealm": 1,
+      "requiredLayer": 1,
+      "spiritCost": 8,
+      "cooldown": 2.0,
+      "damageMultiplier": 1.8,
+      "buffEffects": null,
+      "comboInto": ["sword_heavenly_astral"],
+      "unlockCondition": "练气期一层·剑术传授",
+      "isPassive": false
+    },
+    {
+      "skillId": "sword_heavenly_astral",
+      "displayName": "天罡剑诀",
+      "description": "引天罡星力入剑，剑招蕴含星辰之力，每击附加强横的灵力震荡。筑基期剑修核心剑诀。",
+      "category": "sword",
+      "requiredRealm": 2,
+      "requiredLayer": 3,
+      "spiritCost": 18,
+      "cooldown": 4.0,
+      "damageMultiplier": 3.0,
+      "buffEffects": [
+        {
+          "buffType": "AttackUp",
+          "value": 0.15,
+          "duration": 8.0
+        }
+      ],
+      "comboInto": ["sword_ten_thousand"],
+      "unlockCondition": "筑基期三层·完成天罡剑阵试炼",
+      "isPassive": false
+    },
+    {
+      "skillId": "sword_ten_thousand",
+      "displayName": "万剑归宗",
+      "description": "金丹期标志性大范围剑技。灵力化万剑悬于周身，一念齐发如暴雨倾泻。",
+      "category": "sword",
+      "requiredRealm": 3,
+      "requiredLayer": 5,
+      "spiritCost": 35,
+      "cooldown": 10.0,
+      "damageMultiplier": 5.5,
+      "buffEffects": null,
+      "comboInto": ["sword_will_form"],
+      "unlockCondition": "金丹期五层·剑道感悟",
+      "isPassive": false
+    },
+    {
+      "skillId": "sword_will_form",
+      "displayName": "剑意化形",
+      "description": "将剑意凝聚为实体形态——可化龙、化凤、化人。形随意动，已入剑道堂奥。",
+      "category": "sword",
+      "requiredRealm": 3,
+      "requiredLayer": 7,
+      "spiritCost": 30,
+      "cooldown": 8.0,
+      "damageMultiplier": 4.2,
+      "buffEffects": [
+        {
+          "buffType": "AttackUp",
+          "value": 0.25,
+          "duration": 12.0
+        }
+      ],
+      "comboInto": ["sword_invisible_qi"],
+      "unlockCondition": "金丹期七层·剑意悟得",
+      "isPassive": false
+    },
+    {
+      "skillId": "sword_invisible_qi",
+      "displayName": "无形剑气",
+      "description": "剑气消弭形迹，无光无影无声。敌人只见剑势不见剑——待察觉时，剑气已穿体而过。",
+      "category": "sword",
+      "requiredRealm": 4,
+      "requiredLayer": 3,
+      "spiritCost": 35,
+      "cooldown": 6.0,
+      "damageMultiplier": 4.8,
+      "buffEffects": [
+        {
+          "buffType": "SpeedUp",
+          "value": 0.2,
+          "duration": 6.0
+        }
+      ],
+      "comboInto": ["sword_heart_unity"],
+      "unlockCondition": "元婴期三层·神识通明",
+      "isPassive": false
+    },
+    {
+      "skillId": "sword_heart_unity",
+      "displayName": "心剑合一",
+      "description": "人即是剑，剑即是人。不再需要握剑——心念所至，剑意即达。化神期剑修才能触及的境界。",
+      "category": "sword",
+      "requiredRealm": 5,
+      "requiredLayer": 3,
+      "spiritCost": 50,
+      "cooldown": 10.0,
+      "damageMultiplier": 6.5,
+      "buffEffects": [
+        {
+          "buffType": "AttackUp",
+          "value": 0.5,
+          "duration": 10.0
+        },
+        {
+          "buffType": "SpeedUp",
+          "value": 0.3,
+          "duration": 10.0
+        }
+      ],
+      "comboInto": ["sword_chaos_domain"],
+      "unlockCondition": "化神期三层·剑道入化",
+      "isPassive": false
+    },
+    {
+      "skillId": "sword_chaos_domain",
+      "displayName": "混沌剑域",
+      "description": "展开一片以剑意撕裂的混沌领域。领域之内，空间扭曲、时间滞涩、万物归于剑。大成期终极剑技。",
+      "category": "sword",
+      "requiredRealm": 7,
+      "requiredLayer": 1,
+      "spiritCost": 100,
+      "cooldown": 30.0,
+      "damageMultiplier": 12.0,
+      "buffEffects": [
+        {
+          "buffType": "AttackUp",
+          "value": 1.0,
+          "duration": 15.0
+        },
+        {
+          "buffType": "DefenseUp",
+          "value": 0.5,
+          "duration": 15.0
+        }
+      ],
+      "comboInto": null,
+      "unlockCondition": "大成期·剑道终极感悟",
+      "isPassive": false
+    },
+    {
+      "skillId": "spell_fireball",
+      "displayName": "火球术",
+      "description": "凝聚天地火灵气为灼热火球掷向敌人。基础五行术法之一，焰威虽浅但连绵不绝。",
+      "category": "spell",
+      "requiredRealm": 0,
+      "requiredLayer": 0,
+      "spiritCost": 5,
+      "cooldown": 1.5,
+      "damageMultiplier": 1.2,
+      "buffEffects": null,
+      "comboInto": null,
+      "unlockCondition": "初始解锁",
+      "isPassive": false
+    },
+    {
+      "skillId": "spell_ice_palm",
+      "displayName": "寒冰掌",
+      "description": "以寒冰灵力凝于掌上，击中敌人时可冻结经脉、减缓行动。水灵气变体术法。",
+      "category": "spell",
+      "requiredRealm": 1,
+      "requiredLayer": 2,
+      "spiritCost": 10,
+      "cooldown": 3.0,
+      "damageMultiplier": 1.5,
+      "buffEffects": [
+        {
+          "buffType": "DamageOverTime",
+          "value": 3.0,
+          "duration": 5.0
+        }
+      ],
+      "comboInto": null,
+      "unlockCondition": "练气期二层·冰系灵根觉醒",
+      "isPassive": false
+    },
+    {
+      "skillId": "spell_thunder_strike",
+      "displayName": "雷霆击",
+      "description": "引天雷之力聚于掌心轰然击出。雷霆克邪破障，对阴邪类敌人有额外威力。",
+      "category": "spell",
+      "requiredRealm": 2,
+      "requiredLayer": 2,
+      "spiritCost": 20,
+      "cooldown": 5.0,
+      "damageMultiplier": 3.2,
+      "buffEffects": null,
+      "comboInto": null,
+      "unlockCondition": "筑基期二层·雷灵根共鸣",
+      "isPassive": false
+    },
+    {
+      "skillId": "spell_wind_blade",
+      "displayName": "风刃",
+      "description": "压缩风灵气化为无形利刃，无声无息中掠过敌喉。速度快、消耗低，适合连击起手。",
+      "category": "spell",
+      "requiredRealm": 2,
+      "requiredLayer": 1,
+      "spiritCost": 12,
+      "cooldown": 2.0,
+      "damageMultiplier": 2.0,
+      "buffEffects": null,
+      "comboInto": null,
+      "unlockCondition": "筑基期一层·风系感悟",
+      "isPassive": false
+    },
+    {
+      "skillId": "spell_earth_wall",
+      "displayName": "土墙",
+      "description": "凝聚土灵气在面前升起坚固土墙，可抵挡前方攻击。土系防御基础术法。",
+      "category": "spell",
+      "requiredRealm": 1,
+      "requiredLayer": 3,
+      "spiritCost": 10,
+      "cooldown": 6.0,
+      "damageMultiplier": 0.5,
+      "buffEffects": [
+        {
+          "buffType": "DefenseUp",
+          "value": 0.4,
+          "duration": 5.0
+        }
+      ],
+      "comboInto": null,
+      "unlockCondition": "练气期三层·土灵根激发",
+      "isPassive": false
+    },
+    {
+      "skillId": "spell_light_shield",
+      "displayName": "灵光盾",
+      "description": "以自身灵力凝聚为灵光护盾环绕周身，可吸收大量伤害。元神越强护盾越厚。",
+      "category": "spell",
+      "requiredRealm": 2,
+      "requiredLayer": 4,
+      "spiritCost": 25,
+      "cooldown": 12.0,
+      "damageMultiplier": 0.3,
+      "buffEffects": [
+        {
+          "buffType": "DefenseUp",
+          "value": 0.6,
+          "duration": 8.0
+        },
+        {
+          "buffType": "HealOverTime",
+          "value": 2.0,
+          "duration": 8.0
+        }
+      ],
+      "comboInto": null,
+      "unlockCondition": "筑基期四层·防御法诀修习",
+      "isPassive": false
+    },
+    {
+      "skillId": "move_gale_step",
+      "displayName": "疾风步",
+      "description": "灵力贯注双腿，身如疾风。短距离快速冲刺，可闪避前方攻击。",
+      "category": "movement",
+      "requiredRealm": 0,
+      "requiredLayer": 0,
+      "spiritCost": 4,
+      "cooldown": 2.0,
+      "damageMultiplier": 0.0,
+      "buffEffects": [
+        {
+          "buffType": "SpeedUp",
+          "value": 0.5,
+          "duration": 1.5
+        }
+      ],
+      "comboInto": null,
+      "unlockCondition": "初始解锁",
+      "isPassive": false
+    },
+    {
+      "skillId": "move_blink",
+      "displayName": "瞬移",
+      "description": "短距离空间跳跃——灵力撕开空间裂隙，瞬间出现在目标位置。筑基期方能稳定操控。",
+      "category": "movement",
+      "requiredRealm": 2,
+      "requiredLayer": 4,
+      "spiritCost": 20,
+      "cooldown": 8.0,
+      "damageMultiplier": 0.0,
+      "buffEffects": null,
+      "comboInto": null,
+      "unlockCondition": "筑基期四层·空间感知",
+      "isPassive": false
+    },
+    {
+      "skillId": "move_afterimage",
+      "displayName": "残影",
+      "description": "极速移动时灵力残留为残影，敌人攻击可击中残影替代本体。金丹期身法。",
+      "category": "movement",
+      "requiredRealm": 3,
+      "requiredLayer": 2,
+      "spiritCost": 15,
+      "cooldown": 5.0,
+      "damageMultiplier": 0.0,
+      "buffEffects": [
+        {
+          "buffType": "SpeedUp",
+          "value": 0.8,
+          "duration": 3.0
+        },
+        {
+          "buffType": "DefenseUp",
+          "value": 0.3,
+          "duration": 3.0
+        }
+      ],
+      "comboInto": null,
+      "unlockCondition": "金丹期二层·疾影身法传承",
+      "isPassive": false
+    },
+    {
+      "skillId": "move_void_walk",
+      "displayName": "虚空行走",
+      "description": "踏入虚空夹层行走——在虚空中移动不受物理法则限制，短暂无视地形和攻击。",
+      "category": "movement",
+      "requiredRealm": 5,
+      "requiredLayer": 2,
+      "spiritCost": 40,
+      "cooldown": 20.0,
+      "damageMultiplier": 0.0,
+      "buffEffects": [
+        {
+          "buffType": "SpeedUp",
+          "value": 1.5,
+          "duration": 4.0
+        },
+        {
+          "buffType": "DefenseUp",
+          "value": 0.8,
+          "duration": 4.0
+        }
+      ],
+      "comboInto": null,
+      "unlockCondition": "化神期二层·虚空法则感悟",
+      "isPassive": false
+    },
+    {
+      "skillId": "alchemy_herb_identify",
+      "displayName": "辨识药性",
+      "description": "以灵力感知药材的年份、属性、相生相克关系。无需实际触摸即可远程鉴定。",
+      "category": "alchemy",
+      "requiredRealm": 1,
+      "requiredLayer": 1,
+      "spiritCost": 2,
+      "cooldown": 0.0,
+      "damageMultiplier": 0.0,
+      "buffEffects": null,
+      "comboInto": null,
+      "unlockCondition": "练气期一层·药典初识",
+      "isPassive": true
+    },
+    {
+      "skillId": "alchemy_flame_control",
+      "displayName": "控火炼丹",
+      "description": "以神识精微控制丹火温度与流向。可同时炼制多份药材，提高成丹率与品质。",
+      "category": "alchemy",
+      "requiredRealm": 3,
+      "requiredLayer": 1,
+      "spiritCost": 5,
+      "cooldown": 0.0,
+      "damageMultiplier": 0.0,
+      "buffEffects": null,
+      "comboInto": null,
+      "unlockCondition": "金丹期一层·丹火凝聚成功",
+      "isPassive": true
+    },
+    {
+      "skillId": "alchemy_great_attainment",
+      "displayName": "丹道大成",
+      "description": "丹道已臻化境——信手拈来的药材皆可入丹，天人交感时甚至能炼出超品丹药。",
+      "category": "alchemy",
+      "requiredRealm": 5,
+      "requiredLayer": 1,
+      "spiritCost": 10,
+      "cooldown": 0.0,
+      "damageMultiplier": 0.0,
+      "buffEffects": null,
+      "comboInto": null,
+      "unlockCondition": "化神期一层·丹道万炉圆满",
+      "isPassive": true
+    },
+    {
+      "skillId": "forging_material_refine",
+      "displayName": "材料精炼",
+      "description": "以灵力淬炼矿材，去除杂质、提升纯度。精炼后的材料可大幅提升装备品质上限。",
+      "category": "forging",
+      "requiredRealm": 1,
+      "requiredLayer": 2,
+      "spiritCost": 3,
+      "cooldown": 0.0,
+      "damageMultiplier": 0.0,
+      "buffEffects": null,
+      "comboInto": null,
+      "unlockCondition": "练气期二层·矿石提纯术传承",
+      "isPassive": true
+    },
+    {
+      "skillId": "forging_spirit_hammer",
+      "displayName": "灵锻塑形",
+      "description": "以灵力为锤、神识为模——无需传统锻炉即可塑形灵材。成品灵性远超凡火锻造。",
+      "category": "forging",
+      "requiredRealm": 3,
+      "requiredLayer": 2,
+      "spiritCost": 8,
+      "cooldown": 0.0,
+      "damageMultiplier": 0.0,
+      "buffEffects": null,
+      "comboInto": null,
+      "unlockCondition": "金丹期二层·灵锻法门获传",
+      "isPassive": true
+    },
+    {
+      "skillId": "forging_divine_enlighten",
+      "displayName": "神兵开光",
+      "description": "引天地灵气为神兵开光，唤醒器灵的初始灵智。开光后的兵器可随主人成长进境。",
+      "category": "forging",
+      "requiredRealm": 5,
+      "requiredLayer": 1,
+      "spiritCost": 15,
+      "cooldown": 0.0,
+      "damageMultiplier": 0.0,
+      "buffEffects": null,
+      "comboInto": null,
+      "unlockCondition": "化神期一层·器道通神",
+      "isPassive": true
+    },
+    {
+      "skillId": "perception_qi_gaze",
+      "displayName": "望气术",
+      "description": "以灵目观气——可看见天地灵气的流动方向、浓度变化，以及他人修为深浅的大致境界。",
+      "category": "perception",
+      "requiredRealm": 1,
+      "requiredLayer": 1,
+      "spiritCost": 1,
+      "cooldown": 0.5,
+      "damageMultiplier": 0.0,
+      "buffEffects": null,
+      "comboInto": null,
+      "unlockCondition": "练气期一层·灵目初开",
+      "isPassive": true
+    },
+    {
+      "skillId": "perception_spirit_scan",
+      "displayName": "神识探查",
+      "description": "释放神识扫描周围环境——可探测隐藏的敌人、天材地宝、禁制陷阱。范围和精细度随修为提升。",
+      "category": "perception",
+      "requiredRealm": 2,
+      "requiredLayer": 1,
+      "spiritCost": 5,
+      "cooldown": 3.0,
+      "damageMultiplier": 0.0,
+      "buffEffects": null,
+      "comboInto": null,
+      "unlockCondition": "筑基期一层·神识外放法门",
+      "isPassive": false
+    },
+    {
+      "skillId": "perception_heaven_sense",
+      "displayName": "天道感应",
+      "description": "短暂连接天道意志——预知未来数秒的危机、感悟突破机缘、洞悉自身因果线。",
+      "category": "perception",
+      "requiredRealm": 6,
+      "requiredLayer": 1,
+      "spiritCost": 60,
+      "cooldown": 60.0,
+      "damageMultiplier": 0.0,
+      "buffEffects": null,
+      "comboInto": null,
+      "unlockCondition": "渡劫期一层·天劫感悟",
+      "isPassive": false
+    },
+    {
+      "skillId": "special_spirit_burst",
+      "displayName": "灵气爆发",
+      "description": "引爆体内灵力爆发巨大能量。短时间内战力暴增但后续灵力枯竭——是搏命的起手技。",
+      "category": "special",
+      "requiredRealm": 1,
+      "requiredLayer": 3,
+      "spiritCost": 30,
+      "cooldown": 30.0,
+      "damageMultiplier": 0.0,
+      "buffEffects": [
+        {
+          "buffType": "AttackUp",
+          "value": 0.8,
+          "duration": 10.0
+        },
+        {
+          "buffType": "SpeedUp",
+          "value": 0.5,
+          "duration": 10.0
+        }
+      ],
+      "comboInto": null,
+      "unlockCondition": "练气期三层·经脉逆转之法",
+      "isPassive": false
+    },
+    {
+      "skillId": "special_blood_sacrifice",
+      "displayName": "血祭",
+      "description": "燃烧自身精血换取力量——每次血祭永久降低少量气血上限，但可在短时间内释放出超越境界的破坏力。",
+      "category": "special",
+      "requiredRealm": 2,
+      "requiredLayer": 5,
+      "spiritCost": 50,
+      "cooldown": 60.0,
+      "damageMultiplier": 8.0,
+      "buffEffects": [
+        {
+          "buffType": "AttackUp",
+          "value": 1.2,
+          "duration": 8.0
+        }
+      ],
+      "comboInto": null,
+      "unlockCondition": "筑基期五层·血炼传承",
+      "isPassive": false
+    },
+    {
+      "skillId": "special_demon_解体",
+      "displayName": "天魔解体",
+      "description": "上古魔道禁术——以自身为祭品召唤天魔之力附体。代价极大但威力毁天灭地。每次使用后修为倒退一层。非生死关头不可轻用。",
+      "category": "special",
+      "requiredRealm": 4,
+      "requiredLayer": 5,
+      "spiritCost": 80,
+      "cooldown": 120.0,
+      "damageMultiplier": 15.0,
+      "buffEffects": [
+        {
+          "buffType": "AttackUp",
+          "value": 2.0,
+          "duration": 15.0
+        },
+        {
+          "buffType": "DefenseUp",
+          "value": 1.0,
+          "duration": 15.0
+        },
+        {
+          "buffType": "SpeedUp",
+          "value": 1.0,
+          "duration": 15.0
+        }
+      ],
+      "comboInto": null,
+      "unlockCondition": "元婴期五层·上古魔道残页",
+      "isPassive": false
+    }
+  ]
+}

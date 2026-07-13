@@ -207,7 +207,9 @@ namespace EarthOnline.Framework
         {
             if (loadOnAwake)
             {
-                LoadFromResources(jsonResourcesPath, clearBeforeLoad);
+                int baseCount = LoadFromResources(jsonResourcesPath, clearBeforeLoad);
+                int extCount = LoadFromResources("Data/Quests_Extended", false);
+                Debug.Log($"[QuestDataLoader] 加载完成: 基础{baseCount}+扩展{extCount} 任务 (库内总计 {totalQuestCount} 个)");
             }
         }
 

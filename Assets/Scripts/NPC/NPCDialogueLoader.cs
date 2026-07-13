@@ -46,11 +46,29 @@ namespace EarthOnline.NPC
 
         void LoadJsonData()
         {
-            TextAsset textAsset = Resources.Load<TextAsset>("Data/NPCDialogues");
+            int baseCount = LoadFromFile("Data/NPCDialogues");
+            int extCount = LoadFromFile("Data/NPCDialogues_Extended");
+
+            if (baseCount == 0 && extCount == 0)
+            {
+                Debug.LogWarning("[NPCDialogueLoader] 未找到NPC对话数据文件，将使用硬编码对话。");
+                return;
+            }
+
+            if (verbose)
+                Debug.Log($"[NPCDialogueLoader] 成功加载 {_dataMap.Count} 个NPC的对话数据 (基础{baseCount}+扩展{extCount})。");
+        }
+
+        /// <summary>
+        /// 从指定的 Resources 路径加载 NPC JSON 数据并合并到 _dataMap。
+        /// </summary>
+        int LoadFromFile(string resourcesPath)
+        {
+            TextAsset textAsset = Resources.Load<TextAsset>(resourcesPath);
             if (textAsset == null)
             {
-                Debug.LogWarning("[NPCDialogueLoader] Resources/Data/NPCDialogues.json 未找到，将使用硬编码对话。");
-                return;
+                if (verbose) Debug.Log($"[NPCDialogueLoader] {resourcesPath}.json 未找到，跳过。");
+                return 0;
             }
 
             NpcDialoguesContainer container;
@@ -60,26 +78,27 @@ namespace EarthOnline.NPC
             }
             catch (System.Exception e)
             {
-                Debug.LogError($"[NPCDialogueLoader] JSON解析失败: {e.Message}");
-                return;
+                Debug.LogError($"[NPCDialogueLoader] {resourcesPath}.json 解析失败: {e.Message}");
+                return 0;
             }
 
             if (container == null || container.npcs == null || container.npcs.Length == 0)
             {
-                Debug.LogWarning("[NPCDialogueLoader] JSON数据为空。");
-                return;
+                Debug.LogWarning($"[NPCDialogueLoader] {resourcesPath}.json 数据为空。");
+                return 0;
             }
 
+            int count = 0;
             foreach (var npc in container.npcs)
             {
                 if (!string.IsNullOrEmpty(npc.npcId))
                 {
                     _dataMap[npc.npcId] = npc;
+                    count++;
                 }
             }
 
-            if (verbose)
-                Debug.Log($"[NPCDialogueLoader] 成功加载 {_dataMap.Count} 个NPC的对话数据。");
+            return count;
         }
 
         // ============================================================
