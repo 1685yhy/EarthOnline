@@ -372,7 +372,7 @@ namespace EarthOnline.UI
                     IconImage = slotGO.GetComponentInChildren<Image>(),
                     NameText = slotGO.GetComponentInChildren<Text>(),
                     SlotIndex = i,
-                    IsOccupied = "false",
+                    IsOccupied = false,
                     MaterialId = null,
                     Button = slotGO.GetComponent<Button>()
                 };
@@ -469,7 +469,7 @@ namespace EarthOnline.UI
 
             EventBus.Publish(new CraftingPanelToggleEvent
             {
-                IsOpen = "true",
+                IsOpen = true,
                 IsAlchemyMode = alchemyMode
             });
 
@@ -487,7 +487,7 @@ namespace EarthOnline.UI
 
             EventBus.Publish(new CraftingPanelToggleEvent
             {
-                IsOpen = "false",
+                IsOpen = false,
                 IsAlchemyMode = _isAlchemyMode
             });
         }
@@ -777,7 +777,7 @@ namespace EarthOnline.UI
             {
                 ItemId = "mat_herb_01",
                 DisplayName = "灵草",
-                QualityCoefficient = "0.85f",
+                QualityCoefficient = 0.85f,
                 InputOrderIndex = ctrl.InputMaterialCount
             };
 

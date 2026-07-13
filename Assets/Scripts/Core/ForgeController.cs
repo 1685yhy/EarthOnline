@@ -320,7 +320,7 @@ namespace EarthOnline.Core
     /// - 不同淬火液(灵泉/妖兽血)赋予不同属性
     /// - 开光灵力注入影响亲和度
     /// - 装备品质 R/SR/SSR/UR + 词缀(0/1/2/3条)
-    /// - 品质阈值: <0.6=0词缀, ≥0.6 = "1", ≥0.8 = "2", ≥0.95=3
+    /// - 品质阈值: <0.6=0词缀, ≥0.6 = 1, ≥0.8 = 2, ≥0.95=3
     /// - 强化: EnhanceChance = 0.8 × QualityMod × (1 - Level×0.1)
     /// - 升级上限: R=5 / SR=7 / SSR=9 / UR=10
     /// </summary>
@@ -454,7 +454,9 @@ namespace EarthOnline.Core
 
         // ─── Smelting State ───
         private HeatLevel _currentHeat = HeatLevel.Medium;
+#pragma warning disable CS0414 // reserved for future UI display of previous heat level
         private HeatLevel _previousHeat = HeatLevel.Medium;
+#pragma warning restore CS0414
         private float _currentTemperature;
         private float _temperatureSum;
         private int _temperatureSamples;
@@ -477,7 +479,9 @@ namespace EarthOnline.Core
         // ─── Timing ───
         private float _stageElapsed;
         private float _stageDuration;
+#pragma warning disable CS0414 // reserved for future use (heat switch timing display)
         private float _lastHeatSwitchTime;
+#pragma warning restore CS0414
         private float _heatSwitchTimer;
 
         // ─── Material Input ───
@@ -726,7 +730,7 @@ namespace EarthOnline.Core
             float accuracy;
             if (forceDiff <= forceRange)
             {
-                // Perfect hit: accuracy = "1.0", with bonus.
+                // Perfect hit: accuracy = 1.0, with bonus.
                 accuracy = 1f;
             }
             else if (forceDiff <= forceRange * 3f)
@@ -1275,7 +1279,7 @@ namespace EarthOnline.Core
             EventBus.Publish(new ForgeFailedEvent
             {
                 FailReason = reason,
-                MaterialsLostPercent = "1f",
+                MaterialsLostPercent = 1f,
                 AnvilDurabilityLoss = 10f
             });
 
@@ -1548,7 +1552,7 @@ namespace EarthOnline.Core
         ///
         /// Formula: EnhanceChance = 0.8 × QualityMod × (1 - Level × 0.1)
         ///
-        /// Caps: R = "5", SR = "7", SSR = "9", UR=10
+        /// Caps: R = 5, SR = 7, SSR = 9, UR=10
         /// </summary>
         /// <param name="equipmentName">The equipment display name (for logging).</param>
         /// <param name="quality">The equipment quality.</param>
@@ -1756,12 +1760,12 @@ namespace EarthOnline.Core
                 Id = "recipe_forge_test_" + Guid.NewGuid().ToString("N"),
                 DisplayName = name,
                 Description = "测试用基础炼器配方",
-                BaseQualityMin = "0.3f",
+                BaseQualityMin = 0.3f,
                 BaseQualityMax = 0.8f,
                 SmeltingOptimalTemp = optimalTemp,
                 SmeltingDuration = duration,
-                RequiredProficiency = "1",
-                Difficulty = "1",
+                RequiredProficiency = 1,
+                Difficulty = 1,
                 RecommendedMaterials = new[] { "mat_iron_01", "mat_crystal_02", "mat_essence_03" },
                 MinQuality = EquipmentQuality.R,
                 BaseStatsMultiplier = 1.0f

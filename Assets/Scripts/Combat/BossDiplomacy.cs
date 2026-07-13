@@ -1205,7 +1205,7 @@ namespace EarthOnline.Combat
 
         private void OnBossDefeated(BossDefeatedEvent evt)
         {
-            if (evt.BossId != bossDef?.bossId) return;
+            if (!string.Equals(evt.BossId?.ToString(), bossDef?.bossId, StringComparison.OrdinalIgnoreCase)) return;
 
             // BOSS被击败：发放战斗奖励 (003-PATH-01)
             // 潜行绕过不触发Defeated事件，只有战斗击杀才发

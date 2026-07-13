@@ -1,0 +1,493 @@
+{
+  "bosses": [
+    {
+      "bossId": "fire_dragon",
+      "displayName": "千年火蛟",
+      "title": "烈焰谷领主",
+      "bossType": "AreaLord",
+      "realm": 3,
+      "baseHP": 3500.0,
+      "baseAttack": 55.0,
+      "baseDefense": 25.0,
+      "baseCritRate": 0.08,
+      "detectRange": 35.0,
+      "aggroRange": 25.0,
+      "leashRange": 55.0,
+      "enrageTimeLimit": 240.0,
+      "storyContext": "潜伏于烈焰谷岩浆深处修炼千年的火蛟，体内凝聚了地心火脉之力。曾为上古炎帝的护山灵兽，炎帝飞升后便占据烈焰谷称霸一方。它守护着火灵珠——一件能助火系修士突破瓶颈的至宝。火蛟性情暴躁，领地意识极强，任何踏入烈焰谷的生灵都会被它视为挑衅。",
+      "entranceDialogue": "又一只蝼蚁闯入了我的领地……就用你的鲜血浇灌这片岩浆吧！",
+      "defeatDialogue": "火……灵珠……不能……被夺走……",
+      "retreatDialogue": "地火不灭，我亦不灭！待我恢复，定让你灰飞烟灭！",
+      "phases": [
+        {
+          "triggerType": "HP",
+          "triggerValue": 0.70,
+          "newMechanics": ["岩浆喷涌", "灼烧光环"],
+          "newAttacks": ["龙尾横扫", "火球连射"],
+          "dialogue": "区区凡人，竟能逼我到这一步！感受火焰的愤怒吧！",
+          "visualColor": { "r": 1.0, "g": 0.4, "b": 0.0, "a": 1.0 }
+        },
+        {
+          "triggerType": "HP",
+          "triggerValue": 0.35,
+          "newMechanics": ["地火护体"],
+          "newAttacks": ["焚天之火", "地裂熔岩"],
+          "dialogue": "千年修为，尽付此击！焚！天！灭！地！",
+          "visualColor": { "r": 1.0, "g": 0.1, "b": 0.0, "a": 1.0 }
+        }
+      ],
+      "weaknesses": [
+        {
+          "weaknessType": "Element",
+          "displayName": "水属性克制",
+          "description": "火蛟畏水，被水系功法克制",
+          "damageMultiplier": 1.5,
+          "elementType": "Water",
+          "exposureDuration": 0.0
+        },
+        {
+          "weaknessType": "PartBreak",
+          "displayName": "逆鳞",
+          "description": "颈下逆鳞是致命弱点，集中攻击可使其短暂瘫痪",
+          "damageMultiplier": 2.0,
+          "elementType": "",
+          "exposureDuration": 5.0
+        }
+      ],
+      "mechanics": [
+        {
+          "mechanicName": "岩浆喷涌",
+          "description": "每30秒在玩家脚下召唤岩浆区域，持续造成火属性伤害",
+          "counterMethod": "保持移动，不要站在同一位置超过3秒"
+        },
+        {
+          "mechanicName": "灼烧光环",
+          "description": "火蛟周围产生灼热气浪，每秒对附近玩家造成伤害并叠加灼烧层数",
+          "counterMethod": "远程攻击或使用冰系护盾抵消灼烧效果"
+        },
+        {
+          "mechanicName": "地火护体",
+          "description": "HP低于35%时召唤地火环绕自身，大幅提升防御并反弹近战伤害",
+          "counterMethod": "使用水属性技能击破护体状态"
+        }
+      ],
+      "attacks": [
+        { "attackName": "龙爪挥击", "damageMultiplier": 1.0, "cooldown": 2.0, "animationTrigger": "Attack_Claw", "effectPrefabPath": "Effects/FireDragon/Claw" },
+        { "attackName": "火焰吐息", "damageMultiplier": 1.5, "cooldown": 5.0, "animationTrigger": "Attack_Breath", "effectPrefabPath": "Effects/FireDragon/Breath" },
+        { "attackName": "龙尾横扫", "damageMultiplier": 1.2, "cooldown": 6.0, "animationTrigger": "Attack_Tail", "effectPrefabPath": "Effects/FireDragon/Tail" },
+        { "attackName": "火球连射", "damageMultiplier": 0.8, "cooldown": 4.0, "animationTrigger": "Attack_Fireball", "effectPrefabPath": "Effects/FireDragon/Fireball" },
+        { "attackName": "焚天之火", "damageMultiplier": 2.5, "cooldown": 15.0, "animationTrigger": "Attack_Inferno", "effectPrefabPath": "Effects/FireDragon/Inferno" },
+        { "attackName": "地裂熔岩", "damageMultiplier": 2.0, "cooldown": 12.0, "animationTrigger": "Attack_Lava", "effectPrefabPath": "Effects/FireDragon/Lava" }
+      ],
+      "stealthVulnerable": false,
+      "respawnTimeDays": 7,
+      "dropTable": {
+        "guaranteed": [
+          { "itemId": "fire_core", "itemName": "火蛟内丹", "dropChance": 1.0, "minCount": 1, "maxCount": 1 }
+        ],
+        "normal": [
+          { "itemId": "dragon_scale", "itemName": "火蛟鳞片", "dropChance": 0.6, "minCount": 2, "maxCount": 5 },
+          { "itemId": "fire_essence", "itemName": "火灵精华", "dropChance": 0.4, "minCount": 1, "maxCount": 3 },
+          { "itemId": "gold", "itemName": "灵石", "dropChance": 1.0, "minCount": 50, "maxCount": 200 }
+        ],
+        "conditional": [
+          { "itemId": "fire_pearl", "itemName": "火灵珠", "dropChance": 0.15, "minCount": 1, "maxCount": 1 }
+        ]
+      }
+    },
+    {
+      "bossId": "ice_wolf_king",
+      "displayName": "冰原狼王",
+      "title": "极北领主",
+      "bossType": "AreaLord",
+      "realm": 2,
+      "baseHP": 1800.0,
+      "baseAttack": 40.0,
+      "baseDefense": 18.0,
+      "baseCritRate": 0.10,
+      "detectRange": 40.0,
+      "aggroRange": 30.0,
+      "leashRange": 60.0,
+      "enrageTimeLimit": 180.0,
+      "storyContext": "极北冰原的绝对统治者，率领着成千上万的冰狼族群。传闻它是冰原之灵的化身，拥有操控风雪的能力。狼王智慧极高，懂得利用地形和暴风雪伏击猎物。曾有筑基期修士小队试图猎杀它，最终全员葬身冰原。狼王对入侵者有着近乎偏执的领地意识，但对懂得冰原生存之道的旅人偶尔会网开一面。",
+      "entranceDialogue": "嗷呜——！不速之客，这里将是你的葬身之地！",
+      "defeatDialogue": "呜……冰原……会记住你的……",
+      "retreatDialogue": "你很强……但我还会回来的，冰原就是我最大的后盾！",
+      "phases": [
+        {
+          "triggerType": "HP",
+          "triggerValue": 0.70,
+          "newMechanics": ["暴风雪"],
+          "newAttacks": ["冰锥突刺", "狼嚎召集"],
+          "dialogue": "你激怒我了！让暴风雪吞噬一切！",
+          "visualColor": { "r": 0.6, "g": 0.8, "b": 1.0, "a": 1.0 }
+        },
+        {
+          "triggerType": "HP",
+          "triggerValue": 0.35,
+          "newMechanics": ["冰霜护甲"],
+          "newAttacks": ["极寒冲击", "冰封领域"],
+          "dialogue": "以冰原之灵的名义——冻结吧！",
+          "visualColor": { "r": 0.2, "g": 0.5, "b": 1.0, "a": 1.0 }
+        }
+      ],
+      "weaknesses": [
+        {
+          "weaknessType": "Element",
+          "displayName": "火属性克制",
+          "description": "冰原狼王畏火，火系功法可造成额外伤害",
+          "damageMultiplier": 1.5,
+          "elementType": "Fire",
+          "exposureDuration": 0.0
+        },
+        {
+          "weaknessType": "Fear",
+          "displayName": "天敌气息",
+          "description": "使用上古灵兽的遗骨或鳞片可震慑狼王，使其短暂畏惧",
+          "damageMultiplier": 1.3,
+          "elementType": "",
+          "exposureDuration": 6.0
+        }
+      ],
+      "mechanics": [
+        {
+          "mechanicName": "暴风雪",
+          "description": "狼王召唤暴风雪，全场持续受到冰属性伤害并降低移速，视野受限",
+          "counterMethod": "使用火系技能驱散身边风雪，或躲到场景中的岩石后面"
+        },
+        {
+          "mechanicName": "冰霜护甲",
+          "description": "HP低于35%时凝聚冰霜护甲，每次受到攻击会反击冰锥",
+          "counterMethod": "使用火属性连击快速击破护甲，或用高伤害单次攻击穿透"
+        }
+      ],
+      "attacks": [
+        { "attackName": "利爪撕咬", "damageMultiplier": 1.0, "cooldown": 1.5, "animationTrigger": "Attack_Bite", "effectPrefabPath": "Effects/IceWolf/Bite" },
+        { "attackName": "冰锥突刺", "damageMultiplier": 1.3, "cooldown": 4.0, "animationTrigger": "Attack_Icicle", "effectPrefabPath": "Effects/IceWolf/Icicle" },
+        { "attackName": "狼嚎召集", "damageMultiplier": 0.5, "cooldown": 8.0, "animationTrigger": "Attack_Howl", "effectPrefabPath": "Effects/IceWolf/Howl" },
+        { "attackName": "极寒冲击", "damageMultiplier": 2.0, "cooldown": 10.0, "animationTrigger": "Attack_FrostBlast", "effectPrefabPath": "Effects/IceWolf/FrostBlast" },
+        { "attackName": "冰封领域", "damageMultiplier": 1.8, "cooldown": 14.0, "animationTrigger": "Attack_FrostField", "effectPrefabPath": "Effects/IceWolf/FrostField" }
+      ],
+      "stealthVulnerable": true,
+      "respawnTimeDays": 3,
+      "dropTable": {
+        "guaranteed": [
+          { "itemId": "wolf_fang", "itemName": "狼王獠牙", "dropChance": 1.0, "minCount": 1, "maxCount": 2 }
+        ],
+        "normal": [
+          { "itemId": "ice_fur", "itemName": "冰霜狼皮", "dropChance": 0.7, "minCount": 1, "maxCount": 3 },
+          { "itemId": "frost_essence", "itemName": "霜灵精华", "dropChance": 0.5, "minCount": 1, "maxCount": 2 },
+          { "itemId": "gold", "itemName": "灵石", "dropChance": 1.0, "minCount": 30, "maxCount": 100 }
+        ],
+        "conditional": [
+          { "itemId": "ice_crown", "itemName": "冰原之冠", "dropChance": 0.1, "minCount": 1, "maxCount": 1 }
+        ]
+      }
+    },
+    {
+      "bossId": "ancient_treant",
+      "displayName": "上古树精",
+      "title": "幽暗森林守护者",
+      "bossType": "AreaLord",
+      "realm": 4,
+      "baseHP": 6000.0,
+      "baseAttack": 25.0,
+      "baseDefense": 50.0,
+      "baseCritRate": 0.03,
+      "detectRange": 25.0,
+      "aggroRange": 18.0,
+      "leashRange": 45.0,
+      "enrageTimeLimit": 360.0,
+      "storyContext": "幽暗森林中最古老的生命体，已在林中沉睡了上万年。它的根系遍布整个森林，能够感知每一片叶子的颤动。树精本性温和，不喜争斗，但任何试图破坏森林生态平衡者都会遭到它的雷霆反击。曾有元婴期邪修试图焚林炼宝，被树精活生生拖入地底化作养料。树精体内孕育着一枚万年木心，是炼制木系至宝的核心材料。",
+      "entranceDialogue": "远方的旅人……为何打扰这片森林的宁静……",
+      "defeatDialogue": "森林……会……继续……守护……自己……",
+      "retreatDialogue": "你的身上……带着毁灭的气息……离开吧，趁我还能克制……",
+      "phases": [
+        {
+          "triggerType": "HP",
+          "triggerValue": 0.75,
+          "newMechanics": ["荆棘缠绕"],
+          "newAttacks": ["根须穿刺", "落叶飞刃"],
+          "dialogue": "看来……言语已无法阻止你了……",
+          "visualColor": { "r": 0.2, "g": 0.8, "b": 0.2, "a": 1.0 }
+        },
+        {
+          "triggerType": "HP",
+          "triggerValue": 0.40,
+          "newMechanics": ["治愈之风", "召唤树卫"],
+          "newAttacks": ["森林之怒", "自然净化"],
+          "dialogue": "为了森林的安宁……请在此长眠吧！",
+          "visualColor": { "r": 0.0, "g": 0.5, "b": 0.0, "a": 1.0 }
+        }
+      ],
+      "weaknesses": [
+        {
+          "weaknessType": "Element",
+          "displayName": "火属性克制",
+          "description": "上古树精畏火，火系功法可造成大量额外伤害",
+          "damageMultiplier": 2.0,
+          "elementType": "Fire",
+          "exposureDuration": 0.0
+        },
+        {
+          "weaknessType": "PartBreak",
+          "displayName": "木心暴露",
+          "description": "连续攻击树精主干同一位置可击破树皮，暴露出木心弱点",
+          "damageMultiplier": 2.5,
+          "elementType": "",
+          "exposureDuration": 8.0
+        }
+      ],
+      "mechanics": [
+        {
+          "mechanicName": "荆棘缠绕",
+          "description": "地面伸出荆棘缠绕最近的玩家，造成持续伤害并定身",
+          "counterMethod": "使用火系技能烧毁荆棘，或队友快速攻击荆棘解救"
+        },
+        {
+          "mechanicName": "治愈之风",
+          "description": "树精吸收森林生命力，每秒回复一定HP，持续10秒",
+          "counterMethod": "使用打断技能中断施法，或用火系持续伤害降低回复效果"
+        },
+        {
+          "mechanicName": "召唤树卫",
+          "description": "召唤2个小型树精护卫协助战斗，树卫会缠绕玩家",
+          "counterMethod": "优先击杀树卫，或使用范围火系技能同时清理"
+        }
+      ],
+      "attacks": [
+        { "attackName": "藤鞭抽击", "damageMultiplier": 0.8, "cooldown": 2.5, "animationTrigger": "Attack_Vine", "effectPrefabPath": "Effects/Treant/Vine" },
+        { "attackName": "根须穿刺", "damageMultiplier": 1.5, "cooldown": 5.0, "animationTrigger": "Attack_Root", "effectPrefabPath": "Effects/Treant/Root" },
+        { "attackName": "落叶飞刃", "damageMultiplier": 1.0, "cooldown": 4.0, "animationTrigger": "Attack_Leaf", "effectPrefabPath": "Effects/Treant/Leaf" },
+        { "attackName": "森林之怒", "damageMultiplier": 2.2, "cooldown": 12.0, "animationTrigger": "Attack_ForestWrath", "effectPrefabPath": "Effects/Treant/ForestWrath" },
+        { "attackName": "自然净化", "damageMultiplier": 1.8, "cooldown": 10.0, "animationTrigger": "Attack_Purify", "effectPrefabPath": "Effects/Treant/Purify" }
+      ],
+      "stealthVulnerable": false,
+      "respawnTimeDays": 14,
+      "dropTable": {
+        "guaranteed": [
+          { "itemId": "wood_heart", "itemName": "万年木心", "dropChance": 1.0, "minCount": 1, "maxCount": 1 }
+        ],
+        "normal": [
+          { "itemId": "ancient_bark", "itemName": "上古树皮", "dropChance": 0.8, "minCount": 1, "maxCount": 3 },
+          { "itemId": "life_essence", "itemName": "生命精华", "dropChance": 0.5, "minCount": 1, "maxCount": 2 },
+          { "itemId": "gold", "itemName": "灵石", "dropChance": 1.0, "minCount": 80, "maxCount": 300 }
+        ],
+        "conditional": [
+          { "itemId": "forest_key", "itemName": "森林之心钥匙", "dropChance": 0.2, "minCount": 1, "maxCount": 1 }
+        ]
+      }
+    },
+    {
+      "bossId": "sword_spirit",
+      "displayName": "剑灵",
+      "title": "剑冢守卫",
+      "bossType": "AreaLord",
+      "realm": 4,
+      "baseHP": 2500.0,
+      "baseAttack": 75.0,
+      "baseDefense": 20.0,
+      "baseCritRate": 0.20,
+      "detectRange": 50.0,
+      "aggroRange": 35.0,
+      "leashRange": 70.0,
+      "enrageTimeLimit": 150.0,
+      "storyContext": "剑冢中万剑之灵凝聚而成的剑意化身。上古剑仙飞升前将毕生佩剑封存于剑冢，千年剑气交汇孕育出了剑灵。它没有实体，纯粹由剑意和剑气构成，行动如电，攻击凌厉。剑灵一直在等待值得托付的剑道传人，但千年来所有闯入剑冢的修士都未能通过它的考验。剑灵只在乎剑道——任何非剑修在其面前都会被瞬间秒杀。",
+      "entranceDialogue": "来者……可懂剑？",
+      "defeatDialogue": "很好……你……通过了……",
+      "retreatDialogue": "剑心不纯……再去修炼百年吧……",
+      "phases": [
+        {
+          "triggerType": "HP",
+          "triggerValue": 0.70,
+          "newMechanics": ["剑意分身"],
+          "newAttacks": ["万剑归宗", "剑气纵横"],
+          "dialogue": "能接下这一剑……你有资格让我认真了。",
+          "visualColor": { "r": 0.7, "g": 0.7, "b": 1.0, "a": 1.0 }
+        },
+        {
+          "triggerType": "HP",
+          "triggerValue": 0.35,
+          "newMechanics": ["剑阵"],
+          "newAttacks": ["心剑无痕", "天剑裁决"],
+          "dialogue": "这就是我最强的一剑——接好了！",
+          "visualColor": { "r": 0.4, "g": 0.4, "b": 1.0, "a": 1.0 }
+        }
+      ],
+      "weaknesses": [
+        {
+          "weaknessType": "Timing",
+          "displayName": "剑意间隙",
+          "description": "剑灵每次攻击后有短暂的剑意恢复期，此时防御最低",
+          "damageMultiplier": 1.8,
+          "elementType": "",
+          "exposureDuration": 2.0
+        },
+        {
+          "weaknessType": "ItemCounter",
+          "displayName": "剑心共鸣",
+          "description": "使用任意剑类武器可降低剑灵的攻击力，高品质名剑效果更佳",
+          "damageMultiplier": 1.3,
+          "elementType": "",
+          "exposureDuration": 0.0
+        }
+      ],
+      "mechanics": [
+        {
+          "mechanicName": "剑意分身",
+          "description": "剑灵幻化出2个剑气分身，分身继承本体部分攻击力",
+          "counterMethod": "使用范围攻击清除分身，或快速击破本体使分身消失"
+        },
+        {
+          "mechanicName": "剑阵",
+          "description": "在地面召唤剑阵区域，进入区域的玩家会受到持续穿刺伤害",
+          "counterMethod": "观察地面剑光预兆，及时闪避出剑阵范围"
+        }
+      ],
+      "attacks": [
+        { "attackName": "剑气斩", "damageMultiplier": 1.2, "cooldown": 1.8, "animationTrigger": "Attack_Slash", "effectPrefabPath": "Effects/SwordSpirit/Slash" },
+        { "attackName": "万剑归宗", "damageMultiplier": 1.5, "cooldown": 6.0, "animationTrigger": "Attack_ThousandSwords", "effectPrefabPath": "Effects/SwordSpirit/ThousandSwords" },
+        { "attackName": "剑气纵横", "damageMultiplier": 1.0, "cooldown": 3.5, "animationTrigger": "Attack_BladeStorm", "effectPrefabPath": "Effects/SwordSpirit/BladeStorm" },
+        { "attackName": "心剑无痕", "damageMultiplier": 3.0, "cooldown": 12.0, "animationTrigger": "Attack_HeartSword", "effectPrefabPath": "Effects/SwordSpirit/HeartSword" },
+        { "attackName": "天剑裁决", "damageMultiplier": 3.5, "cooldown": 20.0, "animationTrigger": "Attack_HeavenSword", "effectPrefabPath": "Effects/SwordSpirit/HeavenSword" }
+      ],
+      "stealthVulnerable": false,
+      "respawnTimeDays": 5,
+      "dropTable": {
+        "guaranteed": [
+          { "itemId": "sword_heart", "itemName": "剑心碎片", "dropChance": 1.0, "minCount": 1, "maxCount": 1 }
+        ],
+        "normal": [
+          { "itemId": "broken_sword", "itemName": "古剑残片", "dropChance": 0.7, "minCount": 2, "maxCount": 5 },
+          { "itemId": "sword_essence", "itemName": "剑意精华", "dropChance": 0.4, "minCount": 1, "maxCount": 2 },
+          { "itemId": "gold", "itemName": "灵石", "dropChance": 1.0, "minCount": 60, "maxCount": 250 }
+        ],
+        "conditional": [
+          { "itemId": "legendary_sword", "itemName": "上古神剑·斩天", "dropChance": 0.05, "minCount": 1, "maxCount": 1 }
+        ]
+      }
+    },
+    {
+      "bossId": "void_invader",
+      "displayName": "虚空入侵者",
+      "title": "世界BOSS",
+      "bossType": "WorldBoss",
+      "realm": 5,
+      "baseHP": 15000.0,
+      "baseAttack": 90.0,
+      "baseDefense": 40.0,
+      "baseCritRate": 0.15,
+      "detectRange": 60.0,
+      "aggroRange": 50.0,
+      "leashRange": 100.0,
+      "enrageTimeLimit": 600.0,
+      "storyContext": "来自域外虚空的恐怖存在，无人知道它的真实来历。当大陆各大势力因争斗而产生大量负面情绪时，虚空裂缝在世界中心上空撕裂，这个庞然大物从裂缝中降临。它的形态不断变化，时而如触手巨兽，时而如狰狞魔像。全大陆的修士第一次放下成见，联手对抗这个共同的敌人。传闻虚空入侵者只是某个更恐怖存在的先锋——真正的虚空之主还在裂缝的另一端窥视着这个世界。",
+      "entranceDialogue": "渺小的世界……你们的存在毫无意义……",
+      "defeatDialogue": "这只是……开始……主人……会……降临……",
+      "retreatDialogue": null,
+      "phases": [
+        {
+          "triggerType": "HP",
+          "triggerValue": 0.80,
+          "newMechanics": ["虚空裂隙", "能量汲取"],
+          "newAttacks": ["虚空触手", "暗影爆发"],
+          "dialogue": "你们的力量……将被虚空吞噬！",
+          "visualColor": { "r": 0.5, "g": 0.0, "b": 0.8, "a": 1.0 }
+        },
+        {
+          "triggerType": "HP",
+          "triggerValue": 0.50,
+          "newMechanics": ["空间扭曲", "虚空召唤"],
+          "newAttacks": ["混沌冲击", "虚空风暴"],
+          "dialogue": "无谓的挣扎……让你们看看虚空的真正力量！",
+          "visualColor": { "r": 0.3, "g": 0.0, "b": 0.6, "a": 1.0 }
+        },
+        {
+          "triggerType": "HP",
+          "triggerValue": 0.20,
+          "newMechanics": ["虚空湮灭"],
+          "newAttacks": ["灭世之触", "虚空吞噬"],
+          "dialogue": "一切……终将归于虚无！",
+          "visualColor": { "r": 0.1, "g": 0.0, "b": 0.3, "a": 1.0 }
+        }
+      ],
+      "weaknesses": [
+        {
+          "weaknessType": "Environment",
+          "displayName": "圣光净化",
+          "description": "世界各地的圣光法阵可以对虚空生物造成额外伤害",
+          "damageMultiplier": 1.5,
+          "elementType": "Light",
+          "exposureDuration": 0.0
+        },
+        {
+          "weaknessType": "Timing",
+          "displayName": "虚空裂缝闭合",
+          "description": "每次召唤虚空裂隙后，入侵者会短暂虚弱",
+          "damageMultiplier": 2.0,
+          "elementType": "",
+          "exposureDuration": 4.0
+        }
+      ],
+      "mechanics": [
+        {
+          "mechanicName": "虚空裂隙",
+          "description": "在场地中打开虚空裂隙，持续召唤虚空小怪并向外扩散腐蚀区域",
+          "counterMethod": "安排专人关闭裂隙（需要特定道具），否则小怪会无限刷新"
+        },
+        {
+          "mechanicName": "能量汲取",
+          "description": "连接最近的玩家持续吸取生命值，同时回复自身HP",
+          "counterMethod": "被连接的玩家需要快速远离拉断连接，或由队友使用打断技能"
+        },
+        {
+          "mechanicName": "空间扭曲",
+          "description": "随机传送所有玩家到场地不同位置，并造成短暂混乱效果",
+          "counterMethod": "提前与队友保持视野，传送后快速集合"
+        },
+        {
+          "mechanicName": "虚空召唤",
+          "description": "召唤2个精英级虚空守卫，守卫拥有群体嘲讽技能",
+          "counterMethod": "坦克拉住守卫，DPS优先击杀"
+        },
+        {
+          "mechanicName": "虚空湮灭",
+          "description": "HP低于20%时全场持续受到高额暗影伤害，需要团队开启防护技能",
+          "counterMethod": "保留团队防护技能给这个阶段，治疗职业预铺持续恢复"
+        }
+      ],
+      "attacks": [
+        { "attackName": "虚空触手", "damageMultiplier": 1.3, "cooldown": 3.0, "animationTrigger": "Attack_Tentacle", "effectPrefabPath": "Effects/Void/Tentacle" },
+        { "attackName": "暗影爆发", "damageMultiplier": 1.8, "cooldown": 6.0, "animationTrigger": "Attack_ShadowBurst", "effectPrefabPath": "Effects/Void/ShadowBurst" },
+        { "attackName": "混沌冲击", "damageMultiplier": 2.0, "cooldown": 8.0, "animationTrigger": "Attack_ChaosBlast", "effectPrefabPath": "Effects/Void/ChaosBlast" },
+        { "attackName": "虚空风暴", "damageMultiplier": 2.5, "cooldown": 15.0, "animationTrigger": "Attack_VoidStorm", "effectPrefabPath": "Effects/Void/VoidStorm" },
+        { "attackName": "灭世之触", "damageMultiplier": 3.5, "cooldown": 20.0, "animationTrigger": "Attack_Apocalypse", "effectPrefabPath": "Effects/Void/Apocalypse" },
+        { "attackName": "虚空吞噬", "damageMultiplier": 4.0, "cooldown": 30.0, "animationTrigger": "Attack_Devour", "effectPrefabPath": "Effects/Void/Devour" }
+      ],
+      "stealthVulnerable": false,
+      "respawnTimeDays": 30,
+      "diplomacy": {
+        "hasDiplomacy": false,
+        "conditionDescription": "虚空入侵者无法通过外交手段解决",
+        "requiredItems": [],
+        "baseSuccessRate": 0.0,
+        "peaceWindowDuration": 0.0
+      },
+      "dropTable": {
+        "guaranteed": [
+          { "itemId": "void_core", "itemName": "虚空核心", "dropChance": 1.0, "minCount": 1, "maxCount": 1 },
+          { "itemId": "realm_break_pill", "itemName": "破境丹", "dropChance": 1.0, "minCount": 1, "maxCount": 2 }
+        ],
+        "normal": [
+          { "itemId": "void_shard", "itemName": "虚空碎片", "dropChance": 0.8, "minCount": 3, "maxCount": 8 },
+          { "itemId": "dark_essence", "itemName": "暗影精华", "dropChance": 0.6, "minCount": 2, "maxCount": 5 },
+          { "itemId": "gold", "itemName": "灵石", "dropChance": 1.0, "minCount": 200, "maxCount": 800 }
+        ],
+        "conditional": [
+          { "itemId": "void_armor", "itemName": "虚空战甲", "dropChance": 0.08, "minCount": 1, "maxCount": 1 },
+          { "itemId": "ancient_relic", "itemName": "上古遗物·虚空之眼", "dropChance": 0.03, "minCount": 1, "maxCount": 1 }
+        ]
+      }
+    }
+  ]
+}

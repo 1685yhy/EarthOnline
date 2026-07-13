@@ -55,7 +55,15 @@ namespace EarthOnline.Framework
         {
             string key = typeof(T).Name;
             if (_typedListeners.ContainsKey(key))
+            {
+                // 去重检查：防止同一个 handler 被重复订阅导致双发
+                foreach (Delegate existing in _typedListeners[key].GetInvocationList())
+                {
+                    if (existing.Equals(handler))
+                        return;
+                }
                 _typedListeners[key] = Delegate.Combine(_typedListeners[key], handler);
+            }
             else
                 _typedListeners[key] = handler;
         }

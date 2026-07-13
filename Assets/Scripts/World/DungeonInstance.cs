@@ -241,7 +241,7 @@ namespace EarthOnline.World
             var exitedEvt = new DungeonExitedEvent
             {
                 DungeonId = _dungeonId,
-                WasCompleted = "false",
+                WasCompleted = false,
                 RoomsCleared = _roomsCleared
             };
             EventBus.Publish(exitedEvt);

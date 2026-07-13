@@ -143,7 +143,6 @@ namespace EarthOnline
             var weather = WeatherSystem.Instance?.GetWeatherEmoji() ?? "";
 
             // 世界感知：显示当前世界的货币和境界
-            string currencyDisplay = "灵石"; // 默认修真世界
             string realmDisplay = "";
             // TODO: 从WorldConfig读取，目前硬编码灵气大陆
             if (cultivation >= 1500) realmDisplay = "化神期";

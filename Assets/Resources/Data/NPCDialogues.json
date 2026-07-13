@@ -1,0 +1,2422 @@
+{
+  "npcs": [
+    {
+      "npcId": "npc_zhang_001",
+      "npcName": "张老",
+      "npcTitle": "新手村隐者 · 前世散仙",
+      "greetingLines": [
+        "年轻人，你终于来了。我等你很久了——从天象异变那天起，我就知道又有'新人'要到了。",
+        "又见面了。修炼进展如何？记住——天道虽远，行则将至。",
+        "第47个了……希望你能打破那个数字的魔咒。",
+        "灵气的流动越来越乱了。虚空的裂缝在扩大——我们时间不多了。",
+        "（他望着远方，目光深邃）你相信命运吗？我不信。但有些事情，确实被写好了。"
+      ],
+      "farewellLines": [
+        "去吧。小心虚空——它无处不在。",
+        "修行如逆水行舟——不进则退。下次来，我要看到你的进步。",
+        "记住——你身上有一种其他人没有的东西。别问我是什么——你自己会发现的。"
+      ],
+      "dialogueNodes": [
+        {
+          "id": "start",
+          "speakerName": "张老",
+          "text": "年轻人，你也穿越了？……看来这个世界的'玩家'越来越多了。你有什么想问老夫的？",
+          "choices": [
+            {
+              "text": "这个世界的秘密是什么？",
+              "nextNodeId": "world_secret",
+              "requiredFame": 10,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你怎么知道我是穿越者？",
+              "nextNodeId": "know_you",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你能教我修炼吗？",
+              "nextNodeId": "teach",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "没什么，路过而已。",
+              "nextNodeId": "farewell",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "world_secret",
+          "speakerName": "张老",
+          "text": "这个世界……被虚空侵蚀了三百年。天道正在崩溃。每一个穿越者都是地球意志投放到这里的——为了找到解决虚空的方法。",
+          "choices": [
+            {
+              "text": "那我要怎么做？",
+              "nextNodeId": "mission",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "虚空到底是什么？",
+              "nextNodeId": "void_nature",
+              "requiredFame": 15,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "void_nature",
+          "speakerName": "张老",
+          "text": "（他沉默了很久）虚空不是怪物。不是天灾。虚空是这个世界自己产生的'免疫反应'——就像人发烧一样。灵气的过量使用、修士的过度掠夺、天地自然被破坏——这些造成了世界的'发烧'。而发烧……是会死人的。",
+          "choices": [
+            {
+              "text": "我明白了……我会尽力。",
+              "nextNodeId": "mission",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "mission",
+          "speakerName": "张老",
+          "text": "变强。找到虚空的源头。然后——把这个世界治好。听起来很中二是吧？但你是地球选中的人。我相信你与众不同。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "reveal_secret",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "know_you",
+          "speakerName": "张老",
+          "text": "老夫见过很多穿越者了。你是第47个。前46个……大多数都死了。有的被宗门杀了。有的被虚空吞了。有的——自己选择了放弃。",
+          "choices": [
+            {
+              "text": "我不会成为第47个。",
+              "nextNodeId": "determined",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "gain_cultivation",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "那你还在这里等什么？",
+              "nextNodeId": "waiting",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "determined",
+          "speakerName": "张老",
+          "text": "哈！说得好。老夫在你身上看到了一些不一样的东西。拿着——这是老夫年轻时写的一些修炼心得。虽然算不上什么绝世秘籍，但对你这种刚刚起步的小家伙，应该有些用处。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "waiting",
+          "speakerName": "张老",
+          "text": "（他望向远方的天际，眼神忽然变得苍老）在等我妻子。她在虚空里。三十年了——我知道她还活着。每一个穿越者都是我找到她的希望。每一个穿越者——虚空都会放出来。但没有人能把她带回来。",
+          "choices": [
+            {
+              "text": "我会帮你找到她的。",
+              "nextNodeId": "promise",
+              "requiredFame": 20,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "……我不知道该说什么。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "promise",
+          "speakerName": "张老",
+          "text": "（他拍了拍你的肩膀，手掌微微颤抖）好。有你这句话，老夫这三十年……没白等。她的名字叫素心。她被虚空吞没的那天，穿着我最喜欢的那件青色长衫。如果你见到她——告诉她，我还在这里煮着她最爱的茶。",
+          "nextNodeId": "start",
+          "onEnterEvent": "gain_cultivation",
+          "onExitEvent": "",
+          "onChoiceEvents": [],
+          "choices": [],
+          "conditions": []
+        },
+        {
+          "id": "teach",
+          "speakerName": "张老",
+          "text": "修炼之道，贵在坚持。这样吧，老夫传你引气法门——每日打坐一个时辰，感应天地灵气，引入丹田运转。看似简单，但日积月累，你的根基会比那些靠丹药堆出来的修士稳固十倍。",
+          "choices": [
+            {
+              "text": "多谢前辈指点！",
+              "nextNodeId": "teach_result",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "gain_cultivation",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "有没有更快的办法？",
+              "nextNodeId": "fast_track",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "teach_result",
+          "speakerName": "张老",
+          "text": "嗯。你体内已有一丝灵气涌动——天赋比我想象的好。去吧，多和人交流，多在灵脉上修炼。天道酬勤。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "fast_track",
+          "speakerName": "张老",
+          "text": "（他严肃地看着你）修行没有捷径。那些走捷径的人——都被虚空吞了。记住这句话：根基不牢，地动山摇。你可以在战斗中突破，可以在历练中成长，但不要靠邪门歪道。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "farewell",
+          "speakerName": "张老",
+          "text": "去吧。这个世界很大——去看看。但记住——虚空不会等你的。",
+          "choices": [],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        }
+      ],
+      "secrets": [
+        {
+          "revealThreshold": 5,
+          "hint": "张老总是望着西方发呆……他似乎在等什么人。",
+          "revelation": "（张老低声说）你注意到我总看西边了？三十年前，虚空裂缝第一次出现的时候——就是西边那座山上。我爱人素心是第一个被卷进去的人。我追到裂缝前，她推开了我。那是她最后一次看着我的眼睛。"
+        },
+        {
+          "revealThreshold": 10,
+          "hint": "他偶尔会喃喃自语一个名字——'素心'。",
+          "revelation": "（张老忽然拉住你的袖子）听着。这个世界——其实是一座监狱。虚空是看守。灵气是牢房里的空气。我们都是囚犯。但地球意志——它选了你们这些人来越狱。我不知道为什么是你。但我知道……素心在虚空的那一边，找到了越狱的钥匙。"
+        }
+      ],
+      "relations": [
+        {
+          "targetNpcId": "npc_wang_001",
+          "type": "Friend",
+          "description": "王铁柱帮张老修过房顶",
+          "closeness": 60
+        },
+        {
+          "targetNpcId": "npc_li_001",
+          "type": "Student",
+          "description": "李灵儿向张老请教过炼丹",
+          "closeness": 50
+        },
+        {
+          "targetNpcId": "npc_zhao_001",
+          "type": "Friend",
+          "description": "赵掌柜帮张老瞒着身份",
+          "closeness": 70
+        },
+        {
+          "targetNpcId": "npc_guard_001",
+          "type": "Friend",
+          "description": "张老是守卫的老上司",
+          "closeness": 55
+        }
+      ]
+    },
+    {
+      "npcId": "npc_wang_001",
+      "npcName": "王铁柱",
+      "npcTitle": "铁匠 · 前炼器阁铸剑师",
+      "greetingLines": [
+        "打铁打铁！——噢，是客人啊。要铸兵器还是修装备？",
+        "铛——铛——铛——（他专注地捶打着一块赤红的铁锭，汗水沿着下巴滴落）……自己看看货架。",
+        "又来照顾生意了？这次给你打个折。",
+        "（他擦了擦汗）这淬火水的配方是我自己调的——整个灵气大陆独一份。",
+        "手生了没？修行者的武器就是第二条命——可得好好保养。"
+      ],
+      "farewellLines": [
+        "武器如手足——好好待它。",
+        "下次来带点好矿石——我帮你铸把好的。",
+        "路上小心——矿脉那边不太平，听说有妖兽出没。"
+      ],
+      "dialogueNodes": [
+        {
+          "id": "start",
+          "speakerName": "王铁柱",
+          "text": "嘿！要打铁吗？我这儿可是整个新手村最好的铁匠铺！",
+          "choices": [
+            {
+              "text": "我想看看你的货。",
+              "nextNodeId": "shop",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你这铁匠铺……开了多久了？",
+              "nextNodeId": "story",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "有没有什么好武器推荐？",
+              "nextNodeId": "weapon_advice",
+              "requiredFame": 5,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "算了，下次吧。",
+              "nextNodeId": "farewell",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "shop",
+          "speakerName": "王铁柱",
+          "text": "自己看！都是好货。刀枪剑戟斧钺钩叉——只要你说得出来的兵器，我都能做。按Y键打开交易慢慢挑。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "weapon_advice",
+          "speakerName": "王铁柱",
+          "text": "（他上下打量了你一番）你刚练气不久吧？我建议你先用轻剑——招式灵活，灵气消耗小。等筑基以后再换重兵器。新手不要贪图威力，上手快才是硬道理。",
+          "choices": [
+            {
+              "text": "那就来一把轻剑吧。",
+              "nextNodeId": "shop",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你这个建议很实在。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "story",
+          "speakerName": "王铁柱",
+          "text": "（他手上的锤子停了一下）……十年了。从离开炼器阁到现在。这把铁锤跟了我十年——比我弟弟跟我的时间都长。",
+          "choices": [
+            {
+              "text": "你弟弟……他还好吗？",
+              "nextNodeId": "brother",
+              "requiredFame": 15,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "炼器阁是什么地方？",
+              "nextNodeId": "forge_guild",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "不提不开心的事了。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "brother",
+          "speakerName": "王铁柱",
+          "text": "（他沉默了很久，手上的活停了下来）那把剑——我铸的。他拿着它杀了天元宗的一个长老。现在他们不仅在找铸剑的人——也在找他。如果见到他……告诉他——哥哥不怪他。",
+          "choices": [
+            {
+              "text": "他为什么要杀天元宗长老？",
+              "nextNodeId": "brother_reason",
+              "requiredFame": 20,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我会留意的。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "brother_reason",
+          "speakerName": "王铁柱",
+          "text": "（他放下铁锤，声音沙哑）那个长老……把我弟弟的道侣抓去炼了人丹。他求宗门主持公道——没用。对方是长老，他只是一个外门弟子。所以他只能用自己的方式……那把剑是我偷偷给他的。我后悔的不是铸了那把剑——而是没有和他一起走。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "reveal_secret",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "forge_guild",
+          "speakerName": "王铁柱",
+          "text": "炼器阁是灵气大陆最好的兵器铸造之地——至少曾经是。那里汇聚了最好的铸剑师、最好的材料、最好的技术。但也汇聚了最肮脏的交易。表面上是名门正派——背地里用人血淬剑、用活人试刀。我受不了才走的。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "farewell",
+          "speakerName": "王铁柱",
+          "text": "行。下次想打兵器了来找我——报我王铁柱的名字，给你打八折。",
+          "choices": [],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        }
+      ],
+      "secrets": [
+        {
+          "revealThreshold": 5,
+          "hint": "王铁柱的锤子下面压着一张泛黄的信……",
+          "revelation": "（他趁没人注意，把信塞给你看）我弟弟临走前留的。他说他去东海了——但你看这日期……是三年前的了。东海那边我托人打听过——没有人见过他。我不知道他是不是还活着。"
+        },
+        {
+          "revealThreshold": 10,
+          "hint": "他夜里偶尔会独自喝酒，对着火炉发呆。",
+          "revelation": "（他醉醺醺地笑了一下）你知道天元宗通缉的是谁吗？不是他——是我。我替弟弟顶了罪。那把剑的铸造手法——整个灵气大陆只有我做得出来。他们早就知道了。但没关系……只要他还活着，我担着这个罪名也无所谓。"
+        }
+      ],
+      "relations": [
+        {
+          "targetNpcId": "npc_zhang_001",
+          "type": "Friend",
+          "description": "张老是王铁柱最敬重的长辈",
+          "closeness": 60
+        },
+        {
+          "targetNpcId": "npc_li_001",
+          "type": "Rival",
+          "description": "铁匠铺和药铺争过一块地",
+          "closeness": -20
+        },
+        {
+          "targetNpcId": "npc_miner_001",
+          "type": "Friend",
+          "description": "王铁柱经常从老矿工那里买矿石",
+          "closeness": 45
+        }
+      ]
+    },
+    {
+      "npcId": "npc_li_001",
+      "npcName": "李灵儿",
+      "npcTitle": "药童 · 前副宗主之女",
+      "greetingLines": [
+        "来买药吗？今天刚炼了一炉培元丹——效果很好的。",
+        "（她正在分拣药材，头也不抬）左边是成品药——右边是药材。自己看。",
+        "你脸色不太好——是不是修炼出了岔子？我这儿有调理的丹药。",
+        "药材越来越难采了。山里的妖兽被虚空影响后越来越暴躁……",
+        "（她抬头看了看天）今天的灵气不太对劲——你修炼时小心点。"
+      ],
+      "farewellLines": [
+        "小心点——山里不太平。",
+        "丹药别省着——该用就用。活着才是最重要的。",
+        "有空来看看——新药到了我给你留着。"
+      ],
+      "dialogueNodes": [
+        {
+          "id": "start",
+          "speakerName": "李灵儿",
+          "text": "需要买药吗？我这里有各种丹药——都是我亲手炼的。",
+          "choices": [
+            {
+              "text": "看看有什么药。",
+              "nextNodeId": "shop",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "山里为什么采不到药了？",
+              "nextNodeId": "herbs",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你的炼丹术是谁教的？",
+              "nextNodeId": "father",
+              "requiredFame": 10,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我先走了。",
+              "nextNodeId": "farewell",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "shop",
+          "speakerName": "李灵儿",
+          "text": "按Y键看货。培元丹、聚气散、止血散——都是新炼的，药效十足。需要什么直接说。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "herbs",
+          "speakerName": "李灵儿",
+          "text": "虚空裂缝越来越大。山里的妖兽被虚空影响了——变得狂躁。采药人都不敢去了。你要是敢进山——帮我采点赤芝回来。我在炼一味重要的丹药，就差这味主药了。我会给你报酬的。",
+          "choices": [
+            {
+              "text": "好，我帮你采。",
+              "nextNodeId": "herb_quest",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "give_herb_quest",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "赤芝在哪里能找到？",
+              "nextNodeId": "herb_location",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "下次再说吧。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "herb_location",
+          "speakerName": "李灵儿",
+          "text": "北山悬崖朝南的峭壁上——那里阳光好，灵气足，赤芝最喜欢长在那。但你要小心——那附近有一窝变异的赤眼狼，它们也被虚空影响了。最好带点防身的武器再去。",
+          "choices": [
+            {
+              "text": "明白了，我准备好了就去。",
+              "nextNodeId": "herb_quest",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "give_herb_quest",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "herb_quest",
+          "speakerName": "李灵儿",
+          "text": "谢谢你！记得采回来后我帮你炼成丹药——比直接卖划算多了。小心安全，活着回来。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "father",
+          "speakerName": "李灵儿",
+          "text": "（她环顾四周，压低声音）我爹……前天元宗副宗主。他不许我告诉任何人——但你救了张老的孙子，我信你。我爹被天元宗宗主废掉了修为——因为他发现宗主在用人血炼丹。他想阻止——然后他就变成了一个废人。",
+          "choices": [
+            {
+              "text": "用人血炼丹？！",
+              "nextNodeId": "human_pill",
+              "requiredFame": 15,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你爹现在在哪？",
+              "nextNodeId": "father_where",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "human_pill",
+          "speakerName": "李灵儿",
+          "text": "（她的眼神中闪过一丝恐惧）用活人的精血和魂魄来炼丹——可以大幅提升修为。但那是邪术！被整个修真界明令禁止的。天元宗宗主暗中炼制这种丹药已经十几年了——我爹发现的时候，他手上有三百多条人命。三百多条！",
+          "choices": [],
+          "nextNodeId": "father_where",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "father_where",
+          "speakerName": "李灵儿",
+          "text": "就在村里——后山的竹屋里。他每天坐在窗前发呆，偶尔会画画——全是血红色的画。我不敢看那些画。他说那是他梦里看到的东西……可能是虚空那边的景象。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "reveal_secret",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "farewell",
+          "speakerName": "李灵儿",
+          "text": "需要丹药就来找我。给你算便宜点——算是我爹那份。",
+          "choices": [],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        }
+      ],
+      "secrets": [
+        {
+          "revealThreshold": 5,
+          "hint": "她有一个木盒从不让人碰……",
+          "revelation": "（她犹豫了很久，还是打开了木盒）这是我娘的遗物。一块天元宗长老令牌。我娘生前是宗主夫人的贴身侍女——他们说她病死的。但我爹查过……我娘发现了一个秘密——宗主用人血炼丹的秘密。然后她就'病'了。"
+        },
+        {
+          "revealThreshold": 10,
+          "hint": "她偶尔会去后山一座无字碑前祭拜。",
+          "revelation": "（你跟着她到了后山，她终于说出了真相）我爹的修为其实没有被废。我们演了一场戏给宗主看——他假装被废，暗中调查宗主。这座碑里藏着他的修为结晶和所有证据。如果有一天他不在了……让我把碑挖开，把真相公之于众。"
+        }
+      ],
+      "relations": [
+        {
+          "targetNpcId": "npc_zhang_001",
+          "type": "Master",
+          "description": "李灵儿视张老为半个师父",
+          "closeness": 70
+        },
+        {
+          "targetNpcId": "npc_chen_001",
+          "type": "Friend",
+          "description": "两人经常交换药材情报",
+          "closeness": 40
+        },
+        {
+          "targetNpcId": "npc_apprentice_001",
+          "type": "Master",
+          "description": "李灵儿是采药学徒的师父",
+          "closeness": 65
+        }
+      ]
+    },
+    {
+      "npcId": "npc_zhao_001",
+      "npcName": "赵掌柜",
+      "npcTitle": "客栈老板 · 地下情报网",
+      "greetingLines": [
+        "客官里边请！——是先吃饭还是先住店？还是……来打听点消息？",
+        "（他擦了擦柜台）今天的酒不错——要不要来一壶？三十年份的竹叶青。",
+        "哦？又来新消息了——不过消息费另算，老规矩。",
+        "这客栈开了三十年——听了太多不该听的事。但我嘴严——只要钱到位。",
+        "最近陌生人越来越多了……灵气大陆要变天了。"
+      ],
+      "farewellLines": [
+        "消息有用的话——下次来喝酒，我请。",
+        "有些事情——知道得太多不是好事。你确定要继续查？",
+        "小心天元宗的人——他们在找你这种'外来者'。"
+      ],
+      "dialogueNodes": [
+        {
+          "id": "start",
+          "speakerName": "赵掌柜",
+          "text": "客官里边请！住宿50灵石一晚。打听消息？那得看你请我喝什么酒了。",
+          "choices": [
+            {
+              "text": "最近有什么新消息？",
+              "nextNodeId": "news",
+              "requiredFame": 5,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你这客栈开了多久了？",
+              "nextNodeId": "history",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你知道BOSS的弱点吗？",
+              "nextNodeId": "boss_info",
+              "requiredFame": 20,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "先住店吧。",
+              "nextNodeId": "farewell",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "news",
+          "speakerName": "赵掌柜",
+          "text": "（他凑过来压低声音）矿脉那边在打架。天元宗和青云门的人——已经打了两天了，死了三个散修。你要是去那边——小心点。另外，最近有几个陌生人住进了客栈——他们不像是来挖矿的。像是在找人。",
+          "choices": [
+            {
+              "text": "找什么人？",
+              "nextNodeId": "who_they_look",
+              "requiredFame": 10,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "天元宗和青云门为什么打？",
+              "nextNodeId": "sect_war",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "who_they_look",
+          "speakerName": "赵掌柜",
+          "text": "（他看了一眼楼上）他们在找一个从虚空裂缝出来的少年。说那少年身上带着一件'不该属于这个世界的东西'。但我打听不到更多了——那些人嘴巴严得很，而且……他们的修为不低。至少金丹期。我觉得他们不是天元宗的人。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "sect_war",
+          "speakerName": "赵掌柜",
+          "text": "矿脉。那条矿脉下面有一条极品灵石矿——谁占了它，谁就能在接下来的'虚空大劫'中多一分把握。天元宗想独吞——青云门当然不让。表面上是两宗之争，实际上是生死存亡的争夺。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "history",
+          "speakerName": "赵掌柜",
+          "text": "三十年。见过的人比天元宗长老见过的还多。你是第47个从虚空裂缝出来的人。前46个——后来都消失了。有的被宗门带走了。有的被杀了。有的一觉醒来就不在了。你小心点——这个村子没有表面看起来那么安全。",
+          "choices": [
+            {
+              "text": "他们都去哪了？",
+              "nextNodeId": "where_they_go",
+              "requiredFame": 15,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "多谢提醒。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "where_they_go",
+          "speakerName": "赵掌柜",
+          "text": "（他沉默片刻，倒了两杯酒）有一部分——被天元宗带走了。说是'招募人才'。但我的人传回消息——那些被带走的穿越者，全都被关在天元宗地下的密室里。在做实验。什么实验——我没打听到。但进去的人……没有一个出来过。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "reveal_secret",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "boss_info",
+          "speakerName": "赵掌柜",
+          "text": "（他伸出五个手指）五百灵石。这个情报值这个价。……好，成交。矿脉深处的那个大家伙——一只被虚空侵蚀了三阶的地龙兽。它的弱点在腹部第三节甲壳下面——那里有一道旧伤，是之前一个金丹修士砍的。用火系法术攻击那里——效果翻倍。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "farewell",
+          "speakerName": "赵掌柜",
+          "text": "好嘞——天字一号房，请！有事尽管吩咐。",
+          "choices": [],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        }
+      ],
+      "secrets": [
+        {
+          "revealThreshold": 5,
+          "hint": "赵掌柜的后院有一间从不让人进的房间……",
+          "revelation": "（他犹豫了很久，终于打开了那间房）这里……有从第一个到第四十六个穿越者的全部记录。他们的名字、来历、擅长什么、最后去了哪里。我在记录每一个人的命运——因为有人在付钱让我这么做。但我没有告诉他们全部。有些穿越者……我偷偷放走了。"
+        },
+        {
+          "revealThreshold": 10,
+          "hint": "他偶尔和一个黑衣人在后院密谈。",
+          "revelation": "（他把你拉到后院角落）那个黑衣人是天元宗的大长老——我名义上的'上级'。宗主派他来监视每一个穿越者。但我……双面间谍。我给他们的情报都是假的。真的情报——我都送到了青云门和散修联盟那里。这个村子……我是最后的防线。"
+        }
+      ],
+      "relations": [
+        {
+          "targetNpcId": "npc_chen_001",
+          "type": "Friend",
+          "description": "陈半仙每次都住赵掌柜的客栈",
+          "closeness": 50
+        },
+        {
+          "targetNpcId": "npc_zhang_001",
+          "type": "Friend",
+          "description": "赵掌柜帮张老瞒着身份",
+          "closeness": 70
+        },
+        {
+          "targetNpcId": "npc_guard_001",
+          "type": "Friend",
+          "description": "赵掌柜和守卫有情报合作",
+          "closeness": 40
+        }
+      ]
+    },
+    {
+      "npcId": "npc_chen_001",
+      "npcName": "陈半仙",
+      "npcTitle": "退役散修 · 古墓探险者",
+      "greetingLines": [
+        "哟，年轻人！我看你骨骼清奇——要不要来点好货？",
+        "这世道不太平啊——散修要有散修的活法。",
+        "我这一生走过的桥比你走过的路还多。有什么想问的尽管问。",
+        "修炼？嘿——我走过的路比你吃过的盐还多。",
+        "每次出去都不知道能不能回来——但这就是散修的命。习惯了。"
+      ],
+      "farewellLines": [
+        "多留个心眼——这年头人心比妖兽还危险。",
+        "下次有好东西我给你留着——记得带够灵石。",
+        "保重——活着才有机会突破。"
+      ],
+      "dialogueNodes": [
+        {
+          "id": "start",
+          "speakerName": "陈半仙",
+          "text": "走过路过不要错过！我这儿的货——不是我吹，整个灵气大陆你找不到第二家！",
+          "choices": [
+            {
+              "text": "看看有什么好货。",
+              "nextNodeId": "shop",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你的货是从哪来的？",
+              "nextNodeId": "source",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "请教修炼经验。",
+              "nextNodeId": "exp",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你听说过'活着的墓'吗？",
+              "nextNodeId": "tomb",
+              "requiredFame": 20,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "shop",
+          "speakerName": "陈半仙",
+          "text": "自己挑自己选！按Y交易。有古墓里挖出来的法器、有秘境里采的灵药、还有我亲手绘制的灵符——都是真货，假一赔十！",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "source",
+          "speakerName": "陈半仙",
+          "text": "（他神秘地笑了笑）你以为我是流浪商人？我是倒斗的！专门挖古修士的墓。这些东西全都是从墓里挖出来的。每一件都有来历——你看这玉佩，是一个元婴期女修的陪葬品。这柄断剑——是一个渡劫失败的散仙的遗物。不敢说全干净——但绝对都是真货。",
+          "choices": [
+            {
+              "text": "你挖过最危险的墓是什么样的？",
+              "nextNodeId": "dangerous_tomb",
+              "requiredFame": 10,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "卖这些不怕遭报应？",
+              "nextNodeId": "karma",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "offend_npc",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "dangerous_tomb",
+          "speakerName": "陈半仙",
+          "text": "（他撩起袖子，露出一条狰狞的伤疤）看到没有？三年前在苍狼山深处的一个墓里留下的。那个墓的主人是一个走火入魔的化神期修士——死了三百年怨气都没散。我带了八个兄弟进去——只出来了三个。墓里有会自己动的傀儡、填不满的深渊、还有……（他压低声音）他自己的怨灵。我们拿出来的那件东西——卖了之后我整整改了一年伤。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "karma",
+          "speakerName": "陈半仙",
+          "text": "（他脸色一沉）报应？你一个小娃娃懂什么！那些古修士活着的时候哪个不是杀人如麻？他们把宝贝带进棺材才是最自私的事——好东西就该流传于世，让活着的人用！再说了——我每次下墓都会给墓主人烧三炷香。这叫盗亦有道。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "exp",
+          "speakerName": "陈半仙",
+          "text": "（他摸了摸胡子）修炼这事儿吧——天赋、资源、运气，缺一不可。但我告诉你最重要的三件事：第一，别死磕瓶颈，打不过就绕路走。第二，多交朋友少结仇——散修不像宗门弟子有人撑腰。第三……相信你的直觉。修炼者的直觉——比任何功法都准。",
+          "choices": [
+            {
+              "text": "那突破境界有什么心得？",
+              "nextNodeId": "breakthrough",
+              "requiredFame": 5,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "受教了。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "breakthrough",
+          "speakerName": "陈半仙",
+          "text": "（他从怀里掏出一个小瓶）这是我自己调配的'破境散'——用七种珍惜灵药炼制，专门在突破时用的。市面上买不到。你既然叫我一声前辈——送你一瓶。下次突破时服下，能提升三成成功率。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "gain_cultivation",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "tomb",
+          "speakerName": "陈半仙",
+          "text": "（他猛地抓住你的手腕，压低声音）你也知道那座墓？！那是一座活着的墓——每一百年出现一次。下次出现就在三个月后——在苍狼山深处。我已经在找队伍了。你要是敢去——算你一个。但丑话说在前头：上一次进墓的十个人——只出来了两个。那两个出来的人——一个疯了，一个三天后也死了。死的时候嘴里一直在说……'它在笑'。",
+          "choices": [
+            {
+              "text": "……我考虑一下。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "算我一个！",
+              "nextNodeId": "join_tomb",
+              "requiredFame": 25,
+              "maxInfamy": 50,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "join_tomb",
+          "speakerName": "陈半仙",
+          "text": "（他用力拍了拍你的背）好小子！有胆识。三个月后苍狼山山脚下见——我带足了家伙，咱们干一票大的！这次要是活着出来——里面的东西分你三成。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "reveal_secret",
+          "onExitEvent": "",
+          "conditions": []
+        }
+      ],
+      "secrets": [
+        {
+          "revealThreshold": 5,
+          "hint": "他袖口里露出一截古怪的符文刺青……",
+          "revelation": "（他卷起袖子给你看那个符文）我骗了你。我不是什么散修——我是天元宗的叛逃长老。这个符文是内门长老的标记。我叛逃是因为……他们让我用人血炼丹。我说不。然后他们就派人杀我。我逃了十年——最后做了'陈半仙'。"
+        },
+        {
+          "revealThreshold": 10,
+          "hint": "他偶尔会望向北方，神色复杂。",
+          "revelation": "（他难得露出认真的表情）上次在古墓里——我找到了一个东西。不是法器，不是丹药。是……虚空的碎片。指甲盖那么大一块。但那东西……会说话。它在我的梦里说——'放我出去。'我把它封在了苍狼山的那座活墓里。三个月后——我其实是去把它埋得更深一些。不是挖宝。是封印。"
+        }
+      ],
+      "relations": [
+        {
+          "targetNpcId": "npc_zhao_001",
+          "type": "Friend",
+          "description": "陈半仙每次来都住赵掌柜的客栈",
+          "closeness": 50
+        },
+        {
+          "targetNpcId": "npc_li_001",
+          "type": "Friend",
+          "description": "两人经常交换药材情报",
+          "closeness": 40
+        },
+        {
+          "targetNpcId": "npc_mystic_001",
+          "type": "Rival",
+          "description": "两人曾经下过同一个墓，差点打起来",
+          "closeness": -10
+        }
+      ]
+    },
+    {
+      "npcId": "npc_apprentice_001",
+      "npcName": "小药童",
+      "npcTitle": "采药学徒 · 孤儿",
+      "greetingLines": [
+        "啊！是……是新来的修行者吗？我……我是李大夫的学徒！",
+        "（他手忙脚乱地翻找药材）你等一下——我给你找最好的止血草！",
+        "师父说今天山顶开了几株赤灵芝——但我没敢上去……上面有妖兽。",
+        "你也是来学炼丹的吗？李大夫可厉害了——整个村子就她会炼丹！",
+        "（他怯生生地递过来一株草药）这是今天刚采的……送你的。"
+      ],
+      "farewellLines": [
+        "下次来我教你认草药！",
+        "小心一点，不要让妖兽伤到了……",
+        "李大夫说修行要循序渐进——你也别太着急了。"
+      ],
+      "dialogueNodes": [
+        {
+          "id": "start",
+          "speakerName": "小药童",
+          "text": "你、你好！我叫小药童——李大夫让我在这看药材摊。你是新来的修行者吧？",
+          "choices": [
+            {
+              "text": "这附近有什么好去处吗？",
+              "nextNodeId": "places",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你能教我认认草药吗？",
+              "nextNodeId": "herb_lesson",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你跟着李灵儿多久了？",
+              "nextNodeId": "about_li",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我先去修炼了。",
+              "nextNodeId": "farewell",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "places",
+          "speakerName": "小药童",
+          "text": "嗯……村子东边有条小溪，那边的灵气特别足，很多修行者都去那打坐。北山上有药材，但有妖兽——李大夫不让我自己去。西边……西边不要去。李大夫说那边有不好的东西。",
+          "choices": [
+            {
+              "text": "西边有什么？",
+              "nextNodeId": "west_side",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "好的，我知道了。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "west_side",
+          "speakerName": "小药童",
+          "text": "（他声音变小）西边有一道黑色的裂缝……悬在半空中。每次下雨的时候，裂缝会发出呜呜的声音——像有人在哭。村里的大人说那是'虚空裂缝'。靠近的人会做噩梦。我……我偷偷去看过一次。裂缝里面……有眼睛在看我。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "herb_lesson",
+          "speakerName": "小药童",
+          "text": "（他高兴地拿起一株草药）这是止血草——最常见的药草，捣碎了敷在伤口上能止血。这是银叶草——炼聚气散的主药。这是……（他突然不好意思地挠头）我是不是说太多了？李大夫说我太爱说话了。",
+          "choices": [
+            {
+              "text": "你说得很好，继续。",
+              "nextNodeId": "more_herbs",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "谢谢，我记住了。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "more_herbs",
+          "speakerName": "小药童",
+          "text": "（开心地继续）还有一种很重要的——赤灵芝！长在北山的悬崖上，是炼制筑基丹的核心药材。不过太难采了……上次我看到一株很大的，但旁边有一只赤眼狼守着。送你这株止血草吧——就当交个朋友！",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "about_li",
+          "speakerName": "小药童",
+          "text": "（他眼神亮了起来）李大夫是世上最好的人！三年前她在山上采药，看到我被妖兽围攻——她冒着危险救了我。然后她教我认草药、教我炼丹、还给我地方住。虽然她有时候很严厉……但我知道她是为了我好。她心里有很多难过的事……但她从来不跟我说。",
+          "choices": [
+            {
+              "text": "她确实是个好人。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你知道她父亲的事吗？",
+              "nextNodeId": "about_li_father",
+              "requiredFame": 10,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "about_li_father",
+          "speakerName": "小药童",
+          "text": "（他左右看看，贴在你耳边说）李大夫的爸爸住在后山的竹屋里。有时候我给他送饭——他总是坐在窗边发呆。有一次我看到他在画画……画的全是红色的花。他的眼神很可怕——不是凶，是……很伤心的那种可怕。我不敢多问。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "farewell",
+          "speakerName": "小药童",
+          "text": "嗯！下次来我教你更多的草药知识——一起加油修行！",
+          "choices": [],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        }
+      ],
+      "secrets": [
+        {
+          "revealThreshold": 3,
+          "hint": "他偷偷藏了一些奇怪的药材……",
+          "revelation": "（他从背篓底下翻出一株发光的灵芝）你看！这是我在山崖下面发现的——它会发光！像星星一样！但我没敢告诉李大夫……我怕她骂我乱跑。这株灵芝……我总觉得它在呼吸。"
+        },
+        {
+          "revealThreshold": 8,
+          "hint": "他偶尔会对着空气说话。",
+          "revelation": "（你问他跟谁说话，他愣了一下）……你看不见吗？穿白衣服的姐姐。她经常坐在那边的大石头上。她说她是虚空那边的人。她说让我不要告诉别人她在这里——但你是个好人，告诉你应该没关系吧？",
+          "npcNote": "小药童的眼睛能看见虚空中的灵体——这在剧情中非常重要。"
+        }
+      ],
+      "relations": [
+        {
+          "targetNpcId": "npc_li_001",
+          "type": "Master",
+          "description": "小药童是李灵儿救下的孤儿",
+          "closeness": 80
+        },
+        {
+          "targetNpcId": "npc_zhang_001",
+          "type": "Stranger",
+          "description": "张老偶尔指点他认药",
+          "closeness": 20
+        }
+      ]
+    },
+    {
+      "npcId": "npc_mystic_001",
+      "npcName": "云游散修",
+      "npcTitle": "前执法堂首席 · 寻道者",
+      "greetingLines": [
+        "（他背着一把古剑，风尘仆仆）道友有礼了。在下云游至此——这座村子倒是难得的一处安宁之地。",
+        "我走遍了大半个灵气大陆——从东海的孤岛到西漠的废墟。每一处都有故事。",
+        "（他擦拭着剑上的尘土）这村里的灵气比别处纯净——你运气不错，选了个好起点。",
+        "散修的路不好走——没有宗门庇护，一切靠自己。但——自由。",
+        "我已在此停留三日了——差不多该走了。但在走之前，有些话想对你说。"
+      ],
+      "farewellLines": [
+        "修行之路漫长——愿你初心不改。",
+        "如果有一天你到了天元城——去寻仙楼找掌柜的，报我的名字——'孤鸿'。",
+        "后会有期。天下很大——我们终会再见。"
+      ],
+      "dialogueNodes": [
+        {
+          "id": "start",
+          "speakerName": "云游散修",
+          "text": "我在外游历多年——见过无数天骄崛起又陨落。你初入此道，可有什么疑惑？",
+          "choices": [
+            {
+              "text": "散修该怎么修炼？",
+              "nextNodeId": "sanxiu_path",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你云游各地，有什么见闻？",
+              "nextNodeId": "travels",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你在这里找什么？",
+              "nextNodeId": "searching",
+              "requiredFame": 10,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你的剑看起来很特别。",
+              "nextNodeId": "sword_story",
+              "requiredFame": 15,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "sanxiu_path",
+          "speakerName": "云游散修",
+          "text": "散修没有宗门资源，所以你要学会'借'——借天地灵气修炼、借妖兽磨炼战技、借秘境获取机缘。这条路比宗门弟子难十倍——但走出来的，无一不是真正的高手。我建议你先在这个村子周围打好基础——东溪的灵脉适合练气，北山的妖兽适合筑基前历练。",
+          "choices": [
+            {
+              "text": "能推荐几个历练地点吗？",
+              "nextNodeId": "locations",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "多谢指点！",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "locations",
+          "speakerName": "云游散修",
+          "text": "练气期去东溪灵脉打坐——那里灵气浓度是别处的三倍。筑基期去北山猎杀妖兽——既能赚灵石又能磨炼实战。到了金丹期……如果那时候你还活着，可以往西走——穿过虚空裂缝边缘，那边有一个上古秘境，三年开启一次。不过——你现在想这些太早了，脚踏实地吧。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "gain_cultivation",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "travels",
+          "speakerName": "云游散修",
+          "text": "我最近从西漠回来——那里的虚空侵蚀最严重。黄沙之下埋着三座上古宗门的遗址——全是虚空爆发时一夜之间覆灭的。我在其中一座遗址里找到了这个——（他亮出一块玉简）里面记载了一些关于虚空起源的内容。如果你感兴趣——等你筑基了，可以自己去看看。",
+          "choices": [
+            {
+              "text": "虚空起源说了什么？",
+              "nextNodeId": "void_origin",
+              "requiredFame": 20,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我会去的。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "void_origin",
+          "speakerName": "云游散修",
+          "text": "玉简上说——虚空不是外来的入侵者。它是这个世界自己的'免疫系统'暴走了。就像人的身体——如果长期被毒素侵蚀，免疫系统就会疯狂攻击一切——包括自己。灵气大陆的修士们为了追求力量，过度抽取了天地的本源——虚空就是天地在'自救'。只可惜……这种自救——会毁灭一切。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "reveal_secret",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "searching",
+          "speakerName": "云游散修",
+          "text": "（他沉默了一会儿）我在找一个孩子。一个从虚空裂缝里出来的少年——大约十五六岁。他手里有一件不该属于这个世界的东西。我来这里是因为有人告诉我——他在这个村子附近出现过。但我找了三天——没有找到。也许他已经走了。也许……他从来没有存在过。",
+          "choices": [
+            {
+              "text": "那东西是什么？",
+              "nextNodeId": "the_thing",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "为什么要找他？",
+              "nextNodeId": "why_find",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "the_thing",
+          "speakerName": "云游散修",
+          "text": "一把钥匙。一把可以打开虚空核心的钥匙。如果这把钥匙落到天元宗宗主手里——他会打开虚空，释放出里面所有的东西。那不是灾难——那是终结。这个世界的终结。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "why_find",
+          "speakerName": "云游散修",
+          "text": "为了保护他——也保护那把钥匙。天元宗在找他。几个隐世的老怪物也在找他。如果我先找到他——至少可以给他一个选择。而不是被抓去做实验。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "sword_story",
+          "speakerName": "云游散修",
+          "text": "（他抚过剑身，眼神温柔）这把剑叫'断念'。是我师父留给我的唯一遗物。他曾是天元宗执法堂的首席——和我一样。他因为放走了一个被冤枉的弟子——被逐出宗门。临死前他把剑给了我，说——'孤鸿，这把剑没有斩断我的念想。希望它能斩断你的。'",
+          "choices": [
+            {
+              "text": "你也被逐出天元宗了？",
+              "nextNodeId": "expelled",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "好剑。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "expelled",
+          "speakerName": "云游散修",
+          "text": "（他苦笑了一下）是。原因和我师父一样——我放走了一个不该放走的人。那个弟子发现了宗主的秘密——用人血炼丹。宗主说要灭口。我让他走了。然后我被逐出宗门，追杀了一年。最后逃到了西漠——在那里我找到了师父说的'另一种活法'。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        }
+      ],
+      "secrets": [
+        {
+          "revealThreshold": 5,
+          "hint": "他的剑不是凡品——剑身上刻着上古符文。",
+          "revelation": "（他将剑横在你面前）你注意到这符文了？这是'九天星辰诀'——一套失传了六百年的功法。我在西漠的一个遗迹里找到的。修炼此诀可以借星辰之力淬体——大成之后，可以短暂抵抗虚空的侵蚀。这也是我为什么能在虚空裂缝边缘自由活动的原因。"
+        },
+        {
+          "revealThreshold": 10,
+          "hint": "他有时会在深夜盘膝打坐，周身有金色灵气环绕。",
+          "revelation": "（你深夜到访，他正在打坐）你看到了？……我确实掌握了九天星辰诀的第二层。但我也被某个东西盯上了。虚空中有一个意识——它知道我在修炼这种功法。最近它开始在我的梦里出现。它在说——'你逃不掉的。'我留在这个村子不只是找那个少年——也是在等它找上门来。与其被追一辈子，不如在这里做个了断。"
+        }
+      ],
+      "relations": [
+        {
+          "targetNpcId": "npc_chen_001",
+          "type": "Rival",
+          "description": "两人曾经下过同一个墓",
+          "closeness": -10
+        },
+        {
+          "targetNpcId": "npc_zhang_001",
+          "type": "Stranger",
+          "description": "云游散修曾经远远见过张老",
+          "closeness": 15
+        }
+      ]
+    },
+    {
+      "npcId": "npc_miner_001",
+      "npcName": "老矿工",
+      "npcTitle": "资深矿工 · 地下通",
+      "greetingLines": [
+        "（他嘴里叼着烟杆，眯着眼打量你）新来的？矿洞可不像村里这么太平。",
+        "今天的矿石成色不错——要不要看看？刚从矿洞里挖出来的。",
+        "（他敲了敲背）老了老了——以前我一个人能挖三天的量，现在半天就腰疼。",
+        "矿洞里又出事了——昨天塌了一块。下面好像……有东西。",
+        "你一个修行者对挖矿感兴趣？新鲜。行——我带你去认认路。"
+      ],
+      "farewellLines": [
+        "下矿前记得买好照明符——里面黑得伸手不见五指。",
+        "要是挖到好东西——拿来给我看看，我给你估个价。",
+        "里头要是听到奇怪的声音——赶紧跑。不要回头。"
+      ],
+      "dialogueNodes": [
+        {
+          "id": "start",
+          "speakerName": "老矿工",
+          "text": "挖矿挖了一辈子了——这矿洞里的每一块石头我都认识。有什么事？",
+          "choices": [
+            {
+              "text": "我想了解矿石采集。",
+              "nextNodeId": "ore_intro",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "矿洞里最近有什么异常？",
+              "nextNodeId": "mine_anomaly",
+              "requiredFame": 5,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "需要什么装备材料？",
+              "nextNodeId": "material_needs",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我去挖矿了。",
+              "nextNodeId": "farewell",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "ore_intro",
+          "speakerName": "老矿工",
+          "text": "（他从口袋里掏出几块矿石）这是铁矿石——最基础的，熔了能打农具和普通兵器。这是铜矿石——掺一点在铁里能让兵器更韧。这是——（他压低声音）星纹铁。整个矿洞里最值钱的东西，打造成兵器能附灵。但星纹铁只在最深处才有——要穿过第四层矿道才能挖到。",
+          "choices": [
+            {
+              "text": "第四层有什么危险吗？",
+              "nextNodeId": "layer4",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "明白了，我去试试。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "layer4",
+          "speakerName": "老矿工",
+          "text": "（他吸了一口烟）第四层……三年前我们挖到第四层的时候，发现了一条地下河。河对面有一扇青铜门——门上刻着上古符文。我们没敢打开。后来天元宗的人来了——他们打开了那扇门。进去的人——出来的时候都变了。眼睛发黑、不说话、晚上会对着墙角笑。宗门把他们带走后——就封了第四层的入口。",
+          "choices": [
+            {
+              "text": "你后来偷偷去过吗？",
+              "nextNodeId": "secret_visit",
+              "requiredFame": 15,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "那我还是别去了。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "secret_visit",
+          "speakerName": "老矿工",
+          "text": "（他沉默了很久）去过一次。去年——我一个人挖通了一条小路绕过了宗门的封印。那扇青铜门……是开着的。门的另一边——不是矿洞。是一座城。一座建在地下的城。建筑风格我从来没见过——像是一个上古文明。我没敢走太深。但我在地上捡到了这个——（他掏出一块黑色的晶石）星纹铁里从来没有见过这种纯度。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "reveal_secret",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "mine_anomaly",
+          "speakerName": "老矿工",
+          "text": "（他看了看四周）最近矿洞里老是传来说话声。但里面根本没有人。昨天——我在第三层挖矿的时候，听到背后有人叫我的名字。我回头——什么都没有。但那声音……是我死了二十年的老婆的声音。她在说——'当家的，别挖了。下来陪我。'",
+          "choices": [
+            {
+              "text": "……这也太邪门了。",
+              "nextNodeId": "void_mine",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你确定不是错觉？",
+              "nextNodeId": "not_illusion",
+              "requiredFame": 10,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "void_mine",
+          "speakerName": "老矿工",
+          "text": "（他的手微微颤抖）矿工里有老人说——这是虚空在'渗入'。矿洞越深，离虚空越近。我们挖到的矿石——那些高品质的星纹铁——都是在靠近虚空的地方找到的。矿石里……带着虚空的能量。我们用这种矿石打造的兵器——能伤到虚空生物。但也——会把虚空引到这里来。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "not_illusion",
+          "speakerName": "老矿工",
+          "text": "（他弹了弹烟灰）我挖了四十年矿——耳朵比谁都灵。那不是错觉。而且不只是我——昨天跟我一起下矿的三个小伙子都听到了。他们今天都没来上工。说是——病了。但我看他们那样——不是病。是吓的。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "material_needs",
+          "speakerName": "老矿工",
+          "text": "铁匠老王的货你看到了吧？那些好兵器用的都是我的矿石。你要打装备——先来我这里搞矿石。普通兵器用铁矿石就行。灵器需要星纹铁——但那个不好挖。如果你能搞到星纹铁——老王能给你打出一把好兵器来。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "farewell",
+          "speakerName": "老矿工",
+          "text": "注意安全——矿洞里不要一个人走太深。带上照明符和驱兽香。",
+          "choices": [],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        }
+      ],
+      "secrets": [
+        {
+          "revealThreshold": 5,
+          "hint": "他从不让人看他的后背……",
+          "revelation": "（他脱下外套给你看）看到这道疤了吗？从肩膀一直到大腿根。不是妖兽抓的——是在矿洞第四层的青铜门后面，被什么东西抓的。那个东西——我没有看清。我只看到一只巨大的、黑色的手。带着无数只眼睛。它抓了我一下——我逃了三天才爬出矿洞。村里的大夫说我命大——但我知道。是它放我走的。"
+        },
+        {
+          "revealThreshold": 10,
+          "hint": "他在矿井最深处藏了一个秘密。",
+          "revelation": "（他带你到了矿洞深处的一个隐蔽岔道）这后面——是一条灵石矿脉。纯度是市面上流通的十倍。我没上报——因为一旦上报，天元宗就会派人来'接管'。这些灵石——我偷偷分给了村里的孩子们。让他们能买得起修炼资源。让这个村子的孩子——不用像我一样一辈子挖矿。"
+        }
+      ],
+      "relations": [
+        {
+          "targetNpcId": "npc_wang_001",
+          "type": "Friend",
+          "description": "老矿工长期给王铁柱供应矿石",
+          "closeness": 55
+        },
+        {
+          "targetNpcId": "npc_guard_001",
+          "type": "Friend",
+          "description": "老矿工和守卫是酒友",
+          "closeness": 35
+        }
+      ]
+    },
+    {
+      "npcId": "npc_liu_001",
+      "npcName": "刘猎户",
+      "npcTitle": "受伤猎人 · 妖兽专家",
+      "greetingLines": [
+        "（他靠坐在床上，腿上缠着厚厚的绷带）……是来买兽皮的？还是——你也是来打听那东西的？",
+        "（他咳嗽了几声）要不是运气好——我已经和周二麻子一样死在北山了。",
+        "那条腿……废了。但那畜生的命——我一定要亲手取回来。",
+        "你身上有血腥味——你也杀过妖兽？",
+        "来来来——我跟你说说那东西长什么样。下次遇到——至少知道怎么跑。"
+      ],
+      "farewellLines": [
+        "见到那畜生——帮我多砍两刀。",
+        "活着回来——我请你喝酒。",
+        "小心它的尾巴——它最毒的地方就在尾巴上。"
+      ],
+      "dialogueNodes": [
+        {
+          "id": "start",
+          "speakerName": "刘猎户",
+          "text": "（他挣扎着坐起来）你是新来的修行者？好——我跟你说，北山出大事了。",
+          "choices": [
+            {
+              "text": "出什么事了？",
+              "nextNodeId": "beast_story",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你的伤怎么样了？",
+              "nextNodeId": "injury",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我能帮你做什么？",
+              "nextNodeId": "help_quest",
+              "requiredFame": 5,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你好好养伤吧。",
+              "nextNodeId": "farewell",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "beast_story",
+          "speakerName": "刘猎户",
+          "text": "北山来了一只变异妖兽。不是普通的变异——是被虚空完全侵蚀的那种。体型有普通野狼的三倍大——浑身覆盖着黑色的鳞甲，眼睛是血红色的。它的爪子——能抓碎筑基期修士的护体灵气。我亲眼看到它一掌拍碎了周二麻子的脑袋——周二可是筑基中期的修士！",
+          "choices": [
+            {
+              "text": "那妖兽有什么弱点吗？",
+              "nextNodeId": "weakness",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "它一般在哪出没？",
+              "nextNodeId": "location",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "weakness",
+          "speakerName": "刘猎户",
+          "text": "我观察了它半个月。它的腹部有一块鳞甲是后来长出来的——颜色比其他的浅。那是它之前受过伤的地方。用火系法术集中攻击那里——能破防。另外——它怕光。强烈的光照会让它短暂失明。如果你要去——带足照明符和火系符箓。不要一个人去——至少要组队三个人。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "location",
+          "speakerName": "刘猎户",
+          "text": "它把巢穴建在北山腰的一个山洞里——就是以前采赤芝的那个山洞。它白天会在洞内休息，傍晚出来猎食。如果你要去——建议白天去。趁它睡觉的时候——先布置好陷阱，再用火攻。硬打的话——至少需要金丹期的实力。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "injury",
+          "speakerName": "刘猎户",
+          "text": "（他苦笑）腿骨被拍碎了。李大夫给我接了骨——但说了，至少三个月不能下地。她说我运气好——那条腿差一寸就被齐根切断了。但我不甘心啊……周二麻子跟了我十五年了。我俩一起猎过的妖兽没有一千也有八百——他死在我面前，我却连给他收尸都做不到。",
+          "choices": [
+            {
+              "text": "我去帮你把周二麻子的遗物找回来。",
+              "nextNodeId": "retrieve_quest",
+              "requiredFame": 10,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "节哀。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "retrieve_quest",
+          "speakerName": "刘猎户",
+          "text": "（他眼眶红了）你真的愿意去？他的尸首……大概在山洞东面三百步的地方。他身上有一块祖传的玉佩——是他娘留给他的唯一遗物。如果你能拿回来……我刘大彪这条命以后就是你的了。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "give_herb_quest",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "help_quest",
+          "speakerName": "刘猎户",
+          "text": "我现在这样也做不了什么……但如果方便的话——帮我去北山采一些千层草回来。李大夫说那东西敷在伤口上能加速愈合。我想早点好起来——亲手去给周二报仇。千层草长在溪边的阴湿处——应该不难找。",
+          "choices": [
+            {
+              "text": "好，我帮你采。",
+              "nextNodeId": "herb_help",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我找到就送过来。",
+              "nextNodeId": "herb_help",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "herb_help",
+          "speakerName": "刘猎户",
+          "text": "多谢了！等我好了——请你喝我藏了十年的蛇胆酒！那玩意儿大补——一瓶下去能抵你打坐三天！",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "farewell",
+          "speakerName": "刘猎户",
+          "text": "小心北山那边。等我腿好了——咱们一起上山打猎！",
+          "choices": [],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        }
+      ],
+      "secrets": [
+        {
+          "revealThreshold": 5,
+          "hint": "他床头的兽皮里有一张画着奇怪符号的纸。",
+          "revelation": "（他犹豫了一下，把纸递给你）这是周二麻子死前在我手上画的——他被那妖兽拍飞之前，用手在地上画了这些符号。我拓印下来了。我找了村里识字的人看——他们说这是上古文字。意思是……'门已经开了'。我不知道那妖兽和这扇门有什么关系。但周二麻子这个人——他从来说话都是有道理的。"
+        },
+        {
+          "revealThreshold": 10,
+          "hint": "他半夜会痛苦地低吼，但不是在叫腿疼。",
+          "revelation": "（你半夜过来看他，他满头大汗地抓着你的手低声说）不是腿疼……是我看到了。每次闭上眼睛——我就看到那扇门。青铜的。上面刻着会动的符文。门缝里透出血红色的光。门后面有东西在叫我进去——用的周二麻子的声音。我不敢睡。我他妈的不敢睡！"
+        }
+      ],
+      "relations": [
+        {
+          "targetNpcId": "npc_li_001",
+          "type": "Friend",
+          "description": "李灵儿给刘猎户治伤",
+          "closeness": 30
+        },
+        {
+          "targetNpcId": "npc_guard_001",
+          "type": "Friend",
+          "description": "刘猎户经常给守卫带野味",
+          "closeness": 25
+        }
+      ]
+    },
+    {
+      "npcId": "npc_guard_001",
+      "npcName": "守卫老周",
+      "npcTitle": "村庄守卫 · 前宗门护卫队长",
+      "greetingLines": [
+        "（他站得笔直，手按在刀柄上）进村先登记——最近不太平，我得确认你不是宗门的人。",
+        "又是你啊。今天没什么异常——除了天元宗的探子又来了一趟。",
+        "（他打了个哈欠）站岗站了六个时辰了……你呢？又去挖矿了？",
+        "最近村里来了不少生面孔——我总觉得有事要发生。",
+        "老张头让我多关照你——所以我记住了你的脸。",
+        "（他压低声音）告诉你个事——别往外传。昨晚城墙上有动静。"
+      ],
+      "farewellLines": [
+        "晚上别在村里闲逛——八点后宵禁。",
+        "遇到麻烦——大喊一声，我会赶到。",
+        "记住——在这个村子，信谁都别全信。"
+      ],
+      "dialogueNodes": [
+        {
+          "id": "start",
+          "speakerName": "守卫老周",
+          "text": "又见面了。最近村里的情况不太妙——你要小心些。有什么想问的？",
+          "choices": [
+            {
+              "text": "村里最近安全吗？",
+              "nextNodeId": "village_safety",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "天元宗和青云门是怎么回事？",
+              "nextNodeId": "sect_politics",
+              "requiredFame": 5,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "昨晚城墙上有动静？",
+              "nextNodeId": "wall_noise",
+              "requiredFame": 10,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "没事了，你继续站岗吧。",
+              "nextNodeId": "farewell",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "village_safety",
+          "speakerName": "守卫老周",
+          "text": "明面上——安全。有我在城墙上守着，妖兽不敢靠近村子三里之内。但暗地里……最近村里混进了不少天元宗的探子。他们穿着便服、装作商旅——但我一看他们的走路姿势就知道是宗门的人。他们大概在找什么——或者是等什么人。总之——你晚上别出村。",
+          "choices": [
+            {
+              "text": "他们找什么你知道吗？",
+              "nextNodeId": "what_they_want",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "我会小心的。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "what_they_want",
+          "speakerName": "守卫老周",
+          "text": "（他压低声音）我偷听到一些——他们在找一个'从裂缝里逃出来的东西'。我不知道是人还是别的什么。但他们的头领说了一句话——'找到他，带活的回来。宗主亲自要。'这事不小——天元宗宗主亲自下命令的事——上一次还是十五年前追杀叛逃长老。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "sect_politics",
+          "speakerName": "守卫老周",
+          "text": "（他冷笑了一声）表面上是两宗争矿脉。但实际上——天元宗宗主在准备一件大事。他需要那条矿脉下面的东西。青云门不知道那下面有什么——但他们知道不能让天元宗得到。所以两边都在耗。但天元宗耗得起——他们有整个北域的资源和人口。青云门……撑不了多久了。",
+          "choices": [
+            {
+              "text": "矿脉下面到底有什么？",
+              "nextNodeId": "below_mine",
+              "requiredFame": 15,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "这村子会受影响吗？",
+              "nextNodeId": "village_impact",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "below_mine",
+          "speakerName": "守卫老周",
+          "text": "（他环顾四周，声音压到最低）有人在矿洞第四层发现了一座上古遗迹——一座建在地下的古城。据说是虚空出现之前就存在的文明。天元宗想独占那个遗迹里埋藏的东西——可能是功法、可能是神器、也可能是……如何控制虚空的方法。谁掌握了那个——谁就是下一个时代的主宰。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "reveal_secret",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "village_impact",
+          "speakerName": "守卫老周",
+          "text": "迟早的事。如果天元宗赢了——这个村子会被征用成矿工营。如果青云门赢了——他们会撤走，留下一个被两边打烂的废墟。所以我……（他把手按在刀柄上）我在做准备。我在训练村子里的年轻人。如果真的到了那一天——至少我们能保护自己。",
+          "choices": [
+            {
+              "text": "如果真打起来了，算我一个。",
+              "nextNodeId": "join_defense",
+              "requiredFame": 20,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "你是个好守卫。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "join_defense",
+          "speakerName": "守卫老周",
+          "text": "（他严肃地看着你，伸出手）好。有你这个修行者帮忙——我们胜算多了一分。明天午时到村北演武场来——我教你几手守城用的合击术。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "wall_noise",
+          "speakerName": "守卫老周",
+          "text": "（他做了个'嘘'的手势）昨晚子时——我在城墙上巡逻，听到西边城墙外面有动静。不是人——也不是妖兽。是一种……摩擦声。像是什么很大的东西在城墙根底下爬。我点了个火把往下照——什么都没看见。但火光照到城墙根的时候——影子不对。城墙根下的影子……在动。独立的。",
+          "choices": [
+            {
+              "text": "要不要去看看？",
+              "nextNodeId": "investigate",
+              "requiredFame": 10,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            },
+            {
+              "text": "……别说了。",
+              "nextNodeId": "start",
+              "requiredFame": 0,
+              "maxInfamy": 999,
+              "consequenceEvent": "",
+              "requiredOrigin": "",
+              "requiredGift": ""
+            }
+          ],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "investigate",
+          "speakerName": "守卫老周",
+          "text": "白天我去看过了——墙根下有一排脚印。不是野兽的——是人的。但脚趾特别长——而且只有四个脚趾。脚印一直延伸到——老矿洞的方向。我沿着脚印追了一段——然后脚印消失了。像是走到一半……那个人就凭空消失了。",
+          "choices": [],
+          "nextNodeId": "start",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        },
+        {
+          "id": "farewell",
+          "speakerName": "守卫老周",
+          "text": "行。记住我说的——宵禁后别在村里逛。有事大声喊。",
+          "choices": [],
+          "nextNodeId": "",
+          "onEnterEvent": "",
+          "onExitEvent": "",
+          "conditions": []
+        }
+      ],
+      "secrets": [
+        {
+          "revealThreshold": 5,
+          "hint": "他裤腿下露出半截狰狞的伤疤。",
+          "revelation": "（他卷起裤腿）这道伤是天元宗的人赏的。我以前是天元宗的护卫队长——当了十二年。因为拒绝执行一个命令——屠杀一个反抗宗主的村庄。他们打断了我一条腿，把我扔在村外等死。张老救了我。所以我这条命——现在是这个村子的。"
+        },
+        {
+          "revealThreshold": 10,
+          "hint": "他有时候会和一个蒙面人在城墙角交换信件。",
+          "revelation": "（他拉你到隐蔽处）那个蒙面人是青云门的密使。我在和青云门做交易——我用天元宗的情报换武器和灵石。不要告诉任何人——包括张老。我知道我在走钢丝。但这个村子要想活下去——必须有人做脏活。我手上不干净——但我的心……是这个村子的。"
+        }
+      ],
+      "relations": [
+        {
+          "targetNpcId": "npc_zhang_001",
+          "type": "Family",
+          "description": "张老是守卫的救命恩人",
+          "closeness": 80
+        },
+        {
+          "targetNpcId": "npc_zhao_001",
+          "type": "Friend",
+          "description": "守卫和赵掌柜有情报合作",
+          "closeness": 40
+        },
+        {
+          "targetNpcId": "npc_miner_001",
+          "type": "Friend",
+          "description": "守卫和老矿工是酒友",
+          "closeness": 35
+        },
+        {
+          "targetNpcId": "npc_liu_001",
+          "type": "Friend",
+          "description": "刘猎户经常给守卫带野味",
+          "closeness": 25
+        }
+      ]
+    }
+  ]
+}

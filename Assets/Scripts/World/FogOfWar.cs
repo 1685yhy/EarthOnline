@@ -532,7 +532,7 @@ namespace EarthOnline.World
 
             EventBus.Publish(new FogHighGroundVisionEvent
             {
-                IsActive = "true",
+                IsActive = true,
                 CurrentRadius = CurrentRevealRadius,
                 RemainingDuration = _highGroundTimer
             });
@@ -548,7 +548,7 @@ namespace EarthOnline.World
 
             EventBus.Publish(new FogHighGroundVisionEvent
             {
-                IsActive = "false",
+                IsActive = false,
                 CurrentRadius = CurrentRevealRadius,
                 RemainingDuration = 0f
             });
@@ -581,7 +581,7 @@ namespace EarthOnline.World
 
             EventBus.Publish(new FogHighGroundVisionEvent
             {
-                IsActive = "true",
+                IsActive = true,
                 CurrentRadius = CurrentRevealRadius,
                 RemainingDuration = _highGroundTimer
             });

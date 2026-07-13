@@ -654,6 +654,11 @@ namespace EarthOnline.Framework {
         public object Quality;
         public object ReadinessScore;
         public object Show;
+        public object DaoBodyPenalty;
+        public object PillScore;
+        public object EquipScore;
+        public object FormScore;
+        public object EscortScore;
     }
 
     public struct TribulationPlatformActivatedEvent

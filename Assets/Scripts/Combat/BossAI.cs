@@ -18,6 +18,10 @@ namespace EarthOnline.Combat
         [Header("-- BOSS 定义 --")]
         public BossDef bossDef;
 
+        [Header("-- BOSS ID Override --")]
+        [SerializeField, Tooltip("精确 bossId，绕过模糊名称匹配。场景中设置此字段可精确指定 BOSS 定义。")]
+        private string bossIdOverride;
+
         [Header("-- 运行时状态 --")]
         [SerializeField, ReadOnly] private string _currentState = "Idle";
         [SerializeField, ReadOnly] private float _currentHP;
@@ -58,8 +62,37 @@ namespace EarthOnline.Combat
 
             if (bossDef == null)
             {
-                Debug.LogError("[BossAI] BossDef is not assigned! Disabling.");
-                enabled = false;
+                // 优先级 1：bossIdOverride 精确匹配
+                if (!string.IsNullOrEmpty(bossIdOverride))
+                {
+                    bossDef = BossConfigLoader.LoadBoss(bossIdOverride);
+                    if (bossDef != null)
+                    {
+                        Debug.Log($"[BossAI] 通过 bossIdOverride '{bossIdOverride}' 加载 {bossDef.bossId} → '{gameObject.name}'", gameObject);
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"[BossAI] bossIdOverride '{bossIdOverride}' 未找到，降级到自动匹配。", gameObject);
+                    }
+                }
+
+                // 优先级 2：通过 GameObject 名称模糊匹配
+                if (bossDef == null)
+                {
+                    bossDef = BossConfigLoader.LoadBossForGameObject(gameObject);
+                    if (bossDef != null)
+                    {
+                        Debug.Log($"[BossAI] 自动加载 BossDef '{bossDef.bossId}' → '{gameObject.name}'", gameObject);
+                    }
+                    else
+                    {
+                        Debug.LogWarning(
+                            "[BossAI] BossDef 未在 Inspector 中赋值，且 BossConfigLoader 暂无数据。" +
+                            "等待场景加载完成后由 AutoAssign 分配。",
+                            gameObject);
+                        // Start() 中会做最终检查，如果仍为空则禁用
+                    }
+                }
             }
         }
 
@@ -75,6 +108,13 @@ namespace EarthOnline.Combat
 
         private void Start()
         {
+            if (bossDef == null)
+            {
+                Debug.LogError("[BossAI] BossDef 在所有加载尝试后仍为空，已禁用组件。请检查 BossConfigLoader 是否正确加载。");
+                enabled = false;
+                return;
+            }
+
             InitializeBoss();
             _currentState = "Idle";
         }
@@ -208,7 +248,7 @@ namespace EarthOnline.Combat
                 EventBus.Publish(new BossEnrageEvent
                 {
                     TimeUntilEnrage = timeUntilEnrage.ToString("F1"),
-                    IsEnraged = "false"
+                    IsEnraged = false
                 });
             }
         }
@@ -230,8 +270,8 @@ namespace EarthOnline.Combat
                 _currentState = "Combat";
                 EventBus.Publish(new BossBreathingWindowEvent
                 {
-                    IsActive = "false",
-                    Duration = "0"
+                    IsActive = false,
+                    Duration = 0f
                 });
                 Debug.Log($"[BossAI] Breathing window ended. Returning to Combat.");
             }
@@ -239,11 +279,11 @@ namespace EarthOnline.Combat
 
 private void OnBreathingWindowEvent(BossBreathingWindowEvent evt)
 {
-    _isInBreathingWindow = evt.IsActive == "true";
+    _isInBreathingWindow = evt.IsActive is bool b && b;
     if (_isInBreathingWindow)
     {
         _currentState = "BreathingWindow";
-        _breathingWindowRemaining = evt.Duration is float f ? f : float.Parse(evt.Duration?.ToString() ?? "0");
+        _breathingWindowRemaining = SafeParseFloat(evt.Duration, BREATHING_WINDOW_DURATION);
     }
 }
 
@@ -346,7 +386,7 @@ private void OnBreathingWindowEvent(BossBreathingWindowEvent evt)
 
             EventBus.Publish(new BossBreathingWindowEvent
             {
-                IsActive = "true",
+                IsActive = true,
                 Duration = duration
             });
 
@@ -369,7 +409,7 @@ private void OnBreathingWindowEvent(BossBreathingWindowEvent evt)
 
             EventBus.Publish(new BossBreathingWindowEvent
             {
-                IsActive = "false",
+                IsActive = false,
                 Duration = 0f
             });
 
@@ -399,7 +439,7 @@ private void OnBreathingWindowEvent(BossBreathingWindowEvent evt)
 
             EventBus.Publish(new BossEnrageEvent
             {
-                TimeUntilEnrage = "0f",
+                TimeUntilEnrage = 0f,
                 IsEnraged = true
             });
 
@@ -591,6 +631,20 @@ private void OnBreathingWindowEvent(BossBreathingWindowEvent evt)
             }
 
             material.color = originalColor;
+        }
+
+        /// <summary>
+        /// 安全地将 object（int/float/double/string）解析为 float。
+        /// 比直接 float.Parse(obj.ToString()) 更健壮。
+        /// </summary>
+        private static float SafeParseFloat(object obj, float fallback)
+        {
+            if (obj is float f) return f;
+            if (obj is int i) return i;
+            if (obj is double d) return (float)d;
+            if (obj != null && float.TryParse(obj.ToString(), out float parsed))
+                return parsed;
+            return fallback;
         }
 
         // ─── 公共查询接口 ────────────────────────────────────────────────

@@ -327,7 +327,7 @@ namespace EarthOnline.World
                 Property = property,
                 Quality = quality,
                 Difficulty = Mathf.Clamp01(difficulty),
-                IsIdentified = "false",
+                IsIdentified = false,
                 Recipes = recipes ?? new List<string>(),
                 HasBeenTrialed = false
             };
@@ -595,7 +595,7 @@ namespace EarthOnline.World
                 {
                     MaterialId = materialId,
                     MaterialName = data.DisplayName ?? "???",
-                    IsPoisoned = "true",
+                    IsPoisoned = true,
                     DamageAmount = damage,
                     ResultDescription = resultDesc
                 });
@@ -635,8 +635,8 @@ namespace EarthOnline.World
                 {
                     MaterialId = materialId,
                     MaterialName = data.DisplayName ?? "???",
-                    IsPoisoned = "false",
-                    DamageAmount = "0",
+                    IsPoisoned = false,
+                    DamageAmount = 0,
                     ResultDescription = resultDesc
                 });
 

@@ -342,7 +342,7 @@ namespace EarthOnline.Core
 
                 return new EnhanceResult
                 {
-                    Success = "true",
+                    Success = true,
                     PreviousLevel = targetLevel - 1,
                     NewLevel = targetLevel,
                     SuccessRate = successRate,
@@ -377,11 +377,11 @@ namespace EarthOnline.Core
 
                 return new EnhanceResult
                 {
-                    Success = "false",
+                    Success = false,
                     PreviousLevel = equipData.CurrentLevel,
                     NewLevel = equipData.CurrentLevel,
                     SuccessRate = successRate,
-                    ReachedCap = "false",
+                    ReachedCap = false,
                     MaterialsConsumed = cost.MaterialCount,
                     SpiritStonesConsumed = cost.SpiritStoneCost,
                     MaterialIdsConsumed = cost.MissingMaterials.Length > 0 ? cost.MissingMaterials : new[] { _defaultMaterialId },
@@ -466,10 +466,10 @@ namespace EarthOnline.Core
                 EquipmentId = equipId,
                 EquipmentName = equipName,
                 Quality = quality,
-                CurrentLevel = "0",
+                CurrentLevel = 0,
                 BaseStatValue = baseStat,
                 CurrentStatBonus = baseStat, // +0 = base
-                TotalEnhanceAttempts = "0",
+                TotalEnhanceAttempts = 0,
                 TotalEnhanceSuccesses = 0
             };
 
@@ -560,10 +560,10 @@ namespace EarthOnline.Core
             Debug.LogWarning($"[EquipmentEnhancement] {reason}");
             return new EnhanceResult
             {
-                Success = "false",
-                PreviousLevel = "0",
-                NewLevel = "0",
-                SuccessRate = "0f",
+                Success = false,
+                PreviousLevel = 0,
+                NewLevel = 0,
+                SuccessRate = 0f,
                 ReachedCap = false
             };
         }

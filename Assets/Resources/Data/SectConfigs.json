@@ -1,0 +1,96 @@
+{
+  "sects": [
+    {
+      "sectId": "TianYuanZong",
+      "displayName": "天元宗",
+      "description": "正道之首，以剑法和符箓见长。门规森严，讲究以正制邪。宗门坐落于北域天元山，灵气充沛，为修真界第一圣地。",
+      "isFormal": true,
+      "requiredRealm": 5,
+      "requiredReputation": 0,
+      "trialDescription": "通过入门考核（战斗试炼）",
+      "sectColor": { "r": 0.24, "g": 0.49, "b": 0.85 },
+      "extraConditions": [
+        "当前未被其他门派通缉",
+        "需持推荐信（任一长老）"
+      ],
+      "trialCooldownDays": 7,
+      "leaveCooldownDays": 7,
+      "peacefulLeaveRepPenalty": 30,
+      "contributionRetentionOnLeave": 0.5,
+      "expulsionContributionThreshold": -100
+    },
+    {
+      "sectId": "QingYunMen",
+      "displayName": "青云门",
+      "description": "以丹道和采药闻名于世。门人善用草木灵材，济世救人。宗门位于东域青云山脉，灵草遍地。",
+      "isFormal": true,
+      "requiredRealm": 5,
+      "requiredReputation": 0,
+      "trialDescription": "通过入门考核（采集+炼丹试炼）",
+      "sectColor": { "r": 0.30, "g": 0.69, "b": 0.31 },
+      "extraConditions": [
+        "需通过药理基础测试",
+        "需自带3份灵草样本"
+      ],
+      "trialCooldownDays": 7,
+      "leaveCooldownDays": 7,
+      "peacefulLeaveRepPenalty": 30,
+      "contributionRetentionOnLeave": 0.5,
+      "expulsionContributionThreshold": -100
+    },
+    {
+      "sectId": "ShangMeng",
+      "displayName": "商盟",
+      "description": "以经商贸易为核心的松散商会。灵石即力量，契约即法律。控制着灵气大陆主要贸易路线。",
+      "isFormal": true,
+      "requiredRealm": 3,
+      "requiredReputation": 10,
+      "trialDescription": "完成'投名状'任务（上缴一批指定材料）",
+      "sectColor": { "r": 1.00, "g": 0.60, "b": 0.00 },
+      "extraConditions": [
+        "需上缴1000灵石作为保证金",
+        "需有至少一名商盟成员担保"
+      ],
+      "trialCooldownDays": 7,
+      "leaveCooldownDays": 7,
+      "peacefulLeaveRepPenalty": 30,
+      "contributionRetentionOnLeave": 0.5,
+      "expulsionContributionThreshold": -100
+    },
+    {
+      "sectId": "YuShouYiZu",
+      "displayName": "御兽遗族",
+      "description": "上古御兽传承的遗族。与灵兽共生，以驯化和驾驭妖兽为荣。五十年前被天元宗定为'妖修'，隐居于妖兽森林。",
+      "isFormal": true,
+      "requiredRealm": 3,
+      "requiredReputation": 0,
+      "trialDescription": "通过灵兽亲和测试",
+      "sectColor": { "r": 0.61, "g": 0.15, "b": 0.69 },
+      "extraConditions": [
+        "需已完成灵兽图鉴前10页收集",
+        "未与灵兽有过虐待记录"
+      ],
+      "trialCooldownDays": 7,
+      "leaveCooldownDays": 7,
+      "peacefulLeaveRepPenalty": 30,
+      "contributionRetentionOnLeave": 0.5,
+      "expulsionContributionThreshold": -100
+    },
+    {
+      "sectId": "SanXiuLianMeng",
+      "displayName": "散修联盟",
+      "description": "松散互助组织，不设门槛。提供悬赏榜、坊市摊位、情报交换。成员遍布全大陆，有隐世高手也有亡命之徒。",
+      "isFormal": false,
+      "requiredRealm": 0,
+      "requiredReputation": 0,
+      "trialDescription": "默认身份，无需加入流程",
+      "sectColor": { "r": 0.62, "g": 0.62, "b": 0.62 },
+      "extraConditions": [],
+      "trialCooldownDays": 0,
+      "leaveCooldownDays": 0,
+      "peacefulLeaveRepPenalty": 0,
+      "contributionRetentionOnLeave": 1.0,
+      "expulsionContributionThreshold": -100
+    }
+  ]
+}

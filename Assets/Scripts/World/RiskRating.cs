@@ -141,6 +141,9 @@ namespace EarthOnline.World
         /// <summary>Current risk factor (0~1).</summary>
         public float CurrentRiskFactor => _currentRiskFactor;
 
+        /// <summary>Whether it is currently nighttime.</summary>
+        public bool IsNight => _isNightTime;
+
         /// <summary>Current risk level enum.</summary>
         public RiskLevel CurrentRiskLevel => _currentRiskLevel;
 
@@ -304,15 +307,15 @@ namespace EarthOnline.World
 
         private void OnTimeOfDayChanged(TimeOfDayChangedEvent evt)
         {
-            _isNightTime = evt.IsNight;
+            _isNightTime = evt.IsNight is true;
 
             if (_debugMode)
-                Debug.Log($"[RiskRating] Time of day changed: {(evt.IsNight ? "Night" : "Day")} (RSK-04)");
+                Debug.Log($"[RiskRating] Time of day changed: {((evt.IsNight is true) ? "Night" : "Day")} (RSK-04)");
         }
 
         private void OnDynamicEventChanged(DynamicEventActiveEvent evt)
         {
-            _eventModifier = evt.IsActive ? EVENT_RISK_MODIFIER : 0;
+            _eventModifier = (evt.IsActive is true) ? EVENT_RISK_MODIFIER : 0;
 
             if (_debugMode)
                 Debug.Log($"[RiskRating] Dynamic event modifier: {_eventModifier} (RSK-05)");
@@ -519,7 +522,7 @@ namespace EarthOnline.World
                     ZoneId = null,
                     ZoneName = null,
                     Distance = float.MaxValue,
-                    WarningIntensity = "0f",
+                    WarningIntensity = 0f,
                     ThreatType = null
                 });
             }
@@ -592,7 +595,7 @@ namespace EarthOnline.World
         /// <summary>
         /// Calculate player's effective power based on cultivation realm (RSK-03).
         /// Placeholder pending CultivationManager integration.
-        /// Realm mapping: 练气 = "10", 筑基 = "20", 结丹 = "40", 元婴 = "70", 化神 = "110", etc.
+        /// Realm mapping: 练气 = 10, 筑基 = 20, 结丹 = 40, 元婴 = 70, 化神 = 110, etc.
         /// </summary>
         private float CalculatePlayerEffectivePower()
         {

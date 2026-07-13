@@ -231,57 +231,57 @@ namespace EarthOnline.World
             {
                 DisplayName = "仇恨", Level = ReputationLevel.Hatred,
                 MinValue = -1000, MaxValue = -801,
-                LevelFactor = "0.8f",
-                PriceMultiplier = "1f",
-                CanTrade = "false", TeleportAllowed = "false", TriggersPursuit = "true",
+                LevelFactor = 0.8f,
+                PriceMultiplier = 1f,
+                CanTrade = false, TeleportAllowed = false, TriggersPursuit = true,
             },
             new ReputationTierConfig
             {
                 DisplayName = "敌对", Level = ReputationLevel.Hostile,
                 MinValue = -800, MaxValue = -601,
-                LevelFactor = "0.6f",
-                PriceMultiplier = "1f",
-                CanTrade = "false", TeleportAllowed = "false", TriggersPursuit = "false",
+                LevelFactor = 0.6f,
+                PriceMultiplier = 1f,
+                CanTrade = false, TeleportAllowed = false, TriggersPursuit = false,
             },
             new ReputationTierConfig
             {
                 DisplayName = "冷淡", Level = ReputationLevel.Indifferent,
                 MinValue = -600, MaxValue = -201,
-                LevelFactor = "0.3f",
-                PriceMultiplier = "1f",
-                CanTrade = "true", TeleportAllowed = "false", TriggersPursuit = "false",
+                LevelFactor = 0.3f,
+                PriceMultiplier = 1f,
+                CanTrade = true, TeleportAllowed = false, TriggersPursuit = false,
             },
             new ReputationTierConfig
             {
                 DisplayName = "中立", Level = ReputationLevel.Neutral,
-                MinValue = -200, MaxValue = "200",
-                LevelFactor = "0.0f",               // fastest decay: 5 * 1.0 = 5/day
-                PriceMultiplier = "1f",
-                CanTrade = "true", TeleportAllowed = "true", TriggersPursuit = "false",
+                MinValue = -200, MaxValue = 200,
+                LevelFactor = 0.0f,               // fastest decay: 5 * 1.0 = 5/day
+                PriceMultiplier = 1f,
+                CanTrade = true, TeleportAllowed = true, TriggersPursuit = false,
             },
             new ReputationTierConfig
             {
                 DisplayName = "友好", Level = ReputationLevel.Friendly,
-                MinValue = "201", MaxValue = "600",
-                LevelFactor = "0.3f",
-                PriceMultiplier = "1f",
-                CanTrade = "true", TeleportAllowed = "true", TriggersPursuit = "false",
+                MinValue = 201, MaxValue = 600,
+                LevelFactor = 0.3f,
+                PriceMultiplier = 1f,
+                CanTrade = true, TeleportAllowed = true, TriggersPursuit = false,
             },
             new ReputationTierConfig
             {
                 DisplayName = "尊敬", Level = ReputationLevel.Respect,
-                MinValue = "601", MaxValue = "800",
-                LevelFactor = "0.6f",
-                PriceMultiplier = "0.8f",            // 8折
-                CanTrade = "true", TeleportAllowed = "true", TriggersPursuit = "false",
+                MinValue = 601, MaxValue = 800,
+                LevelFactor = 0.6f,
+                PriceMultiplier = 0.8f,            // 8折
+                CanTrade = true, TeleportAllowed = true, TriggersPursuit = false,
             },
             new ReputationTierConfig
             {
                 DisplayName = "崇拜", Level = ReputationLevel.Adoration,
-                MinValue = "801", MaxValue = "1000",
-                LevelFactor = "0.8f",                // slowest decay: 5 * 0.2 = 1/day
-                PriceMultiplier = "0.8f",            // 8折
-                CanTrade = "true", TeleportAllowed = "true", TriggersPursuit = "false",
+                MinValue = 801, MaxValue = 1000,
+                LevelFactor = 0.8f,                // slowest decay: 5 * 0.2 = 1/day
+                PriceMultiplier = 0.8f,            // 8折
+                CanTrade = true, TeleportAllowed = true, TriggersPursuit = false,
             },
         };
 
@@ -299,20 +299,20 @@ namespace EarthOnline.World
                     Description = "灵气稀薄的边陲村落，适合初学者修炼。",
                     SpiritualHerbs = new List<ResourceSpawnEntry>
                     {
-                        new() { ResourceId = "herb_spirit_grass", DisplayName = "灵草", ResourceType = EcosystemResourceType.SpiritualHerb, RefreshIntervalHours = "4", MaxCount = "10", Tier = 1 },
-                        new() { ResourceId = "herb_healing_root", DisplayName = "止血根", ResourceType = EcosystemResourceType.SpiritualHerb, RefreshIntervalHours = "6", MaxCount = "8", Tier = 1 },
+                        new() { ResourceId = "herb_spirit_grass", DisplayName = "灵草", ResourceType = EcosystemResourceType.SpiritualHerb, RefreshIntervalHours = 4, MaxCount = 10, Tier = 1 },
+                        new() { ResourceId = "herb_healing_root", DisplayName = "止血根", ResourceType = EcosystemResourceType.SpiritualHerb, RefreshIntervalHours = 6, MaxCount = 8, Tier = 1 },
                     },
                     DemonBeasts = new List<ResourceSpawnEntry>
                     {
-                        new() { ResourceId = "beast_wild_boar", DisplayName = "野猪", ResourceType = EcosystemResourceType.DemonBeast, RefreshIntervalHours = "8", MaxCount = "5", Tier = 1 },
+                        new() { ResourceId = "beast_wild_boar", DisplayName = "野猪", ResourceType = EcosystemResourceType.DemonBeast, RefreshIntervalHours = 8, MaxCount = 5, Tier = 1 },
                     },
                     Minerals = new List<ResourceSpawnEntry>
                     {
-                        new() { ResourceId = "ore_copper", DisplayName = "铜矿", ResourceType = EcosystemResourceType.Mineral, RefreshIntervalHours = "12", MaxCount = "3", Tier = 1 },
+                        new() { ResourceId = "ore_copper", DisplayName = "铜矿", ResourceType = EcosystemResourceType.Mineral, RefreshIntervalHours = 12, MaxCount = 3, Tier = 1 },
                     },
                     NpcIds = new List<string> { "npc_village_elder", "npc_trader_lin", "npc_blacksmith_wang" },
                     ControllingFactions = new List<string> { "sanction_alliance" },
-                    DynamicEventSlots = "1",
+                    DynamicEventSlots = 1,
                 }
             },
             {
@@ -324,22 +324,22 @@ namespace EarthOnline.World
                     Description = "灵气充沛的古森林，灵材丰富但妖兽横行。",
                     SpiritualHerbs = new List<ResourceSpawnEntry>
                     {
-                        new() { ResourceId = "herb_spirit_grass", DisplayName = "灵草", ResourceType = EcosystemResourceType.SpiritualHerb, RefreshIntervalHours = "3", MaxCount = "15", Tier = 2 },
-                        new() { ResourceId = "herb_moon_flower", DisplayName = "月光花", ResourceType = EcosystemResourceType.SpiritualHerb, RefreshIntervalHours = "8", MaxCount = "5", Tier = 3 },
-                        new() { ResourceId = "herb_fire_lingzhi", DisplayName = "火灵芝", ResourceType = EcosystemResourceType.SpiritualHerb, RefreshIntervalHours = "12", MaxCount = "3", Tier = 4 },
+                        new() { ResourceId = "herb_spirit_grass", DisplayName = "灵草", ResourceType = EcosystemResourceType.SpiritualHerb, RefreshIntervalHours = 3, MaxCount = 15, Tier = 2 },
+                        new() { ResourceId = "herb_moon_flower", DisplayName = "月光花", ResourceType = EcosystemResourceType.SpiritualHerb, RefreshIntervalHours = 8, MaxCount = 5, Tier = 3 },
+                        new() { ResourceId = "herb_fire_lingzhi", DisplayName = "火灵芝", ResourceType = EcosystemResourceType.SpiritualHerb, RefreshIntervalHours = 12, MaxCount = 3, Tier = 4 },
                     },
                     DemonBeasts = new List<ResourceSpawnEntry>
                     {
-                        new() { ResourceId = "beast_shadow_wolf", DisplayName = "影狼", ResourceType = EcosystemResourceType.DemonBeast, RefreshIntervalHours = "6", MaxCount = "8", Tier = 2 },
-                        new() { ResourceId = "beast_iron_bear", DisplayName = "铁甲熊", ResourceType = EcosystemResourceType.DemonBeast, RefreshIntervalHours = "10", MaxCount = "3", Tier = 3 },
+                        new() { ResourceId = "beast_shadow_wolf", DisplayName = "影狼", ResourceType = EcosystemResourceType.DemonBeast, RefreshIntervalHours = 6, MaxCount = 8, Tier = 2 },
+                        new() { ResourceId = "beast_iron_bear", DisplayName = "铁甲熊", ResourceType = EcosystemResourceType.DemonBeast, RefreshIntervalHours = 10, MaxCount = 3, Tier = 3 },
                     },
                     Minerals = new List<ResourceSpawnEntry>
                     {
-                        new() { ResourceId = "ore_iron", DisplayName = "铁矿", ResourceType = EcosystemResourceType.Mineral, RefreshIntervalHours = "10", MaxCount = "5", Tier = 2 },
+                        new() { ResourceId = "ore_iron", DisplayName = "铁矿", ResourceType = EcosystemResourceType.Mineral, RefreshIntervalHours = 10, MaxCount = 5, Tier = 2 },
                     },
                     NpcIds = new List<string> { "npc_herbalist_mei" },
                     ControllingFactions = new List<string> { "qingyun_men" },
-                    DynamicEventSlots = "2",
+                    DynamicEventSlots = 2,
                 }
             },
             {
@@ -351,21 +351,21 @@ namespace EarthOnline.World
                     Description = "妖兽聚集的险恶之地，危险与机遇并存。",
                     SpiritualHerbs = new List<ResourceSpawnEntry>
                     {
-                        new() { ResourceId = "herb_demon_grass", DisplayName = "魔灵草", ResourceType = EcosystemResourceType.SpiritualHerb, RefreshIntervalHours = "6", MaxCount = "6", Tier = 5 },
+                        new() { ResourceId = "herb_demon_grass", DisplayName = "魔灵草", ResourceType = EcosystemResourceType.SpiritualHerb, RefreshIntervalHours = 6, MaxCount = 6, Tier = 5 },
                     },
                     DemonBeasts = new List<ResourceSpawnEntry>
                     {
-                        new() { ResourceId = "beast_flame_lion", DisplayName = "炎狮", ResourceType = EcosystemResourceType.DemonBeast, RefreshIntervalHours = "8", MaxCount = "5", Tier = 4 },
-                        new() { ResourceId = "beast_thunder_eagle", DisplayName = "雷鹰", ResourceType = EcosystemResourceType.DemonBeast, RefreshIntervalHours = "6", MaxCount = "4", Tier = 5 },
-                        new() { ResourceId = "beast_abyss_drake", DisplayName = "深渊龙蜥", ResourceType = EcosystemResourceType.DemonBeast, RefreshIntervalHours = "24", MaxCount = "1", Tier = 7 },
+                        new() { ResourceId = "beast_flame_lion", DisplayName = "炎狮", ResourceType = EcosystemResourceType.DemonBeast, RefreshIntervalHours = 8, MaxCount = 5, Tier = 4 },
+                        new() { ResourceId = "beast_thunder_eagle", DisplayName = "雷鹰", ResourceType = EcosystemResourceType.DemonBeast, RefreshIntervalHours = 6, MaxCount = 4, Tier = 5 },
+                        new() { ResourceId = "beast_abyss_drake", DisplayName = "深渊龙蜥", ResourceType = EcosystemResourceType.DemonBeast, RefreshIntervalHours = 24, MaxCount = 1, Tier = 7 },
                     },
                     Minerals = new List<ResourceSpawnEntry>
                     {
-                        new() { ResourceId = "ore_dark_crystal", DisplayName = "暗晶", ResourceType = EcosystemResourceType.Mineral, RefreshIntervalHours = "16", MaxCount = "3", Tier = 4 },
+                        new() { ResourceId = "ore_dark_crystal", DisplayName = "暗晶", ResourceType = EcosystemResourceType.Mineral, RefreshIntervalHours = 16, MaxCount = 3, Tier = 4 },
                     },
                     NpcIds = new List<string>(),
                     ControllingFactions = new List<string> { "yushou_yizu" },
-                    DynamicEventSlots = "3",
+                    DynamicEventSlots = 3,
                 }
             },
             {
@@ -380,7 +380,7 @@ namespace EarthOnline.World
                     Minerals = new List<ResourceSpawnEntry>(),
                     NpcIds = new List<string> { "npc_trader_zhao", "npc_auctioneer_li", "npc_bank_chen", "npc_alchemist_sun" },
                     ControllingFactions = new List<string> { "shang_meng" },
-                    DynamicEventSlots = "4",
+                    DynamicEventSlots = 4,
                 }
             },
             {
@@ -392,22 +392,22 @@ namespace EarthOnline.World
                     Description = "终年积雪的高峰，天元宗山门所在。严寒中蕴藏稀世灵材。",
                     SpiritualHerbs = new List<ResourceSpawnEntry>
                     {
-                        new() { ResourceId = "herb_snow_lotus", DisplayName = "雪莲", ResourceType = EcosystemResourceType.SpiritualHerb, RefreshIntervalHours = "12", MaxCount = "3", Tier = 5 },
-                        new() { ResourceId = "herb_ice_crystal", DisplayName = "冰晶草", ResourceType = EcosystemResourceType.SpiritualHerb, RefreshIntervalHours = "8", MaxCount = "5", Tier = 4 },
+                        new() { ResourceId = "herb_snow_lotus", DisplayName = "雪莲", ResourceType = EcosystemResourceType.SpiritualHerb, RefreshIntervalHours = 12, MaxCount = 3, Tier = 5 },
+                        new() { ResourceId = "herb_ice_crystal", DisplayName = "冰晶草", ResourceType = EcosystemResourceType.SpiritualHerb, RefreshIntervalHours = 8, MaxCount = 5, Tier = 4 },
                     },
                     DemonBeasts = new List<ResourceSpawnEntry>
                     {
-                        new() { ResourceId = "beast_frost_wolf", DisplayName = "霜狼", ResourceType = EcosystemResourceType.DemonBeast, RefreshIntervalHours = "8", MaxCount = "6", Tier = 3 },
-                        new() { ResourceId = "beast_ice_serpent", DisplayName = "冰蟒", ResourceType = EcosystemResourceType.DemonBeast, RefreshIntervalHours = "14", MaxCount = "2", Tier = 5 },
+                        new() { ResourceId = "beast_frost_wolf", DisplayName = "霜狼", ResourceType = EcosystemResourceType.DemonBeast, RefreshIntervalHours = 8, MaxCount = 6, Tier = 3 },
+                        new() { ResourceId = "beast_ice_serpent", DisplayName = "冰蟒", ResourceType = EcosystemResourceType.DemonBeast, RefreshIntervalHours = 14, MaxCount = 2, Tier = 5 },
                     },
                     Minerals = new List<ResourceSpawnEntry>
                     {
-                        new() { ResourceId = "ore_frost_iron", DisplayName = "霜铁矿", ResourceType = EcosystemResourceType.Mineral, RefreshIntervalHours = "12", MaxCount = "4", Tier = 3 },
-                        new() { ResourceId = "ore_spirit_jade", DisplayName = "灵玉", ResourceType = EcosystemResourceType.Mineral, RefreshIntervalHours = "24", MaxCount = "2", Tier = 6 },
+                        new() { ResourceId = "ore_frost_iron", DisplayName = "霜铁矿", ResourceType = EcosystemResourceType.Mineral, RefreshIntervalHours = 12, MaxCount = 4, Tier = 3 },
+                        new() { ResourceId = "ore_spirit_jade", DisplayName = "灵玉", ResourceType = EcosystemResourceType.Mineral, RefreshIntervalHours = 24, MaxCount = 2, Tier = 6 },
                     },
                     NpcIds = new List<string> { "npc_tianyuan_guard", "npc_tianyuan_elder" },
                     ControllingFactions = new List<string> { "tianyuan_zong" },
-                    DynamicEventSlots = "2",
+                    DynamicEventSlots = 2,
                 }
             },
         };
@@ -744,7 +744,7 @@ namespace EarthOnline.World
                 {
                     PlayerId = playerId,
                     RegionId = regionId,
-                    Value = "0",
+                    Value = 0,
                     LastDecayTimestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
                 };
                 regions[regionId] = rep;

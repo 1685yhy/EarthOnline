@@ -120,7 +120,7 @@ namespace EarthOnline.World
                 NpcId = "npc_warrior_001",
                 DisplayName = "铁壁·赵刚",
                 Class = NpcClass.Warrior,
-                Level = "1",
+                Level = 1,
                 Description = "前御林军退役战士，擅长盾牌格挡与嘲讽。可靠的前排防御。"
             },
             new NpcCompanionData
@@ -128,7 +128,7 @@ namespace EarthOnline.World
                 NpcId = "npc_healer_001",
                 DisplayName = "灵愈·素问",
                 Class = NpcClass.Healer,
-                Level = "1",
+                Level = 1,
                 Description = "云游医修，精通回春术与净化之术。队伍续航的保障。"
             },
             new NpcCompanionData
@@ -136,7 +136,7 @@ namespace EarthOnline.World
                 NpcId = "npc_mage_001",
                 DisplayName = "炎术·离火",
                 Class = NpcClass.Mage,
-                Level = "1",
+                Level = 1,
                 Description = "火系法术专精者，群体伤害拔群。缺点是身板脆弱。"
             },
             new NpcCompanionData
@@ -144,7 +144,7 @@ namespace EarthOnline.World
                 NpcId = "npc_rogue_001",
                 DisplayName = "影刺·夜莺",
                 Class = NpcClass.Rogue,
-                Level = "1",
+                Level = 1,
                 Description = "暗夜中的刺杀者，擅长解除陷阱和背刺。潜行路线必备。"
             },
             new NpcCompanionData
@@ -152,7 +152,7 @@ namespace EarthOnline.World
                 NpcId = "npc_archer_001",
                 DisplayName = "逐风·羽",
                 Class = NpcClass.Archer,
-                Level = "1",
+                Level = 1,
                 Description = "百步穿杨的神射手，远程压制与侦查的好手。"
             }
         };
@@ -356,8 +356,8 @@ namespace EarthOnline.World
                 {
                     Id = npc.NpcId,
                     Name = npc.DisplayName,
-                    IsLeader = "false",
-                    IsNpc = "true",
+                    IsLeader = false,
+                    IsNpc = true,
                     NpcClass = npc.Class
                 });
             }

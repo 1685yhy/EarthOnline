@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using EarthOnline.Framework;
 using UnityEngine;
@@ -390,8 +391,14 @@ namespace EarthOnline.Combat
                 DisplayDuration = 2f
             });
 
-            // 2. 记录逃跑记仇
+            // 2. 记录逃跑记仇（夜晚时记仇翻倍）
             RecordEscape();
+            bool isNight = RiskRating.Instance != null && RiskRating.Instance.IsNight;
+            if (isNight)
+            {
+                GrudgeManager.IncreaseGrudge(bossDef.bossId, grudgeEscapeAmount, "夜晚逃跑额外记仇");
+                DebugLog("夜晚逃跑！记仇额外 +" + grudgeEscapeAmount);
+            }
 
             yield return new WaitForSeconds(retreatResetDelay);
 
@@ -407,15 +414,18 @@ namespace EarthOnline.Combat
             _isRetreating = false;
 
             // 4. 发布撤退事件（区域系统监听以增加怪物攻击性）
+            bool isNight = RiskRating.Instance != null && RiskRating.Instance.IsNight;
+            float effectiveAggression = isNight ? retreatAggressionIncrease * 2f : retreatAggressionIncrease;
+
             EventBus.Publish(new BossRetreatEvent
             {
                 BossId = bossDef.bossId,
                 BossName = _bossNameCache,
-                AggressionIncrease = retreatAggressionIncrease,
+                AggressionIncrease = effectiveAggression,
                 RegionId = regionId
             });
 
-            DebugLog($"撤退完成。BOSS已重置。区域 [{regionId}] 怪物攻击性 +{retreatAggressionIncrease * 100}%");
+            DebugLog($"撤退完成。BOSS已重置。区域 [{regionId}] 怪物攻击性 +{effectiveAggression * 100}%{(isNight ? " (夜晚双倍)" : "")}");
 
             _retreatCoroutine = null;
         }
@@ -429,7 +439,7 @@ namespace EarthOnline.Combat
         /// </summary>
         private void OnBossDefeated(BossDefeatedEvent evt)
         {
-            if (evt.BossId != bossDef?.bossId) return;
+            if (!string.Equals(evt.BossId?.ToString(), bossDef?.bossId, StringComparison.OrdinalIgnoreCase)) return;
 
             if (_grudgeData != null && _grudgeData.level != GrudgeLevel.None)
             {

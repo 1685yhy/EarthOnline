@@ -368,7 +368,7 @@ namespace EarthOnline.World
 
         private void OnTimeOfDayChanged(TimeOfDayChangedEvent evt)
         {
-            _isNight = evt.IsNight;
+            _isNight = evt.IsNight is true;
         }
 
         /// <summary>
@@ -529,7 +529,7 @@ namespace EarthOnline.World
                 ZoneName = instance.ZoneName,
                 DurationHours = instance.DurationHours,
                 SpawnCount = instance.SpawnCount,
-                IsChainEvent = "false",
+                IsChainEvent = false,
                 ChainId = null,
                 MergedEventNames = null
             });
@@ -589,10 +589,10 @@ namespace EarthOnline.World
                 Exclusivity = EventExclusivity.Hard,
                 ZoneId = zoneId,
                 ZoneName = GetZoneName(zoneId),
-                ElapsedGameHours = "0f",
+                ElapsedGameHours = 0f,
                 DurationHours = totalDuration,
                 ActivityModifier = _activityModifierMax,
-                RiskModifier = "0.4f", // chain events are more dangerous
+                RiskModifier = 0.4f, // chain events are more dangerous
                 TriggerGameTime = _lastCheckGameTime,
                 MergedEventIds = componentIds,
                 EventColor = Color.red
@@ -629,7 +629,7 @@ namespace EarthOnline.World
                 ZoneName = GetZoneName(zoneId),
                 DurationHours = totalDuration,
                 SpawnCount = triggerDef.SpawnCountMax * 2,
-                IsChainEvent = "true",
+                IsChainEvent = true,
                 ChainId = chainId,
                 MergedEventNames = componentNames.ToArray()
             });
@@ -653,10 +653,10 @@ namespace EarthOnline.World
                 Exclusivity = def.Exclusivity,
                 ZoneId = zoneId,
                 ZoneName = GetZoneName(zoneId),
-                ElapsedGameHours = "0f",
+                ElapsedGameHours = 0f,
                 DurationHours = def.DurationHours,
                 ActivityModifier = def.ActivityModifier,
-                RiskModifier = "0.2f", // base risk increase during event
+                RiskModifier = 0.2f, // base risk increase during event
                 RewardItemIds = def.RewardItemIds,
                 SpawnCount = Random.Range(def.SpawnCountMin, def.SpawnCountMax + 1),
                 EventColor = def.EventColor,
@@ -822,12 +822,10 @@ namespace EarthOnline.World
         {
             if (_zoneSnapshots.ContainsKey(zoneId)) return; // already saved
 
-            ZoneRiskData riskData = FindZoneRiskData(zoneId);
-
             _zoneSnapshots[zoneId] = new ZoneSnapshot
             {
                 ZoneId = zoneId,
-                RiskModifier = "0f",
+                RiskModifier = 0f,
                 ActivityModifier = GetZoneActivityModifier(zoneId),
                 ResourceAvailability = null,
                 SpawnsActive = true
@@ -857,7 +855,7 @@ namespace EarthOnline.World
             // Publish dynamic event active state.
             EventBus.Publish(new DynamicEventActiveEvent
             {
-                IsActive = "true",
+                IsActive = true,
                 EventId = evt.EventId,
                 EventName = evt.DisplayName
             });
@@ -879,7 +877,7 @@ namespace EarthOnline.World
 
             EventBus.Publish(new DynamicEventActiveEvent
             {
-                IsActive = "true",
+                IsActive = true,
                 EventId = chainInstance.EventId,
                 EventName = chainInstance.DisplayName
             });
@@ -906,7 +904,7 @@ namespace EarthOnline.World
             {
                 PreviousLevel = RiskLevel.High,
                 CurrentLevel = RiskLevel.Safe,
-                RiskFactor = "0f",
+                RiskFactor = 0f,
                 LevelName = "正常",
                 Color = Color.green
             });
@@ -914,7 +912,7 @@ namespace EarthOnline.World
             // Publish dynamic event deactivation.
             EventBus.Publish(new DynamicEventActiveEvent
             {
-                IsActive = "false",
+                IsActive = false,
                 EventId = "",
                 EventName = ""
             });
@@ -999,7 +997,7 @@ namespace EarthOnline.World
                 ZoneName = GetZoneName(zoneId),
                 DurationHours = instance.DurationHours,
                 SpawnCount = instance.SpawnCount,
-                IsChainEvent = "false",
+                IsChainEvent = false,
                 ChainId = null,
                 MergedEventNames = null
             });

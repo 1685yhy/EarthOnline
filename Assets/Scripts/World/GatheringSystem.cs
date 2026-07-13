@@ -238,11 +238,11 @@ namespace EarthOnline.World
             {
                 toolTable = new List<GatheringToolEntry>
                 {
-                    new GatheringToolEntry { Category = HerbCategory.Herb,    ToolName = "玉锄头",   IsRequired = "false", SpeedMultiplier = "1.0f", CritBonus = "0",    SuccessBonus = 0 },
-                    new GatheringToolEntry { Category = HerbCategory.Woody,   ToolName = "采木锯",   IsRequired = "true",  SpeedMultiplier = "1.0f", CritBonus = "0",    SuccessBonus = 0 },
-                    new GatheringToolEntry { Category = HerbCategory.Mineral, ToolName = "寒铁镐",   IsRequired = "true",  SpeedMultiplier = "1.0f", CritBonus = "0",    SuccessBonus = 0 },
-                    new GatheringToolEntry { Category = HerbCategory.Liquid,  ToolName = "玉瓶",     IsRequired = "true",  SpeedMultiplier = "1.0f", CritBonus = "0",    SuccessBonus = 0 },
-                    new GatheringToolEntry { Category = HerbCategory.Special, ToolName = "",         IsRequired = "false", SpeedMultiplier = "1.0f", CritBonus = "0",    SuccessBonus = 0 },
+                    new GatheringToolEntry { Category = HerbCategory.Herb,    ToolName = "玉锄头",   IsRequired = false, SpeedMultiplier = 1.0f, CritBonus = 0,    SuccessBonus = 0 },
+                    new GatheringToolEntry { Category = HerbCategory.Woody,   ToolName = "采木锯",   IsRequired = true,  SpeedMultiplier = 1.0f, CritBonus = 0,    SuccessBonus = 0 },
+                    new GatheringToolEntry { Category = HerbCategory.Mineral, ToolName = "寒铁镐",   IsRequired = true,  SpeedMultiplier = 1.0f, CritBonus = 0,    SuccessBonus = 0 },
+                    new GatheringToolEntry { Category = HerbCategory.Liquid,  ToolName = "玉瓶",     IsRequired = true,  SpeedMultiplier = 1.0f, CritBonus = 0,    SuccessBonus = 0 },
+                    new GatheringToolEntry { Category = HerbCategory.Special, ToolName = "",         IsRequired = false, SpeedMultiplier = 1.0f, CritBonus = 0,    SuccessBonus = 0 },
                 };
             }
 
@@ -961,7 +961,7 @@ namespace EarthOnline.World
                 RegionId = region,
                 StageRequired = type == ResourceNodeType.CelestialHerb ? 5 : 1,
                 MaxGatherCount = type == ResourceNodeType.CelestialHerb ? 1 : maxGatherPerNode,
-                CurrentGatherCount = "0",
+                CurrentGatherCount = 0,
                 GatherDifficulty = type == ResourceNodeType.Common ? 0.1f :
                                    type == ResourceNodeType.Rare ? 0.3f :
                                    type == ResourceNodeType.CelestialHerb ? 0.5f : 0.2f,

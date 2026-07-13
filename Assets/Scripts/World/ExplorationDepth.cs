@@ -305,7 +305,9 @@ namespace EarthOnline.World
             // EXP-01: Grant first-entry bonus on first ever entry.
             if (isNewRegion && !_regions[regionId].HasEntered)
             {
-                _regions[regionId].HasEntered = true;
+                var state = _regions[regionId];
+                state.HasEntered = true;
+                _regions[regionId] = state;
                 AddProgress(regionId, _firstEntryBonus,
                     new DiscoveryContribution
                     {
@@ -348,10 +350,10 @@ namespace EarthOnline.World
             {
                 _regions[regionId] = new RegionExplorationState
                 {
-                    Progress = "0f",
+                    Progress = 0f,
                     Stage = ExplorationStage.Novice,
                     StageName = GetStageLocalizedName(ExplorationStage.Novice),
-                    HasEntered = "false",
+                    HasEntered = false,
                     TitleGranted = false
                 };
             }
@@ -383,10 +385,11 @@ namespace EarthOnline.World
                 _discoveryContributions[regionId] = contributed;
             }
 
-            if (contributed.Contains(evt.DiscoveryId))
+            var discId = evt.DiscoveryId?.ToString() ?? "";
+            if (contributed.Contains(discId))
                 return;
 
-            contributed.Add(evt.DiscoveryId);
+            contributed.Add(discId);
 
             // Calculate contribution amount based on type.
             float amount = 0f;
@@ -416,7 +419,7 @@ namespace EarthOnline.World
             var contribution = new DiscoveryContribution
             {
                 Amount = amount,
-                SourceName = evt.DisplayName,
+                SourceName = (evt.DisplayName as string) ?? "",
                 SourceType = sourceType
             };
 

@@ -159,7 +159,7 @@ namespace EarthOnline.Core
         /// <returns>Additional failure rate penalty to apply (0.20 if triggered, 0 otherwise).</returns>
         public float CalculateDaoBodyBonus(TribulationQuality platformQuality, int currentDaoBodyQuality, out int newDaoBodyQuality)
         {
-            int platformLevel = (int)platformQuality; // Normal = "0", Ancient = "1", Secret=2
+            int platformLevel = (int)platformQuality; // Normal = 0, Ancient = 1, Secret=2
 
             if (platformLevel > currentDaoBodyQuality)
             {

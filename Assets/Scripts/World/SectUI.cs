@@ -1072,8 +1072,8 @@ namespace EarthOnline.UI
             {
                 BountyId = bountyId,
                 BountyName = bounty.BountyName,
-                Accepted = "true",
-                Completed = "false",
+                Accepted = true,
+                Completed = false,
             });
 
             RefreshBountyQuests();
@@ -1100,8 +1100,8 @@ namespace EarthOnline.UI
             {
                 BountyId = bountyId,
                 BountyName = bounty.BountyName,
-                Accepted = "false",
-                Completed = "true",
+                Accepted = false,
+                Completed = true,
             });
 
             _bountyQuests.Remove(bounty);
@@ -1434,11 +1434,11 @@ namespace EarthOnline.UI
         {
             return new List<SectDailyQuestData>
             {
-                new SectDailyQuestData { QuestId = "dq_1", QuestName = "采集灵药", Description = "前往灵药园采集10份灵草", ContributionReward = "20", SpiritStoneReward = 50 },
-                new SectDailyQuestData { QuestId = "dq_2", QuestName = "巡逻山门", Description = "在山门周边巡逻，驱散入侵妖兽", ContributionReward = "15", SpiritStoneReward = 30 },
-                new SectDailyQuestData { QuestId = "dq_3", QuestName = "切磋演练", Description = "与同门切磋3次，提升实战能力", ContributionReward = "25", SpiritStoneReward = 40 },
-                new SectDailyQuestData { QuestId = "dq_4", QuestName = "整理藏经阁", Description = "协助整理藏经阁典籍，维护门派传承", ContributionReward = "10", SpiritStoneReward = 20 },
-                new SectDailyQuestData { QuestId = "dq_5", QuestName = "炼制丹药", Description = "为门派炼制3枚基础丹药", ContributionReward = "30", SpiritStoneReward = 60 },
+                new SectDailyQuestData { QuestId = "dq_1", QuestName = "采集灵药", Description = "前往灵药园采集10份灵草", ContributionReward = 20, SpiritStoneReward = 50 },
+                new SectDailyQuestData { QuestId = "dq_2", QuestName = "巡逻山门", Description = "在山门周边巡逻，驱散入侵妖兽", ContributionReward = 15, SpiritStoneReward = 30 },
+                new SectDailyQuestData { QuestId = "dq_3", QuestName = "切磋演练", Description = "与同门切磋3次，提升实战能力", ContributionReward = 25, SpiritStoneReward = 40 },
+                new SectDailyQuestData { QuestId = "dq_4", QuestName = "整理藏经阁", Description = "协助整理藏经阁典籍，维护门派传承", ContributionReward = 10, SpiritStoneReward = 20 },
+                new SectDailyQuestData { QuestId = "dq_5", QuestName = "炼制丹药", Description = "为门派炼制3枚基础丹药", ContributionReward = 30, SpiritStoneReward = 60 },
             };
         }
 
@@ -1446,9 +1446,9 @@ namespace EarthOnline.UI
         {
             return new List<SectBountyData>
             {
-                new SectBountyData { BountyId = "bq_1", BountyName = "剿灭山贼", Description = "清剿盘踞在青风岭的山贼窝点，夺回被劫物资", ContributionReward = "50", SpiritStoneReward = "200", RequiredRealmLevel = "3", TimeRemainingHours = 48f },
-                new SectBountyData { BountyId = "bq_2", BountyName = "追捕叛徒", Description = "追捕叛出门派的叛徒，带回门派令牌", ContributionReward = "80", SpiritStoneReward = "500", RequiredRealmLevel = "5", TimeRemainingHours = 72f },
-                new SectBountyData { BountyId = "bq_3", BountyName = "探索秘境", Description = "探索新发现的秘境洞穴，带回秘境地图", ContributionReward = "100", SpiritStoneReward = "800", RequiredRealmLevel = "6", TimeRemainingHours = 120f },
+                new SectBountyData { BountyId = "bq_1", BountyName = "剿灭山贼", Description = "清剿盘踞在青风岭的山贼窝点，夺回被劫物资", ContributionReward = 50, SpiritStoneReward = 200, RequiredRealmLevel = 3, TimeRemainingHours = 48f },
+                new SectBountyData { BountyId = "bq_2", BountyName = "追捕叛徒", Description = "追捕叛出门派的叛徒，带回门派令牌", ContributionReward = 80, SpiritStoneReward = 500, RequiredRealmLevel = 5, TimeRemainingHours = 72f },
+                new SectBountyData { BountyId = "bq_3", BountyName = "探索秘境", Description = "探索新发现的秘境洞穴，带回秘境地图", ContributionReward = 100, SpiritStoneReward = 800, RequiredRealmLevel = 6, TimeRemainingHours = 120f },
             };
         }
 
@@ -1457,19 +1457,19 @@ namespace EarthOnline.UI
             return new List<SectShopItemData>
             {
                 // Techniques
-                new SectShopItemData { ItemId = "shop_tech_1", ItemName = "基础剑诀", Description = "入门级剑法秘籍", Category = "Technique", SpiritStoneCost = "500", ContributionCost = "50", RequiredRank = (int)SectRank.OuterDisciple, IsAvailable = true },
-                new SectShopItemData { ItemId = "shop_tech_2", ItemName = "玄天心法", Description = "内功心法，提升修炼速度", Category = "Technique", SpiritStoneCost = "2000", ContributionCost = "200", RequiredRank = (int)SectRank.InnerDisciple, IsAvailable = true },
-                new SectShopItemData { ItemId = "shop_tech_3", ItemName = "万剑归宗", Description = "高级剑技，大范围攻击", Category = "Technique", SpiritStoneCost = "10000", ContributionCost = "800", RequiredRank = (int)SectRank.CoreDisciple, IsAvailable = true },
+                new SectShopItemData { ItemId = "shop_tech_1", ItemName = "基础剑诀", Description = "入门级剑法秘籍", Category = "Technique", SpiritStoneCost = 500, ContributionCost = 50, RequiredRank = (int)SectRank.OuterDisciple, IsAvailable = true },
+                new SectShopItemData { ItemId = "shop_tech_2", ItemName = "玄天心法", Description = "内功心法，提升修炼速度", Category = "Technique", SpiritStoneCost = 2000, ContributionCost = 200, RequiredRank = (int)SectRank.InnerDisciple, IsAvailable = true },
+                new SectShopItemData { ItemId = "shop_tech_3", ItemName = "万剑归宗", Description = "高级剑技，大范围攻击", Category = "Technique", SpiritStoneCost = 10000, ContributionCost = 800, RequiredRank = (int)SectRank.CoreDisciple, IsAvailable = true },
 
                 // Pills
-                new SectShopItemData { ItemId = "shop_pill_1", ItemName = "聚气丹", Description = "基础修炼丹药", Category = "Pill", SpiritStoneCost = "100", ContributionCost = "20", RequiredRank = (int)SectRank.OuterDisciple, IsAvailable = true },
-                new SectShopItemData { ItemId = "shop_pill_2", ItemName = "筑基丹", Description = "筑基期突破辅助丹药", Category = "Pill", SpiritStoneCost = "1000", ContributionCost = "150", RequiredRank = (int)SectRank.InnerDisciple, IsAvailable = true },
-                new SectShopItemData { ItemId = "shop_pill_3", ItemName = "凝神丹", Description = "提升神识修为", Category = "Pill", SpiritStoneCost = "3000", ContributionCost = "300", RequiredRank = (int)SectRank.CoreDisciple, IsAvailable = true },
+                new SectShopItemData { ItemId = "shop_pill_1", ItemName = "聚气丹", Description = "基础修炼丹药", Category = "Pill", SpiritStoneCost = 100, ContributionCost = 20, RequiredRank = (int)SectRank.OuterDisciple, IsAvailable = true },
+                new SectShopItemData { ItemId = "shop_pill_2", ItemName = "筑基丹", Description = "筑基期突破辅助丹药", Category = "Pill", SpiritStoneCost = 1000, ContributionCost = 150, RequiredRank = (int)SectRank.InnerDisciple, IsAvailable = true },
+                new SectShopItemData { ItemId = "shop_pill_3", ItemName = "凝神丹", Description = "提升神识修为", Category = "Pill", SpiritStoneCost = 3000, ContributionCost = 300, RequiredRank = (int)SectRank.CoreDisciple, IsAvailable = true },
 
                 // Equipment
-                new SectShopItemData { ItemId = "shop_eq_1", ItemName = "青锋剑", Description = "制式门派长剑", Category = "Equipment", SpiritStoneCost = "800", ContributionCost = "80", RequiredRank = (int)SectRank.OuterDisciple, IsAvailable = true },
-                new SectShopItemData { ItemId = "shop_eq_2", ItemName = "玄铁护甲", Description = "精铁打造的内甲", Category = "Equipment", SpiritStoneCost = "3000", ContributionCost = "250", RequiredRank = (int)SectRank.InnerDisciple, IsAvailable = true },
-                new SectShopItemData { ItemId = "shop_eq_3", ItemName = "灵风披风", Description = "提升身法速度", Category = "Equipment", SpiritStoneCost = "5000", ContributionCost = "400", RequiredRank = (int)SectRank.CoreDisciple, IsAvailable = true },
+                new SectShopItemData { ItemId = "shop_eq_1", ItemName = "青锋剑", Description = "制式门派长剑", Category = "Equipment", SpiritStoneCost = 800, ContributionCost = 80, RequiredRank = (int)SectRank.OuterDisciple, IsAvailable = true },
+                new SectShopItemData { ItemId = "shop_eq_2", ItemName = "玄铁护甲", Description = "精铁打造的内甲", Category = "Equipment", SpiritStoneCost = 3000, ContributionCost = 250, RequiredRank = (int)SectRank.InnerDisciple, IsAvailable = true },
+                new SectShopItemData { ItemId = "shop_eq_3", ItemName = "灵风披风", Description = "提升身法速度", Category = "Equipment", SpiritStoneCost = 5000, ContributionCost = 400, RequiredRank = (int)SectRank.CoreDisciple, IsAvailable = true },
             };
         }
 

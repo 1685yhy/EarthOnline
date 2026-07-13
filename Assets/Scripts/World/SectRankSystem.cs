@@ -193,55 +193,55 @@ namespace EarthOnline.World
             {
                 Rank = SectRank.OuterDisciple,
                 DisplayName = "外门弟子",
-                ContributionThreshold = "0",
-                RequiredRealmLevel = "0",
-                LibraryFloorAccess = "1",
-                ShopDiscount = "1.0f",
-                HasVotingRights = "false",
+                ContributionThreshold = 0,
+                RequiredRealmLevel = 0,
+                LibraryFloorAccess = 1,
+                ShopDiscount = 1.0f,
+                HasVotingRights = false,
                 PromotionDescription = "初始身份。积累 200 贡献可晋升内门弟子。",
             }},
             { SectRank.InnerDisciple, new RankConfig
             {
                 Rank = SectRank.InnerDisciple,
                 DisplayName = "内门弟子",
-                ContributionThreshold = "200",
-                RequiredRealmLevel = "3",
-                LibraryFloorAccess = "2",
-                ShopDiscount = "1.0f",
-                HasVotingRights = "false",
+                ContributionThreshold = 200,
+                RequiredRealmLevel = 3,
+                LibraryFloorAccess = 2,
+                ShopDiscount = 1.0f,
+                HasVotingRights = false,
                 PromotionDescription = "通过【战斗+笔试考核】可晋升核心弟子。",
             }},
             { SectRank.CoreDisciple, new RankConfig
             {
                 Rank = SectRank.CoreDisciple,
                 DisplayName = "核心弟子",
-                ContributionThreshold = "500",
-                RequiredRealmLevel = "6",
-                LibraryFloorAccess = "3",
-                ShopDiscount = "0.9f",
-                HasVotingRights = "false",
+                ContributionThreshold = 500,
+                RequiredRealmLevel = 6,
+                LibraryFloorAccess = 3,
+                ShopDiscount = 0.9f,
+                HasVotingRights = false,
                 PromotionDescription = "完成【门派级大任务】可晋升长老。",
             }},
             { SectRank.Elder, new RankConfig
             {
                 Rank = SectRank.Elder,
                 DisplayName = "长老",
-                ContributionThreshold = "2000",
-                RequiredRealmLevel = "9",
-                LibraryFloorAccess = "4",
-                ShopDiscount = "0.8f",
-                HasVotingRights = "true",
+                ContributionThreshold = 2000,
+                RequiredRealmLevel = 9,
+                LibraryFloorAccess = 4,
+                ShopDiscount = 0.8f,
+                HasVotingRights = true,
                 PromotionDescription = "参与【特殊事件】（掌门退位/战死/禅让）可成为掌门。",
             }},
             { SectRank.Leader, new RankConfig
             {
                 Rank = SectRank.Leader,
                 DisplayName = "掌门",
-                ContributionThreshold = "2000",
-                RequiredRealmLevel = "12",
-                LibraryFloorAccess = "5",
-                ShopDiscount = "0.7f",
-                HasVotingRights = "true",
+                ContributionThreshold = 2000,
+                RequiredRealmLevel = 12,
+                LibraryFloorAccess = 5,
+                ShopDiscount = 0.7f,
+                HasVotingRights = true,
                 PromotionDescription = "门派最高领袖。",
             }},
         };
@@ -485,7 +485,7 @@ namespace EarthOnline.World
                 SectRank.InnerDisciple => PromotionResult.RequiresBattleExam,    // 2→3
                 SectRank.CoreDisciple  => PromotionResult.RequiresSectQuest,     // 3→4
                 SectRank.Elder         => PromotionResult.RequiresSpecialEvent,   // 4→5
-                _                      => PromotionResult.Unknown,
+                _                      => PromotionResult.NotInSect,
             };
         }
 
@@ -540,7 +540,7 @@ namespace EarthOnline.World
                 {
                     PlayerId = playerId,
                     ExamType = examType,
-                    Passed = "true",
+                    Passed = true,
                     Detail = string.IsNullOrEmpty(detail)
                         ? $"考核通过！晋升为【{nextConfig?.DisplayName}】！"
                         : detail,
@@ -562,7 +562,7 @@ namespace EarthOnline.World
                 {
                     PlayerId = playerId,
                     ExamType = examType,
-                    Passed = "false",
+                    Passed = false,
                     Detail = string.IsNullOrEmpty(detail) ? "考核未通过，请继续积累实力。" : detail,
                 });
 
@@ -704,9 +704,9 @@ namespace EarthOnline.World
                 record = new PlayerDailyRecord
                 {
                     PlayerId = playerId,
-                    QuestsCompletedToday = "0",
+                    QuestsCompletedToday = 0,
                     LastActiveDate = _todayDate,
-                    ConsecutiveIdleDays = "0",
+                    ConsecutiveIdleDays = 0,
                 };
                 _dailyRecords[playerId] = record;
             }

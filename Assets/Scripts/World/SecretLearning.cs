@@ -408,7 +408,7 @@ namespace EarthOnline.World
                 {
                     PlayerId = playerId,
                     Method = SecretLearningMethod.InfiltrateScriptureHall,
-                    Success = "true",
+                    Success = true,
                     TargetSect = targetSectName,
                     TechniqueId = techniqueId,
                     TechniqueName = techniqueName,
@@ -431,11 +431,11 @@ namespace EarthOnline.World
                 {
                     PlayerId = playerId,
                     Method = SecretLearningMethod.InfiltrateScriptureHall,
-                    Success = "false",
+                    Success = false,
                     TargetSect = targetSectName,
                     TechniqueId = techniqueId,
                     TechniqueName = techniqueName,
-                    FragmentPercentage = "0f",
+                    FragmentPercentage = 0f,
                 });
 
                 return SecretLearningOutcome.Discovered;
@@ -448,11 +448,11 @@ namespace EarthOnline.World
             {
                 PlayerId = playerId,
                 Method = SecretLearningMethod.InfiltrateScriptureHall,
-                Success = "false",
+                Success = false,
                 TargetSect = targetSectName,
                 TechniqueId = techniqueId,
                 TechniqueName = techniqueName,
-                FragmentPercentage = "0f",
+                FragmentPercentage = 0f,
             });
 
             return SecretLearningOutcome.Failed;
@@ -528,7 +528,7 @@ namespace EarthOnline.World
                 {
                     PlayerId = playerId,
                     Method = SecretLearningMethod.Bribe,
-                    Success = "true",
+                    Success = true,
                     TargetSect = targetSectName,
                     TechniqueId = techniqueId,
                     TechniqueName = techniqueName,
@@ -550,11 +550,11 @@ namespace EarthOnline.World
                 {
                     PlayerId = playerId,
                     Method = SecretLearningMethod.Bribe,
-                    Success = "false",
+                    Success = false,
                     TargetSect = targetSectName,
                     TechniqueId = techniqueId,
                     TechniqueName = techniqueName,
-                    FragmentPercentage = "0f",
+                    FragmentPercentage = 0f,
                 });
 
                 return SecretLearningOutcome.Discovered;
@@ -566,11 +566,11 @@ namespace EarthOnline.World
             {
                 PlayerId = playerId,
                 Method = SecretLearningMethod.Bribe,
-                Success = "false",
+                Success = false,
                 TargetSect = targetSectName,
                 TechniqueId = techniqueId,
                 TechniqueName = techniqueName,
-                FragmentPercentage = "0f",
+                FragmentPercentage = 0f,
             });
 
             return SecretLearningOutcome.Failed;
@@ -641,7 +641,7 @@ namespace EarthOnline.World
                 EventBus.Publish(new ConfinementStatusEvent
                 {
                     PlayerId = playerId,
-                    IsActive = "true",
+                    IsActive = true,
                     RemainingHours = _config.ConfinementDurationHours,
                     TargetSect = sectName,
                 });
@@ -738,7 +738,7 @@ namespace EarthOnline.World
                 {
                     PlayerId = playerId,
                     ModifiedFailureRate = modified,
-                    DaoBodyQualityBonus = "1",
+                    DaoBodyQualityBonus = 1,
                 });
 
                 return modified;
@@ -750,7 +750,7 @@ namespace EarthOnline.World
             {
                 PlayerId = playerId,
                 ModifiedFailureRate = baseFailureRate,
-                DaoBodyQualityBonus = "0",
+                DaoBodyQualityBonus = 0,
             });
 
             return baseFailureRate;
@@ -1079,8 +1079,8 @@ namespace EarthOnline.World
                 EventBus.Publish(new ConfinementStatusEvent
                 {
                     PlayerId = playerId,
-                    IsActive = "false",
-                    RemainingHours = "0",
+                    IsActive = false,
+                    RemainingHours = 0,
                     TargetSect = state.LastConfinementSect,
                 });
 
@@ -1111,8 +1111,8 @@ namespace EarthOnline.World
                 state = new PlayerSecretLearningState
                 {
                     PlayerId = playerId,
-                    WarningCount = "0",
-                    ConfinementEndTimestamp = "0",
+                    WarningCount = 0,
+                    ConfinementEndTimestamp = 0,
                 };
                 _playerStates[playerId] = state;
             }

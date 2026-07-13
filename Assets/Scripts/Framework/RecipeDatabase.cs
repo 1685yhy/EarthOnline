@@ -264,7 +264,7 @@ namespace EarthOnline.Framework
                 Tags = tags ?? Array.Empty<string>(),
                 CreatorPlayerId = creatorPlayerId,
                 CreatorPlayerName = creatorPlayerName,
-                IsPublic = "false",
+                IsPublic = false,
                 SalePrice = salePrice,
                 IsOriginalRecipe = isOriginalRecipe
             };
@@ -424,9 +424,9 @@ namespace EarthOnline.Framework
             MinDifficulty = 1,
             MaxDifficulty = 10,
             OnlyKnown = true,
-            OnlyFavorites = "false",
-            OnlySelfCreated = "false",
-            IncludeUnknown = "false",
+            OnlyFavorites = false,
+            OnlySelfCreated = false,
+            IncludeUnknown = false,
             SortBy = RecipeSortMode.Difficulty,
             Ascending = true
         };
@@ -473,7 +473,7 @@ namespace EarthOnline.Framework
 
         [Header("JSON 路径")]
         [SerializeField, Tooltip("Resources 路径 (不含扩展名)")]
-        private string recipeJsonResourcesPath = "Data/Recipes/recipe_database";
+        private string recipeJsonResourcesPath = "Data/Recipes";
 
         [Header("变异系统")]
         [SerializeField]
@@ -505,10 +505,8 @@ namespace EarthOnline.Framework
 
         // ─── 自创配方 ───
         private List<RecipeEntry> _selfCreatedRecipes = new();
-        private int _nextSelfCreatedIndex = 1;
 
         // ─── UI 缓存 ───
-        private RecipeSearchQuery _lastSearchQuery;
         private List<RecipeEntry> _lastSearchResults = new();
 
         // ─── JSON 加载状态 ───
@@ -733,7 +731,7 @@ namespace EarthOnline.Framework
                         ItemId = id + "_result",
                         ItemName = name,
                         Description = desc,
-                        Weight = "1f",
+                        Weight = 1f,
                         MinQuality = PillQuality.Low,
                         IsSpecial = false
                     }
@@ -904,7 +902,7 @@ namespace EarthOnline.Framework
         // ═══════════════════════════════════════════════════════════════════════
 
         /// <summary>
-        /// 标记配方为 "已炼制", 返回首次炼制额外熟练度 (首次 = "10", 非首次=0)
+        /// 标记配方为 "已炼制", 返回首次炼制额外熟练度 (首次 = 10, 非首次=0)
         /// </summary>
         public float MarkRecipeCrafted(string recipeId)
         {
@@ -1034,7 +1032,7 @@ namespace EarthOnline.Framework
                         ItemId = mutation.ItemId,
                         ItemName = mutation.ItemName,
                         Description = mutation.Description,
-                        Weight = "1f",
+                        Weight = 1f,
                         MinQuality = PillQuality.Low,
                         IsSpecial = false
                     }
@@ -1044,7 +1042,7 @@ namespace EarthOnline.Framework
                 Tags = new[] { "自创", "变异", original.Category == RecipeCategory.Pill ? "丹药" : "特殊" },
                 CreatorPlayerId = "",
                 CreatorPlayerName = "",
-                IsPublic = "false",
+                IsPublic = false,
                 SalePrice = defaultSelfCreatedPrice,
                 IsOriginalRecipe = false
             };
@@ -1092,7 +1090,7 @@ namespace EarthOnline.Framework
             {
                 RecipeId = recipeId,
                 RecipeName = recipe.DisplayName,
-                IsSold = "false",
+                IsSold = false,
                 Price = 0
             });
         }
@@ -1119,7 +1117,7 @@ namespace EarthOnline.Framework
             {
                 RecipeId = recipeId,
                 RecipeName = recipe.DisplayName,
-                IsSold = "true",
+                IsSold = true,
                 Price = price
             });
 
@@ -1257,7 +1255,6 @@ namespace EarthOnline.Framework
                 _ => results
             };
 
-            _lastSearchQuery = query;
             _lastSearchResults = sorted.ToList();
 
             EventBus.Publish(new RecipeSearchResultEvent
@@ -1412,12 +1409,12 @@ namespace EarthOnline.Framework
                 Description = "测试用配方",
                 Category = RecipeCategory.Pill,
                 SourceType = RecipeSourceType.Exploration,
-                OptimalTemperature = "150f",
-                Duration = "50f",
-                BaseQualityMin = "0.3f",
-                BaseQualityMax = "0.8f",
-                Difficulty = "1",
-                RequiredProficiency = "1",
+                OptimalTemperature = 150f,
+                Duration = 50f,
+                BaseQualityMin = 0.3f,
+                BaseQualityMax = 0.8f,
+                Difficulty = 1,
+                RequiredProficiency = 1,
                 RecommendedOrder = new[] { "mat_a", "mat_b", "mat_c" },
                 Materials = new[]
                 {
@@ -1427,7 +1424,7 @@ namespace EarthOnline.Framework
                 },
                 ResultPool = new[]
                 {
-                    new RecipeResultEntry { ItemId = id + "_result", ItemName = name, Weight = "1f", MinQuality = PillQuality.Low }
+                    new RecipeResultEntry { ItemId = id + "_result", ItemName = name, Weight = 1f, MinQuality = PillQuality.Low }
                 },
                 SourceHint = "测试",
                 Tags = new[] { "测试" },

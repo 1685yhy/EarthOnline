@@ -138,7 +138,7 @@ private void Start()
 
             EventBus.Publish(new TribulationConfirmationEvent
             {
-                Show = "true",
+                Show = true,
                 PlatformId = platformId,
                 Quality = quality.ToString(),
                 ReadinessScore = scores.Total.ToString("F2"),
@@ -158,11 +158,11 @@ private void Start()
         {
             EventBus.Publish(new TribulationConfirmationEvent
             {
-                Show = "false",
+                Show = false,
                 PlatformId = platformId,
                 Quality = quality.ToString(),
-                ReadinessScore = "0.00",
-                EstimatedSuccessRate = "0.00"
+                ReadinessScore = 0f,
+                EstimatedSuccessRate = 0f
             });
         }
 

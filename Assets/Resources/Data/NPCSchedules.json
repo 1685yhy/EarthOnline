@@ -1,0 +1,141 @@
+{
+  "version": "1.0",
+  "generatedForScene": "EarthOnline_Main",
+  "description": "NPC日常行程安排表 —— 每个NPC的24小时活动计划",
+
+  "npcSchedules": [
+    {
+      "npcId": "npc_zhang_001",
+      "npcName": "张老",
+      "timeBlocks": [
+        { "startHour": 6, "endHour": 8,  "activityName": "村口练拳",    "activityType": "Training", "animationHint": "meditate",   "isInterruptible": true,  "location": { "x": -2.0, "y": 0.5, "z": 6.0 } },
+        { "startHour": 8, "endHour": 12, "activityName": "村中巡视",    "activityType": "Work",     "animationHint": "walk",     "isInterruptible": true,  "location": { "x": 0.0, "y": 0.5, "z": 3.0 } },
+        { "startHour": 12,"endHour": 14, "activityName": "回家吃饭",    "activityType": "Rest",    "animationHint": "sit",      "isInterruptible": false, "location": { "x": 8.0, "y": 0.5, "z": 5.0 } },
+        { "startHour": 14,"endHour": 18, "activityName": "指导村民修炼", "activityType": "Social",   "animationHint": "talk",     "isInterruptible": true,  "location": { "x": 1.0, "y": 0.5, "z": 2.0 } },
+        { "startHour": 18,"endHour": 20, "activityName": "村口下棋",    "activityType": "Social",   "animationHint": "sit",      "isInterruptible": true,  "location": { "x": -3.0,"y": 0.5, "z": 5.0 } },
+        { "startHour": 20,"endHour": 24, "activityName": "回家休息",    "activityType": "Rest",    "animationHint": "sleep",    "isInterruptible": false, "location": { "x": 8.0, "y": 0.5, "z": 5.0 } },
+        { "startHour": 0, "endHour": 6,  "activityName": "打坐冥想",    "activityType": "Rest",    "animationHint": "meditate", "isInterruptible": false, "location": { "x": 8.0, "y": 0.5, "z": 5.0 } }
+      ]
+    },
+    {
+      "npcId": "npc_wang_001",
+      "npcName": "王铁柱",
+      "timeBlocks": [
+        { "startHour": 6, "endHour": 8,  "activityName": "生火准备打铁", "activityType": "Work",     "animationHint": "forge",    "isInterruptible": true,  "location": { "x": -6.0,"y": 1.2, "z": 7.0 } },
+        { "startHour": 8, "endHour": 12, "activityName": "打铁铸器",    "activityType": "Work",     "animationHint": "forge",    "isInterruptible": true,  "location": { "x": -6.0,"y": 1.2, "z": 7.0 } },
+        { "startHour": 12,"endHour": 14, "activityName": "客栈午饭",    "activityType": "Eat",      "animationHint": "sit",      "isInterruptible": true,  "location": { "x": -2.0,"y": 1.2, "z": -2.0 } },
+        { "startHour": 14,"endHour": 18, "activityName": "打铁铸器",    "activityType": "Work",     "animationHint": "forge",    "isInterruptible": true,  "location": { "x": -6.0,"y": 1.2, "z": 7.0 } },
+        { "startHour": 18,"endHour": 20, "activityName": "独酌饮酒",    "activityType": "Rest",    "animationHint": "drink",    "isInterruptible": true,  "location": { "x": -6.0,"y": 1.2, "z": 6.0 } },
+        { "startHour": 20,"endHour": 24, "activityName": "休息",        "activityType": "Rest",    "animationHint": "sleep",    "isInterruptible": false, "location": { "x": -6.5,"y": 1.2, "z": 6.5 } },
+        { "startHour": 0, "endHour": 6,  "activityName": "休息",        "activityType": "Rest",    "animationHint": "sleep",    "isInterruptible": false, "location": { "x": -6.5,"y": 1.2, "z": 6.5 } }
+      ]
+    },
+    {
+      "npcId": "npc_li_001",
+      "npcName": "李灵儿",
+      "timeBlocks": [
+        { "startHour": 6, "endHour": 8,  "activityName": "上山采药",    "activityType": "Work",     "animationHint": "gather",   "isInterruptible": true,  "location": { "x": -10.0,"y": 1.5, "z": -3.0 } },
+        { "startHour": 8, "endHour": 12, "activityName": "晒药分拣",    "activityType": "Work",     "animationHint": "sort",     "isInterruptible": true,  "location": { "x": 5.0, "y": 0.5, "z": 0.0 } },
+        { "startHour": 12,"endHour": 14, "activityName": "午饭",        "activityType": "Eat",      "animationHint": "sit",      "isInterruptible": false, "location": { "x": 4.0, "y": 0.5, "z": 1.0 } },
+        { "startHour": 14,"endHour": 18, "activityName": "配药炼丹",    "activityType": "Work",     "animationHint": "craft",    "isInterruptible": true,  "location": { "x": 5.0, "y": 0.5, "z": 0.0 } },
+        { "startHour": 18,"endHour": 20, "activityName": "研读医书",    "activityType": "Rest",    "animationHint": "read",     "isInterruptible": true,  "location": { "x": 4.5, "y": 0.5, "z": -0.5 } },
+        { "startHour": 20,"endHour": 24, "activityName": "休息",        "activityType": "Rest",    "animationHint": "sleep",    "isInterruptible": false, "location": { "x": 4.0, "y": 0.5, "z": 2.0 } },
+        { "startHour": 0, "endHour": 6,  "activityName": "休息",        "activityType": "Rest",    "animationHint": "sleep",    "isInterruptible": false, "location": { "x": 4.0, "y": 0.5, "z": 2.0 } }
+      ]
+    },
+    {
+      "npcId": "npc_zhao_001",
+      "npcName": "赵掌柜",
+      "timeBlocks": [
+        { "startHour": 6, "endHour": 8,  "activityName": "准备食材酒水", "activityType": "Work",     "animationHint": "prepare",  "isInterruptible": true,  "location": { "x": -2.0,"y": 1.2, "z": -2.0 } },
+        { "startHour": 8, "endHour": 12, "activityName": "开门迎客",    "activityType": "Work",     "animationHint": "serve",    "isInterruptible": true,  "location": { "x": -2.0,"y": 1.2, "z": -2.5 } },
+        { "startHour": 12,"endHour": 14, "activityName": "招呼客人用膳", "activityType": "Work",     "animationHint": "serve",    "isInterruptible": true,  "location": { "x": -2.0,"y": 1.2, "z": -2.0 } },
+        { "startHour": 14,"endHour": 18, "activityName": "打理客栈事务", "activityType": "Work",     "animationHint": "clean",    "isInterruptible": true,  "location": { "x": -2.0,"y": 1.2, "z": -2.5 } },
+        { "startHour": 18,"endHour": 20, "activityName": "盘点算账",    "activityType": "Work",     "animationHint": "write",    "isInterruptible": true,  "location": { "x": -1.5,"y": 1.2, "z": -2.0 } },
+        { "startHour": 20,"endHour": 22, "activityName": "巡视店铺",    "activityType": "Travel",   "animationHint": "walk",     "isInterruptible": true,  "location": { "x": -2.0,"y": 1.2, "z": -3.0 } },
+        { "startHour": 22,"endHour": 24, "activityName": "休息",        "activityType": "Rest",    "animationHint": "sleep",    "isInterruptible": false, "location": { "x": -1.0,"y": 1.2, "z": -2.0 } },
+        { "startHour": 0, "endHour": 6,  "activityName": "休息",        "activityType": "Rest",    "animationHint": "sleep",    "isInterruptible": false, "location": { "x": -1.0,"y": 1.2, "z": -2.0 } }
+      ]
+    },
+    {
+      "npcId": "npc_chen_001",
+      "npcName": "陈半仙",
+      "timeBlocks": [
+        { "startHour": 6, "endHour": 8,  "activityName": "整理货物",    "activityType": "Work",     "animationHint": "sort",     "isInterruptible": true,  "location": { "x": -3.0,"y": 0.5, "z": -1.0 } },
+        { "startHour": 8, "endHour": 12, "activityName": "摆摊叫卖",    "activityType": "Work",     "animationHint": "talk",     "isInterruptible": true,  "location": { "x": -3.0,"y": 0.5, "z": -1.0 } },
+        { "startHour": 12,"endHour": 14, "activityName": "客栈歇脚吃饭", "activityType": "Eat",      "animationHint": "sit",      "isInterruptible": true,  "location": { "x": -2.0,"y": 1.2, "z": -2.0 } },
+        { "startHour": 14,"endHour": 18, "activityName": "继续摆摊",    "activityType": "Work",     "animationHint": "talk",     "isInterruptible": true,  "location": { "x": -3.0,"y": 0.5, "z": -1.0 } },
+        { "startHour": 18,"endHour": 20, "activityName": "喝酒吹牛",    "activityType": "Social",   "animationHint": "drink",    "isInterruptible": true,  "location": { "x": -2.0,"y": 1.2, "z": -2.0 } },
+        { "startHour": 20,"endHour": 24, "activityName": "客栈客房休息", "activityType": "Rest",    "animationHint": "sleep",    "isInterruptible": false, "location": { "x": -1.5,"y": 1.2, "z": -2.5 } },
+        { "startHour": 0, "endHour": 6,  "activityName": "客栈客房休息", "activityType": "Rest",    "animationHint": "sleep",    "isInterruptible": false, "location": { "x": -1.5,"y": 1.2, "z": -2.5 } }
+      ]
+    },
+    {
+      "npcId": "npc_apprentice_001",
+      "npcName": "小药童",
+      "timeBlocks": [
+        { "startHour": 6, "endHour": 8,  "activityName": "洒扫药铺",    "activityType": "Work",     "animationHint": "clean",    "isInterruptible": true,  "location": { "x": 4.0, "y": 0.5, "z": -1.0 } },
+        { "startHour": 8, "endHour": 12, "activityName": "跟师学药认药", "activityType": "Work",     "animationHint": "read",     "isInterruptible": true,  "location": { "x": 5.0, "y": 0.5, "z": 0.0 } },
+        { "startHour": 12,"endHour": 14, "activityName": "午饭",        "activityType": "Eat",      "animationHint": "sit",      "isInterruptible": true,  "location": { "x": 4.0, "y": 0.5, "z": 1.5 } },
+        { "startHour": 14,"endHour": 18, "activityName": "分拣晒干药材", "activityType": "Work",     "animationHint": "sort",     "isInterruptible": true,  "location": { "x": 4.5, "y": 0.5, "z": -0.5 } },
+        { "startHour": 18,"endHour": 20, "activityName": "温习背诵药经", "activityType": "Rest",    "animationHint": "read",     "isInterruptible": true,  "location": { "x": 4.0, "y": 0.5, "z": 1.0 } },
+        { "startHour": 20,"endHour": 24, "activityName": "休息",        "activityType": "Rest",    "animationHint": "sleep",    "isInterruptible": false, "location": { "x": 3.5, "y": 0.5, "z": 1.0 } },
+        { "startHour": 0, "endHour": 6,  "activityName": "休息",        "activityType": "Rest",    "animationHint": "sleep",    "isInterruptible": false, "location": { "x": 3.5, "y": 0.5, "z": 1.0 } }
+      ]
+    },
+    {
+      "npcId": "npc_mystic_001",
+      "npcName": "云游散修",
+      "timeBlocks": [
+        { "startHour": 6, "endHour": 8,  "activityName": "晨起打坐吐纳", "activityType": "Rest",    "animationHint": "meditate", "isInterruptible": false, "location": { "x": 12.0,"y": 1.0, "z": 5.0 } },
+        { "startHour": 8, "endHour": 12, "activityName": "村外荒野历练", "activityType": "Travel",   "animationHint": "walk",     "isInterruptible": true,  "location": { "x": 18.0,"y": 1.0, "z": 8.0 } },
+        { "startHour": 12,"endHour": 14, "activityName": "客栈用膳",    "activityType": "Eat",      "animationHint": "sit",      "isInterruptible": true,  "location": { "x": -2.0,"y": 1.2, "z": -2.0 } },
+        { "startHour": 14,"endHour": 18, "activityName": "寻访远古遗迹", "activityType": "Travel",   "animationHint": "walk",     "isInterruptible": true,  "location": { "x": 5.0, "y": 0.5, "z": -12.0 } },
+        { "startHour": 18,"endHour": 20, "activityName": "品茶论道",    "activityType": "Social",   "animationHint": "talk",     "isInterruptible": true,  "location": { "x": -2.0,"y": 1.2, "z": -2.0 } },
+        { "startHour": 20,"endHour": 22, "activityName": "月下练剑",    "activityType": "Training", "animationHint": "combat",   "isInterruptible": true,  "location": { "x": 10.0,"y": 0.5, "z": 10.0 } },
+        { "startHour": 22,"endHour": 24, "activityName": "打坐代替睡眠", "activityType": "Rest",    "animationHint": "meditate", "isInterruptible": false, "location": { "x": 12.0,"y": 1.0, "z": 5.0 } },
+        { "startHour": 0, "endHour": 6,  "activityName": "打坐代替睡眠", "activityType": "Rest",    "animationHint": "meditate", "isInterruptible": false, "location": { "x": 12.0,"y": 1.0, "z": 5.0 } }
+      ]
+    },
+    {
+      "npcId": "npc_miner_001",
+      "npcName": "老矿工",
+      "timeBlocks": [
+        { "startHour": 6, "endHour": 8,  "activityName": "准备工具下矿", "activityType": "Work",     "animationHint": "prepare",  "isInterruptible": true,  "location": { "x": -1.0,"y": 0.5, "z": -3.0 } },
+        { "startHour": 8, "endHour": 12, "activityName": "矿洞采掘矿石", "activityType": "Work",     "animationHint": "mine",     "isInterruptible": true,  "location": { "x": -12.0,"y": 1.0, "z": -5.0 } },
+        { "startHour": 12,"endHour": 14, "activityName": "出矿吃饭休息", "activityType": "Eat",      "animationHint": "sit",      "isInterruptible": true,  "location": { "x": -1.0,"y": 0.5, "z": -3.0 } },
+        { "startHour": 14,"endHour": 18, "activityName": "矿洞继续采掘", "activityType": "Work",     "animationHint": "mine",     "isInterruptible": true,  "location": { "x": -12.0,"y": 1.0, "z": -5.0 } },
+        { "startHour": 18,"endHour": 20, "activityName": "村头喝酒歇息", "activityType": "Social",   "animationHint": "drink",    "isInterruptible": true,  "location": { "x": -1.5,"y": 0.5, "z": 0.0 } },
+        { "startHour": 20,"endHour": 24, "activityName": "回家休息",    "activityType": "Rest",    "animationHint": "sleep",    "isInterruptible": false, "location": { "x": 0.0, "y": 0.5, "z": -4.0 } },
+        { "startHour": 0, "endHour": 6,  "activityName": "回家休息",    "activityType": "Rest",    "animationHint": "sleep",    "isInterruptible": false, "location": { "x": 0.0, "y": 0.5, "z": -4.0 } }
+      ]
+    },
+    {
+      "npcId": "npc_liu_001",
+      "npcName": "刘猎户",
+      "timeBlocks": [
+        { "startHour": 6, "endHour": 8,  "activityName": "晨起换药",    "activityType": "Rest",    "animationHint": "sit",      "isInterruptible": true,  "location": { "x": -8.0,"y": 0.5, "z": -8.0 } },
+        { "startHour": 8, "endHour": 12, "activityName": "家中卧床养伤", "activityType": "Rest",    "animationHint": "sleep",    "isInterruptible": true,  "location": { "x": -8.0,"y": 0.5, "z": -8.0 } },
+        { "startHour": 12,"endHour": 14, "activityName": "午饭",        "activityType": "Eat",      "animationHint": "sit",      "isInterruptible": true,  "location": { "x": -8.0,"y": 0.5, "z": -8.0 } },
+        { "startHour": 14,"endHour": 18, "activityName": "打理猎具弓弩", "activityType": "Work",     "animationHint": "craft",    "isInterruptible": true,  "location": { "x": -8.0,"y": 0.5, "z": -8.0 } },
+        { "startHour": 18,"endHour": 20, "activityName": "与村民闲聊",  "activityType": "Social",   "animationHint": "talk",     "isInterruptible": true,  "location": { "x": -1.0,"y": 0.5, "z": -1.0 } },
+        { "startHour": 20,"endHour": 24, "activityName": "休息",        "activityType": "Rest",    "animationHint": "sleep",    "isInterruptible": false, "location": { "x": -8.0,"y": 0.5, "z": -8.0 } },
+        { "startHour": 0, "endHour": 6,  "activityName": "休息",        "activityType": "Rest",    "animationHint": "sleep",    "isInterruptible": false, "location": { "x": -8.0,"y": 0.5, "z": -8.0 } }
+      ]
+    },
+    {
+      "npcId": "npc_guard_001",
+      "npcName": "守卫老周",
+      "timeBlocks": [
+        { "startHour": 6, "endHour": 8,  "activityName": "城门口交接班", "activityType": "Work",     "animationHint": "talk",     "isInterruptible": true,  "location": { "x": 0.0, "y": 0.5, "z": -5.0 } },
+        { "startHour": 8, "endHour": 12, "activityName": "城墙巡逻",    "activityType": "Work",     "animationHint": "walk",     "isInterruptible": true,  "location": { "x": 0.0, "y": 0.5, "z": -6.0 } },
+        { "startHour": 12,"endHour": 14, "activityName": "换岗休息吃饭", "activityType": "Eat",      "animationHint": "sit",      "isInterruptible": true,  "location": { "x": -1.0,"y": 0.5, "z": -1.0 } },
+        { "startHour": 14,"endHour": 18, "activityName": "继续巡逻",    "activityType": "Work",     "animationHint": "walk",     "isInterruptible": true,  "location": { "x": 0.0, "y": 0.5, "z": -6.0 } },
+        { "startHour": 18,"endHour": 20, "activityName": "训练村中青壮", "activityType": "Work",     "animationHint": "combat",   "isInterruptible": true,  "location": { "x": 2.0, "y": 0.5, "z": -4.0 } },
+        { "startHour": 20,"endHour": 22, "activityName": "夜间值守",    "activityType": "Work",     "animationHint": "stand",    "isInterruptible": true,  "location": { "x": 0.0, "y": 0.5, "z": -5.0 } },
+        { "startHour": 22,"endHour": 24, "activityName": "回家休息",    "activityType": "Rest",    "animationHint": "sleep",    "isInterruptible": false, "location": { "x": -1.5,"y": 0.5, "z": -4.5 } },
+        { "startHour": 0, "endHour": 6,  "activityName": "回家休息",    "activityType": "Rest",    "animationHint": "sleep",    "isInterruptible": false, "location": { "x": -1.5,"y": 0.5, "z": -4.5 } }
+      ]
+    }
+  ]
+}

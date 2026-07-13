@@ -308,7 +308,7 @@ namespace EarthOnline.World
 
             EventBus.Publish(new DungeonEntrancePanelEvent
             {
-                Show = "true",
+                Show = true,
                 DungeonId = _dungeonId
             });
 
@@ -321,7 +321,7 @@ namespace EarthOnline.World
             _entrancePanel.SetActive(false);
             EventBus.Publish(new DungeonEntrancePanelEvent
             {
-                Show = "false",
+                Show = false,
                 DungeonId = _dungeonId
             });
         }
@@ -588,7 +588,7 @@ namespace EarthOnline.World
 
             EventBus.Publish(new DungeonSettlementShowEvent
             {
-                Show = "true",
+                Show = true,
                 Rating = rating,
                 Score = score,
                 BonusMultiplier = bonusMultiplier

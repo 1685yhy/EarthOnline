@@ -542,8 +542,8 @@ namespace EarthOnline.World
                 Phase = WarPhase.Preparation,
                 DeclarationTimestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
                 CombatStartTimestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds() + (long)(_config.PreparationHours * 3600),
-                AttackerPaid = "true",
-                SettlementDone = "false",
+                AttackerPaid = true,
+                SettlementDone = false,
             };
 
             // Determine contested territories (border territories or random)
@@ -1031,7 +1031,7 @@ namespace EarthOnline.World
                 PlayerId = playerId,
                 CoverSect = coverSect,
                 TrueSect = trueSect,
-                IsExposed = "false",
+                IsExposed = false,
             });
 
             return true;
@@ -1071,7 +1071,7 @@ namespace EarthOnline.World
                 PlayerId = playerId,
                 CoverSect = coverSect,
                 TrueSect = trueSect,
-                IsExposed = "true",
+                IsExposed = true,
             });
         }
 
@@ -1089,7 +1089,7 @@ namespace EarthOnline.World
                 LeaderPlayerId = leaderPlayerId,
                 LeaderPlayerName = leaderName,
                 Reason = reason,
-                CrisisDurationDays = "7",
+                CrisisDurationDays = 7,
             });
 
             // Auto-scatter members if leader betrayal + no replacement
@@ -1121,7 +1121,7 @@ namespace EarthOnline.World
                     PlayerId = playerId,
                     PreviousSect = destroyedSect,
                     LeaveType = LeaveType.Forced,
-                    RetainedContribution = "0",
+                    RetainedContribution = 0,
                 });
             }
         }

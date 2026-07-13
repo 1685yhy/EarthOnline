@@ -477,7 +477,7 @@ namespace EarthOnline.Core
                 EventBus.Publish(new MedicineResistanceChangedEvent
                 {
                     ItemId = itemId,
-                    NewResistanceCount = "0f",
+                    NewResistanceCount = 0f,
                     EffectMultiplier = 1.0f
                 });
             }
@@ -514,7 +514,7 @@ namespace EarthOnline.Core
                 DisplayName = displayName,
                 CurrentDurability = maxDurability,
                 MaxDurability = maxDurability,
-                IsBroken = "false",
+                IsBroken = false,
                 Quality = quality
             };
 

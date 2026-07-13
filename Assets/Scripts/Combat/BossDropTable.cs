@@ -604,7 +604,7 @@ namespace EarthOnline.Combat
         /// </summary>
         private void OnBossDefeated(BossDefeatedEvent evt)
         {
-            if (evt.BossId != bossDef?.bossId) return;
+            if (!string.Equals(evt.BossId?.ToString(), bossDef?.bossId, StringComparison.OrdinalIgnoreCase)) return;
 
             // 自动执行掉落
             RollLootAuto();
@@ -615,7 +615,7 @@ namespace EarthOnline.Combat
         /// </summary>
         private void OnPerfectHunt(PerfectHuntEvent evt)
         {
-            if (evt.BossId != bossDef?.bossId) return;
+            if (!string.Equals(evt.BossId?.ToString(), bossDef?.bossId, StringComparison.OrdinalIgnoreCase)) return;
 
             DebugLog($"★ 完美狩猎达成！下次掉落品质将提升一档！");
         }

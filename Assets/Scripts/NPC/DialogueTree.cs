@@ -49,6 +49,20 @@ namespace EarthOnline.NPC
 
         void BuildDialogue()
         {
+            // V3.0: 优先使用外部JSON对话数据（NPCDialogueLoader）
+            // 如果加载器存在且有该NPC的数据，则跳过硬编码对话树
+            var loader = NPCDialogueLoader.Instance;
+            if (loader != null && loader.HasData(_npc.npcId))
+            {
+                var loaded = loader.GetDialogueNodes(_npc.npcId);
+                if (loaded != null && loaded.Count > 0)
+                {
+                    _nodes = loaded;
+                    return;
+                }
+            }
+
+            // 降级到硬编码对话树（适用于无外部数据或加载失败的NPC）
             _nodes = _npc.npcId switch
             {
                 "npc_zhang_001" => BuildZhangDialogue(),

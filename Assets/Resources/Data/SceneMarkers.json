@@ -1,0 +1,323 @@
+{
+  "version": "1.0",
+  "generatedForScene": "EarthOnline_Main",
+  "description": "EarthOnline scene placement data for world objects in the cultivation world.",
+
+  "spiritVeins": [
+    {
+      "id": "sv_fissure",
+      "veinName": "裂缝灵脉",
+      "position": { "x": 0.0, "y": 0.1, "z": -20.0 },
+      "type": "裂痕",
+      "cultivationMultiplier": 2.5,
+      "spiritRegenBonus": 8,
+      "radius": 6.0,
+      "dailyCost": 30,
+      "description": "地面裂痕中涌出的狂暴灵气，修炼效率极高但风险较大。"
+    },
+    {
+      "id": "sv_forest",
+      "veinName": "森林灵脉",
+      "position": { "x": -10.0, "y": 0.1, "z": -3.0 },
+      "type": "木",
+      "cultivationMultiplier": 1.8,
+      "spiritRegenBonus": 4,
+      "radius": 5.0,
+      "dailyCost": 20,
+      "description": "古树根系交织形成的天然灵脉，蕴含生生不息的木灵气。"
+    },
+    {
+      "id": "sv_east",
+      "veinName": "东岭灵脉",
+      "position": { "x": 18.0, "y": 0.1, "z": 3.0 },
+      "type": "金",
+      "cultivationMultiplier": 2.0,
+      "spiritRegenBonus": 5,
+      "radius": 5.0,
+      "dailyCost": 25,
+      "description": "东面山岭中的金属性灵脉，适合锻造和剑修。"
+    },
+    {
+      "id": "sv_west",
+      "veinName": "西荒灵脉",
+      "position": { "x": -15.0, "y": 0.1, "z": 0.0 },
+      "type": "土",
+      "cultivationMultiplier": 1.6,
+      "spiritRegenBonus": 6,
+      "radius": 7.0,
+      "dailyCost": 18,
+      "description": "荒野中厚重的土灵脉，防御型修士首选。"
+    },
+    {
+      "id": "sv_village",
+      "veinName": "村口灵脉",
+      "position": { "x": 0.0, "y": 0.1, "z": 2.0 },
+      "type": "水",
+      "cultivationMultiplier": 1.4,
+      "spiritRegenBonus": 3,
+      "radius": 4.0,
+      "dailyCost": 15,
+      "description": "村口水井下的微弱灵脉，新手修炼入门之地。"
+    },
+    {
+      "id": "sv_south",
+      "veinName": "南沼灵脉",
+      "position": { "x": 8.0, "y": 0.1, "z": -10.0 },
+      "type": "火",
+      "cultivationMultiplier": 2.2,
+      "spiritRegenBonus": 4,
+      "radius": 5.0,
+      "dailyCost": 28,
+      "description": "南部沼泽地火灵气汹涌，适合炼丹师和火系功法。"
+    },
+    {
+      "id": "sv_mountain_cave",
+      "veinName": "山涧灵脉",
+      "position": { "x": -12.0, "y": 0.1, "z": 8.0 },
+      "type": "雷",
+      "cultivationMultiplier": 2.8,
+      "spiritRegenBonus": 7,
+      "radius": 4.0,
+      "dailyCost": 35,
+      "description": "山涧深处的雷属性变异灵脉，极为稀有但争夺激烈。"
+    }
+  ],
+
+  "dungeonEntrances": [
+    {
+      "id": "dung_ancient_ruins",
+      "dungeonName": "远古遗迹",
+      "position": { "x": 0.0, "y": 0.0, "z": -15.0 },
+      "dungeonId": "dungeon_ruins",
+      "dungeonScene": "Dungeon_Ruins",
+      "recommendedRealm": "练气期",
+      "recommendedLevel": 5,
+      "enterRange": 3.0,
+      "warningMessage": "⚠️ 前方远古遗迹，传闻中有上古修士的遗宝，建议Lv.5+进入。",
+      "description": "上古宗门坍塌后留下的地下遗迹，内有机关傀儡和灵石矿脉。"
+    },
+    {
+      "id": "dung_dark_forest",
+      "dungeonName": "暗黑森林",
+      "position": { "x": 25.0, "y": 0.5, "z": 5.0 },
+      "dungeonId": "dungeon_dark_forest",
+      "dungeonScene": "Dungeon_DarkForest",
+      "recommendedRealm": "筑基期",
+      "recommendedLevel": 15,
+      "enterRange": 3.0,
+      "warningMessage": "⚠️ 暗黑森林常年不见天日，妖兽横行，建议Lv.15+组队进入。",
+      "description": "被黑暗灵气侵蚀的古老森林，深处藏有千年妖兽。"
+    },
+    {
+      "id": "dung_frozen_abyss",
+      "dungeonName": "寒冰深渊",
+      "position": { "x": -30.0, "y": 2.0, "z": 30.0 },
+      "dungeonId": "dungeon_frozen_abyss",
+      "dungeonScene": "Dungeon_FrozenAbyss",
+      "recommendedRealm": "金丹期",
+      "recommendedLevel": 30,
+      "enterRange": 3.0,
+      "warningMessage": "⚠️ 寒冰深渊温度极低，普通修士难以承受，建议Lv.30+准备御寒法宝。",
+      "description": "万年寒冰下封印的深渊秘境，冰属性灵石和功法的重要来源。"
+    },
+    {
+      "id": "dung_volcanic_core",
+      "dungeonName": "火山核心",
+      "position": { "x": 30.0, "y": 1.5, "z": -30.0 },
+      "dungeonId": "dungeon_volcanic_core",
+      "dungeonScene": "Dungeon_VolcanicCore",
+      "recommendedRealm": "金丹期",
+      "recommendedLevel": 35,
+      "enterRange": 4.0,
+      "warningMessage": "⚠️ 火山核心岩浆涌动，火灵暴躁，建议Lv.35+携带避火珠。",
+      "description": "活火山内部的地下洞窟，火灵脉与熔岩妖兽共存的险地。"
+    },
+    {
+      "id": "dung_heavenly_tower",
+      "dungeonName": "通天塔",
+      "position": { "x": 0.0, "y": 0.5, "z": 0.0 },
+      "dungeonId": "dungeon_heavenly_tower",
+      "dungeonScene": "Dungeon_HeavenlyTower",
+      "recommendedRealm": "练气期",
+      "recommendedLevel": 1,
+      "enterRange": 5.0,
+      "warningMessage": "⚠️ 通天塔——天地意志打造的试炼之地，每层都有丰厚的奖励。不限等级，但越往上越危险。",
+      "description": "天地意志打造的万层试炼塔，每层通关奖励丰厚，是散修崛起的重要途径。"
+    }
+  ],
+
+  "hiddenDiscoveries": [
+    {
+      "id": "disc_cave",
+      "discoveryName": "隐秘洞穴",
+      "discoveryText": "你拨开藤蔓，发现一个隐蔽的洞穴入口。洞内石壁上刻满了古老的符文，似乎在封印着什么……",
+      "position": { "x": -15.0, "y": 0.5, "z": -15.0 },
+      "discoveryType": "Hidden",
+      "triggerRange": 6.0,
+      "conditions": [
+        { "type": "CultivationAbove", "value": "50" }
+      ],
+      "rewards": {
+        "itemId": "item_map_fragment",
+        "itemName": "藏宝图碎片",
+        "quantity": 1,
+        "cultivation": 80
+      },
+      "description": "被藤蔓掩盖的洞穴，只有修为达到一定境界才能感知到符文的灵力波动。"
+    },
+    {
+      "id": "disc_altar",
+      "discoveryName": "上古祭坛",
+      "discoveryText": "一座被遗忘的上古祭坛静静矗立在林中。祭坛中央的玉碟上刻着几行小字——'以血为引，可通天道'。",
+      "position": { "x": 12.0, "y": 0.5, "z": -10.0 },
+      "discoveryType": "Landmark",
+      "triggerRange": 15.0,
+      "conditions": [
+        { "type": "AlwaysTrue", "value": "" }
+      ],
+      "rewards": {
+        "itemId": "item_ancient_coin",
+        "itemName": "上古钱币",
+        "quantity": 3,
+        "cultivation": 30
+      },
+      "description": "林中上古祭坛，自动发现，永久标记在地图上。"
+    },
+    {
+      "id": "disc_ancient_tree",
+      "discoveryName": "古悟道树",
+      "discoveryText": "一棵参天古树，树干上有人为刻下的修炼心得。署名——'青云散人留，悟道于此，三月破境'。树下有淡淡灵光闪烁。",
+      "position": { "x": 15.0, "y": 1.0, "z": 15.0 },
+      "discoveryType": "POI",
+      "triggerRange": 10.0,
+      "conditions": [
+        { "type": "CultivationAbove", "value": "100" }
+      ],
+      "rewards": {
+        "itemId": "item_insight_scroll",
+        "itemName": "悟道心得",
+        "quantity": 1,
+        "cultivation": 120
+      },
+      "description": "千年古树下有前辈遗留的修炼心得，需要一定修为基础才能参悟。"
+    }
+  ],
+
+  "fastTravelPoints": [
+    {
+      "id": "ft_village_center",
+      "pointName": "村庄广场",
+      "pointId": "village_center",
+      "position": { "x": 0.0, "y": 0.5, "z": 0.0 },
+      "unlockCondition": "auto",
+      "description": "新手村中心传送点，初始自动解锁。"
+    },
+    {
+      "id": "ft_forest_edge",
+      "pointName": "森林边缘",
+      "pointId": "forest_edge",
+      "position": { "x": 15.0, "y": 0.5, "z": 0.0 },
+      "unlockCondition": "discover",
+      "description": "东部森林入口传送点，靠近远古遗迹区域。"
+    },
+    {
+      "id": "ft_dungeon_gate",
+      "pointName": "地下城大门",
+      "pointId": "dungeon_gate",
+      "position": { "x": 0.0, "y": 0.5, "z": -18.0 },
+      "unlockCondition": "discover",
+      "description": "地下城区域入口传送点，挑战副本的起点。"
+    },
+    {
+      "id": "ft_lake_shore",
+      "pointName": "湖畔",
+      "pointId": "lake_shore",
+      "position": { "x": -14.0, "y": 0.5, "z": 10.0 },
+      "unlockCondition": "discover",
+      "description": "西面湖畔传送点，钓鱼和采集资源区。"
+    },
+    {
+      "id": "ft_mountain_pass",
+      "pointName": "山隘口",
+      "pointId": "mountain_pass",
+      "position": { "x": -25.0, "y": 0.5, "z": -5.0 },
+      "unlockCondition": "realm",
+      "unlockRealm": "筑基期",
+      "unlockLevel": 15,
+      "description": "西部矿区的山隘口传送点，需筑基期以上才能安全通行。"
+    },
+    {
+      "id": "ft_east_outlook",
+      "pointName": "东望台",
+      "pointId": "east_outlook",
+      "position": { "x": 25.0, "y": 0.5, "z": 0.0 },
+      "unlockCondition": "discover",
+      "description": "东面高地瞭望台，俯瞰森林区域。"
+    },
+    {
+      "id": "ft_south_swamp",
+      "pointName": "南沼入口",
+      "pointId": "south_swamp",
+      "position": { "x": 8.0, "y": 0.5, "z": -16.0 },
+      "unlockCondition": "realm",
+      "unlockRealm": "练气期",
+      "unlockLevel": 8,
+      "description": "南部沼泽入口传送点，附近有丰富药材资源。"
+    },
+    {
+      "id": "ft_north_peak",
+      "pointName": "北峰",
+      "pointId": "north_peak",
+      "position": { "x": 0.0, "y": 0.5, "z": 25.0 },
+      "unlockCondition": "realm",
+      "unlockRealm": "金丹期",
+      "unlockLevel": 30,
+      "description": "北部高峰传送点，高等级区域入口，金丹期以上方可解锁。"
+    }
+  ],
+
+  "treasureChests": [
+    {
+      "id": "chest_ruins",
+      "position": { "x": 10.0, "y": 0.5, "z": 7.0 },
+      "lootTable": "LT_ruins_common",
+      "respawnTime": 300,
+      "description": "遗迹废墟中的老旧宝箱，可能开出灵石和普通材料。"
+    },
+    {
+      "id": "chest_forest",
+      "position": { "x": -10.0, "y": 0.5, "z": -5.0 },
+      "lootTable": "LT_forest_common",
+      "respawnTime": 240,
+      "description": "森林深处的藤蔓宝箱，含有草药和丹药。"
+    },
+    {
+      "id": "chest_cave",
+      "position": { "x": 0.0, "y": 0.5, "z": -12.0 },
+      "lootTable": "LT_cave_rare",
+      "respawnTime": 600,
+      "description": "洞穴深处封印的宝箱，有概率开出稀有装备或功法残卷。"
+    },
+    {
+      "id": "chest_waterfall",
+      "position": { "x": -20.0, "y": 0.5, "z": 15.0 },
+      "lootTable": "LT_waterfall_hidden",
+      "respawnTime": 900,
+      "description": "瀑布后的隐藏宝箱，需要绕到瀑布后面才能发现。"
+    },
+    {
+      "id": "chest_blacksmith",
+      "position": { "x": -6.0, "y": 0.8, "z": 8.0 },
+      "lootTable": "LT_blacksmith_stash",
+      "respawnTime": 360,
+      "description": "铁匠铺后院堆放的物资箱，有锻造材料和成品武器。"
+    },
+    {
+      "id": "chest_elder_house",
+      "position": { "x": 9.0, "y": 0.9, "z": 6.0 },
+      "lootTable": "LT_elder_reward",
+      "respawnTime": 0,
+      "description": "村长房屋中的奖励箱，完成特定任务后开启。不会刷新。"
+    }
+  ]
+}

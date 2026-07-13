@@ -1,0 +1,320 @@
+{
+  "quests": [
+    {
+      "questId": "mq_01",
+      "title": "初入道途",
+      "description": "你初至灵气大陆，体内尚无一缕灵气。村中长者张老说，修炼一途始于'感应'——感应天地灵气，感应自身丹田。去找张老，他会教你引气的法门。",
+      "chapter": "练气",
+      "prerequisites": [],
+      "objectives": [
+        {
+          "description": "与张老交谈，了解修炼入门知识",
+          "completionCondition": "talk_npc:npc_zhang_001"
+        }
+      ],
+      "rewards": {
+        "cultivationXP": 20,
+        "spiritStones": 30,
+        "itemIds": []
+      },
+      "isMainQuest": true,
+      "unlockCondition": "auto",
+      "giverNpcId": "npc_zhang_001",
+      "giverName": "张老",
+      "completionText": "张老微笑着点了点头：'很好。你体内已有一丝灵气涌动——虽然微弱，但那是万物之始。第47个了……希望你能比前人走得更远。'"
+    },
+    {
+      "questId": "mq_02",
+      "title": "引气入体",
+      "description": "张老说你的根骨尚可，但需以灵草辅助方能正式引气入体。去村外采集灵草，然后在他指导下完成第一次灵气循环——这将是你踏入修炼之路的第一步。",
+      "chapter": "练气",
+      "prerequisites": ["mq_01"],
+      "objectives": [
+        {
+          "description": "向张老请教引气之法，获得药方",
+          "completionCondition": "talk_npc:npc_zhang_001"
+        },
+        {
+          "description": "采集3株灵草，为引气做准备",
+          "completionCondition": "collect:item_spirit_herb:3"
+        }
+      ],
+      "rewards": {
+        "cultivationXP": 40,
+        "spiritStones": 60,
+        "itemIds": []
+      },
+      "isMainQuest": true,
+      "unlockCondition": "auto",
+      "giverNpcId": "npc_zhang_001",
+      "giverName": "张老",
+      "completionText": "灵气在你体内缓缓流转——那是你第一次感受到'活着'的真正含义。张老拍了拍你的肩：'你已经是一个真正的修士了。练气一层——恭喜。'"
+    },
+    {
+      "questId": "mq_03",
+      "title": "筑基试炼",
+      "description": "练气已至瓶颈，若要继续前进，必须筑基。铁柱说北山的野狼近日越发猖狂，正适合你练手——在生死搏杀中突破瓶颈，以实战铸就筑基根基。",
+      "chapter": "筑基",
+      "prerequisites": ["mq_02"],
+      "objectives": [
+        {
+          "description": "击败5只野狼，以实战磨砺修为",
+          "completionCondition": "kill:wolf_001:5"
+        }
+      ],
+      "rewards": {
+        "cultivationXP": 80,
+        "spiritStones": 100,
+        "itemIds": ["item_iron_sword"]
+      },
+      "isMainQuest": true,
+      "unlockCondition": "cultivationLevel >= 1",
+      "giverNpcId": "npc_wang_001",
+      "giverName": "王铁柱",
+      "completionText": "王铁柱看着满身狼血的你，竖起了大拇指：'好！这股狠劲儿——才是修士该有的样子。筑基就在眼前了！'"
+    },
+    {
+      "questId": "mq_04",
+      "title": "丹火炼心",
+      "description": "筑基已成，但若要凝结金丹，必须经过丹火淬炼。李灵儿说村落地底的炎脉中生长着火莲花——那是炼制结丹辅药的关键材料。但火莲花由火灵守卫守护……你准备好了吗？",
+      "chapter": "筑基",
+      "prerequisites": ["mq_03"],
+      "objectives": [
+        {
+          "description": "取得火莲花，淬炼金丹必需",
+          "completionCondition": "collect:item_fire_lotus:1"
+        },
+        {
+          "description": "击败火灵守卫，夺取丹火精华",
+          "completionCondition": "boss:boss_fire_spirit"
+        }
+      ],
+      "rewards": {
+        "cultivationXP": 200,
+        "spiritStones": 300,
+        "itemIds": ["item_golden_core_fragment"]
+      },
+      "isMainQuest": true,
+      "unlockCondition": "cultivationLevel >= 3",
+      "giverNpcId": "npc_li_001",
+      "giverName": "李灵儿",
+      "completionText": "火灵消散后，一颗金色的光点缓缓落入你的掌心。李灵儿惊叹：'这就是金丹雏形——你已触摸到了那层门槛。继续走下去，结丹只是时间问题。'"
+    },
+    {
+      "questId": "mq_05",
+      "title": "金丹已成",
+      "description": "张老说，结丹之日，天地有感。你需要前往宗门遗址的聚灵阵中完成最后的突破——那里灵气最为充沛，但也吸引着各方觊觎。守住阵眼，凝结你的金丹。",
+      "chapter": "金丹",
+      "prerequisites": ["mq_04"],
+      "objectives": [
+        {
+          "description": "前往聚灵阵遗址，准备结丹",
+          "completionCondition": "talk_npc:npc_zhang_001"
+        },
+        {
+          "description": "击败来袭的虚空生物，守住阵眼",
+          "completionCondition": "kill:void_creep:3"
+        }
+      ],
+      "rewards": {
+        "cultivationXP": 500,
+        "spiritStones": 500,
+        "itemIds": ["item_golden_core_manual", "item_spirit_robe"]
+      },
+      "isMainQuest": true,
+      "unlockCondition": "cultivationLevel >= 5",
+      "giverNpcId": "npc_zhang_001",
+      "giverName": "张老",
+      "completionText": "金丹在丹田中缓缓旋转，天地灵气如潮水般涌入你的身体。张老苍老的面容上露出了真心的笑容：'金丹已成……老夫果然没有看错人。从今天起，这片天地对你而言——不一样了。'"
+    },
+    {
+      "questId": "sq_herb_gathering",
+      "title": "采药救人",
+      "description": "村中有几人染上了风寒，李灵儿的药铺药材告急。她听说东边的青翠谷中有一片药田，但那里常有低阶妖兽出没，没人敢去。请你帮忙采集几味药材回来。",
+      "chapter": "练气",
+      "prerequisites": [],
+      "objectives": [
+        {
+          "description": "在青翠谷采集5株药草",
+          "completionCondition": "collect:item_medicinal_herb:5"
+        }
+      ],
+      "rewards": {
+        "cultivationXP": 30,
+        "spiritStones": 40,
+        "itemIds": ["item_health_pill"]
+      },
+      "isMainQuest": false,
+      "unlockCondition": "auto",
+      "giverNpcId": "npc_li_001",
+      "giverName": "李灵儿",
+      "completionText": "李灵儿接过药草，感激地说：'太好了！这些药够用一阵子了。这里有一瓶我自己炼的养气丹——算是谢礼。'"
+    },
+    {
+      "questId": "sq_wolf_hunt",
+      "title": "恶狼剿灭",
+      "description": "王铁柱急匆匆地跑来，说村北的狼群最近聚集成了一个大型狼群，头狼似乎踏入了妖兽之列。再不处理，它们迟早会袭击村子。他请你帮忙彻底清剿狼患。",
+      "chapter": "筑基",
+      "prerequisites": [],
+      "objectives": [
+        {
+          "description": "剿灭村外聚集的狼群，削弱其实力",
+          "completionCondition": "kill:wolf_001:10"
+        }
+      ],
+      "rewards": {
+        "cultivationXP": 60,
+        "spiritStones": 80,
+        "itemIds": ["item_wolf_fang_amulet"]
+      },
+      "isMainQuest": false,
+      "unlockCondition": "auto",
+      "giverNpcId": "npc_wang_001",
+      "giverName": "王铁柱",
+      "completionText": "王铁柱拍了拍你的肩膀，又递给你一串狼牙项链：'好样的！这狼牙是我用头狼的尖牙打磨的，戴在身上能辟邪——你比我更需要它。'"
+    },
+    {
+      "questId": "sq_escort_merchant",
+      "title": "护送商旅",
+      "description": "赵掌柜有一批要紧的货物要送到青云镇，但最近山道上不太平——据说有劫匪和妖兽出没。他出高价请你护送车队安全通过清风岭。来回大约三日路程。",
+      "chapter": "筑基",
+      "prerequisites": [],
+      "objectives": [
+        {
+          "description": "与赵掌柜会合，确认护送路线",
+          "completionCondition": "talk_npc:npc_zhao_001"
+        },
+        {
+          "description": "安全护送车队通过清风岭",
+          "completionCondition": "talk_npc:npc_zhao_001"
+        }
+      ],
+      "rewards": {
+        "cultivationXP": 50,
+        "spiritStones": 120,
+        "itemIds": ["item_travel_bag"]
+      },
+      "isMainQuest": false,
+      "unlockCondition": "auto",
+      "giverNpcId": "npc_zhao_001",
+      "giverName": "赵掌柜",
+      "completionText": "赵掌柜满脸堆笑地数着灵石：'合作愉快！下次有活还找你——这是说好的报酬，多出来的算我请客！'"
+    },
+    {
+      "questId": "sq_ruins_explore",
+      "title": "遗迹探秘",
+      "description": "张老拿出一张泛黄的地图，说北山深处有一座上古修士留下的洞府遗迹，千年来从未有人成功进入。但他感应到最近遗迹的禁制出现了松动——或许正是探索的时机。",
+      "chapter": "金丹",
+      "prerequisites": [],
+      "objectives": [
+        {
+          "description": "找到北山上古遗迹的入口",
+          "completionCondition": "explore:AncientRuins"
+        },
+        {
+          "description": "破解遗迹外围禁制，获取遗物",
+          "completionCondition": "boss:ruins_guardian"
+        }
+      ],
+      "rewards": {
+        "cultivationXP": 100,
+        "spiritStones": 150,
+        "itemIds": ["item_ancient_relic"]
+      },
+      "isMainQuest": false,
+      "unlockCondition": "auto",
+      "giverNpcId": "npc_zhang_001",
+      "giverName": "张老",
+      "completionText": "张老端详着你带回的遗物，面色凝重：'这是……上古炼气士的信物。此人至少活了五千年——他的传承，或许能解开这个世界的很多秘密。'"
+    },
+    {
+      "questId": "sq_beast_taming",
+      "title": "灵兽驯服",
+      "description": "王铁柱在山中发现了一只幼年灵兽——风灵狐，毛色纯白，极为稀有。若能驯服它，不仅能得一强大助力，还能用它的灵敏感知寻找天材地宝。但风灵狐生性警惕，需要特殊的驯兽丹药。",
+      "chapter": "金丹",
+      "prerequisites": ["mq_03"],
+      "objectives": [
+        {
+          "description": "收集驯兽丹所需材料",
+          "completionCondition": "collect:item_tame_herb:3"
+        },
+        {
+          "description": "使用驯兽丹收服风灵狐",
+          "completionCondition": "collect:item_tame_elixir:1"
+        }
+      ],
+      "rewards": {
+        "cultivationXP": 80,
+        "spiritStones": 100,
+        "itemIds": ["item_spirit_fox_whistle"]
+      },
+      "isMainQuest": false,
+      "unlockCondition": "auto",
+      "giverNpcId": "npc_wang_001",
+      "giverName": "王铁柱",
+      "completionText": "风灵狐蹭了蹭你的手，随后化作一道白光没入你腰间的灵兽袋。王铁柱哈哈大笑：'它认定你了！灵兽认主全凭心意——你小子运气真不错！'"
+    },
+    {
+      "questId": "hq_sword_legacy",
+      "title": "剑道传承",
+      "description": "你在探索时偶然发现了一座隐藏的剑冢——一位上古剑仙的坐化之地。墙壁上刻满了精妙绝伦的剑招，但剑冢深处残留着剑灵残魂，它会考验每一个闯入者的剑心。若能通过考验，你或将继承一门失传的绝世剑术。",
+      "chapter": "金丹",
+      "prerequisites": ["mq_04"],
+      "objectives": [
+        {
+          "description": "发现隐世剑冢的入口",
+          "completionCondition": "explore:HiddenSwordGrave"
+        },
+        {
+          "description": "在剑冢中领悟三式基础剑意",
+          "completionCondition": "collect:item_sword_insight:3"
+        },
+        {
+          "description": "接受剑灵残魂的考验，证明剑心",
+          "completionCondition": "boss:sword_spirit_remnant"
+        }
+      ],
+      "rewards": {
+        "cultivationXP": 300,
+        "spiritStones": 200,
+        "itemIds": ["item_ancient_sword", "item_sword_art_scroll"]
+      },
+      "isMainQuest": false,
+      "unlockCondition": "has_discovered:HiddenSwordGrave",
+      "giverNpcId": "",
+      "giverName": "天命",
+      "completionText": "剑灵残魂化作一道流光没入你的眉心——你脑海中瞬间涌入了无数剑招记忆。一个苍老的声音在意识深处响起：'千年了……终于有人能接下我的剑。不要辱没了它——'斩天'之名。'"
+    },
+    {
+      "questId": "hq_void_whisper",
+      "title": "虚空低语",
+      "description": "每到月圆之夜，你脑海中就会响起一种奇怪的低语——那不是任何已知的语言，却让你莫名地感到熟悉。张老说，那是虚空深处的声音，只有灵魂特殊的人才能听到。他建议你去虚空裂缝附近寻找答案——但那里极度危险，必须做好万全准备。",
+      "chapter": "金丹",
+      "prerequisites": ["mq_05"],
+      "objectives": [
+        {
+          "description": "调查虚空裂缝附近的异常能量",
+          "completionCondition": "explore:VoidCleft"
+        },
+        {
+          "description": "收集散落的虚空碎片作为研究材料",
+          "completionCondition": "collect:item_void_fragment:3"
+        },
+        {
+          "description": "在裂缝深处寻找低语的源头",
+          "completionCondition": "talk_npc:npc_void_echo"
+        }
+      ],
+      "rewards": {
+        "cultivationXP": 400,
+        "spiritStones": 600,
+        "itemIds": ["item_void_amulet", "item_void_essence"]
+      },
+      "isMainQuest": false,
+      "unlockCondition": "quest_completed:mq_05",
+      "giverNpcId": "",
+      "giverName": "虚空",
+      "completionText": "那个声音在你脑海中变得清晰：'你终于来了……第47个灵魂。和前面46个一样——又不一样。这个世界快撑不住了，但你……或许还有机会。'"
+    }
+  ]
+}

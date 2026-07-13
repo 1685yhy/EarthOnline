@@ -10,6 +10,28 @@ namespace EarthOnline.Framework
         public string id, title, description, category;
         public bool unlocked;
         public int reward;
+        // 扩展字段（数据驱动）
+        public string rewardType;
+        public string unlockCondition;
+        public bool isHidden;
+        public string iconHint;
+    }
+
+    /// <summary>
+    /// JSON反序列化用的成就定义
+    /// </summary>
+    [System.Serializable]
+    public class AchievementDefinition
+    {
+        public string achievementId;
+        public string title;
+        public string description;
+        public string category;
+        public int rewardAmount;
+        public string rewardType;
+        public string unlockCondition;
+        public bool isHidden;
+        public string iconHint;
     }
 
     /// <summary>
@@ -366,6 +388,32 @@ namespace EarthOnline.Framework
                 {"category", a.category},
                 {"reward", a.reward}
             });
+        }
+
+        // ================================================================
+        //  数据加载接口（供 AchievementDataLoader 调用）
+        // ================================================================
+        public void RegisterFromLoader(AchievementDefinition def)
+        {
+            if (_achievements.ContainsKey(def.achievementId)) return; // 防止重复
+            _achievements[def.achievementId] = new Achievement
+            {
+                id = def.achievementId,
+                title = def.title,
+                description = def.description,
+                category = def.category,
+                reward = def.rewardAmount,
+                rewardType = def.rewardType,
+                unlockCondition = def.unlockCondition,
+                isHidden = def.isHidden,
+                iconHint = def.iconHint,
+                unlocked = false
+            };
+        }
+
+        public void RegisterFromLoaderBatch(AchievementDefinition[] defs)
+        {
+            foreach (var def in defs) RegisterFromLoader(def);
         }
 
         // ================================================================

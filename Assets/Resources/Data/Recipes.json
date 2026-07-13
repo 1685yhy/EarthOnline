@@ -1,0 +1,448 @@
+{
+  "Recipes": [
+    {
+      "id": "recipe_huixue",
+      "displayName": "回血丹",
+      "description": "基础疗伤丹药，可快速恢复气血，适合战斗后使用。",
+      "category": "pill",
+      "sourceType": "basic",
+      "isOriginalRecipe": true,
+      "optimalTemperature": 120.0,
+      "duration": 30.0,
+      "baseQualityMin": 0.2,
+      "baseQualityMax": 0.6,
+      "difficulty": 1,
+      "requiredProficiency": 1,
+      "materials": [
+        { "itemId": "mat_herb_lingcao", "displayName": "灵草", "quantity": 2, "isConsumed": true },
+        { "itemId": "mat_blood_shouxue", "displayName": "兽血", "quantity": 1, "isConsumed": true }
+      ],
+      "recommendedOrder": ["mat_herb_lingcao", "mat_herb_lingcao", "mat_blood_shouxue"],
+      "resultPool": [
+        {
+          "itemId": "item_huixue_dan",
+          "itemName": "回血丹",
+          "description": "服用后恢复气血，品质越高恢复量越大。",
+          "weight": 1.0,
+          "minQuality": "low",
+          "isSpecial": false
+        }
+      ],
+      "mutationPool": [
+        {
+          "itemId": "item_huixue_dan_mutant",
+          "itemName": "烈血丹",
+          "description": "药力狂暴的回血丹变种，恢复气血但短暂提升攻击力。",
+          "weight": 1.0
+        }
+      ],
+      "sourceHint": "初始解锁",
+      "sourceDetail": "炼药入门即可炼制的基础丹方。",
+      "tags": ["基础", "回复", "气血", "战斗"]
+    },
+    {
+      "id": "recipe_juqi",
+      "displayName": "聚气丹",
+      "description": "凝聚天地灵气辅助修炼，炼气期修士必备丹药。",
+      "category": "pill",
+      "sourceType": "basic",
+      "isOriginalRecipe": true,
+      "optimalTemperature": 150.0,
+      "duration": 50.0,
+      "baseQualityMin": 0.3,
+      "baseQualityMax": 0.8,
+      "difficulty": 1,
+      "requiredProficiency": 1,
+      "materials": [
+        { "itemId": "mat_herb_lingcao", "displayName": "灵草", "quantity": 2, "isConsumed": true },
+        { "itemId": "mat_root_renshen", "displayName": "人参", "quantity": 1, "isConsumed": true },
+        { "itemId": "mat_essence_lingcui", "displayName": "灵粹", "quantity": 1, "isConsumed": true }
+      ],
+      "recommendedOrder": ["mat_herb_lingcao", "mat_root_renshen", "mat_essence_lingcui", "mat_herb_lingcao"],
+      "resultPool": [
+        {
+          "itemId": "item_juqi_dan",
+          "itemName": "聚气丹",
+          "description": "修炼时服用可大幅提升灵气吸收速度，持续30分钟。",
+          "weight": 1.0,
+          "minQuality": "low",
+          "isSpecial": false
+        }
+      ],
+      "mutationPool": [
+        {
+          "itemId": "item_juqi_dan_mutant",
+          "itemName": "爆气丹",
+          "description": "聚气丹的狂暴变种，瞬间爆发大量灵力但会造成经脉损伤。",
+          "weight": 0.7
+        },
+        {
+          "itemId": "item_juqi_dan_pure",
+          "itemName": "纯元丹",
+          "description": "意外提纯的聚气丹，无副作用且效果翻倍。",
+          "weight": 0.3
+        }
+      ],
+      "sourceHint": "初始解锁",
+      "sourceDetail": "炼药入门即可炼制的基础丹方。",
+      "tags": ["修炼", "灵气", "基础", "炼气"]
+    },
+    {
+      "id": "recipe_zhuji",
+      "displayName": "筑基丹",
+      "description": "筑基期突破关键丹药，可稳固根基、拓宽经脉，大幅提高筑基成功率。",
+      "category": "pill",
+      "sourceType": "sect",
+      "isOriginalRecipe": true,
+      "optimalTemperature": 180.0,
+      "duration": 80.0,
+      "baseQualityMin": 0.4,
+      "baseQualityMax": 0.85,
+      "difficulty": 4,
+      "requiredProficiency": 15,
+      "materials": [
+        { "itemId": "mat_flower_lingzhi", "displayName": "灵芝", "quantity": 2, "isConsumed": true },
+        { "itemId": "mat_essence_lingmai", "displayName": "灵脉晶", "quantity": 1, "isConsumed": true },
+        { "itemId": "mat_bone_linggu", "displayName": "灵骨", "quantity": 1, "isConsumed": true }
+      ],
+      "recommendedOrder": ["mat_flower_lingzhi", "mat_bone_linggu", "mat_essence_lingmai", "mat_flower_lingzhi"],
+      "resultPool": [
+        {
+          "itemId": "item_zhuji_dan",
+          "itemName": "筑基丹",
+          "description": "突破筑基期的关键丹药，品质越高筑基成功率越大。",
+          "weight": 1.0,
+          "minQuality": "low",
+          "isSpecial": false
+        }
+      ],
+      "mutationPool": [
+        {
+          "itemId": "item_zhuji_dan_perfect",
+          "itemName": "天基丹",
+          "description": "完美筑基的丹药变种，服用后可铸就无瑕道基。",
+          "weight": 0.5
+        }
+      ],
+      "sourceHint": "门派贡献兑换 (1200贡献)",
+      "sourceDetail": "前往各自门派丹阁使用门派贡献兑换丹方。",
+      "tags": ["突破", "筑基", "门派", "修炼"]
+    },
+    {
+      "id": "recipe_dujie",
+      "displayName": "渡劫丹",
+      "description": "抵挡天雷劫数的传奇丹药，能在渡劫时化天雷为灵雨，大幅提升渡劫成功率。",
+      "category": "pill",
+      "sourceType": "boss",
+      "isOriginalRecipe": true,
+      "optimalTemperature": 300.0,
+      "duration": 120.0,
+      "baseQualityMin": 0.5,
+      "baseQualityMax": 0.95,
+      "difficulty": 8,
+      "requiredProficiency": 50,
+      "materials": [
+        { "itemId": "mat_blood_longxue", "displayName": "龙血", "quantity": 1, "isConsumed": true },
+        { "itemId": "mat_feather_fengyu", "displayName": "凤羽", "quantity": 1, "isConsumed": true },
+        { "itemId": "mat_crystal_leidian", "displayName": "雷电晶", "quantity": 1, "isConsumed": true },
+        { "itemId": "mat_essence_lingmai", "displayName": "灵脉晶", "quantity": 2, "isConsumed": true }
+      ],
+      "recommendedOrder": ["mat_essence_lingmai", "mat_essence_lingmai", "mat_blood_longxue", "mat_feather_fengyu", "mat_crystal_leidian"],
+      "resultPool": [
+        {
+          "itemId": "item_dujie_dan",
+          "itemName": "渡劫丹",
+          "description": "蕴含天雷之力的传奇丹药，渡劫时服用可吸收部分雷劫威力。",
+          "weight": 1.0,
+          "minQuality": "mid",
+          "isSpecial": false
+        },
+        {
+          "itemId": "item_dujie_dan_legendary",
+          "itemName": "天劫圣丹",
+          "description": "完美品质的渡劫丹，可将天雷化为己用，淬炼肉身。",
+          "weight": 0.2,
+          "minQuality": "legendary",
+          "isSpecial": true
+        }
+      ],
+      "mutationPool": [
+        {
+          "itemId": "item_dujie_dan_mutant",
+          "itemName": "雷劫珠",
+          "description": "渡劫丹变异凝结的雷珠，可释放一次天雷攻击。",
+          "weight": 0.4
+        }
+      ],
+      "sourceHint": "击杀雷蛟尊者 (25%概率掉落)",
+      "sourceDetail": "雷蛟尊者盘踞于天雷峰顶，每七日重生一次，建议组队挑战。",
+      "tags": ["渡劫", "天雷", "突破", "传说", "boss"]
+    },
+    {
+      "id": "recipe_ningxin",
+      "displayName": "凝心丹",
+      "description": "安定心神、抵御心魔的修炼丹药，在突破瓶颈时服用可避免走火入魔。",
+      "category": "pill",
+      "sourceType": "exploration",
+      "isOriginalRecipe": true,
+      "optimalTemperature": 160.0,
+      "duration": 60.0,
+      "baseQualityMin": 0.35,
+      "baseQualityMax": 0.75,
+      "difficulty": 3,
+      "requiredProficiency": 10,
+      "materials": [
+        { "itemId": "mat_flower_xuelian", "displayName": "雪莲", "quantity": 1, "isConsumed": true },
+        { "itemId": "mat_special_wangyoucao", "displayName": "忘忧草", "quantity": 1, "isConsumed": true },
+        { "itemId": "mat_essence_lingcui", "displayName": "灵粹", "quantity": 2, "isConsumed": true }
+      ],
+      "recommendedOrder": ["mat_flower_xuelian", "mat_essence_lingcui", "mat_essence_lingcui", "mat_special_wangyoucao"],
+      "resultPool": [
+        {
+          "itemId": "item_ningxin_dan",
+          "itemName": "凝心丹",
+          "description": "安定心神，修炼时服用可降低走火入魔风险，持续1小时。",
+          "weight": 1.0,
+          "minQuality": "low",
+          "isSpecial": false
+        }
+      ],
+      "mutationPool": [
+        {
+          "itemId": "item_ningxin_dan_void",
+          "itemName": "虚空丹",
+          "description": "凝心丹的虚空变种，服用后可短暂进入天人合一境界。",
+          "weight": 0.6
+        }
+      ],
+      "sourceHint": "探索雪域秘境·冰心湖",
+      "sourceDetail": "在雪域秘境最深处的冰心湖底宝箱中发现，需避水珠方可抵达。",
+      "tags": ["心境", "心魔", "修炼", "探索", "秘境"]
+    },
+    {
+      "id": "recipe_tiejian",
+      "displayName": "铁剑",
+      "description": "百炼精铁打造的制式长剑，锋利耐用，是修士的基础兵刃。",
+      "category": "special",
+      "sourceType": "basic",
+      "isOriginalRecipe": true,
+      "optimalTemperature": 250.0,
+      "duration": 90.0,
+      "baseQualityMin": 0.3,
+      "baseQualityMax": 0.7,
+      "difficulty": 2,
+      "requiredProficiency": 5,
+      "materials": [
+        { "itemId": "mat_ore_tie", "displayName": "铁矿", "quantity": 3, "isConsumed": true },
+        { "itemId": "mat_essence_lingcui", "displayName": "灵粹", "quantity": 1, "isConsumed": true }
+      ],
+      "recommendedOrder": ["mat_ore_tie", "mat_ore_tie", "mat_essence_lingcui", "mat_ore_tie"],
+      "resultPool": [
+        {
+          "itemId": "item_tiejian",
+          "itemName": "铁剑",
+          "description": "基础铁质长剑，攻击力+15，适合初学者使用。",
+          "weight": 1.0,
+          "minQuality": "low",
+          "isSpecial": false
+        }
+      ],
+      "mutationPool": [
+        {
+          "itemId": "item_tiejian_mutant",
+          "itemName": "玄铁重剑",
+          "description": "意外淬炼而成的玄铁重剑，势大力沉，攻击力大幅提升。",
+          "weight": 0.3
+        }
+      ],
+      "sourceHint": "初始解锁",
+      "sourceDetail": "铸造入门即可掌握的装备炼制配方。",
+      "tags": ["武器", "剑", "基础", "铸造"]
+    },
+    {
+      "id": "recipe_kangleijia",
+      "displayName": "抗雷甲",
+      "description": "镶嵌雷电晶石的防御法甲，可大幅削弱雷属性攻击伤害，渡劫必备。",
+      "category": "special",
+      "sourceType": "exploration",
+      "isOriginalRecipe": true,
+      "optimalTemperature": 350.0,
+      "duration": 150.0,
+      "baseQualityMin": 0.4,
+      "baseQualityMax": 0.85,
+      "difficulty": 6,
+      "requiredProficiency": 30,
+      "materials": [
+        { "itemId": "mat_ore_xuanjie", "displayName": "玄铁", "quantity": 2, "isConsumed": true },
+        { "itemId": "mat_crystal_leidian", "displayName": "雷电晶", "quantity": 2, "isConsumed": true },
+        { "itemId": "mat_scale_longlin", "displayName": "龙鳞", "quantity": 1, "isConsumed": true }
+      ],
+      "recommendedOrder": ["mat_ore_xuanjie", "mat_scale_longlin", "mat_crystal_leidian", "mat_crystal_leidian", "mat_ore_xuanjie"],
+      "resultPool": [
+        {
+          "itemId": "item_kangleijia",
+          "itemName": "抗雷甲",
+          "description": "雷抗法甲，雷属性伤害减免+40%，渡劫时额外吸收15%天雷伤害。",
+          "weight": 1.0,
+          "minQuality": "mid",
+          "isSpecial": false
+        }
+      ],
+      "mutationPool": [
+        {
+          "itemId": "item_kangleijia_mythic",
+          "itemName": "不灭雷甲",
+          "description": "融合龙鳞与天雷之力的神甲，受到攻击时有概率释放雷环反击。",
+          "weight": 0.2
+        }
+      ],
+      "sourceHint": "探索雷鸣峡谷深处的铸造遗迹",
+      "sourceDetail": "雷鸣峡谷中有一座上古铸造师的遗迹，击败守护傀儡后可在密室中获得。",
+      "tags": ["防具", "雷抗", "渡劫", "铸造", "探索"]
+    },
+    {
+      "id": "recipe_hanbingren",
+      "displayName": "寒冰刃",
+      "description": "以万年寒冰矿与冰凤翎羽锻造而成的冰属性神兵，刀锋过处寒气四溢。",
+      "category": "special",
+      "sourceType": "boss",
+      "isOriginalRecipe": true,
+      "optimalTemperature": 200.0,
+      "duration": 120.0,
+      "baseQualityMin": 0.45,
+      "baseQualityMax": 0.9,
+      "difficulty": 7,
+      "requiredProficiency": 35,
+      "materials": [
+        { "itemId": "mat_ore_hanbing", "displayName": "寒冰矿", "quantity": 2, "isConsumed": true },
+        { "itemId": "mat_feather_hanbing", "displayName": "寒冰羽", "quantity": 1, "isConsumed": true },
+        { "itemId": "mat_essence_lingmai", "displayName": "灵脉晶", "quantity": 2, "isConsumed": true },
+        { "itemId": "mat_ore_xuanjie", "displayName": "玄铁", "quantity": 1, "isConsumed": true }
+      ],
+      "recommendedOrder": ["mat_ore_hanbing", "mat_ore_xuanjie", "mat_ore_hanbing", "mat_essence_lingmai", "mat_essence_lingmai", "mat_feather_hanbing"],
+      "resultPool": [
+        {
+          "itemId": "item_hanbingren",
+          "itemName": "寒冰刃",
+          "description": "冰属性神兵，攻击力+55，附带冰冻效果，攻击有30%概率减速敌人。",
+          "weight": 1.0,
+          "minQuality": "mid",
+          "isSpecial": false
+        },
+        {
+          "itemId": "item_hanbingren_perfect",
+          "itemName": "极寒裂空刃",
+          "description": "完美淬炼的寒冰刃巅峰形态，攻击有概率冻结目标并造成碎冰伤害。",
+          "weight": 0.15,
+          "minQuality": "legendary",
+          "isSpecial": true
+        }
+      ],
+      "mutationPool": [
+        {
+          "itemId": "item_hanbingren_frost",
+          "itemName": "霜噬",
+          "description": "寒冰刃变异而成的诡异兵刃，可吞噬敌人热量转化为自身灵力。",
+          "weight": 0.4
+        }
+      ],
+      "sourceHint": "击败极北冰原·冰霜巨人王 (15%概率掉落)",
+      "sourceDetail": "冰霜巨人王统治着极北冰原的寒冰王座，击败它有概率获得此配方。",
+      "tags": ["武器", "冰属性", "传说", "boss", "铸造"]
+    },
+    {
+      "id": "recipe_powang",
+      "displayName": "破妄丹",
+      "description": "破除一切虚妄幻象的神异丹药，服用后可看透幻阵与隐匿之术。",
+      "category": "special",
+      "sourceType": "exploration",
+      "isOriginalRecipe": true,
+      "optimalTemperature": 220.0,
+      "duration": 90.0,
+      "baseQualityMin": 0.5,
+      "baseQualityMax": 0.9,
+      "difficulty": 6,
+      "requiredProficiency": 25,
+      "materials": [
+        { "itemId": "mat_flower_xuelian", "displayName": "雪莲", "quantity": 2, "isConsumed": true },
+        { "itemId": "mat_essence_lingmai", "displayName": "灵脉晶", "quantity": 1, "isConsumed": true },
+        { "itemId": "mat_special_wangyoucao", "displayName": "忘忧草", "quantity": 1, "isConsumed": true },
+        { "itemId": "mat_essence_lingcui", "displayName": "灵粹", "quantity": 2, "isConsumed": true }
+      ],
+      "recommendedOrder": ["mat_flower_xuelian", "mat_flower_xuelian", "mat_special_wangyoucao", "mat_essence_lingcui", "mat_essence_lingcui", "mat_essence_lingmai"],
+      "resultPool": [
+        {
+          "itemId": "item_powang_dan",
+          "itemName": "破妄丹",
+          "description": "破妄真丹，服用后30分钟内可看穿所有幻阵与隐身单位。",
+          "weight": 1.0,
+          "minQuality": "low",
+          "isSpecial": false
+        }
+      ],
+      "mutationPool": [
+        {
+          "itemId": "item_powang_dan_true",
+          "itemName": "真视天丹",
+          "description": "破妄丹的终极变种，永久提升灵视能力，可看到灵气流动轨迹。",
+          "weight": 0.3
+        }
+      ],
+      "sourceHint": "探索幻神秘境·镜花水月",
+      "sourceDetail": "幻神秘境深处有一处镜花水月幻阵，通过全部幻境试炼后宝箱中获得。",
+      "tags": ["破妄", "幻阵", "探索", "秘境", "特殊"]
+    },
+    {
+      "id": "recipe_jiuzhuan",
+      "displayName": "九转还魂丹",
+      "description": "传说级回生圣药，蕴含九转造化之力，可生死人肉白骨，是修真界最珍贵的丹药之一。",
+      "category": "special",
+      "sourceType": "boss",
+      "isOriginalRecipe": true,
+      "optimalTemperature": 400.0,
+      "duration": 200.0,
+      "baseQualityMin": 0.7,
+      "baseQualityMax": 1.0,
+      "difficulty": 10,
+      "requiredProficiency": 80,
+      "materials": [
+        { "itemId": "mat_special_jiuzhuanhua", "displayName": "九转花", "quantity": 1, "isConsumed": true },
+        { "itemId": "mat_special_yuanhun", "displayName": "元魂", "quantity": 1, "isConsumed": true },
+        { "itemId": "mat_blood_longxue", "displayName": "龙血", "quantity": 1, "isConsumed": true },
+        { "itemId": "mat_feather_fengyu", "displayName": "凤羽", "quantity": 1, "isConsumed": true },
+        { "itemId": "mat_essence_lingmai", "displayName": "灵脉晶", "quantity": 3, "isConsumed": true },
+        { "itemId": "mat_special_jindan", "displayName": "金丹", "quantity": 1, "isConsumed": true }
+      ],
+      "recommendedOrder": ["mat_essence_lingmai", "mat_essence_lingmai", "mat_essence_lingmai", "mat_special_jiuzhuanhua", "mat_special_yuanhun", "mat_blood_longxue", "mat_feather_fengyu", "mat_special_jindan"],
+      "resultPool": [
+        {
+          "itemId": "item_jiuzhuan_dan",
+          "itemName": "九转还魂丹",
+          "description": "九转还魂·无上圣药，死亡后自动复活并恢复50%气血，仅可使用一次。",
+          "weight": 1.0,
+          "minQuality": "high",
+          "isSpecial": false
+        },
+        {
+          "itemId": "item_jiuzhuan_dan_perfect",
+          "itemName": "九转造化丹",
+          "description": "完美品质的九转还魂丹终极形态，服用后不仅可复活一次，更可重塑根基提升资质。",
+          "weight": 0.1,
+          "minQuality": "legendary",
+          "isSpecial": true
+        }
+      ],
+      "mutationPool": [
+        {
+          "itemId": "item_jiuzhuan_dan_shadow",
+          "itemName": "冥还丹",
+          "description": "九转还魂丹在死亡灵气侵染下变异，可召唤一次亡灵助战。",
+          "weight": 0.2
+        }
+      ],
+      "sourceHint": "击杀太虚古龙或上古神凰 (5%概率掉落)",
+      "sourceDetail": "太虚古龙沉睡于太虚深渊最底层，上古神凰栖身于涅槃火海中心，需集结顶级修士方可挑战。",
+      "tags": ["复活", "传说", "极品", "boss", "特殊", "九转"]
+    }
+  ]
+}

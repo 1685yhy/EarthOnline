@@ -1,0 +1,475 @@
+{
+  "itemPrices": [
+    { "itemId": "wpn_iron_sword",    "buyPrice": 100,  "sellPrice": 50,  "fluctuationRange": 0.15 },
+    { "itemId": "wpn_steel_sword",   "buyPrice": 400,  "sellPrice": 200, "fluctuationRange": 0.15 },
+    { "itemId": "wpn_frost_blade",   "buyPrice": 560,  "sellPrice": 280, "fluctuationRange": 0.20 },
+    { "itemId": "wpn_flame_blade",   "buyPrice": 1200, "sellPrice": 600, "fluctuationRange": 0.25 },
+    { "itemId": "wpn_thunder_spear", "buyPrice": 1500, "sellPrice": 750, "fluctuationRange": 0.25 },
+    { "itemId": "wpn_demon_bow",     "buyPrice": 1360, "sellPrice": 680, "fluctuationRange": 0.20 },
+    { "itemId": "wpn_magic_staff",   "buyPrice": 600,  "sellPrice": 300, "fluctuationRange": 0.20 },
+    { "itemId": "wpn_dagger",        "buyPrice": 160,  "sellPrice": 80,  "fluctuationRange": 0.15 },
+    { "itemId": "wpn_giant_hammer",  "buyPrice": 120,  "sellPrice": 60,  "fluctuationRange": 0.10 },
+    { "itemId": "wpn_hidden_weapon", "buyPrice": 5000, "sellPrice": 2500,"fluctuationRange": 0.40 },
+    { "itemId": "arm_cloth",         "buyPrice": 20,   "sellPrice": 10,  "fluctuationRange": 0.10 },
+    { "itemId": "arm_leather",       "buyPrice": 80,   "sellPrice": 40,  "fluctuationRange": 0.10 },
+    { "itemId": "arm_iron",          "buyPrice": 360,  "sellPrice": 180, "fluctuationRange": 0.15 },
+    { "itemId": "arm_thunder_resist","buyPrice": 700,  "sellPrice": 350, "fluctuationRange": 0.20 },
+    { "itemId": "arm_spirit_shield", "buyPrice": 1100, "sellPrice": 550, "fluctuationRange": 0.20 },
+    { "itemId": "arm_dragon_scale",  "buyPrice": 2400, "sellPrice": 1200,"fluctuationRange": 0.30 },
+    { "itemId": "arm_void_cloak",    "buyPrice": 4000, "sellPrice": 2000,"fluctuationRange": 0.35 },
+    { "itemId": "arm_chaos",         "buyPrice": 10000,"sellPrice": 5000,"fluctuationRange": 0.50 },
+    { "itemId": "elx_heal",          "buyPrice": 40,   "sellPrice": 20,  "fluctuationRange": 0.10 },
+    { "itemId": "elx_spirit",        "buyPrice": 50,   "sellPrice": 25,  "fluctuationRange": 0.10 },
+    { "itemId": "elx_antidote",      "buyPrice": 60,   "sellPrice": 30,  "fluctuationRange": 0.10 },
+    { "itemId": "elx_qi_gathering",  "buyPrice": 160,  "sellPrice": 80,  "fluctuationRange": 0.15 },
+    { "itemId": "elx_foundation",    "buyPrice": 1000, "sellPrice": 500, "fluctuationRange": 0.25 },
+    { "itemId": "elx_golden",        "buyPrice": 800,  "sellPrice": 400, "fluctuationRange": 0.20 },
+    { "itemId": "elx_breakthrough",  "buyPrice": 2400, "sellPrice": 1200,"fluctuationRange": 0.30 },
+    { "itemId": "elx_tribulation",   "buyPrice": 3000, "sellPrice": 1500,"fluctuationRange": 0.35 },
+    { "itemId": "elx_mind_focus",    "buyPrice": 1800, "sellPrice": 900, "fluctuationRange": 0.25 },
+    { "itemId": "elx_illusion_break","buyPrice": 1700, "sellPrice": 850, "fluctuationRange": 0.25 },
+    { "itemId": "elx_revival",       "buyPrice": 20000,"sellPrice": 10000,"fluctuationRange": 0.50 },
+    { "itemId": "elx_heaven",        "buyPrice": 100000,"sellPrice": 50000,"fluctuationRange": 0.60 },
+    { "itemId": "mat_hemostatic_herb","buyPrice": 10,  "sellPrice": 5,   "fluctuationRange": 0.10 },
+    { "itemId": "mat_spirit_spring", "buyPrice": 16,   "sellPrice": 8,   "fluctuationRange": 0.10 },
+    { "itemId": "mat_fire_scale",    "buyPrice": 200,  "sellPrice": 100, "fluctuationRange": 0.15 },
+    { "itemId": "mat_ice_fang",      "buyPrice": 240,  "sellPrice": 120, "fluctuationRange": 0.15 },
+    { "itemId": "mat_ancient_essence","buyPrice": 300, "sellPrice": 150, "fluctuationRange": 0.20 },
+    { "itemId": "mat_sword_shard",   "buyPrice": 1000, "sellPrice": 500, "fluctuationRange": 0.30 },
+    { "itemId": "mat_void_crystal",  "buyPrice": 1600, "sellPrice": 800, "fluctuationRange": 0.35 },
+    { "itemId": "mat_thousand_lingzhi","buyPrice": 1200,"sellPrice": 600, "fluctuationRange": 0.25 },
+    { "itemId": "mat_dragon_blood_stone","buyPrice": 4000,"sellPrice": 2000,"fluctuationRange": 0.40 },
+    { "itemId": "mat_star_sand",     "buyPrice": 6000, "sellPrice": 3000,"fluctuationRange": 0.45 },
+    { "itemId": "con_teleport",      "buyPrice": 400,  "sellPrice": 200, "fluctuationRange": 0.15 },
+    { "itemId": "con_escape",        "buyPrice": 360,  "sellPrice": 180, "fluctuationRange": 0.15 },
+    { "itemId": "con_barrier_break", "buyPrice": 800,  "sellPrice": 400, "fluctuationRange": 0.20 },
+    { "itemId": "con_spirit_power",  "buyPrice": 700,  "sellPrice": 350, "fluctuationRange": 0.20 },
+    { "itemId": "con_summon",        "buyPrice": 3000, "sellPrice": 1500,"fluctuationRange": 0.30 },
+    { "itemId": "spe_dual_token",    "buyPrice": 2000, "sellPrice": 1000,"fluctuationRange": 0.25 },
+    { "itemId": "spe_disguise",      "buyPrice": 1600, "sellPrice": 800, "fluctuationRange": 0.20 },
+    { "itemId": "spe_rename",        "buyPrice": 4000, "sellPrice": 2000,"fluctuationRange": 0.25 },
+    { "itemId": "spe_heaven_fragment","buyPrice": 100000,"sellPrice": 50000,"fluctuationRange": 0.60 },
+    { "itemId": "spe_traveler_relic","buyPrice": 200000,"sellPrice": 99999,"fluctuationRange": 0.70 }
+  ],
+
+  "legacyItemPriceMapping": [
+    { "oldId": "item_heal_pill_001",  "newId": "elx_heal",          "fallbackBuyPrice": 40,  "fallbackSellPrice": 20  },
+    { "oldId": "item_pill_001",       "newId": "elx_qi_gathering",  "fallbackBuyPrice": 160, "fallbackSellPrice": 80  },
+    { "oldId": "item_spirit_stone",   "newId": "mat_spirit_spring", "fallbackBuyPrice": 16,  "fallbackSellPrice": 8   },
+    { "oldId": "item_herb_001",       "newId": "mat_hemostatic_herb","fallbackBuyPrice": 10,  "fallbackSellPrice": 5   },
+    { "oldId": "item_iron_sword",     "newId": "wpn_iron_sword",    "fallbackBuyPrice": 100, "fallbackSellPrice": 50  },
+    { "oldId": "item_leather_armor",  "newId": "arm_leather",       "fallbackBuyPrice": 80,  "fallbackSellPrice": 40  },
+    { "oldId": "item_spirit_core_001","newId": "mat_ancient_essence","fallbackBuyPrice": 100, "fallbackSellPrice": 50  },
+    { "oldId": "item_steel_sword",    "newId": "wpn_steel_sword",   "fallbackBuyPrice": 400, "fallbackSellPrice": 200 },
+    { "oldId": "item_spirit_jade",    "newId": "mat_void_crystal",  "fallbackBuyPrice": 300, "fallbackSellPrice": 150 },
+    { "oldId": "item_void_crystal",   "newId": "mat_void_crystal",  "fallbackBuyPrice": 1600,"fallbackSellPrice": 800 },
+    { "oldId": "item_phoenix_feather","newId": "mat_star_sand",     "fallbackBuyPrice": 1000,"fallbackSellPrice": 500 },
+    { "oldId": "item_ancient_rune",   "newId": "mat_sword_shard",   "fallbackBuyPrice": 2000,"fallbackSellPrice": 1000}
+  ],
+
+  "shops": [
+    {
+      "shopId": "inn_shop",
+      "displayName": "落霞客栈·小卖",
+      "npcOwner": "npc_chen_001",
+      "buyMultiplier": 1.0,
+      "sellMultiplier": 0.5,
+      "itemsForSale": [
+        { "itemId": "elx_heal",           "stock": 5,  "refreshDays": 1 },
+        { "itemId": "elx_spirit",         "stock": 5,  "refreshDays": 1 },
+        { "itemId": "elx_antidote",       "stock": 3,  "refreshDays": 2 },
+        { "itemId": "mat_hemostatic_herb","stock": 10, "refreshDays": 1 },
+        { "itemId": "mat_spirit_spring",  "stock": 8,  "refreshDays": 1 },
+        { "itemId": "con_teleport",       "stock": 2,  "refreshDays": 3 },
+        { "itemId": "arm_cloth",          "stock": 3,  "refreshDays": 3 }
+      ]
+    },
+    {
+      "shopId": "blacksmith_shop",
+      "displayName": "王铁匠铺",
+      "npcOwner": "npc_wang_001",
+      "buyMultiplier": 1.2,
+      "sellMultiplier": 0.4,
+      "itemsForSale": [
+        { "itemId": "wpn_iron_sword",     "stock": 1,  "refreshDays": 3 },
+        { "itemId": "wpn_steel_sword",    "stock": 1,  "refreshDays": 7 },
+        { "itemId": "wpn_giant_hammer",   "stock": 1,  "refreshDays": 3 },
+        { "itemId": "wpn_frost_blade",    "stock": 1,  "refreshDays": 10 },
+        { "itemId": "arm_leather",        "stock": 2,  "refreshDays": 3 },
+        { "itemId": "arm_iron",           "stock": 1,  "refreshDays": 5 },
+        { "itemId": "mat_sword_shard",    "stock": 1,  "refreshDays": 10 }
+      ]
+    },
+    {
+      "shopId": "herb_shop",
+      "displayName": "百草堂",
+      "npcOwner": "npc_li_001",
+      "buyMultiplier": 0.9,
+      "sellMultiplier": 0.6,
+      "itemsForSale": [
+        { "itemId": "mat_hemostatic_herb", "stock": 15, "refreshDays": 1 },
+        { "itemId": "mat_spirit_spring",   "stock": 10, "refreshDays": 1 },
+        { "itemId": "mat_thousand_lingzhi","stock": 1,  "refreshDays": 14 },
+        { "itemId": "elx_heal",            "stock": 8,  "refreshDays": 1 },
+        { "itemId": "elx_spirit",          "stock": 8,  "refreshDays": 1 },
+        { "itemId": "elx_antidote",        "stock": 5,  "refreshDays": 2 },
+        { "itemId": "elx_qi_gathering",    "stock": 3,  "refreshDays": 3 },
+        { "itemId": "elx_foundation",      "stock": 1,  "refreshDays": 7 }
+      ]
+    },
+    {
+      "shopId": "merchant_stall",
+      "displayName": "游商·张货郎",
+      "npcOwner": "npc_zhang_001",
+      "buyMultiplier": 1.5,
+      "sellMultiplier": 0.3,
+      "itemsForSale": [
+        { "itemId": "con_teleport",       "stock": 2,  "refreshDays": 5 },
+        { "itemId": "con_escape",         "stock": 2,  "refreshDays": 5 },
+        { "itemId": "con_barrier_break",  "stock": 1,  "refreshDays": 7 },
+        { "itemId": "con_spirit_power",   "stock": 2,  "refreshDays": 5 },
+        { "itemId": "spe_disguise",       "stock": 1,  "refreshDays": 14 },
+        { "itemId": "spe_dual_token",     "stock": 1,  "refreshDays": 30 },
+        { "itemId": "mat_void_crystal",   "stock": 1,  "refreshDays": 14 },
+        { "itemId": "mat_star_sand",      "stock": 1,  "refreshDays": 30 }
+      ]
+    },
+    {
+      "shopId": "sect_tianyuan",
+      "displayName": "天元宗·功勋阁",
+      "npcOwner": "npc_tianyuan_001",
+      "buyMultiplier": 1.0,
+      "sellMultiplier": 0.5,
+      "itemsForSale": [
+        { "itemId": "wpn_thunder_spear",  "stock": 1,  "refreshDays": 30 },
+        { "itemId": "arm_spirit_shield",  "stock": 1,  "refreshDays": 14 },
+        { "itemId": "elx_breakthrough",   "stock": 1,  "refreshDays": 14 },
+        { "itemId": "elx_tribulation",    "stock": 1,  "refreshDays": 30 },
+        { "itemId": "elx_mind_focus",     "stock": 2,  "refreshDays": 7 },
+        { "itemId": "mat_sword_shard",    "stock": 2,  "refreshDays": 7 }
+      ]
+    },
+    {
+      "shopId": "sect_qingyun",
+      "displayName": "青云门·剑阁",
+      "npcOwner": "npc_qingyun_001",
+      "buyMultiplier": 1.0,
+      "sellMultiplier": 0.5,
+      "itemsForSale": [
+        { "itemId": "wpn_magic_staff",    "stock": 1,  "refreshDays": 14 },
+        { "itemId": "wpn_demon_bow",      "stock": 1,  "refreshDays": 20 },
+        { "itemId": "elx_qi_gathering",   "stock": 5,  "refreshDays": 3 },
+        { "itemId": "elx_mind_focus",     "stock": 2,  "refreshDays": 7 },
+        { "itemId": "mat_ancient_essence","stock": 3,  "refreshDays": 5 }
+      ]
+    },
+    {
+      "shopId": "sect_xueying",
+      "displayName": "血影教·暗市",
+      "npcOwner": "npc_xueying_001",
+      "buyMultiplier": 1.3,
+      "sellMultiplier": 0.4,
+      "itemsForSale": [
+        { "itemId": "wpn_dagger",         "stock": 3,  "refreshDays": 3 },
+        { "itemId": "wpn_flame_blade",    "stock": 1,  "refreshDays": 20 },
+        { "itemId": "elx_antidote",       "stock": 5,  "refreshDays": 2 },
+        { "itemId": "mat_fire_scale",     "stock": 2,  "refreshDays": 7 },
+        { "itemId": "mat_dragon_blood_stone","stock": 1,"refreshDays": 30 },
+        { "itemId": "spe_dual_token",     "stock": 1,  "refreshDays": 20 }
+      ]
+    },
+    {
+      "shopId": "sect_lingyao",
+      "displayName": "灵药谷·丹房",
+      "npcOwner": "npc_lingyao_001",
+      "buyMultiplier": 0.85,
+      "sellMultiplier": 0.6,
+      "itemsForSale": [
+        { "itemId": "elx_heal",           "stock": 10, "refreshDays": 1 },
+        { "itemId": "elx_spirit",         "stock": 10, "refreshDays": 1 },
+        { "itemId": "elx_qi_gathering",   "stock": 5,  "refreshDays": 2 },
+        { "itemId": "elx_foundation",     "stock": 2,  "refreshDays": 5 },
+        { "itemId": "elx_golden",         "stock": 2,  "refreshDays": 5 },
+        { "itemId": "elx_breakthrough",   "stock": 1,  "refreshDays": 10 },
+        { "itemId": "elx_mind_focus",     "stock": 2,  "refreshDays": 5 },
+        { "itemId": "elx_illusion_break", "stock": 1,  "refreshDays": 10 },
+        { "itemId": "mat_thousand_lingzhi","stock": 2,  "refreshDays": 7 },
+        { "itemId": "mat_fire_scale",     "stock": 3,  "refreshDays": 5 },
+        { "itemId": "mat_ice_fang",       "stock": 3,  "refreshDays": 5 }
+      ]
+    },
+    {
+      "shopId": "sect_wanjian",
+      "displayName": "万剑宗·藏兵阁",
+      "npcOwner": "npc_wanjian_001",
+      "buyMultiplier": 1.1,
+      "sellMultiplier": 0.45,
+      "itemsForSale": [
+        { "itemId": "wpn_iron_sword",     "stock": 2,  "refreshDays": 3 },
+        { "itemId": "wpn_steel_sword",    "stock": 2,  "refreshDays": 5 },
+        { "itemId": "wpn_frost_blade",    "stock": 1,  "refreshDays": 10 },
+        { "itemId": "wpn_hidden_weapon",  "stock": 1,  "refreshDays": 60 },
+        { "itemId": "arm_dragon_scale",   "stock": 1,  "refreshDays": 30 },
+        { "itemId": "arm_void_cloak",     "stock": 1,  "refreshDays": 30 },
+        { "itemId": "mat_sword_shard",    "stock": 3,  "refreshDays": 5 },
+        { "itemId": "mat_ancient_essence","stock": 2,  "refreshDays": 5 }
+      ]
+    }
+  ],
+
+  "craftingCosts": [
+    {
+      "recipeId": "recipe_huixue",
+      "spiritStoneCost": 5,
+      "equipmentDurabilityCost": 2,
+      "materials": [
+        { "itemId": "mat_herb_lingcao",   "quantity": 2 },
+        { "itemId": "mat_blood_shouxue",  "quantity": 1 }
+      ]
+    },
+    {
+      "recipeId": "recipe_juqi",
+      "spiritStoneCost": 10,
+      "equipmentDurabilityCost": 3,
+      "materials": [
+        { "itemId": "mat_herb_lingcao",   "quantity": 2 },
+        { "itemId": "mat_root_renshen",   "quantity": 1 },
+        { "itemId": "mat_essence_lingcui","quantity": 1 }
+      ]
+    },
+    {
+      "recipeId": "recipe_zhuji",
+      "spiritStoneCost": 50,
+      "equipmentDurabilityCost": 8,
+      "materials": [
+        { "itemId": "mat_flower_lingzhi", "quantity": 2 },
+        { "itemId": "mat_essence_lingmai","quantity": 1 },
+        { "itemId": "mat_bone_linggu",    "quantity": 1 }
+      ]
+    },
+    {
+      "recipeId": "recipe_dujie",
+      "spiritStoneCost": 200,
+      "equipmentDurabilityCost": 15,
+      "materials": [
+        { "itemId": "mat_blood_longxue",  "quantity": 1 },
+        { "itemId": "mat_feather_fengyu", "quantity": 1 },
+        { "itemId": "mat_crystal_leidian", "quantity": 1 },
+        { "itemId": "mat_essence_lingmai","quantity": 2 }
+      ]
+    },
+    {
+      "recipeId": "recipe_ningxin",
+      "spiritStoneCost": 30,
+      "equipmentDurabilityCost": 5,
+      "materials": [
+        { "itemId": "mat_flower_xuelian",  "quantity": 1 },
+        { "itemId": "mat_special_wangyoucao","quantity": 1 },
+        { "itemId": "mat_essence_lingcui", "quantity": 2 }
+      ]
+    },
+    {
+      "recipeId": "recipe_tiejian",
+      "spiritStoneCost": 15,
+      "equipmentDurabilityCost": 8,
+      "materials": [
+        { "itemId": "mat_ore_tie",        "quantity": 3 },
+        { "itemId": "mat_essence_lingcui","quantity": 1 }
+      ]
+    },
+    {
+      "recipeId": "recipe_kangleijia",
+      "spiritStoneCost": 80,
+      "equipmentDurabilityCost": 12,
+      "materials": [
+        { "itemId": "mat_ore_xuanjie",    "quantity": 2 },
+        { "itemId": "mat_crystal_leidian","quantity": 2 },
+        { "itemId": "mat_scale_longlin",  "quantity": 1 }
+      ]
+    },
+    {
+      "recipeId": "recipe_hanbingren",
+      "spiritStoneCost": 100,
+      "equipmentDurabilityCost": 12,
+      "materials": [
+        { "itemId": "mat_ore_hanbing",    "quantity": 2 },
+        { "itemId": "mat_feather_hanbing","quantity": 1 },
+        { "itemId": "mat_essence_lingmai","quantity": 2 },
+        { "itemId": "mat_ore_xuanjie",    "quantity": 1 }
+      ]
+    },
+    {
+      "recipeId": "recipe_powang",
+      "spiritStoneCost": 60,
+      "equipmentDurabilityCost": 8,
+      "materials": [
+        { "itemId": "mat_flower_xuelian",  "quantity": 2 },
+        { "itemId": "mat_essence_lingmai", "quantity": 1 },
+        { "itemId": "mat_special_wangyoucao","quantity": 1 },
+        { "itemId": "mat_essence_lingcui", "quantity": 2 }
+      ]
+    },
+    {
+      "recipeId": "recipe_jiuzhuan",
+      "spiritStoneCost": 500,
+      "equipmentDurabilityCost": 30,
+      "materials": [
+        { "itemId": "mat_special_jiuzhuanhua","quantity": 1 },
+        { "itemId": "mat_special_yuanhun",   "quantity": 1 },
+        { "itemId": "mat_blood_longxue",     "quantity": 1 },
+        { "itemId": "mat_feather_fengyu",    "quantity": 1 },
+        { "itemId": "mat_essence_lingmai",   "quantity": 3 },
+        { "itemId": "mat_special_jindan",    "quantity": 1 }
+      ]
+    }
+  ],
+
+  "spiritVeinCosts": [
+    { "realm": "QiRefining",           "realmName": "炼气",   "perHour": 5 },
+    { "realm": "FoundationEstablishment","realmName": "筑基",  "perHour": 20 },
+    { "realm": "GoldenCore",           "realmName": "金丹",   "perHour": 80 },
+    { "realm": "NascentSoul",          "realmName": "元婴",   "perHour": 300 },
+    { "realm": "Transcendence",        "realmName": "化神",   "perHour": 1000 },
+    { "realm": "Unity",                "realmName": "合体",   "perHour": 3000 },
+    { "realm": "MajorAscension",       "realmName": "大乘",   "perHour": 10000 },
+    { "realm": "TribulationTranscendence","realmName": "渡劫","perHour": 30000 }
+  ],
+
+  "fastTravelZones": [
+    {
+      "zoneId": "luoxia_village",
+      "zoneName": "落霞村",
+      "zoneIndex": 0,
+      "pricesToOtherZones": [
+        { "targetZoneIndex": 0, "cost": 0 },
+        { "targetZoneIndex": 1, "cost": 30 },
+        { "targetZoneIndex": 2, "cost": 80 },
+        { "targetZoneIndex": 3, "cost": 150 },
+        { "targetZoneIndex": 4, "cost": 200 },
+        { "targetZoneIndex": 5, "cost": 300 },
+        { "targetZoneIndex": 6, "cost": 500 }
+      ]
+    },
+    {
+      "zoneId": "market_area",
+      "zoneName": "坊市",
+      "zoneIndex": 1,
+      "pricesToOtherZones": [
+        { "targetZoneIndex": 0, "cost": 30 },
+        { "targetZoneIndex": 1, "cost": 0 },
+        { "targetZoneIndex": 2, "cost": 50 },
+        { "targetZoneIndex": 3, "cost": 100 },
+        { "targetZoneIndex": 4, "cost": 150 },
+        { "targetZoneIndex": 5, "cost": 250 },
+        { "targetZoneIndex": 6, "cost": 400 }
+      ]
+    },
+    {
+      "zoneId": "tianyuan_sect",
+      "zoneName": "天元宗",
+      "zoneIndex": 2,
+      "pricesToOtherZones": [
+        { "targetZoneIndex": 0, "cost": 80 },
+        { "targetZoneIndex": 1, "cost": 50 },
+        { "targetZoneIndex": 2, "cost": 0 },
+        { "targetZoneIndex": 3, "cost": 60 },
+        { "targetZoneIndex": 4, "cost": 100 },
+        { "targetZoneIndex": 5, "cost": 200 },
+        { "targetZoneIndex": 6, "cost": 350 }
+      ]
+    },
+    {
+      "zoneId": "qingyun_sect",
+      "zoneName": "青云门",
+      "zoneIndex": 3,
+      "pricesToOtherZones": [
+        { "targetZoneIndex": 0, "cost": 150 },
+        { "targetZoneIndex": 1, "cost": 100 },
+        { "targetZoneIndex": 2, "cost": 60 },
+        { "targetZoneIndex": 3, "cost": 0 },
+        { "targetZoneIndex": 4, "cost": 80 },
+        { "targetZoneIndex": 5, "cost": 150 },
+        { "targetZoneIndex": 6, "cost": 300 }
+      ]
+    },
+    {
+      "zoneId": "xueying_sect",
+      "zoneName": "血影教",
+      "zoneIndex": 4,
+      "pricesToOtherZones": [
+        { "targetZoneIndex": 0, "cost": 200 },
+        { "targetZoneIndex": 1, "cost": 150 },
+        { "targetZoneIndex": 2, "cost": 100 },
+        { "targetZoneIndex": 3, "cost": 80 },
+        { "targetZoneIndex": 4, "cost": 0 },
+        { "targetZoneIndex": 5, "cost": 120 },
+        { "targetZoneIndex": 6, "cost": 250 }
+      ]
+    },
+    {
+      "zoneId": "lingyao_sect",
+      "zoneName": "灵药谷",
+      "zoneIndex": 5,
+      "pricesToOtherZones": [
+        { "targetZoneIndex": 0, "cost": 300 },
+        { "targetZoneIndex": 1, "cost": 250 },
+        { "targetZoneIndex": 2, "cost": 200 },
+        { "targetZoneIndex": 3, "cost": 150 },
+        { "targetZoneIndex": 4, "cost": 120 },
+        { "targetZoneIndex": 5, "cost": 0 },
+        { "targetZoneIndex": 6, "cost": 180 }
+      ]
+    },
+    {
+      "zoneId": "wanjian_sect",
+      "zoneName": "万剑宗",
+      "zoneIndex": 6,
+      "pricesToOtherZones": [
+        { "targetZoneIndex": 0, "cost": 500 },
+        { "targetZoneIndex": 1, "cost": 400 },
+        { "targetZoneIndex": 2, "cost": 350 },
+        { "targetZoneIndex": 3, "cost": 300 },
+        { "targetZoneIndex": 4, "cost": 250 },
+        { "targetZoneIndex": 5, "cost": 180 },
+        { "targetZoneIndex": 6, "cost": 0 }
+      ]
+    }
+  ],
+
+  "repairFormula": {
+    "baseMultiplier": 1.0,
+    "qualityFactors": {
+      "N":  0.3,
+      "R":  0.5,
+      "SR": 1.0,
+      "SSR": 2.5,
+      "UR": 8.0
+    },
+    "minCost": 1,
+    "description": "repairCost = ceil( (1 - durabilityPercent) × qualityFactor × basePrice / 10 )"
+  },
+
+  "taxRates": [
+    { "regionId": "luoxia_village", "regionName": "落霞村",     "taxRate": 0.0  },
+    { "regionId": "market",         "regionName": "坊市",       "taxRate": 0.05 },
+    { "regionId": "sect_area",      "regionName": "门派区域",   "taxRate": 0.10 }
+  ],
+
+  "gamblingConfig": {
+    "minBet": 10,
+    "maxBet": 10000,
+    "houseEdge": 0.05,
+    "payoutMultiplierMin": 1.5,
+    "payoutMultiplierMax": 10.0,
+    "dailyGamblingLimit": 5000
+  },
+
+  "auctionConfig": {
+    "startingBidMultiplier": 0.7,
+    "bidIncrementPercent": 0.1,
+    "buyoutMultiplier": 2.0,
+    "listingFee": 50,
+    "auctionDurationHours": 24,
+    "sellerTaxPercent": 0.05
+  }
+}

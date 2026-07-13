@@ -287,7 +287,7 @@ namespace EarthOnline.Core
                 BodyTypeName = GetBodyTypeName(bodyType),
                 Quality = quality,
                 QualityName = GetQualityName(quality),
-                Success = "true",
+                Success = true,
                 FailureCount = currentBody.failureCount
             });
 
@@ -326,7 +326,7 @@ namespace EarthOnline.Core
                 BodyTypeName = GetBodyTypeName(bodyType),
                 Quality = quality,
                 QualityName = GetQualityName(quality),
-                Success = "false",
+                Success = false,
                 FailureCount = currentBody.failureCount
             });
 

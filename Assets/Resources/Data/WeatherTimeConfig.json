@@ -1,0 +1,500 @@
+{
+  "version": "2.0",
+  "lastUpdated": "2026-07-13",
+  "description": "EarthOnline 天气与时间周期全局配置",
+
+  "dayCycle": {
+    "dayLengthRealMinutes": 24,
+    "dawnDurationSeconds": 120,
+    "twilightDurationSeconds": 120,
+    "hours": {
+      "dawnStart": 5,
+      "dawnEnd": 7,
+      "dayStart": 7,
+      "dayEnd": 17,
+      "twilightStart": 17,
+      "twilightEnd": 19,
+      "nightStart": 19,
+      "nightEnd": 5
+    },
+    "sunCurveKeys": [
+      { "time": 0.0,  "intensity": 0.1, "color": [0.10, 0.10, 0.30] },
+      { "time": 0.21, "intensity": 0.3, "color": [0.50, 0.30, 0.15] },
+      { "time": 0.25, "intensity": 0.8, "color": [1.00, 0.60, 0.20] },
+      { "time": 0.5,  "intensity": 1.2, "color": [1.00, 0.95, 0.80] },
+      { "time": 0.75, "intensity": 0.6, "color": [1.00, 0.40, 0.10] },
+      { "time": 0.79, "intensity": 0.3, "color": [0.50, 0.20, 0.10] },
+      { "time": 1.0,  "intensity": 0.1, "color": [0.10, 0.10, 0.30] }
+    ]
+  },
+
+  "seasons": [
+    {
+      "id": "spring",
+      "displayName": "春",
+      "months": [1, 2, 3],
+      "description": "春回大地，万物复苏。灵气生发，适合木系功法修炼。",
+      "cultivationModifier": 1.15,
+      "spawnRateModifier": 1.25,
+      "resourceGatherModifier": 1.15,
+      "weatherBias": { "Rain": 0.30, "Storm": 0.10, "Fog": 0.10, "Clear": 0.20, "Cloudy": 0.25, "Snow": 0.0, "Sandstorm": 0.0, "SpiritTide": 0.05 }
+    },
+    {
+      "id": "summer",
+      "displayName": "夏",
+      "months": [4, 5, 6],
+      "description": "烈日炎炎，雷雨频繁。火灵气旺盛，炼丹炼器效果提升。",
+      "cultivationModifier": 1.10,
+      "spawnRateModifier": 1.10,
+      "resourceGatherModifier": 1.0,
+      "weatherBias": { "Rain": 0.15, "Storm": 0.25, "Fog": 0.05, "Clear": 0.25, "Cloudy": 0.20, "Snow": 0.0, "Sandstorm": 0.05, "SpiritTide": 0.05 }
+    },
+    {
+      "id": "autumn",
+      "displayName": "秋",
+      "months": [7, 8, 9],
+      "description": "天高气爽，灵气澄澈。突破成功率和悟道效率提升。",
+      "cultivationModifier": 1.20,
+      "spawnRateModifier": 0.85,
+      "resourceGatherModifier": 1.25,
+      "weatherBias": { "Rain": 0.15, "Storm": 0.05, "Fog": 0.20, "Clear": 0.30, "Cloudy": 0.20, "Snow": 0.0, "Sandstorm": 0.0, "SpiritTide": 0.10 }
+    },
+    {
+      "id": "winter",
+      "displayName": "冬",
+      "months": [10, 11, 12],
+      "description": "冰天雪地，万物蛰伏。水冰灵气充沛，适合防御性功法和冰系术法。",
+      "cultivationModifier": 0.90,
+      "spawnRateModifier": 0.60,
+      "resourceGatherModifier": 0.80,
+      "weatherBias": { "Rain": 0.05, "Storm": 0.15, "Fog": 0.15, "Clear": 0.15, "Cloudy": 0.15, "Snow": 0.30, "Sandstorm": 0.0, "SpiritTide": 0.05 }
+    }
+  ],
+
+  "weatherTypes": [
+    {
+      "id": "Clear",
+      "displayName": "晴",
+      "description": "晴空万里，灵气通畅。修炼效率有小幅提升。",
+      "priority": 0,
+      "probabilityBySeason": { "spring": 0.20, "summer": 0.25, "autumn": 0.30, "winter": 0.15 },
+      "durationRangeMinutes": { "min": 60, "max": 240 },
+      "transitionTimeSeconds": 30,
+      "visual": {
+        "fogEnabled": false,
+        "fogDensity": 0.0,
+        "fogColor": [0.5, 0.5, 0.5],
+        "ambientLight": [0.6, 0.6, 0.55],
+        "sunMultiplier": 1.2,
+        "rainParticle": false,
+        "snowParticle": false,
+        "windStrength": 0.1,
+        "skyTint": [0.8, 0.9, 1.0]
+      },
+      "gameplay": {
+        "cultivationModifier": 1.15,
+        "movementSpeedModifier": 1.0,
+        "spawnRateModifier": 1.0,
+        "visibilityRange": 100.0,
+        "fireAffinityBonus": 0.05,
+        "woodAffinityBonus": 0.0,
+        "spiritRegenBonus": 2
+      }
+    },
+    {
+      "id": "Cloudy",
+      "displayName": "阴",
+      "description": "云层蔽日，天地阴沉。战斗难度略降，耐性消耗减少。",
+      "priority": 1,
+      "probabilityBySeason": { "spring": 0.25, "summer": 0.20, "autumn": 0.20, "winter": 0.15 },
+      "durationRangeMinutes": { "min": 30, "max": 180 },
+      "transitionTimeSeconds": 45,
+      "visual": {
+        "fogEnabled": false,
+        "fogDensity": 0.0,
+        "fogColor": [0.5, 0.5, 0.5],
+        "ambientLight": [0.45, 0.45, 0.45],
+        "sunMultiplier": 0.6,
+        "rainParticle": false,
+        "snowParticle": false,
+        "windStrength": 0.3,
+        "skyTint": [0.5, 0.5, 0.55]
+      },
+      "gameplay": {
+        "cultivationModifier": 0.95,
+        "movementSpeedModifier": 1.0,
+        "spawnRateModifier": 1.05,
+        "visibilityRange": 80.0,
+        "fireAffinityBonus": -0.05,
+        "woodAffinityBonus": 0.05,
+        "spiritRegenBonus": 0
+      }
+    },
+    {
+      "id": "Rain",
+      "displayName": "雨",
+      "description": "细雨绵绵，水灵气充沛。水系术法增强，火系术法减弱。",
+      "priority": 2,
+      "probabilityBySeason": { "spring": 0.30, "summer": 0.15, "autumn": 0.15, "winter": 0.05 },
+      "durationRangeMinutes": { "min": 15, "max": 120 },
+      "transitionTimeSeconds": 60,
+      "visual": {
+        "fogEnabled": true,
+        "fogDensity": 0.015,
+        "fogColor": [0.30, 0.35, 0.40],
+        "ambientLight": [0.35, 0.35, 0.40],
+        "sunMultiplier": 0.4,
+        "rainParticle": true,
+        "snowParticle": false,
+        "windStrength": 0.4,
+        "skyTint": [0.3, 0.35, 0.45]
+      },
+      "gameplay": {
+        "cultivationModifier": 0.90,
+        "movementSpeedModifier": 0.90,
+        "spawnRateModifier": 1.15,
+        "visibilityRange": 50.0,
+        "waterAffinityBonus": 0.15,
+        "fireAffinityBonus": -0.15,
+        "spiritRegenBonus": -1
+      }
+    },
+    {
+      "id": "Storm",
+      "displayName": "暴风雨",
+      "description": "狂风暴雨，雷电交加。雷灵气暴增，但修炼风险极高。",
+      "priority": 3,
+      "probabilityBySeason": { "spring": 0.10, "summer": 0.25, "autumn": 0.05, "winter": 0.15 },
+      "durationRangeMinutes": { "min": 10, "max": 60 },
+      "transitionTimeSeconds": 90,
+      "visual": {
+        "fogEnabled": true,
+        "fogDensity": 0.025,
+        "fogColor": [0.20, 0.20, 0.25],
+        "ambientLight": [0.20, 0.20, 0.25],
+        "sunMultiplier": 0.2,
+        "rainParticle": true,
+        "snowParticle": false,
+        "windStrength": 1.0,
+        "skyTint": [0.15, 0.15, 0.25]
+      },
+      "gameplay": {
+        "cultivationModifier": 0.70,
+        "movementSpeedModifier": 0.65,
+        "spawnRateModifier": 1.40,
+        "visibilityRange": 25.0,
+        "thunderAffinityBonus": 0.25,
+        "waterAffinityBonus": 0.10,
+        "spiritRegenBonus": -3,
+        "breakthroughRiskBonus": 0.08
+      }
+    },
+    {
+      "id": "Snow",
+      "displayName": "雪",
+      "description": "大雪纷飞，天地冰封。冰系术法大幅增强，行动迟缓。",
+      "priority": 2,
+      "probabilityBySeason": { "spring": 0.0, "summer": 0.0, "autumn": 0.0, "winter": 0.30 },
+      "durationRangeMinutes": { "min": 30, "max": 180 },
+      "transitionTimeSeconds": 60,
+      "visual": {
+        "fogEnabled": true,
+        "fogDensity": 0.01,
+        "fogColor": [0.70, 0.75, 0.80],
+        "ambientLight": [0.50, 0.50, 0.55],
+        "sunMultiplier": 0.7,
+        "rainParticle": false,
+        "snowParticle": true,
+        "windStrength": 0.5,
+        "skyTint": [0.7, 0.75, 0.85]
+      },
+      "gameplay": {
+        "cultivationModifier": 0.85,
+        "movementSpeedModifier": 0.75,
+        "spawnRateModifier": 0.60,
+        "visibilityRange": 40.0,
+        "iceAffinityBonus": 0.20,
+        "fireAffinityBonus": -0.20,
+        "spiritRegenBonus": -1
+      }
+    },
+    {
+      "id": "Fog",
+      "displayName": "雾",
+      "description": "浓雾弥漫，视野受限。隐匿效果提升，远距离攻击命中率下降。",
+      "priority": 1,
+      "probabilityBySeason": { "spring": 0.10, "summer": 0.05, "autumn": 0.20, "winter": 0.15 },
+      "durationRangeMinutes": { "min": 15, "max": 90 },
+      "transitionTimeSeconds": 60,
+      "visual": {
+        "fogEnabled": true,
+        "fogDensity": 0.03,
+        "fogColor": [0.55, 0.55, 0.50],
+        "ambientLight": [0.45, 0.45, 0.40],
+        "sunMultiplier": 0.5,
+        "rainParticle": false,
+        "snowParticle": false,
+        "windStrength": 0.05,
+        "skyTint": [0.55, 0.55, 0.50]
+      },
+      "gameplay": {
+        "cultivationModifier": 0.80,
+        "movementSpeedModifier": 0.90,
+        "spawnRateModifier": 1.10,
+        "visibilityRange": 15.0,
+        "stealthBonus": 0.25,
+        "rangedAccuracyPenalty": 0.30,
+        "spiritRegenBonus": -2
+      }
+    },
+    {
+      "id": "Sandstorm",
+      "displayName": "沙尘暴",
+      "description": "黄沙漫天，灵气紊乱。土系术法增强，持续伤害区域内单位。",
+      "priority": 4,
+      "probabilityBySeason": { "spring": 0.0, "summer": 0.05, "autumn": 0.0, "winter": 0.0 },
+      "durationRangeMinutes": { "min": 10, "max": 45 },
+      "transitionTimeSeconds": 90,
+      "visual": {
+        "fogEnabled": true,
+        "fogDensity": 0.04,
+        "fogColor": [0.60, 0.50, 0.30],
+        "ambientLight": [0.35, 0.30, 0.20],
+        "sunMultiplier": 0.3,
+        "rainParticle": false,
+        "snowParticle": false,
+        "windStrength": 0.9,
+        "skyTint": [0.55, 0.40, 0.20]
+      },
+      "gameplay": {
+        "cultivationModifier": 0.50,
+        "movementSpeedModifier": 0.55,
+        "spawnRateModifier": 0.80,
+        "visibilityRange": 8.0,
+        "earthAffinityBonus": 0.20,
+        "metalAffinityBonus": 0.10,
+        "continuousDamagePerSecond": 1.5,
+        "spiritRegenBonus": -5,
+        "breakthroughRiskBonus": 0.15
+      }
+    },
+    {
+      "id": "SpiritTide",
+      "displayName": "灵气潮汐",
+      "description": "天地灵气异常涌动，修炼效率暴涨！但妖兽也将被吸引而来。天材地宝生长加速。",
+      "priority": 5,
+      "probabilityBySeason": { "spring": 0.05, "summer": 0.05, "autumn": 0.10, "winter": 0.05 },
+      "durationRangeMinutes": { "min": 15, "max": 45 },
+      "transitionTimeSeconds": 30,
+      "visual": {
+        "fogEnabled": false,
+        "fogDensity": 0.0,
+        "fogColor": [0.30, 0.60, 1.00],
+        "ambientLight": [0.30, 0.40, 0.60],
+        "sunMultiplier": 1.0,
+        "rainParticle": false,
+        "snowParticle": false,
+        "windStrength": 0.3,
+        "skyTint": [0.30, 0.60, 1.00],
+        "specialParticle": "SpiritTide"
+      },
+      "gameplay": {
+        "cultivationModifier": 2.50,
+        "movementSpeedModifier": 1.10,
+        "spawnRateModifier": 2.00,
+        "visibilityRange": 70.0,
+        "spiritRegenBonus": 15,
+        "resourceGatherBonus": 0.50,
+        "breakthroughChanceBonus": 0.20,
+        "rareSpawnChanceBonus": 0.30
+      }
+    }
+  ],
+
+  "timeEvents": [
+    {
+      "id": "midnight_cultivation",
+      "displayName": "子时修炼窗口",
+      "description": "子时(23:00-01:00)天地阴阳交替，修炼效率大幅提升。",
+      "hourStart": 23,
+      "hourEnd": 1,
+      "eventType": "Daily",
+      "effects": {
+        "cultivationModifier": 1.50,
+        "spiritRegenBonus": 10,
+        "breakthroughChanceBonus": 0.10,
+        "elementAffinity": "yin",
+        "affinityBonus": 0.20
+      }
+    },
+    {
+      "id": "noon_cultivation",
+      "displayName": "午时修炼窗口",
+      "description": "午时(11:00-13:00)阳气最盛，火属性功法和炼丹效果最佳。",
+      "hourStart": 11,
+      "hourEnd": 13,
+      "eventType": "Daily",
+      "effects": {
+        "cultivationModifier": 1.30,
+        "spiritRegenBonus": 5,
+        "breakthroughChanceBonus": 0.05,
+        "elementAffinity": "yang",
+        "affinityBonus": 0.15,
+        "alchemyQualityBonus": 0.20
+      }
+    },
+    {
+      "id": "full_moon",
+      "displayName": "满月灵气潮",
+      "description": "每月十五月圆之夜(20:00-02:00)，太阴之力加持，水系/阴系功法暴涨。",
+      "hourStart": 20,
+      "hourEnd": 2,
+      "eventType": "Monthly",
+      "requiredDayOfMonth": 15,
+      "effects": {
+        "cultivationModifier": 2.00,
+        "spiritRegenBonus": 20,
+        "breakthroughChanceBonus": 0.15,
+        "elementAffinity": "moon",
+        "affinityBonus": 0.30,
+        "rareSpawnChanceBonus": 0.50,
+        "transformationBeastChance": 0.25
+      }
+    },
+    {
+      "id": "solar_eclipse",
+      "displayName": "日蚀·天象异变",
+      "description": "极其罕见的日蚀天象，灵气紊乱但暗藏机缘。阴属性宝物出现率大增，阳属性修士需回避。",
+      "hourStart": 6,
+      "hourEnd": 18,
+      "eventType": "Rare",
+      "triggerChance": 0.002,
+      "cooldownDays": 90,
+      "effects": {
+        "cultivationModifier": 0.50,
+        "yinAffinityBonus": 0.50,
+        "yangAffinityPenalty": -0.40,
+        "rareItemDropBonus": 3.00,
+        "hiddenRealmDiscoverChance": 0.50,
+        "spiritRegenBonus": -10,
+        "ancientRuinActivationChance": 0.75
+      }
+    }
+  ],
+
+  "zoneWeatherOverrides": [
+    {
+      "zoneId": "luoxia_village",
+      "zoneName": "落霞村",
+      "description": "新手村区域，气候温和稳定。",
+      "allowedWeathers": ["Clear", "Cloudy", "Rain", "Fog"],
+      "forcedWeathers": [],
+      "weatherModifiers": {
+        "cultivationModifier": 1.0,
+        "spawnRateModifier": 0.5,
+        "visibilityRangeOverride": -1.0
+      },
+      "seasonProbabilityOverrides": [
+        {"key": "Clear", "value": 0.40},
+        {"key": "Cloudy", "value": 0.30},
+        {"key": "Rain", "value": 0.20},
+        {"key": "Fog", "value": 0.10}
+      ]
+    },
+    {
+      "zoneId": "green_bamboo_forest",
+      "zoneName": "翠竹林",
+      "description": "竹林繁茂，水汽充沛，多雨多雾。木灵气旺盛。",
+      "allowedWeathers": ["Clear", "Cloudy", "Rain", "Fog", "Storm", "SpiritTide"],
+      "forcedWeathers": [],
+      "weatherModifiers": {
+        "cultivationModifier": 1.05,
+        "spawnRateModifier": 1.15,
+        "visibilityRangeOverride": -1.0
+      },
+      "seasonProbabilityOverrides": [
+        {"key": "Rain", "value": 0.30},
+        {"key": "Fog", "value": 0.25},
+        {"key": "Clear", "value": 0.15},
+        {"key": "Cloudy", "value": 0.20},
+        {"key": "Storm", "value": 0.05},
+        {"key": "SpiritTide", "value": 0.05}
+      ]
+    },
+    {
+      "zoneId": "cangqing_wilds",
+      "zoneName": "苍青野",
+      "description": "开阔荒野，天气多变。暴风雨频繁，雷属性修炼圣地。",
+      "allowedWeathers": ["Clear", "Cloudy", "Rain", "Storm", "Fog", "Sandstorm"],
+      "forcedWeathers": [],
+      "weatherModifiers": {
+        "cultivationModifier": 1.0,
+        "spawnRateModifier": 1.20,
+        "visibilityRangeOverride": -1.0
+      },
+      "seasonProbabilityOverrides": [
+        {"key": "Storm", "value": 0.30},
+        {"key": "Clear", "value": 0.20},
+        {"key": "Cloudy", "value": 0.20},
+        {"key": "Rain", "value": 0.15},
+        {"key": "Fog", "value": 0.10},
+        {"key": "Sandstorm", "value": 0.05}
+      ]
+    },
+    {
+      "zoneId": "dark_forest",
+      "zoneName": "幽暗森林",
+      "description": "古木参天，终年不见天日。永久浓雾笼罩，阴灵气浓郁。",
+      "allowedWeathers": ["Fog", "Rain", "SpiritTide"],
+      "forcedWeathers": ["Fog"],
+      "weatherModifiers": {
+        "cultivationModifier": 1.10,
+        "spawnRateModifier": 1.30,
+        "visibilityRangeOverride": 12.0
+      },
+      "seasonProbabilityOverrides": [
+        {"key": "Fog", "value": 0.60},
+        {"key": "Rain", "value": 0.30},
+        {"key": "SpiritTide", "value": 0.10}
+      ]
+    },
+    {
+      "zoneId": "north_grassland",
+      "zoneName": "北部草原",
+      "description": "北方苦寒之地，冬季漫长。风雪频繁，冰系功法修炼胜地。",
+      "allowedWeathers": ["Clear", "Cloudy", "Snow", "Fog", "Storm"],
+      "forcedWeathers": [],
+      "weatherModifiers": {
+        "cultivationModifier": 0.95,
+        "spawnRateModifier": 0.90,
+        "visibilityRangeOverride": -1.0
+      },
+      "seasonProbabilityOverrides": [
+        {"key": "Snow", "value": 0.35},
+        {"key": "Clear", "value": 0.20},
+        {"key": "Cloudy", "value": 0.20},
+        {"key": "Storm", "value": 0.15},
+        {"key": "Fog", "value": 0.10}
+      ]
+    },
+    {
+      "zoneId": "abandoned_mine",
+      "zoneName": "废弃矿区",
+      "description": "废弃矿坑，地脉破损。沙尘暴频发，灵气潮汐在此处异常活跃。",
+      "allowedWeathers": ["Clear", "Cloudy", "Sandstorm", "SpiritTide", "Fog"],
+      "forcedWeathers": [],
+      "weatherModifiers": {
+        "cultivationModifier": 0.80,
+        "spawnRateModifier": 1.10,
+        "visibilityRangeOverride": -1.0
+      },
+      "seasonProbabilityOverrides": [
+        {"key": "Sandstorm", "value": 0.20},
+        {"key": "SpiritTide", "value": 0.15},
+        {"key": "Clear", "value": 0.20},
+        {"key": "Cloudy", "value": 0.25},
+        {"key": "Fog", "value": 0.20}
+      ]
+    }
+  ]
+}

@@ -215,7 +215,7 @@ namespace EarthOnline.Combat
 
         /// <summary>
         /// 根据境界等级计算境界系数
-        /// 练气 = "1.0", 筑基 = "1.5", 金丹 = "2.5", 元婴 = "4.0", 化神 = "6.5", 渡劫 = "10.0", 大成=16.0
+        /// 练气 = 1.0, 筑基 = 1.5, 金丹 = 2.5, 元婴 = 4.0, 化神 = 6.5, 渡劫 = 10.0, 大成=16.0
         /// </summary>
         public static float GetRealmMultiplier(int realmLevel)
         {
@@ -227,7 +227,7 @@ namespace EarthOnline.Combat
 
         /// <summary>
         /// 根据组队人数计算组队系数
-        /// 1人 = "1.0", 2人 = "1.4", 3人 = "1.8", 4人 = "2.2", 5人=2.6
+        /// 1人 = 1.0, 2人 = 1.4, 3人 = 1.8, 4人 = 2.2, 5人=2.6
         /// </summary>
         public static float GetPartySizeMultiplier(int partySize)
         {

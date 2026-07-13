@@ -342,7 +342,9 @@ namespace EarthOnline.Core
         // Timing
         private float _craftElapsed;
         private float _craftTotalDuration;
+#pragma warning disable CS0414 // reserved for future use (heat switch timing display)
         private float _lastHeatSwitchTime;
+#pragma warning restore CS0414
         private float _heatSwitchTimer; // 0 = ready, counts up to cooldown
         private float _explosionTimer;
 
@@ -617,9 +619,9 @@ namespace EarthOnline.Core
             // Record result.
             _lastResult = new AlchemyResult
             {
-                FinalQuality = "0f",
+                FinalQuality = 0f,
                 Quality = PillQuality.Fail,
-                IsMutation = "false",
+                IsMutation = false,
                 PillName = "炸炉废渣",
                 QualityColor = Color.gray
             };
@@ -855,7 +857,7 @@ namespace EarthOnline.Core
             {
                 NewStage = AlchemyStage.Boiling,
                 PreviousStage = AlchemyStage.Idle,
-                Progress = "0f",
+                Progress = 0f,
                 RecommendedHeat = GetRecommendedHeatForStage(AlchemyStage.Boiling)
             });
 
@@ -1052,7 +1054,7 @@ namespace EarthOnline.Core
             {
                 NewStage = AlchemyStage.Complete,
                 PreviousStage = previousStage,
-                Progress = "1f",
+                Progress = 1f,
                 RecommendedHeat = HeatLevel.Medium
             });
 
@@ -1408,10 +1410,10 @@ namespace EarthOnline.Core
                 Description = "测试用基础炼丹配方",
                 OptimalTemperature = optimalTemp,
                 Duration = duration,
-                BaseQualityMin = "0.3f",
+                BaseQualityMin = 0.3f,
                 BaseQualityMax = 0.8f,
                 RecommendedOrder = new[] { "mat_herb_01", "mat_root_02", "mat_essence_03" },
-                Difficulty = "1",
+                Difficulty = 1,
                 RequiredProficiency = 1
             };
         }

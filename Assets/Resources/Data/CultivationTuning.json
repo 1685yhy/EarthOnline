@@ -1,0 +1,385 @@
+{
+  "version": "2.0",
+  "lastUpdated": "2026-07-13",
+
+  "realms": [
+    {
+      "realmIndex": 0,
+      "realmName": "Mortal",
+      "displayName": "凡人",
+      "realmPower": 1,
+      "baseStats": {
+        "maxHP": 100,
+        "attack": 5,
+        "defense": 2,
+        "spiritCapacity": 50
+      },
+      "layerCurve": {
+        "baseCultivation": 0,
+        "maxCultivation": 0,
+        "perLayerMultiplier": 1.0
+      },
+      "breakthrough": {
+        "baseChance": 0.0,
+        "failurePenaltyRate": 0.0
+      },
+      "unlock": {
+        "requiredCultivation": 0,
+        "requiredLayer": 0,
+        "nextRealmBreakthroughChance": 1.0
+      },
+      "unlocks": {
+        "skills": [],
+        "areas": ["新手村"],
+        "equipmentTier": "None",
+        "features": []
+      }
+    },
+    {
+      "realmIndex": 1,
+      "realmName": "QiRefining",
+      "displayName": "练气期",
+      "realmPower": 10,
+      "baseStats": {
+        "maxHP": 200,
+        "attack": 10,
+        "defense": 5,
+        "spiritCapacity": 100
+      },
+      "layerCurve": {
+        "baseCultivation": 100,
+        "maxCultivation": 1000,
+        "perLayerMultiplier": 1.21
+      },
+      "breakthrough": {
+        "baseChance": 0.85,
+        "failurePenaltyRate": 0.05
+      },
+      "unlock": {
+        "requiredCultivation": 100,
+        "requiredLayer": 1,
+        "nextRealmBreakthroughChance": 0.85
+      },
+      "unlocks": {
+        "skills": ["灵气感知", "聚气术"],
+        "areas": ["青木林", "灵石矿脉"],
+        "equipmentTier": "R",
+        "features": ["基础内功"]
+      }
+    },
+    {
+      "realmIndex": 2,
+      "realmName": "Foundation",
+      "displayName": "筑基期",
+      "realmPower": 30,
+      "baseStats": {
+        "maxHP": 500,
+        "attack": 25,
+        "defense": 12,
+        "spiritCapacity": 300
+      },
+      "layerCurve": {
+        "baseCultivation": 300,
+        "maxCultivation": 3000,
+        "perLayerMultiplier": 1.21
+      },
+      "breakthrough": {
+        "baseChance": 0.75,
+        "failurePenaltyRate": 0.08
+      },
+      "unlock": {
+        "requiredCultivation": 300,
+        "requiredLayer": 1,
+        "nextRealmBreakthroughChance": 0.75
+      },
+      "unlocks": {
+        "skills": ["御剑飞行", "神识探测", "护体真气"],
+        "areas": ["落霞山", "碧波湖", "地下洞穴"],
+        "equipmentTier": "SR",
+        "features": ["御剑飞行", "神识探测"]
+      }
+    },
+    {
+      "realmIndex": 3,
+      "realmName": "GoldenCore",
+      "displayName": "金丹期",
+      "realmPower": 90,
+      "baseStats": {
+        "maxHP": 1200,
+        "attack": 60,
+        "defense": 30,
+        "spiritCapacity": 800
+      },
+      "layerCurve": {
+        "baseCultivation": 800,
+        "maxCultivation": 8000,
+        "perLayerMultiplier": 1.21
+      },
+      "breakthrough": {
+        "baseChance": 0.65,
+        "failurePenaltyRate": 0.10
+      },
+      "unlock": {
+        "requiredCultivation": 800,
+        "requiredLayer": 1,
+        "nextRealmBreakthroughChance": 0.65
+      },
+      "unlocks": {
+        "skills": ["丹火凝聚", "炼丹术", "炼器入门", "灵力护体"],
+        "areas": ["烈焰谷", "天罡峰", "迷雾森林"],
+        "equipmentTier": "SSR",
+        "features": ["炼丹", "炼器", "灵力护体(减伤20%)"]
+      }
+    },
+    {
+      "realmIndex": 4,
+      "realmName": "NascentSoul",
+      "displayName": "元婴期",
+      "realmPower": 270,
+      "baseStats": {
+        "maxHP": 3000,
+        "attack": 150,
+        "defense": 75,
+        "spiritCapacity": 2000
+      },
+      "layerCurve": {
+        "baseCultivation": 1800,
+        "maxCultivation": 18000,
+        "perLayerMultiplier": 1.21
+      },
+      "breakthrough": {
+        "baseChance": 0.55,
+        "failurePenaltyRate": 0.12
+      },
+      "unlock": {
+        "requiredCultivation": 1800,
+        "requiredLayer": 1,
+        "nextRealmBreakthroughChance": 0.55
+      },
+      "unlocks": {
+        "skills": ["元婴出窍", "分身术", "神识风暴"],
+        "areas": ["葬神渊", "万妖窟", "九天瀑布"],
+        "equipmentTier": "SSR+",
+        "features": ["元婴出窍", "死亡逃逸(一次)"]
+      }
+    },
+    {
+      "realmIndex": 5,
+      "realmName": "SpiritSevering",
+      "displayName": "化神期",
+      "realmPower": 810,
+      "baseStats": {
+        "maxHP": 8000,
+        "attack": 400,
+        "defense": 200,
+        "spiritCapacity": 5000
+      },
+      "layerCurve": {
+        "baseCultivation": 4000,
+        "maxCultivation": 40000,
+        "perLayerMultiplier": 1.21
+      },
+      "breakthrough": {
+        "baseChance": 0.45,
+        "failurePenaltyRate": 0.12
+      },
+      "unlock": {
+        "requiredCultivation": 4000,
+        "requiredLayer": 1,
+        "nextRealmBreakthroughChance": 0.45
+      },
+      "unlocks": {
+        "skills": ["领域展开", "法则感悟", "缩地成寸"],
+        "areas": ["混沌荒地", "虚空裂缝", "上古遗迹"],
+        "equipmentTier": "UR",
+        "features": ["领域初成", "法则感悟"]
+      }
+    },
+    {
+      "realmIndex": 6,
+      "realmName": "Tribulation",
+      "displayName": "渡劫期",
+      "realmPower": 2430,
+      "baseStats": {
+        "maxHP": 20000,
+        "attack": 1000,
+        "defense": 500,
+        "spiritCapacity": 12000
+      },
+      "layerCurve": {
+        "baseCultivation": 10000,
+        "maxCultivation": 100000,
+        "perLayerMultiplier": 1.21
+      },
+      "breakthrough": {
+        "baseChance": 0.30,
+        "failurePenaltyRate": 0.15
+      },
+      "unlock": {
+        "requiredCultivation": 10000,
+        "requiredLayer": 1,
+        "nextRealmBreakthroughChance": 0.30
+      },
+      "unlocks": {
+        "skills": ["天雷引诀", "天道感应", "万法归一"],
+        "areas": ["天劫台区域", "雷池禁区", "天道回廊"],
+        "equipmentTier": "UR+",
+        "features": ["天劫挑战", "道体觉醒准备"]
+      }
+    },
+    {
+      "realmIndex": 7,
+      "realmName": "GreatAscension",
+      "displayName": "大成期",
+      "realmPower": 7290,
+      "baseStats": {
+        "maxHP": 50000,
+        "attack": 2500,
+        "defense": 1200,
+        "spiritCapacity": 30000
+      },
+      "layerCurve": {
+        "baseCultivation": 25000,
+        "maxCultivation": 250000,
+        "perLayerMultiplier": 1.21
+      },
+      "breakthrough": {
+        "baseChance": 0.0,
+        "failurePenaltyRate": 0.0
+      },
+      "unlock": {
+        "requiredCultivation": 25000,
+        "requiredLayer": 1,
+        "nextRealmBreakthroughChance": 0.0
+      },
+      "unlocks": {
+        "skills": ["洞天开辟", "时空穿梭", "万象天引"],
+        "areas": ["上界通道", "星空古路", "混沌海"],
+        "equipmentTier": "Legendary",
+        "features": ["开辟洞天", "创建宗门", "飞升上界"]
+      }
+    }
+  ],
+
+  "breakthroughMultipliers": {
+    "description": "突破成功率修正系数——作用于大境界突破的基础成功率",
+    "perLayerBonusAboveMax": 0.03,
+    "perLayerBonusMax": 6,
+    "perLayerBonusCap": 0.18,
+    "realmFactor": [
+      { "sourceRealm": "Mortal", "targetRealm": "QiRefining", "factor": 1.0 },
+      { "sourceRealm": "QiRefining", "targetRealm": "Foundation", "factor": 1.0 },
+      { "sourceRealm": "Foundation", "targetRealm": "GoldenCore", "factor": 0.9 },
+      { "sourceRealm": "GoldenCore", "targetRealm": "NascentSoul", "factor": 0.8 },
+      { "sourceRealm": "NascentSoul", "targetRealm": "SpiritSevering", "factor": 0.7 },
+      { "sourceRealm": "SpiritSevering", "targetRealm": "Tribulation", "factor": 0.6 },
+      { "sourceRealm": "Tribulation", "targetRealm": "GreatAscension", "factor": 0.5 }
+    ],
+    "pillBonus": 0.15,
+    "formationBonus": 0.10,
+    "escortBonus": 0.08,
+    "soloPenalty": -0.20,
+    "maxBonusRate": 0.95,
+    "minSuccessRate": 0.10
+  },
+
+  "realmUnlockThresholds": [
+    {
+      "realm": "QiRefining",
+      "requiredCultivation": 100,
+      "requiredLayer": 0,
+      "unlockMessage": "经脉初通，感应天地灵气。解锁：灵气感知、聚气术。",
+      "unlocks": {
+        "skills": ["灵气感知", "聚气术"],
+        "areas": ["青木林", "灵石矿脉"],
+        "equipmentTier": "R",
+        "worldChanges": ["灵气感知开启——地图上显示灵气节点位置"]
+      }
+    },
+    {
+      "realm": "Foundation",
+      "requiredCultivation": 300,
+      "requiredLayer": 0,
+      "unlockMessage": "筑基成功，御剑飞行！解锁：神识探测、护体真气。",
+      "unlocks": {
+        "skills": ["御剑飞行", "神识探测", "护体真气"],
+        "areas": ["落霞山", "碧波湖", "地下洞穴"],
+        "equipmentTier": "SR",
+        "worldChanges": ["可购买飞行坐骑", "神识探测范围+50%", "解锁每日副本：灵石矿洞"]
+      }
+    },
+    {
+      "realm": "GoldenCore",
+      "requiredCultivation": 800,
+      "requiredLayer": 0,
+      "unlockMessage": "金丹凝结，可炼丹炼器！解锁：丹火、炼器、灵力护体。",
+      "unlocks": {
+        "skills": ["丹火凝聚", "炼丹术", "炼器入门", "灵力护体"],
+        "areas": ["烈焰谷", "天罡峰", "迷雾森林"],
+        "equipmentTier": "SSR",
+        "worldChanges": ["炼丹系统解锁——可炼制丹药", "炼器系统解锁——可打造装备", "灵力护体自动开启(减伤20%)"]
+      }
+    },
+    {
+      "realm": "NascentSoul",
+      "requiredCultivation": 1800,
+      "requiredLayer": 0,
+      "unlockMessage": "元婴出窍，可分身执行任务！解锁：分身术、神识风暴。",
+      "unlocks": {
+        "skills": ["元婴出窍", "分身术", "神识风暴"],
+        "areas": ["葬神渊", "万妖窟", "九天瀑布"],
+        "equipmentTier": "SSR+",
+        "worldChanges": ["元婴出窍——可远程探索危险区域", "死亡时元婴逃逸一次(不损失修为)", "解锁高难度副本：葬神渊"]
+      }
+    },
+    {
+      "realm": "SpiritSevering",
+      "requiredCultivation": 4000,
+      "requiredLayer": 0,
+      "unlockMessage": "领域初成！可创造领域影响周围环境。解锁：法则感悟。",
+      "unlocks": {
+        "skills": ["领域展开", "法则感悟", "缩地成寸"],
+        "areas": ["混沌荒地", "虚空裂缝", "上古遗迹"],
+        "equipmentTier": "UR",
+        "worldChanges": ["领域可改变小范围环境属性", "法则感悟——开始领悟天地法则", "解锁秘境：上古遗迹"]
+      }
+    },
+    {
+      "realm": "Tribulation",
+      "requiredCultivation": 10000,
+      "requiredLayer": 0,
+      "unlockMessage": "渡劫期！每层突破即是一次天劫。准备渡劫材料，前往天劫台引劫。",
+      "unlocks": {
+        "skills": ["天雷引诀", "天道感应", "万法归一"],
+        "areas": ["天劫台区域", "雷池禁区", "天道回廊"],
+        "equipmentTier": "UR+",
+        "worldChanges": ["地图上显示所有已发现天劫台位置", "天劫台提供渡劫确认面板", "解锁区域：雷池禁区"]
+      }
+    },
+    {
+      "realm": "GreatAscension",
+      "requiredCultivation": 25000,
+      "requiredLayer": 0,
+      "unlockMessage": "已臻大成！可开辟洞天、创建宗门、飞升上界。",
+      "unlocks": {
+        "skills": ["洞天开辟", "时空穿梭", "万象天引"],
+        "areas": ["上界通道", "星空古路", "混沌海"],
+        "equipmentTier": "Legendary",
+        "worldChanges": ["可开辟个人洞天福地", "可创建或接管宗门", "飞升上界通道开启"]
+      }
+    }
+  ],
+
+  "globalTuning": {
+    "maxLayerPlayer": 13,
+    "maxLayerNPC": 9,
+    "spiritStoneToEssenceRate": 10,
+    "essenceToCultivationRate": 5,
+    "baseExpToLevelMultiplier": 1.5,
+    "hpPerLevel": 20,
+    "levelBonusInterval": 5,
+    "levelBonusGoldPerLevel": 50,
+    "deathGoldLossRate": 0.2,
+    "newbieProtectionDays": 3
+  }
+}
